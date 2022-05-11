@@ -25,17 +25,12 @@ jobs:
         shell: bash
         run: |
           echo "${{ steps.extract_branch.outputs.branch }}"
-          echo "${{ github.head_ref || github.run_id }}"
+          echo "${{ github.ref_name }}"
           echo "echo - ${{ github.job }}"
-          echo "job id - "
-          echo "${{ github.job.defaults }}"
-          echo "job name - "
-          echo "${{ github.job.name }}"
-
-          echo "asda - ${{ github.run_id }}"
+          echo "job id - ${{ github.action }}"
 
 #      - name: Deploy branch to remote
 #        shell: bash
 #        run: |
 #          composer self-update --no-interaction && composer install --no-interaction --optimize-autoloader
-#          vendor/bin/blt -vvv artifact:deploy --commit-msg "GitHub build - $BITBUCKET_BUILD_NUMBER, Commit $BITBUCKET_COMMIT" --branch "$BITBUCKET_BRANCH" --no-interaction
+#          vendor/bin/blt -vvv artifact:deploy --commit-msg "GitHub build - $BITBUCKET_BUILD_NUMBER, Commit $BITBUCKET_COMMIT" --branch "${{ github.ref_name }}" --no-interaction
