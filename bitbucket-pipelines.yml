@@ -1,0 +1,63 @@
+# Ideally use an image with php, php extensions & composer.
+# i.e. image: imagexmedia/ci:latest
+# See: https://confluence.atlassian.com/bitbucket/php-with-bitbucket-pipelines-873907835.html
+image: imagexmedia/ci:latest
+
+# Defines single re-usable scripts.
+script_definitions:
+  - &env-setup
+      export BIN_DIR=$BITBUCKET_CLONE_DIR/vendor/bin
+      export THEME_DIR=$BITBUCKET_CLONE_DIR/docroot/themes/custom/ashland
+  - &composer-tasks
+      composer self-update --no-interaction && composer install --no-interaction --optimize-autoloader
+
+# Defines re-usable steps.
+step_definitions:
+  - validate: &validate
+      name: 'Validation Tasks.'
+      caches:
+        - composer
+      script:
+        - *env-setup
+        - *composer-tasks
+        - echo "memory_limit=1024M" > /usr/local/etc/php/php.ini
+        - ${BIN_DIR}/blt validate
+        - cd ${THEME_DIR} && npm install && npm run scss:lint
+  - deploy-branch: &deploy-branch
+      name: 'Deploy branch to remote.'
+      caches:
+        - composer
+      script:
+        - *env-setup
+        - *composer-tasks
+        - ${BIN_DIR}/blt -vvv artifact:deploy --commit-msg "Bitbucket build - $BITBUCKET_BUILD_NUMBER, Commit $BITBUCKET_COMMIT" --branch "$BITBUCKET_BRANCH" --no-interaction
+  - deploy-tag: &deploy-tag
+      name: 'Deploy tag to remote.'
+      caches:
+        - composer
+      script:
+        - *env-setup
+        - *composer-tasks
+        - ${BIN_DIR}/blt -vvv artifact:deploy --commit-msg "Bitbucket release $BITBUCKET_TAG." --tag "$BITBUCKET_TAG"
+
+# Bitbucket pipeline definitions.
+pipelines:
+  default:
+    - step: *validate
+  pull-requests:
+    '**':
+      - step: *validate
+  branches:
+    master:
+#      - step: *validate
+      - step: *deploy-branch
+#    staging:
+#      - step: *validate
+#      - step: *deploy-branch
+#    develop:
+#      - step: *validate
+#      - step: *deploy-branch
+  tags:
+    '**':
+#      - step: *validate
+      - step: *deploy-tag

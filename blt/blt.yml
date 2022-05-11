@@ -1,0 +1,51 @@
+docroot: ${repo.root}/docroot
+project:
+  prefix: TEST
+  machine_name: TEST
+  human_name: 'TEST'
+  local:
+    protocol: http
+    hostname: '${project.machine_name}.docksal'
+  profile:
+    name: standard
+git:
+  default_branch: master
+  remotes:
+    cloud: 'git@github.com:v1nk/test.git'
+  user:
+    name: 'ImageX Media'
+    email: no-reply@imagexmedia.com
+deploy:
+  tag_source: false
+drush:
+  aliases:
+    remote: '${project.machine_name}.prod'
+    local: self
+    ci: self
+  default_alias: self
+validate:
+  twig:
+    filters: [image_style, view, children, html_entity_decode, image_uri, token_decode, url_decode, file_url]
+    functions: [drupal_block, drupal_field, drupal_view, drupal_region, drupal_entity, drupal_menu, drupal_form, drupal_image, drupal_token, drupal_config, drupal_title, drupal_url, drupal_link, drupal_messages, drupal_breadcrumb]
+modules:
+  local:
+    enable: {  }
+    uninstall: {  }
+  ci:
+    enable: {  }
+    uninstall: {  }
+  dev:
+    enable: {  }
+    uninstall: {  }
+  test:
+    enable: {  }
+    uninstall: {  }
+  prod:
+    enable: {  }
+    uninstall: {  }
+drupal:
+  db:
+    database: default
+    username: user
+    password: user
+    host: db
