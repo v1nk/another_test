@@ -25,14 +25,14 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: test
-        shell: bash
-        run: nvm install
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '12'
 
-#      - name: Run composer install
-#        shell: bash
-#        run: composer self-update --no-interaction && composer install --no-interaction --optimize-autoloader
-#
-#      - name: Deploy branch to remote
-#        shell: bash
-#        run: vendor/bin/blt -vvv artifact:deploy --commit-msg "GitHub build, Commit ${{ github.event.head_commit.message }}" --branch "${{ github.ref_name }}" --no-interaction
+      - name: Run composer install
+        shell: bash
+        run: composer self-update --no-interaction && composer install --no-interaction --optimize-autoloader
+
+      - name: Deploy branch to remote
+        shell: bash
+        run: vendor/bin/blt -vvv artifact:deploy --commit-msg "GitHub build, Commit ${{ github.event.head_commit.message }}" --branch "${{ github.ref_name }}" --no-interaction
