@@ -26,8 +26,10 @@ jobs:
         run: |
           echo "${{ steps.extract_branch.outputs.branch }}"
           echo "${{ github.head_ref || github.run_id }}"
-          echo "${{ github.job }}"
+          echo "echo - ${{ github.job }}"
+          echo "job id - "
           echo "${{ github.job_id }}"
+          echo "job name - "
           echo "${{ github.job_id.name }}"
 
 #      - name: Deploy branch to remote
