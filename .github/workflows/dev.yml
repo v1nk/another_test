@@ -23,8 +23,6 @@ jobs:
 
       - name: Show Branch Name
         shell: bash
-        env:
-          GITHUB_TOKEN: ${{ secrets.SECRET_TOKEN }}
         run: |
           echo "${{ steps.extract_branch.outputs.branch }}"
           echo "${{ github.ref_name }}"
@@ -33,6 +31,8 @@ jobs:
 
       - name: Deploy branch to remote
         shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.SECRET_TOKEN }}
         run: |
           composer self-update --no-interaction && composer install --no-interaction --optimize-autoloader
           vendor/bin/blt -vvv artifact:deploy --commit-msg "GitHub build, Commit ${{ github.event.head_commit.message }}" --branch "${{ github.ref_name }}" --no-interaction
