@@ -28,9 +28,11 @@ jobs:
           echo "${{ github.head_ref || github.run_id }}"
           echo "echo - ${{ github.job }}"
           echo "job id - "
-          echo "${{ github.job_id }}"
+          echo "${{ github.job.defaults }}"
           echo "job name - "
-          echo "${{ github.job_id.name }}"
+          echo "${{ github.job.name }}"
+
+          echo "asda - ${{ github.run_id }}"
 
 #      - name: Deploy branch to remote
 #        shell: bash
