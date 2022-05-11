@@ -29,8 +29,8 @@ jobs:
           echo "echo - ${{ github.job }}"
           echo "job id - ${{ github.action }}"
 
-#      - name: Deploy branch to remote
-#        shell: bash
-#        run: |
-#          composer self-update --no-interaction && composer install --no-interaction --optimize-autoloader
-#          vendor/bin/blt -vvv artifact:deploy --commit-msg "GitHub build - $BITBUCKET_BUILD_NUMBER, Commit $BITBUCKET_COMMIT" --branch "${{ github.ref_name }}" --no-interaction
+      - name: Deploy branch to remote
+        shell: bash
+        run: |
+          composer self-update --no-interaction && composer install --no-interaction --optimize-autoloader
+          vendor/bin/blt -vvv artifact:deploy --commit-msg "GitHub build, Commit ${{ github.event.head_commit.message }}" --branch "${{ github.ref_name }}" --no-interaction
