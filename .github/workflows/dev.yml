@@ -26,8 +26,8 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: test
-          shell: bash
-          run: nvm install
+        shell: bash
+        run: nvm install
 
 #      - name: Run composer install
 #        shell: bash
