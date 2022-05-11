@@ -55,7 +55,7 @@ drupal:
 command-hooks:
   frontend-reqs:
     dir: '${project.theme.dir}'
-    command: 'nvm install 12 && nvm use 12 && npm install'
+    command: 'npm install'
   frontend-assets:
     dir: '${project.theme.dir}'
     command: 'npm run build'
