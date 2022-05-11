@@ -23,6 +23,8 @@ jobs:
 
       - name: Show Branch Name
         shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.SECRET_TOKEN }}
         run: |
           echo "${{ steps.extract_branch.outputs.branch }}"
           echo "${{ github.ref_name }}"
