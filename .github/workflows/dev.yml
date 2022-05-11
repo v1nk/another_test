@@ -26,5 +26,6 @@ jobs:
       - name: Deploy branch to remote
         shell: bash
         run: |
+          ls -lah
           composer self-update --no-interaction && composer install --no-interaction --optimize-autoloader
           ./blt -vvv artifact:deploy --commit-msg "Bitbucket build - $BITBUCKET_BUILD_NUMBER, Commit $BITBUCKET_COMMIT" --branch "$BITBUCKET_BRANCH" --no-interaction
