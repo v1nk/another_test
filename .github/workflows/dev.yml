@@ -21,18 +21,22 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Show Branch Name
-        shell: bash
-        run: |
-          echo "${{ steps.extract_branch.outputs.branch }}"
-          echo "${{ github.ref_name }}"
-          echo "echo - ${{ github.job }}"
-          echo "job id - ${{ github.action }}"
+      - uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+#      - name: Show Branch Name
+#        shell: bash
+#        run: |
+#          echo "${{ steps.extract_branch.outputs.branch }}"
+#          echo "${{ github.ref_name }}"
+#          echo "echo - ${{ github.job }}"
+#          echo "job id - ${{ github.action }}"
 
       - name: Deploy branch to remote
         shell: bash
-        env:
-          GITHUB_TOKEN: ${{ secrets.SECRET_TOKEN }}
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.SECRET_TOKEN }}
         run: |
           composer self-update --no-interaction && composer install --no-interaction --optimize-autoloader
           vendor/bin/blt -vvv artifact:deploy --commit-msg "GitHub build, Commit ${{ github.event.head_commit.message }}" --branch "${{ github.ref_name }}" --no-interaction
