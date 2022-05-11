@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Theme override for a 'form' element.
+ *
+ * Available variables
+ * - attributes: A list of HTML attributes for the wrapper element.
+ * - children: The child elements of the form.
+ *
+ * @see template_preprocess_form()
+ */
+#}
+<div class="search-results__form auto-search">
+  {% if "/search/catalog" in url("<current>")|render|render %}
+    <h2 class="search-results__form-title">Catalog Search</h2>
+  {% endif %}
+
+  {% if "/search/node" in url("<current>")|render|render %}
+    <h2 class="search-results__form-title">Search <span class="search-results__form-title-red-text">UAGC</span></h2>
+  {% endif %}
+
+  <form{{ attributes }}>
+    {{ children }}
+  </form>
+</div>

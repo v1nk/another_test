@@ -1,0 +1,12 @@
+%display-table {
+  display: table;
+  width: 100%;
+}
+
+%display-table--desktop-only {
+  @include breakpoint($bp--mobile, $no-query: true) {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+  }
+}

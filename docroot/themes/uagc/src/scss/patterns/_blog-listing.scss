@@ -1,0 +1,431 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+/* This is here because it's the machine name for 
+ the success grid and was the only class I could
+ inject into the global views template. Sorry about
+ the deep nesting of CSS, I couldn't override the
+ filter/pagination markup */
+.blog-listing {
+
+  .grid-filter {
+    @media (min-width: $desktop) {
+      flex-basis: 280px;
+      padding-right: 0;
+    }
+  }
+
+  .listing-view__link-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .listing-view__card-content {
+    margin-bottom: 0;
+
+  }
+
+  .listing-view__wrapper {
+    @media(min-width: $desktop) {
+      flex-basis: calc(100% - 280px);
+    }
+  }
+
+  &__main-wrapper {
+    @include globalGutters;
+    width: 100%;
+    max-width: 1440px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: {
+      left: auto;
+      bottom: 0;
+      right: auto;
+    }
+
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        padding: {
+          left: 0;
+          right: 0;
+        }
+      }
+	  }
+    .views-element-container {
+      flex-basis: 100%;
+
+      input[type="checkbox"]:checked + label:after {
+        display: none;
+      }
+
+
+    }
+  }
+
+  display: flex;
+  flex-wrap: wrap;
+
+  @media (min-width: $desktop-small) {
+    .blog-listing {
+      padding: {
+        left: 0px;
+        right: 0px;
+      }
+    }
+  }
+
+  &__red-bar {
+    width: 80px;
+    height: 2px;
+    background-color: $azRedLight;
+  }
+  &__main-header {
+    flex-basis: 100%;
+  }
+  &__main-header-text {
+    @include headline5;
+    color: $azBlue;
+    margin: {
+      top: 24px;
+      bottom: 24px;
+    }
+    @media (min-width: $desktop-small) {
+      padding: {
+        bottom: 32px;
+      }
+      border-bottom: 1px solid $lightGray;
+      margin: {
+        bottom: 32px;
+        top: 24px;
+      }
+    }
+  }
+  &__link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-bottom: 1px solid $lightGray;
+    transition: border-bottom 0.25s ease-in-out;
+
+    @media(min-width: $desktop-small) {
+      display: flex;
+      flex-direction: column;  
+      padding-bottom: 60px;
+      min-height: 400px;
+    }
+
+
+    &:hover {
+      border-bottom: 1px solid $azRed;
+      .blog-listing__read-story {
+        opacity: 1;
+      }
+    }
+  }
+  &__img-container {
+    position: relative;
+    width: 100%;
+    padding: {
+      top: 56.25%;
+    }
+    border-radius: 8px;
+    margin: {
+      bottom: 24px;
+    }
+    overflow: hidden;
+    @media (min-width: $desktop-small) {
+      padding: {
+        top: 64.28%;
+      }
+    }
+  }
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+  }
+  &__header {
+    @include textLarge;
+    font-weight: 500;
+    color: #000000;
+    margin: {
+      bottom: 8px;
+    }
+  }
+  &__category {
+    @include boldLarge;
+    text-transform: uppercase;
+    color: $azRed;
+    margin: {
+      bottom: 8px;
+    }
+    @media (min-width: $desktop-small) {
+      margin: {
+        bottom: 8px;
+      }
+    }
+  }
+  &__degree {
+    @include textMedium;
+    color: $azRed;
+    margin: {
+      bottom: 8px;
+    }
+  }
+  &__quote {
+    @include textMedium;
+    color: #000000;
+    margin: {
+      bottom: 45px;
+    }
+    @media (min-width: $desktop-small) {
+    }
+  }
+  &__bottom-info {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: $darkGray;
+    margin: {
+      bottom: 24px;
+    }
+    @media (min-width: $desktop-small) {
+      position: absolute;
+      bottom: 16px;
+      margin: {
+        bottom: 0;
+      }
+    }
+  }
+  &__datetime {
+    @include textSmall;
+  }
+  &__datetime {
+    @include textSmall;
+  }
+  &__read-story {
+    @include boldSmall;
+    color: $azRed;
+
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+    svg {
+      margin-bottom: -6px;
+      height: 20px;
+      width: 20px;
+    }
+    svg path {
+      stroke: $azRed;
+    }
+  }
+
+  // &__dropdown-summary {
+  //   position: relative;
+  //   flex-wrap: nowrap;
+  //   &::-webkit-details-marker {
+  //     display: none;
+  //   }
+  // }
+
+  // &__summary-title {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 10px;
+  //   height: 32px;
+  //   align-items: center;
+  //   display: flex;
+  // }
+  &__mobile-controls {
+    flex: 1 0 auto;
+    justify-content: flex-end;
+    display: flex;
+  }
+
+  // &__details-wrapper {
+  //   &::-webkit-details-marker {
+  //     display: none;
+  //   }
+  //   .grid-filter__dropdown-summary.grid-filter__dropdown-summary.grid-filter__dropdown-summary {
+  //     @media (min-width: $desktop-small) {
+  //       height: 0px;
+  //       padding: {
+  //         bottom: 0px;
+  //       }
+  //     }
+  //   }
+  //   .form-item-sort-bef-combine {
+  //     margin: {
+  //       bottom: 16px;
+  //     }
+  //     label {
+  //       @include textMicro;
+  //       font-weight: 500;
+  //       color: $darkGray;
+  //     }
+  //   }
+  //   .--js-categories-label {
+  //     @include textSmall;
+  //     font-weight: 500;
+  //     color: $darkGray;
+  //     margin-bottom: 16px;
+  //   }
+  //   fieldset legend {
+  //     display: none;
+  //   }
+
+  //   .grid-filter__fieldset {
+  //     margin: {
+  //       top: 0px;
+  //     }
+  //   }
+
+  //   .grid-filter__fieldset.--select-none {
+  //     .bef-checkboxes {
+  //       .--js-checkbox-checked {
+  //         color: $azBlue;
+  //         background-color: #ffffff;
+  //       }
+  //       .js-form-type-checkbox {
+  //         display: inline-block;
+  //         @media (min-width: $desktop-small) {
+  //           display: block;
+  //         }
+  //       }
+  //     }
+  //     .grid-filter__all-news-label {
+  //       background-color: $azBlue;
+  //       color: #ffffff;
+  //     }
+  //   }
+  // }
+
+  &__pager-arrow {
+    svg {
+      margin: {
+        top: 7px;
+      }
+    }
+    svg path {
+      color: $azBlue;
+    }
+  }
+
+  &__pager-link {
+    @include textMedium;
+    font-weight: 500;
+    color: $azBlueLight;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 7px;
+  }
+
+  .blog-listing__wrapper {
+    @media (min-width: $desktop-small) {
+      flex-basis: calc(100% - 280px);
+    }
+  }
+
+  nav.pager {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    @media (min-width: $desktop-small) {
+      justify-content: flex-end;
+    }
+    .pager__items {
+      display: flex;
+      position: relative;
+    }
+    .pager__item {
+      @include textMedium;
+      border: 1px solid $lightGray;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      width: 40px;
+      height: 40px;
+      color: $azBlueLight;
+      margin: {
+        left: 4px;
+        right: 4px;
+      }
+      transition: background-color 0.25s ease-in-out;
+
+      &:hover {
+        background-color: $lightGray;
+      }
+
+      &.is-active {
+        border-color: $orange;
+      }
+      &--ellipsis {
+        display: none;
+        border: none;
+        cursor: default;
+        &:hover {
+          background-color: transparent;
+        }
+        @media (min-width: $desktop-small) {
+          display: flex;
+        }
+      }
+      &--next {
+        border: none;
+        position: absolute;
+        right: -48px;
+        transition: background-color 0.25s;
+        @media (min-width: $desktop-small) {
+          position: static;
+        }
+        &:hover {
+          background-color: #ffffff;
+          svg {
+            width: 28px;
+            height: 28px;
+          }
+        }
+      }
+      &--previous {
+        border: none;
+        position: absolute;
+        left: -48px;
+        transition: background-color 0.25s;
+        @media (min-width: $desktop-small) {
+          position: static;
+        }
+        &:hover {
+          background-color: #ffffff;
+          svg {
+            width: 28px;
+            height: 28px;
+          }
+        }
+      }
+      &--last {
+        display: none;
+      }
+      &--first {
+        display: none;
+      }
+    }
+  }
+  // .grid-filter {
+  //   & > .form-item-title label {
+  //     margin: {
+  //       top: 0;
+  //     }
+  //   }
+  // }
+}

@@ -1,0 +1,206 @@
+$image-cta-clip-bp: 1024px;
+
+.section--image-cta {
+  margin: 0 auto;
+  padding: {
+    top: 32px;
+    bottom: 32px;
+  }
+  position: relative;
+
+  @include breakpoint($bp--desktop) {
+    &:after {
+      content: " ";
+      position: absolute;
+      bottom: 48px;
+      border-top: solid 5px #ab0520;
+      width: 64px;
+      display: block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  @include breakpoint($image-cta-clip-bp, $no-query: true) {
+    padding: {
+      top: 64px;
+      bottom: 128px;
+    }
+  }
+
+  .section__inner {
+    @include breakpoint(600px) {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @include breakpoint($image-cta-clip-bp, $no-query: true) {
+      text-align: center;
+      justify-content: center;
+    }
+  }
+
+  .section__item {
+    background-color: $azBlue;
+    max-width: 620px;
+
+    border: 0;
+    display: block;
+    margin-bottom: 16px;
+
+    @include breakpoint(600px, $no-query: true) {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 0;
+      position: relative;
+      width: 49%;
+    }
+
+    @include breakpoint(1025px, $no-query: true) {
+      flex-direction: row;
+    }
+  }
+
+  .section__item-image {
+    padding-top: 60%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    display: inline-block;
+    width: 100%;
+    height: 250px;
+
+    @include breakpoint($image-cta-clip-bp, $no-query: true) {
+      padding-top: 0px;
+      width: 66%;
+      .no-svgclippaths,
+      & {
+        width: 50%;
+      }
+    }
+    img {
+      display: none;
+    }
+  }
+
+  .section__item-text {
+    color: white;
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @include breakpoint($image-cta-clip-bp, $no-query: true) {
+      background-image: none;
+      bottom: 0;
+      flex-wrap: wrap;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 50%;
+    }
+    h2 {
+      margin: 0 0 12px 0;
+      width: 100%;
+      font-size: 2rem;
+      font-weight: 400;
+
+      @include breakpoint(max-width 1150px) {
+      }
+    }
+    .section__item-text-subtitle {
+      align-self: flex-end;
+      @extend h5;
+
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0;
+      width: 100%;
+
+      &:after {
+        display: inline-block;
+        content: " ";
+        height: 0;
+        width: 0;
+        margin-left: 5px;
+        border: {
+          left: solid 8px white;
+          top: solid 5px transparent;
+          bottom: solid 5px transparent;
+        }
+        transition: all 0.3s ease;
+      }
+    }
+  }
+
+  .section__item {
+    &:hover,
+    &:focus {
+      // trigger h5 arrow slide effect on hover of entire element
+      .section__item-text {
+        h5:after {
+          transform: translate(8px, 0);
+        }
+      }
+    }
+    &:focus {
+      .section__item-text {
+        h5 {
+          outline: thin dotted #fff;
+        }
+      }
+    }
+  }
+
+  .section__item:first-child {
+    @include breakpoint(600px 999px) {
+      border-right: 1px solid #fff;
+      margin-right: 10px;
+    }
+    @include breakpoint($image-cta-clip-bp, $no-query: true) {
+      margin-right: 10px;
+      position: relative;
+      top: -20px;
+      text-align: left;
+      flex-direction: row-reverse;
+      .section__item-image {
+        float: right;
+      }
+    }
+    img {
+    }
+  }
+
+  .section__item:last-child {
+    background-color: $azRed;
+
+    @include breakpoint(600px 999px) {
+      border-left: 1px solid #fff;
+      margin-left: 10px;
+    }
+    @include breakpoint($image-cta-clip-bp, $no-query: true) {
+      margin-left: 10px;
+      position: relative;
+      bottom: -20px;
+
+      .section__item-text {
+        align-content: space-between;
+        left: auto;
+        justify-content: space-between;
+        right: 0;
+        text-align: left;
+      }
+    }
+    .section__item-text {
+      @include breakpoint($image-cta-clip-bp, $no-query: true) {
+        background-image: none;
+      }
+    }
+    img {
+      @include breakpoint($image-cta-clip-bp, $no-query: true) {
+      }
+    }
+  }
+}

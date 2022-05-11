@@ -1,0 +1,229 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.icon-text-block {
+  width: 100%;
+
+  &.\--grey-background {
+    background-color: $lighterGray;
+  }
+  &__inner-wrapper {
+    @include globalGutters;
+    max-width: 1440px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: {
+      left: auto;
+      right: auto;
+    }
+  }
+  &__red-bar {
+    width: 80px;
+    height: 2px;
+    background-color: $azRedLight;
+    display: block;
+    margin: {
+      top: 0px;
+      left: auto;
+      bottom: 0px;
+      right: auto;
+    }
+  }
+  &__uagc-forbes-logo {
+    width: 225px;
+    height: auto;
+    display: block;
+    margin: {
+      top: 24px;
+      left: auto;
+      bottom: 0px;
+      right: auto;
+    }
+    image-rendering: -webkit-optimize-contrast;
+  }
+  &__heading {
+    @include headline5;
+    color: $azBlue;
+    text-align: center;
+    margin: {
+      top: 24px;
+    }
+  }
+  &__text-block {
+    @include headline7;
+    font-weight: 400;
+    max-width: 720px;
+    text-align: center;
+    color: $black;
+    margin: {
+      top: 24px;
+    }
+    @media (min-width: $tablet) {
+      max-width: calc(720 / 1024 * 100% + 101.25px);
+    }
+    @media (min-width: $desktop) {
+      max-width: calc(720 / 1024 * 100% + 153px);
+    }
+    p {
+      @include headline7;
+      font-weight: 400;
+    }
+    a {
+      color: $azRed;
+    }
+    p:last-child {
+      margin: {
+        bottom: 0px;
+      }
+    }
+  }
+  &__content-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__icon-block-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin: {
+      top: 40px;
+    }
+    @media (min-width: $desktop-small) {
+      margin: {
+        top: 80px;
+      }
+    }
+
+    @media (min-width: $desktop) {
+      padding: {
+        /* account for the padding on the grid items */
+        left: (80px - 28px);
+        right: (80px - 28px);
+      }
+    }
+    &.--four-columns {
+      @media (min-width: $desktop-small) {
+        padding: {
+          left: 0px;
+          right: 0px;
+        }
+      }
+      @media (min-width: $desktop) {
+        padding: {
+          /* account for the padding on the grid items */
+          left: (80px - 28px);
+          right: (80px - 28px);
+        }
+      }
+      margin: {
+        left: 0px;
+        right: 0px;
+      }
+    }
+  }
+  &__icon-block {
+    @include flexGrid(12);
+    display: inline-flex;
+    align-items: center;
+
+    margin: {
+      left: unset;
+      bottom: 24px;
+      right: unset;
+    }
+    max-width: 580px;
+
+    &:last-child {
+      margin: {
+        bottom: 0px;
+      }
+    }
+
+    @media (min-width: $tablet) {
+      margin: {
+        left: auto;
+        right: auto;
+      }
+    }
+    @media (min-width: $desktop-small) {
+      flex-basis: calc((1 / 3) * 100%);
+      flex-grow: 2;
+      max-width: 476px;
+      justify-content: center;
+      flex-direction: column;
+      padding: {
+        left: 28px;
+        right: 28px;
+      }
+      margin: {
+        left: unset;
+        bottom: 40px;
+        right: unset;
+      }
+
+      &:last-child {
+        margin: {
+          bottom: 40px;
+        }
+      }
+
+      &.--four-columns {
+        @include flexGrid(3);
+      }
+      &.--two-columns {
+        @include flexGrid(6);
+        max-width: 500px;
+      }
+    }
+  }
+  &__icon {
+    flex-basis: 56px;
+    @media (min-width: $tablet) {
+      flex-basis: 61px;
+    }
+    @media (min-width: $desktop-small) {
+      @include flexGrid(12);
+    }
+    img,
+    svg {
+      max-width: 40px;
+      max-height: 40px;
+      width: 100%;
+      height: auto;
+      margin: {
+        bottom: 0px;
+        right: 16px;
+      }
+      image-rendering: -webkit-optimize-contrast;
+      @media (min-width: $tablet) {
+        max-width: 45px;
+        max-height: 45px;
+      }
+      @media (min-width: $desktop-small) {
+        max-width: 56px;
+        max-height: 56px;
+        margin: {
+          bottom: 16px;
+          right: 0px;
+        }
+      }
+    }
+  }
+  &__icon-text {
+    @include textXMedium;
+    flex-basis: calc(100% - 56px);
+    font-weight: 500;
+    color: $azBlue;
+    @media (min-width: $desktop-small) {
+      max-width: 314px;
+      text-align: center;
+      flex-basis: 100%;
+    }
+  }
+}

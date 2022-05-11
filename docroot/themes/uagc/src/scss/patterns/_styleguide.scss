@@ -1,0 +1,48 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.styleguide {
+  width: 100%;
+  @include globalGutters;
+
+  h1 {
+    @include h1;
+    @include marginMedium;
+  }
+  h2 {
+    @include h2;
+    @include marginMedium;
+  }
+  h3 {
+    @include h3;
+    @include marginMedium;
+  }
+  h4 {
+    @include h4;
+    @include marginMedium;
+  }
+  h5,
+  h6 {
+    @include h5;
+    @include marginMedium;
+  }
+
+  &__fonts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    p {
+      flex-basis: 23%;
+    }
+  }
+
+  &__fullwidth {
+    background-color: $azBlue;
+  }
+  &__fullwidth-contained {
+    @include globalGutters;
+    color: #ffffff;
+  }
+}

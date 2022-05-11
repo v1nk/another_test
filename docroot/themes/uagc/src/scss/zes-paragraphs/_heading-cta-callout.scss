@@ -1,0 +1,48 @@
+.section--heading-cta-callout {
+  background-color: $azBlue;
+  margin: 0;
+
+  &__container {
+    @extend %layout-constrain--narrow;
+    text-align: center;
+    padding-top: 44px;
+    padding-bottom: 43px;
+
+    @include breakpoint($bp--tablet, $no-query: true) {
+      padding-top: 60px;
+      padding-bottom: 45px;
+    }
+  }
+
+  &__heading {
+    margin-bottom: 25px;
+    color: white;
+
+    @include breakpoint($bp--tablet, $no-query: true) {
+
+      margin-bottom: 30px;
+    }
+
+  }
+
+  &__subheading {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    color: white;
+
+    @include breakpoint($bp--tablet, $no-query: true) {
+      max-width: 626px;
+      margin-bottom: 35px;
+    }
+  }
+
+  &__cta {
+    @extend %button-primary;
+    display: inline-block;
+    a {
+      color: $azBlue;
+    }
+  }
+
+}

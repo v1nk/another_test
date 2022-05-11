@@ -1,0 +1,270 @@
+{{attach_library('uagc/zes-old-menu')}}
+{% set paidLpClass = '' %}
+
+{% if node.getType == 'paid_landing_page' %}
+    {% set paidLpClass = ' --paid-lp-header' %}
+{% endif %}
+
+
+<header class="site-header js-main-nav-re paid-nav --scrolled is-transitioning-up is-transitioning-down{{paidLpClass}}">
+  <div class="site-header__content">
+    <div class="site-header__logo">
+      <a href="/success/degree-programs-v2" class="site-header__logo-link"><img src="/themes/uagc/src/images/uagc.svg"
+          alt="The University of Arizona Global Campus"></a>
+    </div>
+    <div class="site-header__nav-container">
+      <div class="site-header__nav">
+        <div class="site-header__nav-content">
+            {% if brandPortalNav %}
+            <button type="button" class="main-nav__mobile-toggle js-nav-toggle" aria-label="Main Navigation Toggle"></button>
+            <nav class="main-nav js-nav-target" aria-label="Main Navigation">
+              <ul class="main-nav__items">
+                <li class="main-nav__item">
+                  {% if navDisplay %}
+                    <a href="https://apply.uagc.edu" class="main-nav__link --mobile-apply">Apply Now</a>
+                  {% elseif brandPortalNav %}
+                    {# do nothing.  we don't want a mobile link on the brand pages. #}
+                  {% else %}
+                    <a href="/success/request-info-v1" class="main-nav__link --mobile-apply">Request Info</a>
+                  {% endif %}
+                {% for item in mainMenu %}
+                  <li class="main-nav__item">
+                      {% set itemChildren = item.children %}
+
+                      {% set ariapopup = "false" %}
+                      {% set carrotClass = "" %}
+
+                      {% if itemChildren|length > 0 %}
+                        {% set ariapopup = "true" %}
+                        {% set carrotClass = "icon-carrot" %}
+                      {% endif %}
+
+                      <a href="{{ item.url }}" class="main-nav__link {{ carrotClass }}" aria-haspopup="{{ariapopup}}" aria-expanded="false">{{ item.title }}</a>
+                      {% if itemChildren|length > 0 %}
+                        <button class="main-nav__toggle js-item-toggle" aria-label="show submenu for {{item.title}}"></button>
+                      {% endif %}                    
+                    
+                      {% if itemChildren|length > 0 %}
+                      <div class="main-nav__item-content">
+                        {% if not item.image %}
+                          <ul class="main-nav__sub-items --no-image">
+                        {% else %}
+                          <ul class="main-nav__sub-items">
+                        {% endif %}
+
+                        {% set itemChildrenChild = itemChildren[0] %}
+                        {% set itemChildrenChild = itemChildrenChild.children|length %}
+                        {# {% if itemChildrenChild > 0 %} #}
+                            {% for key, subitem in itemChildren %}
+                            {% if not item.image %}
+                              <li class="main-nav__sub-item --no-image">
+                            {% else %}
+                              <li class="main-nav__sub-item">
+                            {% endif %}
+                                  {% set subitemChildren = subitem.children %}
+                                  {% if key == 0 and item.image %}
+                                      <div class="main-nav__sub-item-content">
+                                        {% if subitem.url %}
+                                          <a href="{{subitem.url}}" class="main-nav__sub-item-title {{subitem.class}}"><span class="main-nav__sub-item-title-text">{{subitem.title}}</span></a>
+                                        {% else %}
+                                          <div class="main-nav__sub-item-title"><span class="main-nav__sub-item-title-text">{{subitem.title}}</span></div>
+                                        {% endif %}
+                                          <ul class="main-nav__sub-item-link-items">
+                                            <li class="main-nav__sub-item-link-item --image">                             
+                                              <a href="{{subitem.url}}" class="main-nav__sub-item-link {{subitem.class}}">
+                                                <img src="{{item.image}}" alt="Link for {{subitem.title}}" width="256" height="256" />
+                                              </a>
+                                            </li>
+                                          </ul>
+                                      </div>
+                                  {% elseif subitemChildren|length > 0 %}
+                                      <div class="main-nav__sub-item-content">
+                                        {% if subitem.url %}
+                                          <a href="{{subitem.url}}" class="main-nav__sub-item-title {{subitem.class}}"><span class="main-nav__sub-item-title-text">{{subitem.title}}</span></a>
+                                        {% else %}
+                                          <div class="main-nav__sub-item-title"><span class="main-nav__sub-item-title-text">{{subitem.title}}</span></div>
+                                        {% endif %}
+                                          <ul class="main-nav__sub-item-link-items">
+                                            {% if item.image and key == 0 %}
+                                                  <li class="main-nav__sub-item-link-item --image">                             
+                                                    <a href="{{subitem.url}}" class="main-nav__sub-item-link">
+                                                      <img src="{{item.image}}" alt="Link for {{subitem.title}}" width="256" height="256" />
+                                                    </a>
+                                                  </li>
+                                            {% endif %}
+                                            {% for lastItem in subitemChildren %}
+                                                <li class="main-nav__sub-item-link-item fff">
+                                                  <a href="{{ lastItem.url }}" class="main-nav__sub-item-link {{lastItem.class}}">{{ lastItem.title }}</a>
+                                                </li>
+                                            {% endfor %}
+
+                                          </ul>
+                                      </div>
+                                  {% else %}
+                                    <a href="{{ subitem.url }}" class="main-nav__sub-item-link">{{ subitem.title }}</a>
+                                  {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                      </div>
+                    {% endif %}
+                  </li>
+                {% endfor %}
+                {% if navDisplay %}
+                  <li class="main-nav__sub-item-link-item --search-container">
+                    <form action="/search/node" method="get" id="custom-search-block-form" accept-charset="UTF-8"  class="main-nav__search-form">
+                      <label for="edit-keys" class="visually-hidden">Search this site</label>
+                      <input title="Enter the terms you wish to search for." class="main-nav__search-form-input custom_search-keys form-search" type="search" id="edit-keys-mobile" name="keys" value="" size="15" maxlength="128" data-id="custom_search_form" autocomplete="off" placeholder="Search Our School">
+                      <button type="submit"  value="Search" class="main-nav__search-form-button" aria-label="search"></button>
+                    </form>
+                  </li>
+                {% endif %}
+              </ul>
+              <div class="main-nav__aux">
+                {% if navDisplay %}
+                  <a href="https://login.uagc.edu/" class="main-nav__aux-link">Student Login</a>
+                {% endif %}
+                {% if menuAdditionalLink %}
+                  <a href="{{ menuAdditionalLink.link }}" class="main-nav__aux-link --additional-link">{{ menuAdditionalLink.text }}</a>
+                {% endif %}
+                {% if brandPortalNav %}
+                  {# do nothing.  we don't want a phone number on the brand pages. #}
+                {% else %}
+                  <a href="{{ menuPhone.link }}" class="main-nav__aux-phone">{{ menuPhone.text }}</a>
+                {% endif %}
+              </div>
+            </nav>
+            {% if navDisplay %}
+            <button type="button" class="site-header__search-toggle icon-magnifyGlass js-search-open" aria-label="search"></button>
+            <form action="/search/node" method="get" id="custom-search-block-form-main" accept-charset="UTF-8" data-drupal-form-fields="edit-keys-mobile" class="site-header__search-form js-site-search">
+              <div class="js-form-item form-item js-form-type-search form-item-keys js-form-item-keys form-no-label site-header__search-controls">
+                <label for="edit-keys-mobile" class="visually-hidden">Search this site</label>
+                <input title="Enter the terms you wish to search for." class="custom_search-keys form-search form-autocomplete ui-autocomplete-input js-search-form-input" data-drupal-selector="edit-keys" type="search" id="edit-keys" name="keys" value="" size="15" maxlength="128" data-id="custom_search_form" autocomplete="off" placeholder="Search our school">
+              </div>
+              <input autocomplete="off" data-drupal-selector="form-zsarllkm8iqcsxxwwlo7cqxnxgkdsmnlrm-hri2mjps" type="hidden" name="form_build_id" value="form-zSarLLKM8iqcsXxWwLO7cqxNXGKdsMnLRm_hrI2MJPs">
+              <input data-drupal-selector="edit-custom-search-block-form-main" type="hidden" name="form_id" value="custom_search_block_form">
+              <button class="site-header__search-close js-search-close" type="button" aria-label="close"></button>
+              <div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper site-header__search-submit-container" >
+                <button data-drupal-selector="edit-submit" type="submit" id="edit-submit--2" value="Search" class="button js-form-submit form-submit" aria-label="search"></button>
+              </div>
+              <ul tabindex="0" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front site-header__search-results" data-sa-theme="minimal" style="display: none;">
+              </ul>
+            </form>
+            {% endif %}
+          {% endif %}
+        </div>
+        <div class="site-header__cta-links">
+
+          {% if node.field_alternate_phone_number.value is not empty %} 
+            <a href="{{node.field_alternate_phone_number.uri}}" class="site-header__cta-link --phone">{{node.field_alternate_phone_number.title}}</a>
+          
+          {% elseif node.getType == 'paid_landing_page' %}
+
+            {% if node.field_alternate_phone_number.value is not empty %} 
+              <a href="{{node.field_alternate_phone_number.uri}}" class="site-header__cta-link --phone">{{node.field_alternate_phone_number.title}}</a>
+            {% else %}
+              <a href="tel://18667111700" class="site-header__cta-link --phone">+ 1 866 347 7781</a>
+            {% endif %}
+          
+          {% else %}
+            <a href="tel://18667111700" class="site-header__cta-link --phone">+ 1 866 711 1700</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="site-header__mobile-cta-links">
+    </div>
+    <script type="text/javascript">
+      if (window.location.pathname.indexOf('/tuition-financial-aid/education-partnerships/') === 0) {
+        var link = document.querySelector('.site-header__aux-link');
+        if (link) {
+          link.setAttribute('href', 'tel://18558056911');
+          link.innerHTML = '+ 1 855 805 6911';
+        }
+
+        link = document.querySelector('.main-nav__aux-phone');
+        if (link) {
+          link.setAttribute('href', 'tel://18558056911');
+          link.innerHTML = '+ 1 855 805 6911';
+        }
+      }
+
+
+
+      {% if node.field_alternate_phone_number.value is empty %} 
+
+        if (window.location.pathname.indexOf('/success/') === 0) {
+          var link = document.querySelector('.site-header__aux-link');
+          if (link) {
+            link.setAttribute('href', 'tel://18663477781');
+            link.innerHTML = '+ 1 866 347 7781';
+          }
+
+          link = document.querySelector('.main-nav__aux-phone');
+          if (link) {
+            link.setAttribute('href', 'tel://18663477781');
+            link.innerHTML = '+ 1 866 347 7781';
+          }
+        }
+      {% endif %}
+
+      var body = document.querySelector('body');
+
+      if (window.location.pathname.indexOf('/success/') === 0) {
+        body.classList.add('--paid-landing-page');
+      }
+
+      if (window.location.pathname.indexOf('/partnerships/corporate') === 0) {
+        var link = document.querySelector('.site-header__cta-link.--phone');
+        if (link) {
+          link.setAttribute('href', 'tel://18558056911');
+          link.innerHTML = '+ 1 855 805 6911';
+        }
+      }
+
+
+
+
+      {% if node.field_alternate_phone_number.value is empty %} 
+
+        if (window.location.pathname.indexOf('/success/') === 0) {
+          var link = document.querySelector('.site-header__cta-link.--phone');
+          if (link) {
+            link.setAttribute('href', 'tel://18663477781');
+            link.innerHTML = '+ 1 866 347 7781';
+          }
+        }
+      {% endif %}
+
+
+      if (window.rightLinks && window.rightLinks.length > 0) {
+        window.rightLinks.forEach(function(e, i, arr) {
+          if (e.classes.includes('--phone') == true) {
+            var link = document.querySelector('.site-header__cta-links .site-header__cta-link.--phone');
+            if (link) {
+              link.setAttribute('href', e.href);
+              link.innerHTML = e.text;
+            }
+          }
+        });
+
+        window.rightLinks.forEach(function(e, i, arr) {
+          if (e.classes.includes('--phone') == true) {
+            var link = document.querySelector('.main-nav__aux-phone');
+            if (link) {
+              link.setAttribute('href', e.href);
+              link.innerHTML = e.text;
+            }
+
+          }
+        });
+
+        //Blank it out.
+        window.rightLinks = [];
+
+      }
+
+    </script>
+
+  </div>
+</header>

@@ -1,0 +1,14 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/vars" as *;
+
+#toolbar-administration {
+  font-size: 0.8125rem;
+  a {
+    font-size: 0.8125rem;
+  }
+}
+
+#toolbar-bar {
+  z-index: 9999999;
+}

@@ -1,0 +1,73 @@
+.twocolumn {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+
+  &__container {
+    display: block;
+    width: 100%;
+    margin-top: 30px;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    @include breakpoint($bp--desktop, $no-query: true) {
+      display: flex;
+      flex-direction: row-reverse;
+    }
+
+    @include breakpoint(min-width $tablet-header) {
+      margin-top: 22px;
+    }
+  }
+
+  &__small {
+    display: none;
+
+    &.sticky {
+      display: flex;
+      background-color: $azBlue;
+
+      &-bottom {
+        align-items: flex-end;
+      }
+    }
+
+    @include breakpoint($bp--desktop, $no-query: true) {
+      display: flex;
+      align-items: flex-start;
+      background-color: $azBlue;
+      flex-basis: 33%;
+    }
+
+    @include breakpoint(1300px) {
+      flex-basis: 27%;
+    }
+    @include breakpoint(1650px) {
+      flex-basis: 23%;
+    }
+  }
+
+  &__large {
+    flex-basis: 100%;
+
+    @include breakpoint($bp--desktop, $no-query: true) {
+      max-width: 67%;
+      flex-basis: 67%;
+    }
+
+    @include breakpoint(1300px) {
+      flex-basis: 73%;
+      max-width: 73%;
+    }
+    @include breakpoint(1650px) {
+      flex-basis: 77%;
+      max-width: 77%;
+    }
+
+    .largecontent {
+      @include breakpoint(1155px) {
+        padding: 60px;
+      }
+    }
+  }
+}

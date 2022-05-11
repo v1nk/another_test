@@ -1,0 +1,123 @@
+.basiccontent {
+  width: 100%;
+  justify-content: space-around;
+  padding: 30px 20px;
+  display: block;
+  z-index: 1;
+  background-color: transparent;
+  position: relative;
+  margin: 0 auto;
+
+  @include breakpoint(min-width 1152px) {
+    padding: {
+      top: 32px;
+      left: 20px;
+      bottom: 32px;
+      right: 20px;
+    }
+  }
+
+  &.\--swap-sides {
+    flex-direction: row-reverse;
+  }
+
+  @include breakpoint(min-width $bp--desktop) {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .twocolumn__large & {
+    @include breakpoint(min-width $bp--desktop) {
+      display: block;
+    }
+
+    @include breakpoint(min-width 1400px) {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+
+  &__wrapper {
+    position: relative;
+    background-color: white;
+    position: relative;
+
+    &.\--grey-background {
+      background-color: #f4f4f4;
+    }
+
+    &:before {
+      position: absolute;
+      content: " ";
+      top: 0;
+      left: 0;
+      z-index: 0;
+      width: 300px;
+      height: 120px;
+      background-size: 7px 7px;
+      background-position: 50px 50px;
+    }
+
+    &.\--grey-background:before {
+      display: none;
+      content: "";
+    }
+  }
+
+  &__header {
+    flex-basis: 40%;
+    z-index: 1;
+    position: relative;
+    color: $azBlue;
+    font-size: 2.375rem;
+    font-weight: 500;
+    line-height: 1.32;
+
+    p {
+      font-size: 2.375rem;
+      font-weight: 500;
+      line-height: 1.32;
+    }
+
+    @include breakpoint(min-width $bp--desktop) {
+      max-width: 400px;
+      margin-right: 20px;
+
+      .\--swap-sides & {
+        margin-right: 0;
+        margin-left: 20px;
+      }
+    }
+
+    &-wrapper {
+    }
+  }
+
+  &__content {
+    margin-bottom: 35px;
+    font-weight: 400;
+    line-height: 1.5;
+
+    a {
+      color: $azRed;
+      text-decoration: underline;
+    }
+
+    &-container {
+      width: 100%;
+      flex-basis: 50%;
+      padding-top: 10px;
+    }
+  }
+
+  &__cta {
+    @extend %button-secondary-blue;
+    display: inline-block;
+    background-color: transparent;
+    &:hover,
+    &:focus,
+    &:active {
+      color: $blue;
+    }
+  }
+}

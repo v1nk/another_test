@@ -1,0 +1,229 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.interest-card {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: 16px;
+  text-decoration: none;
+  transition: box-shadow 0.3s ease-in-out;
+  padding: {
+    top: 24px;
+    left: 24px;
+    right: 24px;
+  }
+
+  &:hover {
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.06);
+  }
+
+  @media (min-width: $tablet) {
+    grid-column: span 2;
+
+    .--left-align-cards & {
+      &:last-child:nth-child(3n - 2) {
+        grid-column-end: unset;
+      }
+    }
+  }
+
+  @media (min-width: $desktop) {
+    // Centering two orphan items in three card layout (I defined the css grid on desktop to 6 columns above where each card spans 2 columns)
+    &:last-child:nth-child(3n - 1) {
+      grid-column-end: -2;
+    }
+
+    &:nth-last-child(2):nth-child(3n + 1) {
+      grid-column-end: 4;
+    }
+
+    // Centering single orphan in three card layout
+    &:last-child:nth-child(3n - 2) {
+      grid-column-end: 5;
+    }
+
+    .--left-align-cards & {
+      &:last-child:nth-child(3n - 1) {
+        grid-column-end: unset;
+      }
+      &:nth-last-child(2):nth-child(3n + 1) {
+        grid-column-end: unset;
+      }
+      &:last-child:nth-child(3n - 2) {
+        grid-column-end: unset;
+      }
+    }
+  }
+
+  &.\--orange {
+    background: $orange;
+    color: $azBlue;
+  }
+
+  &.\--river {
+    background: $river;
+    color: white;
+  }
+
+  &.\--purple {
+    background: $purple;
+    color: white;
+  }
+
+  &.\--blue {
+    background: $blue;
+    color: white;
+  }
+
+  &.\--az-blue {
+    background: $azBlue;
+    color: white;
+  }
+
+  &.\--az-red {
+    background: $azRed;
+    color: white;
+  }
+
+  &.\--light-gray {
+    background: $lighterGray;
+    color: $azBlue;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+
+    @media (min-width: $tablet) {
+      flex-direction: column;
+    }
+  }
+
+  &__content {
+    flex-basis: 60%;
+    margin: {
+      right: 24px;
+      bottom: 24px;
+    }
+    @media (min-width: $tablet) {
+      flex-basis: 100%;
+      margin: {
+        right: 0;
+        bottom: 0;
+      }
+    }
+  }
+
+  &__subheading {
+    @include rems(12px);
+    line-height: 1.33333333;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: {
+      bottom: 8px;
+    }
+
+    @media (min-width: $tablet) {
+      @include rems(16px);
+      line-height: 1.5;
+    }
+  }
+
+  &__heading {
+    @include rems(24px);
+    line-height: 1.33333333;
+    font-weight: 500;
+    padding: {
+      bottom: 8px;
+    }
+
+    @media (min-width: $tablet) {
+      @include rems(28px);
+      line-height: 1.42857;
+    }
+  }
+
+  &__copy {
+    @include rems(14px);
+    line-height: 1.2857;
+    font-weight: 400;
+    margin: 0;
+
+    @media (min-width: $tablet) {
+      @include rems(20px);
+      line-height: 1.2;
+    }
+  }
+
+  &__icon-container {
+    align-self: center;
+    text-align: center;
+    flex-basis: calc(40% - 24px);
+    margin: {
+      top: 24px;
+      bottom: 24px;
+    }
+    @media (min-width: $tablet) {
+      flex-basis: 100%;
+    }
+  }
+
+  &__icon {
+    .--orange &,
+    .--light-gray & {
+      .set-fill-color {
+        fill: $azBlue;
+      }
+
+      .set-stroke-color {
+        stroke: $azBlue;
+      }
+    }
+
+    .--river &,
+    .--purple &,
+    .--blue &,
+    .--az-blue &,
+    .--az-red & {
+      .set-fill-color {
+        fill: white;
+      }
+
+      .set-stroke-color {
+        stroke: white;
+      }
+    }
+  }
+
+  &__icon-find-degree {
+    svg {
+      width: 57%;
+      min-width: 56px;
+      max-width: 110px;
+      height: auto;
+
+      @media (min-width: $tablet) {
+        width: 128px;
+        max-width: 128px;
+      }
+    }
+  }
+
+  &__icon-online-learning {
+    svg {
+      width: 96px;
+      height: auto;
+
+      @media (min-width: $tablet) {
+        width: 127px;
+      }
+
+      @media (min-width: $desktop) {
+        width: 158px;
+      }
+    }
+  }
+}

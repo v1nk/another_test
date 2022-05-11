@@ -1,0 +1,316 @@
+@charset "UTF-8";
+/* ---------- MOBILE FIRST STYLING  ---------- */
+@font-face { font-family: 'Interstate'; src: url("../font/InterstateLight.eot"); /* IE9 Compat Modes */ src: url("../font/InterstateLight.eot?#iefix") format("embedded-opentype"), url("../font/InterstateLight.woff") format("woff"); font-weight: 100; font-style: normal; }
+
+@font-face { font-family: 'Interstate'; src: url("../font/InterstateBold.eot"); /* IE9 Compat Modes */ src: url("../font/InterstateBold.eot?#iefix") format("embedded-opentype"), url("../font/InterstateBold.woff") format("woff"); font-weight: 500; font-style: normal; }
+
+/*  WE DON'T ACTUALLY HAVE THIS FONT FILE AND IT DOESN'T APPEAR TO BE USED IN THE DESIGNS @font-face { font-family: 'Interstate'; src: url('../font/InterstateRegular.eot'); src: url('../font/InterstateRegular.eot?#iefix') format('embedded-opentype'), url('../font/InterstateRegular.woff') format('woff'); font-weight: 300; font-style: normal; }*/
+@font-face { font-family: 'WilliamsCaslon'; src: url("../font/williams-Caslon-Text-Italic.otf") format("woff"); font-weight: normal; font-style: italic; }
+
+/* SITE VARIABLES */
+/* ---------- UNIVERSAL STYLING  ---------- */
+.enrollment-tour { font-weight: 100; position: relative; }
+
+.enrollment-tour .layout-constrain--narrow { max-width: 1145px; }
+
+.enrollment-tour .slide-bottom-content { position: relative; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: center; -ms-flex-align: center; align-items: center; margin: 2em auto; }
+
+.enrollment-tour .slide-bottom-content .slide-controls .slide-next, .enrollment-tour .slide-bottom-content .slide-controls .slide-prev, .enrollment-tour .slide-bottom-content .slide-controls .slide-apply { z-index: 1; color: #fff; cursor: pointer; text-transform: uppercase; }
+
+.enrollment-tour .slide-bottom-content .slide-controls .slide-prev { color: #8C2E6D; margin-right: 30px; letter-spacing: .6px; font-weight: 500; }
+
+.enrollment-tour .slide-bottom-content .slide-controls .slide-apply { background-image: -webkit-linear-gradient(76deg, #ec5800 0%, #ffb900 100%); background-image: -o-linear-gradient(76deg, #ec5800 0%, #ffb900 100%); background-image: linear-gradient(14deg, #ec5800 0%, #ffb900 100%); padding: 15px 30px; font-weight: 500; letter-spacing: .5px; border: none; cursor: pointer; }
+
+.enrollment-tour .slide-bottom-content .slide-controls .slide-apply:hover { background-image: -webkit-linear-gradient(76deg, #f35b00c7 0%, #ffb900 100%); background-image: -o-linear-gradient(76deg, #f35b00c7 0%, #ffb900 100%); background-image: linear-gradient(14deg, #f35b00c7 0%, #ffb900 100%); }
+
+.enrollment-tour .next-btn { background: #8C2E6D; color: #ffffff; font-weight: 500; padding: 16px 32px; border: none; font-size: .9em; text-transform: uppercase; letter-spacing: .7px; cursor: pointer; -webkit-transition-duration: .3s; -o-transition-duration: .3s; transition-duration: .3s; -webkit-transition-property: background-color, border-color, color, opacity, text-shadow, -webkit-box-shadow, -webkit-transform; transition-property: background-color, border-color, color, opacity, text-shadow, -webkit-box-shadow, -webkit-transform; -o-transition-property: background-color, border-color, box-shadow, color, opacity, text-shadow, transform; transition-property: background-color, border-color, box-shadow, color, opacity, text-shadow, transform; transition-property: background-color, border-color, box-shadow, color, opacity, text-shadow, transform, -webkit-box-shadow, -webkit-transform; -webkit-transition-timing-function: linear; -o-transition-timing-function: linear; transition-timing-function: linear; }
+
+.enrollment-tour .next-btn:hover { background: #621b4b; }
+
+@media screen and (min-width: 768px) { .enrollment-tour .next-btn { padding: 18px 63px; display: inline-block; } }
+
+.enrollment-tour .enrollment-nav { margin-top: -2em; margin-bottom: 1.5em; padding: 0; }
+
+.enrollment-tour .enrollment-nav .slick-track .nav-item { outline: none; display: -webkit-box !important; display: -ms-flexbox !important; display: flex !important; -ms-flex-pack: distribute; justify-content: space-around; -webkit-box-align: center; -ms-flex-align: center; align-items: center; margin: 0 5px; }
+
+.enrollment-tour .enrollment-nav .slick-track .nav-item .step { font-size: .8em; line-height: 1.5; height: 19px; width: 19px; display: inline-block; text-align: center; border-radius: 50%; background: #A3A3A3; color: #fff; }
+
+.enrollment-tour .enrollment-nav .slick-track .nav-item h4 { font-size: .75em; font-weight: 500; text-transform: uppercase; text-align: center; cursor: pointer; margin-bottom: 0; color: #A3A3A3; }
+
+.enrollment-tour .enrollment-nav .slick-track .nav-item h4:hover { color: #8C2E6D; }
+
+.enrollment-tour .enrollment-nav .slick-track .nav-item.slick-active.slick-current .step { background: #8C2E6D; }
+
+.enrollment-tour .enrollment-nav .slick-track .nav-item.slick-active.slick-current h4 { color: #621b4b; text-decoration: underline; }
+
+.enrollment-tour .enrollment-nav .slick-track .nav-item.slick-active .step { background: #8C2E6D; }
+
+.enrollment-tour .enrollment-nav .slick-track .nav-item.slick-active h4 { color: #000000; }
+
+@media screen and (min-width: 925px) { .enrollment-tour .enrollment-nav .slick-track { padding: 0 20px; }
+  .enrollment-tour .enrollment-nav .slick-track .nav-item { -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; }
+  .enrollment-tour .enrollment-nav .slick-track .slick-slide h4 { font-size: .9em; }
+  .enrollment-tour .enrollment-nav .slick-track .slick-slide .step, .enrollment-tour .enrollment-nav .slick-track .slick-slide img { display: none; } }
+
+.enrollment-tour .enrollment-nav img { display: inline-block; }
+
+.enrollment-tour .progress { position: relative; display: block; width: 90%; height: 10px; border-radius: 10px; overflow: hidden; margin-bottom: 1em; background-color: #e3e3e3; background-image: -webkit-linear-gradient(76deg, #F26303 0%, #F78B02 100%); background-image: -o-linear-gradient(76deg, #F26303 0%, #F78B02 100%); background-image: linear-gradient(14deg, #F26303 0%, #F78B02 100%); background-repeat: no-repeat; background-size: 0 100%; -webkit-transition: background-size .3s ease-in-out; -o-transition: background-size .3s ease-in-out; transition: background-size .3s ease-in-out; }
+
+.enrollment-tour .progress #progress-dot { position: absolute; top: 0px; left: 0; border-radius: 50%; background: #8C2E6D; width: 10px; height: 10px; }
+
+@media screen and (min-width: 925px) { .enrollment-tour .progress { width: 63em; max-width: 885px; left: 10px; } }
+
+.enrollment-tour .progress .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+
+.enrollment-tour .slick-counter { font-family: WilliamsCaslon; font-style: italic; font-size: 1em; color: #707070; display: inline-block; position: relative; left: 2px; margin: 0 5px 10px; -webkit-transition: all .5s ease-in-out; -o-transition: all .5s ease-in-out; transition: all .5s ease-in-out; }
+
+@media screen and (min-width: 925px) { .enrollment-tour .slick-counter { display: none; } }
+
+.enrollment-tour .enrollment-slider .slider-content:focus { outline: none; }
+
+.enrollment-tour .enrollment-slider .slider-content.first-slide { position: relative; max-height: 550px; }
+
+.enrollment-tour .enrollment-slider .slider-content.first-slide img { width: 100%; }
+
+.enrollment-tour .enrollment-slider .slider-content.first-slide .text-container { color: #000000; padding: 25px; text-align: center; }
+
+.enrollment-tour .enrollment-slider .slider-content.first-slide .text-container p { font-size: 1.2em; font-weight: 100; }
+
+.enrollment-tour .enrollment-slider .slider-content.first-slide .text-container .intro { font-size: 1.2em; font-weight: 100; margin-bottom: .5em; }
+
+.enrollment-tour .enrollment-slider .slider-content.first-slide .text-container .intro .larger-txt { font-size: 1.4em; line-height: 1; font-weight: 500; text-transform: uppercase; }
+
+.enrollment-tour .enrollment-slider .slider-content.first-slide .text-container .small { font-size: 90%; }
+
+.enrollment-tour .enrollment-slider .slider-content.first-slide #firstSlideNext { position: relative; left: 50%; -webkit-transform: translateX(-50%); -ms-transform: translateX(-50%); transform: translateX(-50%); font-size: 1.2em; padding: 23px 68px; margin-top: 10px; }
+
+@media screen and (min-width: 768px) { .enrollment-tour .enrollment-slider .slider-content.first-slide .text-container { position: absolute; top: 50%; left: 200px; max-width: 400px; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); color: #ffffff; }
+  .enrollment-tour .enrollment-slider .slider-content.first-slide .text-container .intro { font-size: 1.4em; }
+  .enrollment-tour .enrollment-slider .slider-content.first-slide .text-container .intro .larger-txt { font-size: 1.6em; }
+  .enrollment-tour .enrollment-slider .slider-content.first-slide #firstSlideNext { position: absolute; bottom: 32px; right: 160px; left: initial; -webkit-transform: none; -ms-transform: none; transform: none; } }
+
+.enrollment-tour .enrollment-slider .slider-content.payment-tuition-fees-slide h4 { font-family: 'Interstate'; font-weight: 500; margin-bottom: 0.5em; background: #E6E6E6; padding: 1px 10px; font-size: 1.2em; text-transform: uppercase; color: #621b4b; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes { background: url("../img/pinstripe.png"); padding: 15px 0 15px 0; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .slide-headline { background: #621b4b; text-align: center; width: 100%; display: block; color: #fff; font-size: 1em; font-weight: 500; letter-spacing: .4px; text-transform: uppercase; padding: 5px 0; -webkit-clip-path: polygon(2% 0%, 100% 0%, 98% 100%, 0% 100%); clip-path: polygon(2% 0%, 100% 0%, 98% 100%, 0% 100%); margin-bottom: 15px; }
+
+.enrollment-tour .enrollment-slider .slider-content .slide-headline { background: #621b4b; text-align: center; width: 100%; display: block; color: #fff; font-size: 1em; font-weight: 500; letter-spacing: .4px; text-transform: uppercase; padding: 5px 0; -webkit-clip-path: polygon(2% 0%, 100% 0%, 98% 100%, 0% 100%); clip-path: polygon(2% 0%, 100% 0%, 98% 100%, 0% 100%); margin-bottom: 15px; }
+
+.enrollment-tour .enrollment-slider .slider-content .slide-paragraph { text-align: center; width: 75%; display: block; font-size: 1.05em;  letter-spacing: .4px; padding: 5px 0; margin: 15px auto; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -ms-flex-wrap: wrap; flex-wrap: wrap; padding: 20px; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content.gray { background: #F8F8F8; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content.white { background: #ffffff; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .img-container { width: 100%; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .img-container img { width: 100%; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .slide-text { width: 100%; margin-top: 2em; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .slide-text p { color: #000000; font-size: 1.4em; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .slide-text a { text-decoration: underline; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .slide-text a:hover { color: #8C2E6D; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .slide-text ul { list-style: none; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .slide-text ul li { font-size: 1.5em; font-weight: 500; color: #000000; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .slide-text ul li::before { content: "\2022"; display: inline-block; color: #8C2E6D; width: 1em; margin-left: -1em; font-size: .8em; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .slide-text ul.lighter-list { list-style: initial; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .slide-text ul.lighter-list .split { margin-bottom: 0; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .slide-text ul.lighter-list li { font-weight: 100; font-size: 1.2em; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .slide-text ul.lighter-list li::before { content: none; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .hover-content-container { width: 100%; position: relative; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .hover-content-container img { width: 100%; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .hover-content-container .info-slide { position: absolute; bottom: 0; width: 100%; height: 0; padding: 0 3em; overflow: hidden; text-align: center; background: #621b4b; color: #ffffff; -webkit-transition: height .4s ease-in-out; -o-transition: height .4s ease-in-out; transition: height .4s ease-in-out; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .hover-content-container .info-slide .text-container { position: relative; top: 50%; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .hover-content-container .info-slide p { font-weight: 100; font-size: .9em; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .hover-content-container .info-slide p.italic { font-size: 2.6em; font-style: italic; font-family: WilliamsCaslon; margin-bottom: 0; line-height: 1.1; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .hover-content-container:not(:last-child) { margin-bottom: 20px; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .hover-content-container:hover .info-slide, .enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .hover-content-container:active .info-slide { height: 100%; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .split { width: 100%; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .split:not(:last-child) { margin-bottom: 25px; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .split.expectations { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: center; -ms-flex-align: center; align-items: center; margin: 1em 5px; width: 100%; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .split.expectations .img-container { width: 10%; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .split.expectations p { width: calc(90% - 10px); margin-bottom: 0; color: #621b4b; line-height: 1.1; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .start-steps { margin: .5em 0; margin-bottom: 30px; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .start-steps img:first-child { margin: 0 auto; margin-bottom: 20px; height: 55px; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .start-steps .step-text { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .start-steps .step-text span { font-weight: 500; color: #fff; background: #8C2E6D; border-radius: 50%; font-size: 1.2em; width: 40px; height: 40px; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .start-steps .step-text p { width: calc(100% - 55px); color: #621b4b; font-size: 1.4em; line-height: 1.1; margin-bottom: 0; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .start-steps .step-text p a { text-decoration: underline; margin-top: 10px; display: block; font-size: .7em; font-weight: 500; font-family: 'Interstate'; color: #621b4b; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .start-steps .step-text p a:hover { color: #621b4b; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .start-callout { width: 100%; background: #F4F4F4; padding: 10px; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .start-callout .flexer-container { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .start-callout .flexer-container .img-container { width: 60px; margin-right: 15px; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .start-callout .flexer-container p { color: #621b4b; text-transform: uppercase; margin-bottom: 0; font-size: 1.1em; font-weight: 500; font-family: 'Interstate'; text-align: center; }
+
+@media screen and (min-width: 768px) { .enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content { -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content.expect { -ms-flex-pack: distribute; justify-content: space-around; min-height: 320px; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .img-container { width: calc(50% - 15px); }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .slide-text { width: calc(50% - 30px); }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .slide-text ul.lighter-list { margin-left: 0; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .hover-content-container { width: calc(33.3% - 5px); }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .hover-content-container:not(:last-child) { margin-bottom: 0; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .hover-content-container .info-slide p.italic { font-size: 2.5em; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .split { width: calc(50% - 15px); }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .split.expectations .img-container { width: 5%; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .split.expectations p { width: calc(95% - 10px); font-size: .9em; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .half-step { width: calc(50% - 10px); }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .one-third-step { width: calc(34% - 10px); }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .one-third-step.complete-enrollment { margin-right:13px; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .start-steps .step-text p { font-size: 1.4em; font-weight: 100; line-height: 1.2; } }
+
+@media screen and (min-width:768px) and (max-width:900px) {
+  .enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .one-third-step.complete-enrollment { left: 25px; bottom: 17px; position: relative;  } }
+
+@media screen and (min-width: 992px) { .enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content .hover-content-container .info-slide p.italic { font-size: 3.3em; } }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .why-desktop { display: none; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .why-mobile { background: #621b4b; color: #ffffff; padding: 15px; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .why-mobile .item-container { background: #8C2E6D; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .why-mobile .item-container:not(:last-child) { margin-bottom: 15px; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .why-mobile .item-container .show-btn { position: relative; color: #ffffff; margin: 0; padding: 12px 20px; font-weight: 100; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .why-mobile .item-container .arrow { position: absolute; right: 20px; top: 25px; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .why-mobile .item-container .arrow.rotate { -webkit-transform: rotate(180deg); -ms-transform: rotate(180deg); transform: rotate(180deg); }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .why-mobile .item-container ul { margin: 0 20px 0; padding-bottom: 20px; font-weight: 100; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .why-mobile .item-container ul h6 { font-family: 'Interstate'; font-weight: 500; text-transform: capitalize; color: #fff; border-bottom: 1px solid #fff; padding-bottom: 4px; margin-bottom: 4px; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .why-mobile .item-container ul li { margin-left: 20px; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .why-mobile .item-container ul a { color: #ffffff; text-decoration: underline; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content.about-au-content { padding: 0; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content.tuition-content { -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content.tuition-content .payment { width: 100%; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content.tuition-content .payment .payment-copy { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-wrap: wrap; flex-wrap: wrap; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content.tuition-content .tuition { width: 100%; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content.tuition-content .tuition ul { padding: 0; color: #621b4b; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content.tuition-content .tuition ul li { margin: 15px 0; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content.tuition-content .half { width: 100%; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content.tuition-content .flexer-container { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: center; -ms-flex-align: center; align-items: center; margin-bottom: 15px; color: #621b4b; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content.tuition-content .flexer-container .img-container { width: 45px; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content.tuition-content .flexer-container p { width: calc(100% - 55px); margin-bottom: 0; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content.about-you-content ul li { color: #8C2E6D; }
+
+.enrollment-tour .price-calculator-link {display:flex;display: -ms-flexbox;width:50%;margin: 0 auto;}
+.enrollment-tour .price-calculator-link  div {justify-content: center;}
+.enrollment-tour .price-calculator-link  img {display: block;margin: 0 auto;}
+
+
+@media screen and (min-width: 768px) { .enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content.about-you-content ul li { font-size: 2em; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content.tuition-content .payment { width: 50%; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content.tuition-content .tuition { width: calc(50% - 15px); }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .why-mobile { display: none; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .why-desktop { display: -webkit-box; display: -ms-flexbox; display: flex; background: #621b4b; color: #ffffff; padding: 20px; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .why-desktop .item-nav { width: 20%; border-right: 1px solid white; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .why-desktop .item-nav ul { list-style: none; padding: 20px 0; margin: 0; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .why-desktop .item-nav ul li { padding: 10px 20px; font-weight: 500; font-size: 1.2em; margin: 0; cursor: pointer; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .why-desktop .item-nav ul li:hover { background: #8C2E6D; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .why-desktop .item-nav ul li.active { background: #8C2E6D; border-right: 7px solid white; width: 103.2%; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .why-desktop .items { width: 80%; padding-top: 15px; -ms-flex-item-align: start; align-self: flex-start; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .why-desktop .items .item .headline { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; text-align: center; padding-right: 20px; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .why-desktop .items .item .headline h4 { color: #ffffff; font-size: 2.1em; font-weight: 500; margin-bottom: 0; margin-left: 15px; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .why-desktop .items .item .headline img { width: 55px; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .why-desktop .items .item ul { display: -webkit-box; display: -ms-flexbox; display: flex; margin: 30px auto 0; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; max-width: 709px; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .why-desktop .items .item ul .split { width: calc(50% - 15px); }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .why-desktop .items .item ul .split h6 { font-weight: 500; font-family: 'Interstate'; text-transform: capitalize; color: #fff; border-bottom: 1px solid #fff; padding-bottom: 4px; margin-bottom: 4px; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .why-desktop .items .item ul .split li { margin-left: 20px; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .why-desktop .items .item ul a { color: #ffffff; text-decoration: underline; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .why-desktop .items .item ul.value-links-list li { margin-bottom: 5px; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .why-desktop .items #support ul .split li { margin-bottom: 0; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .why-desktop .items #support ul .split:nth-child(2) li { margin-left: 0; display: inline-block; width: 49%; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .why-desktop .items #support ul .split:nth-child(2) li:before { content: '•'; margin-right: 10px; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content.tuition-content .half { width: calc(50% - 10px); }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content.get-started-content { -ms-flex-pack: distribute; justify-content: space-around; -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; min-height: 320px; -ms-flex-line-pack: center; align-content: center; } }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .degrees-container { background: #ffffff; padding: 5px; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .degrees-container .flexer-content { padding: 5px; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .degrees-container .degree-overview { width: 100%; background: url("../img/degrees-mobile.jpg") no-repeat; background-size: cover; color: #ffffff; padding: 55px 30px; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .degrees-container .degree-overview div h3 { color: #ffffff; margin-bottom: 15px; font-weight: 500; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .degrees-container .degree-overview div ul { margin: 0; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .degrees-container .course-structure { width: 100%; background: #F4F4F4; padding: 33px; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .degrees-container .course-structure .course-content h3 { text-align: center; margin-bottom: 0; font-weight: 500; }
+
+.enrollment-tour .enrollment-slider .slider-content .stripes .degrees-container .split { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+
+@media screen and (min-width: 768px) { .enrollment-tour .enrollment-slider .slider-content .stripes .degrees-container .degree-overview { width: 40%; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .degrees-container .course-structure { width: calc(60% - 5px); }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .degrees-container .course-structure .course-content { width: 80%; margin: 0 auto; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .degrees-container .split { width: calc(25% - 15px); font-size: 115%; }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .degrees-container .split:not(:last-child) { margin-bottom: 0; } }
+
+.enrollment-tour .video-icon { cursor: pointer; }
+
+.enrollment-tour .video-overlay { display: none; position: fixed; z-index: 1000000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); cursor: pointer; }
+
+.enrollment-tour .video-overlay:after { content: url("../img/close-btn.svg"); position: absolute; top: 20%; left: 80%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); }
+
+.enrollment-tour .video-overlay iframe { position: absolute; left: 50%; top: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); width: 75%; max-width: 640px; border: none; }
+
+/*-------------------------------------------------------------------------------*\
+
+                                RESPONSIVE
+
+\*-------------------------------------------------------------------------------*/
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,47 @@
+@use '../base/colors' as *;
+@use '../base/mixins' as *;
+@use '../base/typographyMixins' as *;
+@use '../base/vars' as *;
+
+.faculty-profile-biography {
+  border: {
+    bottom: 1px solid $lightGray;
+  }
+  padding: {
+    bottom: 32px;
+  }
+
+  &__heading {
+    // review later adding global style (leaving for now since these sizes aren't a heading mixin)
+    @include rems(28px);
+    line-height: 1.14;
+    color: $azBlue;
+    font-weight: 500;
+    margin: {
+      bottom: 32px;
+    }
+
+    @media (min-width: $tablet) {
+      @include rems(36px);
+      line-height: 1.33;
+    }
+  }
+
+  //Some wysiwyg styling (also using wizzywig class for additional styling)
+  &__content {
+    p,
+    li {
+      @include rems(20px);
+      line-height: 1.2;
+      color: $black;
+      font-weight: 400;
+      margin: {
+        bottom: 32px;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

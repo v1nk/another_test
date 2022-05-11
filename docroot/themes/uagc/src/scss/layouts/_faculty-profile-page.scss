@@ -1,0 +1,172 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.faculty-profile {
+  @include globalGutters;
+  max-width: 1440px;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  &__body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: {
+      top: 24px;
+    }
+
+    border-top: solid 1px $lightGray;
+
+    @media (min-width: $tablet) {
+      border-top: 0;
+      flex-wrap: nowrap;
+      padding: {
+        top: 32px;
+      }
+    }
+  }
+  &__header {
+    padding: {
+      bottom: 24px;
+    }
+    @media (min-width: $tablet) {
+      padding: {
+        bottom: 40px;
+      }
+      border: {
+        bottom: 1px solid $lightGray;
+      }
+    }
+  }
+  &__body {
+    padding: {
+      top: 24px;
+    }
+    @media (min-width: $desktop) {
+      padding: {
+        top: 32px;
+      }
+    }
+  }
+  &__content {
+    flex-basis: 100%;
+    max-width: 906px;
+    .site-layout__article-content-section-wizzywig {
+      padding: {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+      }
+    }
+  }
+  &__sidebar {
+    flex-basis: 100%;
+    margin: {
+      bottom: 32px;
+    }
+    @media (min-width: $tablet) {
+      flex-basis: 280px;
+      margin: {
+        right: 32px;
+      }
+    }
+  }
+
+  &__quote {
+    color: $azBlue;
+    @include rems(20px);
+    font-weight: 400;
+    line-height: 1.2;
+    padding: {
+      bottom: 16px;
+    }
+    @media (min-width: $tablet) {
+      @include rems(24px);
+      line-height: 1.333333333;
+      padding: {
+        bottom: 32px;
+      }
+    }
+  }
+
+  &__quote-line {
+    width: 70px;
+    height: 2px;
+
+    .--red & {
+      background-color: $azRedLight;
+    }
+
+    .--orange & {
+      background-color: $orange;
+    }
+  }
+
+  &__sidebar-background {
+    padding: {
+      bottom: 0;
+    }
+    @media (min-width: $tablet) {
+      border: {
+        bottom: 1px solid $lightGray;
+      }
+      padding: {
+        bottom: 40px;
+      }
+    }
+  }
+
+  &__contact-heading {
+    @include rems(26px);
+    line-height: 1.23;
+    color: $azBlue;
+    font-weight: 500;
+    padding: {
+      top: 32px;
+      bottom: 16px;
+    }
+
+    @media (min-width: $tablet) {
+      @include rems(28px);
+      line-height: 1.43;
+      padding: {
+        top: 40px;
+        bottom: 24px;
+      }
+    }
+  }
+
+  &__contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    // Didn't add class to be able to reuse Links Paragraph type in other spots if needed
+    a {
+      @include textMedium;
+      color: $azBlue;
+      font-weight: 400;
+      text-decoration: underline;
+    }
+  }
+
+  &__background {
+    padding: {
+      top: 32px;
+    }
+    @media (min-width: $tablet) {
+      padding: {
+        top: 40px;
+      }
+    }
+    @media (min-width: $desktop) {
+      padding: {
+        top: 24px;
+      }
+    }
+  }
+}

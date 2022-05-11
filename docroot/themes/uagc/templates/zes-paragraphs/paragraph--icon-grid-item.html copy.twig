@@ -1,0 +1,69 @@
+{#
+  /**
+   * @file
+   * Theme override to display a media item.
+   *
+   * Available variables:
+   * - name: Name of the media.
+   * - content: Media content.
+   *
+   * @see template_preprocess_media()
+   */
+  #}
+  
+  {% if content %}
+    <div class="icongrid__item --icon-grid-item">
+
+      <div class="icongrid__item-spacer">
+        {% if content.field_tooltip.0 | raw != '' %}
+          <div class="icongrid__item-tooltip js-tooltip">
+            ?
+            <div class="icongrid__item-tooltip-spacer">
+              <span class="icongrid__item-tooltip-content">{{content.field_tooltip.0}}</span>  
+            </div>
+          </div>
+        {% endif %}
+
+        <div class="icongrid__item-wrapper">
+          <div class="icongrid__item-image">  
+            {% if not (content.field_icon.isEmpty == true) and content.field_icon is defined  and content.field_icon != null and content.field_icon.0['#file'] != '' %}
+              {% set svg = file_url(content.field_icon.0['#file'].getFileUri()) | replace({'%20': ' '}) %}
+              {% set svg = '.' ~ svg %}
+              {% set svgContents %}
+                {% include(svg) ignore missing %}
+              {% endset %}
+              {{svgContents|stripsvgids|raw}}
+            {% endif %}
+          </div>
+      
+      
+          {% if content.field_text_content.0 | raw != '' or content.field_content.0|render|trim is not empty%}
+          <div class="icongrid__item-content-wrapper">
+ 
+ 
+            {% if content.field_headline_html.0|render|trim is not empty %}
+              <h3 class="icongrid__item-header">{{ content.field_headline_html.0 }}</h3>
+            {% else %}
+              {% if content.field_headline.0 | raw != '' %}
+              <h3 class="icongrid__item-header">
+                {{ content.field_headline.0 }}
+              </h3>
+              {% endif %}
+            {% endif %}
+  
+            
+            {% if content.field_content.0|render|trim is not empty %}
+              <div class="icongrid__item-content">{{ content.field_content.0 }}</div>
+            {% else %}
+              <div class="icongrid__item-content">{{ content.field_text_content.0 }}</div>
+            {% endif %}  
+          </div>
+        </div>
+      </div>
+      
+      
+      {% endif %}
+    </div>
+  
+  {% endif %}
+  

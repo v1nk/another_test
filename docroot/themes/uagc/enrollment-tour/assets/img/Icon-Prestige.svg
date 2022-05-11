@@ -1,0 +1,18 @@
+<svg id="Icon-Prestige" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="60" viewBox="0 0 60 60">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_790" data-name="Path 790" d="M0-60H60V0H0Z" transform="translate(0 60)" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="Group_897" data-name="Group 897" clip-path="url(#clip-path)">
+    <g id="Group_894" data-name="Group 894">
+      <path id="Path_787" data-name="Path 787" d="M0,0A18,18,0,0,0,0,36,18.021,18.021,0,0,0,18,18,18.021,18.021,0,0,0,0,0M0,38A20,20,0,0,1,0-2,20.023,20.023,0,0,1,20,18,20.023,20.023,0,0,1,0,38" transform="translate(30 2)" fill="#fff"/>
+    </g>
+    <g id="Group_895" data-name="Group 895">
+      <path id="Path_788" data-name="Path 788" d="M0,0A1,1,0,0,1-.866-.5L-12.043-19.855a1,1,0,0,1,.366-1.367,1,1,0,0,1,1.366.367L-.192-3.333l3.76-10.019a1.006,1.006,0,0,1,1.1-.635L14.8-12.33,4.152-30.479a1,1,0,0,1,.357-1.369,1,1,0,0,1,1.368.357L17.6-11.506a1,1,0,0,1-.037,1.071,1,1,0,0,1-.986.422L5.153-11.881.937-.648A1,1,0,0,1,.082,0C.055,0,.027,0,0,0" transform="translate(42.257 60)" fill="#fff"/>
+    </g>
+    <g id="Group_896" data-name="Group 896">
+      <path id="Path_789" data-name="Path 789" d="M0,0C-.024,0-.049,0-.073,0A1,1,0,0,1-.93-.632L-5.38-11.881l-11.2,1.867a1.006,1.006,0,0,1-.988-.42,1,1,0,0,1-.038-1.072L-5.885-31.482a1,1,0,0,1,1.368-.357,1,1,0,0,1,.357,1.368L-14.8-12.338l9.892-1.648a1,1,0,0,1,1.094.618L.169-3.292,10.311-20.863a1,1,0,0,1,1.366-.366,1,1,0,0,1,.366,1.366L.866-.5A1,1,0,0,1,0,0" transform="translate(17.747 60)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

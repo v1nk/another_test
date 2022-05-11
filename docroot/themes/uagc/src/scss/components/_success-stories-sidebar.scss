@@ -1,0 +1,349 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+@use "sass:math";
+
+.success-stories-sidebar {
+  border-radius: 8px;
+  padding: {
+    left: 24px;
+    right: 24px;
+    top: 24px;
+    bottom: 24px;
+  }  
+  transition: transform 0.3s;
+
+  margin: {
+    bottom: 32px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+
+  @media(min-width: $desktop) {
+    margin: {
+      bottom: 32px;
+    }
+
+    padding: {
+      bottom: 40px;
+    }
+    
+
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+  &:focus {
+    border: 2px solid $black;
+    transform: scale(1.05);
+  }
+
+  &.\--orange {
+    background-color: $orange;
+  }
+
+  &.\--river {
+    background-color: $river;
+  }
+
+  &.\--purple {
+    background-color: $purple;
+  }
+
+  &.\--blue {
+    background-color: $blue;
+  }
+
+  &.\--az-blue {
+    background-color: $azBlue;
+  }
+
+  &.\--az-red {
+    background-color: $azRed;
+  }
+
+  &.\--light-gray {
+    background-color: $lighterGray;
+  }
+
+  &__container {
+    transition: transform 0.3s;
+    display: flex;
+    @media (min-width: $desktop) {
+      display: block;
+    }
+
+    .--orange &,
+    .--light-gray & {
+      color: $azBlue;
+      &:visited {
+        color: $azBlue;
+      }
+    }
+
+    .--river &,
+    .--purple &,
+    .--blue &,
+    .--az-blue &,
+    .--az-red & {
+      color: white;
+      &:visited {
+        color: white;
+      }
+    }
+  }
+
+  &__content {
+    /*171/327 (width at 375px)  = .5229 */
+    flex-basis: calc((100% + 48px) * 0.5229);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 0;
+
+    /* 196/420 (width at 1025px) = .4667*/
+    @media (min-width: $tablet) {
+      flex-basis: calc((100% + 64px) * 0.4667);
+    }
+
+    @media (min-width: $desktop) {
+      padding: {
+        right: 0px;
+      }
+      flex-basis: 70%;
+    }
+  }
+
+
+  
+  &__subhead {
+    @include rems(12px);
+    line-height: 1.33;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: {
+      bottom: 8px;
+    }
+
+    @media (min-width: $tablet) {
+      @include rems(16px);
+      line-height: 1.5;
+      padding: {
+        bottom: 16px;
+      }
+    }
+
+    @media (min-width: $desktop) {
+      padding: {
+        bottom: 24px;
+      }
+    }
+  }
+
+  &__title {
+    padding: {
+      bottom: 8px;
+    }
+
+
+    @include rems(24px);
+    line-height: 1.3333333;
+    font-weight: 500;
+
+    @media (min-width: $tablet) {
+      @include rems(28px);
+      line-height: 1.429;
+      padding: {
+        bottom: 16px;
+      }
+    }
+
+
+
+
+    @media (min-width: $desktop) {
+      padding: {
+        bottom: 24px;
+      }
+    }
+
+   
+  }
+
+  &__titles {
+    margin: {
+      bottom: 8px;
+    }
+    @include rems(24px);
+    line-height: 1.3333333;
+    font-weight: 500;
+    @media (min-width: $desktop) {
+      @include rems(28px);
+      line-height: 1.429;
+    }
+  }
+  &__slogan {
+    @include textStyle1;
+
+    @media(min-width: $desktop) {
+      margin: {
+        bottom: 32px;
+      }
+      @include rems(24px);
+      line-height: math.div(24, 20);
+    }
+  }
+
+  &__icon {
+    align-self: center;
+    flex-grow: 0;
+    flex-basis: content;
+    flex-shrink: 0;
+    width: auto;
+    margin-left: auto;
+
+    /* 
+    Calc is 96px on desktop on a width of 592px is 16.2%.
+    64px is the padding which isn't counted in the 100%
+    Gets us to the correct distance relatively.
+    Chad probably knows a better way.
+    */
+    margin: {
+      right: calc((100% + 48px) * 0.1162 - 24px);
+    }
+
+    @media (min-width: $desktop-small) {
+
+      margin: {
+        left: auto;
+        right: calc((100% + 64px) * 0.162 - 32px);
+      }
+    }
+    @media (min-width: $desktop) {
+      text-align: center;
+      margin: {
+        right: 0;
+      }
+    }
+
+    span {
+      padding: 0;
+      
+      @media (min-width: $desktop-small) {
+        padding: {
+          top: 0px;
+          left: 0px;
+          bottom: 0px;
+          right: 0px;
+        }
+      }
+    }
+
+    svg {
+      width: 56px;
+      flex-basis: 56px;
+      height: 56px;
+
+      @media (min-width: $tablet) {
+        max-width: 128px;
+        width: 128px;
+        height: 128px;
+      }
+    }
+
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: {
+      bottom: 16px;
+    }
+    flex-basis: 84px;
+    @media (min-width: $desktop) {
+      flex-basis: 100%;
+    }
+
+    span {
+      display: flex;
+      justify-content: center;
+      padding: {
+        top: 45px;
+        left: 14px;
+        bottom: 45px;
+        right: 14px;
+      }
+      @media (min-width: $desktop-small) {
+        padding: {
+          top: 0px;
+          left: 0px;
+          bottom: 0px;
+          right: 0px;
+        }
+      }
+    }
+
+    svg {
+      width: 56px;
+      flex-basis: 56px;
+
+      @media (min-width: $tablet) {
+        width: 100%;
+        flex-basis: 100%;
+        max-width: 80px;
+      }
+
+      @media (min-width: $desktop) {
+        max-width: 128px;
+        width: 128px;
+        height: 128px;
+      }
+    }
+  }
+
+  &__icon-stories {
+    .--river &,
+    .--purple &,
+    .--blue &,
+    .--az-blue &,
+    .--az-red & {
+      path {
+        stroke: white;
+      }
+    }
+  }
+
+  &__icon-online-learning,
+  &__icon-find-degree {
+    .--orange &,
+    .--light-gray & {
+      .set-fill-color {
+        fill: $azBlue;
+      }
+
+      .set-stroke-color {
+        stroke: $azBlue;
+      }
+    }
+
+    .--river &,
+    .--purple &,
+    .--blue &,
+    .--az-blue &,
+    .--az-red & {
+      .set-fill-color {
+        fill: white;
+      }
+
+      .set-stroke-color {
+        stroke: white;
+      }
+    }
+  }
+}

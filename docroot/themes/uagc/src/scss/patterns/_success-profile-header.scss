@@ -1,0 +1,122 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.success-profile-header {
+  max-width: 1440px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  @media (min-width: $tablet) {
+    flex-wrap: nowrap;
+    flex-direction: row;
+  }
+  &__image-wrapper {
+    flex-basis: 100%;
+    align-items: center;
+    display: flex;
+    @media (min-width: $tablet) {
+      flex-basis: 280px;
+      flex-shrink: 0;
+      margin: {
+        right: 32px;
+      }
+    }
+  }
+  &__image {
+    border-radius: 50%;
+    max-height: 175px;
+    max-width: 175px;
+
+    width: 100%;
+    object-fit: contain;
+    margin: {
+      right: auto;
+      bottom: 16px;
+    }
+    display: block;
+    @media (min-width: $tablet) {
+      margin: {
+        left: auto;
+        right: 0px;
+        bottom: 0px;
+      }
+    }
+  }
+  &__content-wrapper {
+    display: inline-flex;
+    flex-direction: column;
+    @media (min-width: $tablet) {
+      flex-basis: 100%;
+    }
+  }
+  &__header {
+    @include h2;
+    margin: {
+      bottom: 16px;
+    }
+  }
+  &__degrees-wrapper {
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: {
+      left: -24px;
+      right: -24px;
+    }
+    @media (min-width: $tablet) {
+      flex-direction: row;
+    }
+  }
+  &__degree {
+    padding: {
+      left: 24px;
+      right: 24px;
+    }
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    @media (min-width: $tablet) {
+      align-items: flex-start;
+      margin: {
+        bottom: 24px;
+      }
+      flex-direction: column;
+      border: {
+        right: solid 1px $lightGray;
+      }
+    }
+
+    &:last-child {
+      border: {
+        right: none;
+      }
+    }
+  }
+  &__degree-year {
+    color: $silver;
+    font-weight: 500;
+    @include rems(14px);
+    line-height: 1.29;
+    margin: {
+      right: 8px;
+    }
+    @media (min-width: $tablet) {
+      margin: {
+        right: 0px;
+        bottom: 8px;
+      }
+    }
+  }
+  &__degree-name {
+    color: $azBlue;
+    @include rems(20px);
+    line-height: 1.2;
+    font-weight: 500;
+  }
+}

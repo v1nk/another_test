@@ -1,0 +1,53 @@
+{% set backgroundClass = '' %}
+{% set reduceFontSize = '' %}
+
+{% if paragraph.field_display_grey_background.value  == 1 %}
+    {% set backgroundClass = ' --grey-background' %}
+{% endif %}
+
+{% if paragraph.field_reduce_font_size.value  == 1 %}
+    {% set reduceFontSize = ' --reduce-font' %}
+{% endif %}
+
+{% if paragraph.field_dark_blue_background.value  == 1 %}
+    {% set backgroundClass = ' --dark-blue-background' %}
+{% endif %}
+
+<div class="partner-divider{{backgroundClass}}">
+    <div class="partner-divider__wrapper">
+        <div class="partner-divider__red-line"></div>
+
+
+        {% if paragraph.field_logo_upload is not empty %}
+            <div class="partner-divider__logo-container">
+                {{ content.field_logo_upload }}
+            </div>
+        {% endif %}
+        {% if content.field_navy_red_heading['#items'].value %}
+            <h2 class="partner-divider__heading">{{ content.field_navy_red_heading }}</h2>
+        {% endif %}
+
+        {% if content.field_content['#items'].value %}
+            <div class="partner-divider__content{{reduceFontSize}}">
+                {{ content.field_content.0 }}
+            </div>
+        {% endif %}
+
+        {% if content.field_cta['#items'].value or content.field_cta_link['#items'].value %}
+            <div class="partner-divider__cta-container">
+
+                {% if content.field_cta['#items'].value %}
+                    <a href="{{paragraph.field_cta.0.url}}" class="partner-divider__cta button--blue">{{paragraph.field_cta.0.title}}</a>
+                {% endif %}
+
+                {% if content.field_cta_link['#items'].value %}
+                    {% if content.field_cta['#items'].value %}
+                        <span class="partner-divider__cta-divider"></span>
+                    {% endif %}
+                    <a href="{{paragraph.field_cta_link.0.url}}" class="partner-divider__secondary-cta button--blue">{{paragraph.field_cta_link.0.title}}</a>
+                {% endif %}
+                
+            </div>
+        {% endif %}
+    </div>
+</div>

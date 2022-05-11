@@ -1,0 +1,311 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+$custom-mobile: 870px;
+
+.events-two-column {
+  width: 100%;
+  background-color: $lighterGray;
+
+  &__wrapper {
+    @include globalGutters;
+    display: flex;
+    flex-direction: column;
+    max-width: 1440px;
+    margin: {
+      left: auto;
+      right: auto;
+    }
+
+    @media (min-width: $custom-mobile) {
+      flex-direction: row;
+    }
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        padding: {
+          left: 0;
+          right: 0;
+        }
+      }
+    }
+  }
+
+  &__red-line {
+    position: relative;
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        max-width: 1440px;
+        margin: {
+          left: auto !important;
+          right: auto !important;
+        }
+        padding: {
+          left: 0;
+          right: 0;
+        }
+      }
+    }
+
+    &::after {
+      content: "";
+      border-top: 2px solid $azRed;
+      width: 80px;
+      position: absolute;
+    }
+  }
+
+  // review later adding global style (leaving for now since these sizes aren't a heading mixin)
+  &__heading {
+    color: $azBlue;
+    font-weight: 500;
+    margin: {
+      top: 24px;
+      bottom: 24px;
+    }
+
+    @media (min-width: $custom-mobile) {
+      @include flexGrid(4);
+      padding: {
+        right: 32px;
+      }
+    }
+
+    span {
+      padding: {
+        left: 6px;
+      }
+
+      &:first-child {
+        padding: {
+          left: 0;
+        }
+      }
+    }
+
+    .--navy-heading,
+    .--red-heading {
+      @include rems(28px);
+      line-height: 1.14;
+
+      @media (min-width: $tablet) {
+        @include rems(36px);
+        line-height: 1.33;
+      }
+    }
+
+    .--red-heading {
+      color: $azRed;
+    }
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+
+    @media (min-width: $custom-mobile) {
+      @include flexGrid(8);
+      grid-template-columns: repeat(2, (1fr));
+      gap: 32px;
+    }
+  }
+
+  &__link {
+    background-color: white;
+    padding: 24px;
+    border: 1px solid $lightGray;
+    border-radius: 16px;
+    box-sizing: border-box;
+    transition: box-shadow 0.25s ease-in-out;
+    &:hover {
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    &.\--hide {
+      display: none;
+    }
+  }
+
+  &__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    @include textLarge;
+    @include rems(20px);
+    line-height: 1.2;
+    color: $azBlue;
+    font-weight: 500;
+    padding: {
+      bottom: 16px;
+    }
+
+    @media (min-width: $custom-mobile) {
+      @include textLarge;
+    }
+
+    .events-two-column__link:hover & {
+      color: $azRed;
+      transition: color 0.3s ease-in-out;
+    }
+  }
+
+  &__copy {
+    @include textMedium;
+    color: $black;
+    font-weight: 400;
+    padding: {
+      bottom: 16px;
+    }
+
+    //wysiwyg styling
+    p {
+      @include textSmall;
+
+      @media (min-width: $custom-mobile) {
+        @include textMedium;
+        margin: 0;
+      }
+    }
+
+    strong,
+    b {
+      font-weight: 500;
+    }
+
+    em,
+    i {
+      font-style: italic;
+    }
+
+    sup {
+      vertical-align: super;
+      font-size: smaller;
+    }
+
+    sub {
+      vertical-align: sub;
+      font-size: smaller;
+    }
+
+    ul,
+    ol {
+      padding: {
+        left: 20px;
+      }
+    }
+
+    li {
+      @include rems(20px);
+      line-height: 1.2;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      color: $black;
+    }
+    h1 {
+      @include h1;
+      @include marginMedium;
+    }
+    h2 {
+      @include h2;
+      @include marginMedium;
+    }
+    h3 {
+      @include h3;
+      @include marginMedium;
+    }
+    h4 {
+      @include h4;
+      @include marginMedium;
+    }
+    h5 {
+      @include h5;
+      @include marginMedium;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    li {
+      transition: color 0.3s ease-in-out;
+    }
+  }
+
+  &__cta-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include textMedium;
+    font-weight: 400;
+    color: $azRed;
+    margin: {
+      top: auto;
+      bottom: 0;
+    }
+  }
+
+  &__date {
+    @include textSmall;
+    margin: 0;
+    max-width: 180px;
+    padding: {
+      right: 8px;
+    }
+
+    @media (min-width: $custom-mobile) {
+      @include rems(16px);
+      line-height: 1.5;
+    }
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__cta-text {
+    @include textSmall;
+    font-weight: 500;
+    color: $azRed;
+    padding: {
+      right: 8px;
+    }
+  }
+
+  &__view-more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (min-width: $custom-mobile) {
+      grid-column: span 2;
+    }
+
+    &.\--hide-show-more {
+      display: none;
+    }
+  }
+
+  &__view-more-text {
+    @include textMedium;
+    font-weight: 500;
+    color: $azBlue;
+    padding: {
+      right: 15px;
+    }
+    &:focus + .events-two-column__link {
+      display: grid;
+    }
+  }
+}

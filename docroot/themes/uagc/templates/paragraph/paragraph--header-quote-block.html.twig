@@ -1,0 +1,47 @@
+{% set lengthSizeClass = '' %}
+  
+{% if paragraph.field_quote.0.value | length  > 45 %}
+  {% set lengthSizeClass = '--long-text' %}
+{% endif %}
+
+<div class="paid-hero-space__content --quote-content {{lengthSizeClass}}">
+  <h1 class="paid-hero-space__quote-header">{{paragraph.field_sub_headline.0.value}}</h1>
+  {% autoescape false %}
+  {% set quotes = '"' %}
+
+  {% if paragraph.field_remove_quotes.value == '1' %}
+    {% set quotes = '' %}
+  {% endif %}
+
+  <div class="paid-hero-space__quote">{{quotes}}{{paragraph.field_quote.0.value}}{{quotes}}</div>
+  {% endautoescape %}
+
+  {% if paragraph.field_quote_source.0.value is not empty %}
+    <div class="paid-hero-space__quote-source">{{paragraph.field_quote_source.0.value}}</div>
+  {% endif %}
+  {% if paragraph.field_cta_link.0.title is not empty %}
+    <a href="{{paragraph.field_cta_link.0.uri}}" class="paid-hero-space__quote-link">{{paragraph.field_cta_link.0.title}}
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 12H19" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 5L19 12L12 19" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  {% endif %}
+
+</div>
+
+<script type="text/javascript">
+    
+    if (typeof quoteHeroSpaces === 'undefined') {
+      let quoteHeroSpaces;  
+    }
+    
+    quoteHeroSpaces = document.querySelectorAll('.paid-hero-space__content.--quote-content');
+
+    quoteHeroSpaces.forEach(function(e, i, arr) {
+      let container = e.closest('.paid-hero-space');
+      if(container.classList.contains('--quote-header') === false) {
+        container.classList.add('--quote-header')
+      }
+    });
+
+</script>
+

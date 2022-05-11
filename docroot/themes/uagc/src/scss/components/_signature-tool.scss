@@ -1,0 +1,124 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+@use "../elements/buttons" as *;
+
+.signature-tool {
+  max-width: 100%;
+  width: 100%;
+  padding: {
+    top: 40px;
+    left: 24px;
+    right: 24px;
+  }
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  @media (min-width: $tablet) {
+    top: 96px;
+    max-width: 1440px;
+  }
+  &__header {
+    max-width: 960px;
+    margin: {
+      left: auto;
+      right: auto;
+      bottom: 36px;
+    }
+    h1 {
+      @include headline1;
+      color: $azRed;
+    }
+  }
+  &__form-container {
+    max-width: 960px;
+    width: 100%;
+
+    margin: {
+      left: auto;
+      right: auto;
+    }
+  }
+  &__input-group {
+    display: flex;
+    width: 100%;
+    margin: {
+      bottom: 24px;
+    }
+  }
+  &__input-group-item {
+    flex-grow: 1;
+    flex-basis: 100%;
+    &:nth-child(2n) {
+      margin: {
+        left: 16px;
+      }
+    }
+    &:nth-child(3n) {
+      margin: {
+        left: 16px;
+      }
+    }
+    label {
+      font-size: 1.125rem;
+      line-height: 1.35;
+      color: $azBlue;
+      margin: {
+        top: 0;
+      }
+    }
+    input {
+      border: solid 1px;
+      border-radius: 5px;
+      font-size: 1.125rem;
+      line-height: 1.35;
+      width: 100%;
+      padding: {
+        top: 8px;
+        bottom: 8px;
+        left: 8px;
+        right: 8px;
+      }
+      &:invalid {
+        border: red solid 3px;
+      }
+    }
+  }
+  &__format {
+    margin: {
+      top: 8px;
+    }
+  }
+
+  &__markup {
+    display: flex;
+    justify-content: center;
+    margin: {
+      top: 48px;
+      bottom: 40px;
+    }
+    & > div {
+      padding: 8px;
+      margin: {
+        left: auto;
+        right: auto;
+      }
+      overflow-x: scroll;
+
+      box-shadow: 2px 2px 4px rgb(17 17 17 / 17%),
+        -2px -2px 4px rgb(17 17 17 / 17%);
+      @media (min-width: $tablet) {
+        overflow-x: unset;
+      }
+    }
+  }
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    margin: {
+      bottom: 64px;
+    }
+  }
+}

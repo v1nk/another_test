@@ -1,0 +1,45 @@
+{{ attach_library('uagc/paid-smooth-scroll') }}
+
+{% set centerContent = '' %}
+{% set greyBackground = '' %}
+{% set maxWidthClass = '' %}
+
+
+{% if paragraph.field_center_content.value == 1 %}
+  {% set centerContent = ' --center-content' %}
+{% endif %}
+
+{% if paragraph.field_display_grey_background.value  == 1 %}
+    {% set greyBackground = ' --grey-background' %}
+{% endif %}
+
+{% if content.field_two_column['#items'].value %}
+    {% set extendWidth = ' --extend-width' %}
+{% endif %}
+
+
+
+<div class="paid-two-column-plain{{centerContent}}{{greyBackground}}{{extendWidth}}"   id="{{paragraph.field_anchor_id.0.value}}">
+    <div class="paid-two-column-plain__red-line"></div>
+
+    {% if content.field_navy_red_heading['#items'].value %}
+        <h2 class="paid-two-column-plain__heading">{{ content.field_navy_red_heading }}</h2>
+    {% endif %}
+
+    {% if content.field_content['#items'].value %}
+        <div class="paid-two-column-plain__wysiwyg wizzywig">{{ content.field_content.0 }}</div>
+    {% endif %}
+
+    {% if content.field_cta['#items'].value %}
+        {% if content.field_cta['#items'].uri == 'internal:#' %}
+            <div class="paid-two-column-plain__cta-container"><a href="javascript:void(0)" class="paid-two-column-plain__learn-more-cta button--blue">{{paragraph.field_cta.0.title}}</a></div>
+        {% else %}
+            <div class="paid-two-column-plain__cta-container"><a href="{{paragraph.field_cta.0.url}}" class="paid-two-column-plain__cta button--blue">{{paragraph.field_cta.0.title}}</a></div>
+        {% endif %}
+    {% endif %}
+
+    {% if content.field_two_column['#items'].value  %}
+        <div class="paid-two-column-plain__two-column-container">{{ content.field_two_column }}</div>
+    {% endif %}
+    
+</div>

@@ -1,0 +1,52 @@
+<div class="tuitionandfees__table-container">
+  <div class="tuitionandfees__table" data-cta="{{paragraph.field_cta_text.0.value}}">
+    <div class="tuitionandfees__table-rows">
+      {% for item in paragraph.field_table_rows %}
+        {% set dividerClass = '' %}
+        {% set boldClass = '' %}
+  
+        {% if item.entity.field_divider_row.0.value == '1' %}
+          {% set dividerClass = '--divider-row' %}
+  
+          {% if loop.first != 1 %}
+            </div>
+          {% endif %}
+        {% endif %}
+        {% if item.entity.field_blue_text.0.value == '1' %}
+          {% set boldClass = '--blue-text' %}
+        {% endif %}
+  
+  
+        <div class="tuitionandfees__row {{dividerClass}} {{boldClass}}">
+  
+          {% if item.entity.field_header.0.value is not empty %}
+            <div class="tuitionandfees__row-header">{{item.entity.field_header.0.value}}</div>
+          {% endif %}
+          {% if item.entity.field_value.0.value is not empty %}
+            <div class="tuitionandfees__row-value">{{item.entity.field_value.0.value}}</div>
+          {% endif %}
+        </div>
+        {% if item.entity.field_divider_row.0.value == '1' %}
+          {% if loop.first != 1 %}
+            <div class="tuitionandfees__table-rows">
+          {% endif %}
+        {% endif %}
+  
+  
+      {% endfor %}
+    </div>
+  </div>
+
+  {% if paragraph.field_costs_link.0.url is not empty %}
+    <div class="tuitionandfees__costs-link-container">
+      <a class="tuitionandfees__costs-link" href="{{paragraph.field_costs_link.0.url}}">{{paragraph.field_costs_link.0.title}}</a>
+    </div>
+  {% endif %}
+
+  {% if paragraph.field_footnotes.0.value is not empty %}
+    {% autoescape false %}
+      <div class="tuitionandfees__footnotes">{{paragraph.field_footnotes.0.value}}</div>
+    {% endautoescape %}
+  {% endif %}
+
+</div>

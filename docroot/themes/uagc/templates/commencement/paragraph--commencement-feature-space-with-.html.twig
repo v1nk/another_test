@@ -1,0 +1,11 @@
+{{ attach_library('uagc/background-cover') }}
+<section class="commencement-feature-space-with-image section section--feature-space-image{% if content.field_feature_space_gradient.0['#markup'] == "blue" %} is-blue{% endif %}">
+  <div class="section__image background-cover js-background-image">
+    {{ content.field_img }}
+  </div>
+  <div class="section__wrapper commencement-feature-space-with-image__wrapper">
+    <div class="section__wrapper-inner">
+      <h2 class="section__header">{{ content.field_headline }} <span>{{ content.field_sub_headline }}</span></h2>
+    </div>
+  </div>
+</section>

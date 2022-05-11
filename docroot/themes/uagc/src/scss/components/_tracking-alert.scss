@@ -1,0 +1,148 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.tracking-alert {
+  display: none;
+  width: 100%;
+  max-width: 1920px;
+  z-index: 99;
+  position: fixed;
+  bottom: 0;
+
+  &__request-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.06);
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    margin: {
+      left: $gutterSideMobile;
+      right: $gutterSideMobile;
+    }
+
+    @media (min-width: $tablet) {
+      margin: {
+        left: $gutterSideTablet;
+        right: $gutterSideTablet;
+      }
+    }
+
+    @media (min-width: $desktop) {
+      margin: {
+        left: $gutterSide;
+        right: $gutterSide;
+      }
+    }
+  }
+
+  &__request-info-cta {
+    @include rems(24px);
+    line-height: 1.3333333333;
+    font-weight: 500;
+    color: $azBlue;
+    text-align: center;
+    padding: $gutterSideMobile;
+
+    @media (min-width: $tablet) {
+      padding: {
+        top: 40px;
+        bottom: 22px;
+      }
+    }
+  }
+
+  &__container {
+    background-color: $tan;
+    padding: $gutterSideMobile;
+
+    @media (min-width: $tablet) {
+      padding: {
+        left: $gutterSideTablet;
+        right: $gutterSideTablet;
+      }
+    }
+
+    @media (min-width: $desktop) {
+      padding: {
+        left: $gutterSide;
+        right: $gutterSide;
+      }
+    }
+  }
+
+  &__content-wrapper {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    @media (min-width: $desktop-small) {
+      flex-wrap: nowrap;
+    }
+  }
+
+  &__content {
+    max-width: 1920px;
+    flex-basis: 100%;
+    text-align: left;
+    margin-bottom: 0;
+
+    @media (min-width: $desktop-small) {
+      flex-basis: 80%;
+    }
+
+    // Additional breakpoint and very specific flex-basis set for pixel perfect design/QC
+    @media (min-width: $desktop) {
+      flex-basis: 87.24%;
+    }
+
+    p {
+      @include rems(16px);
+      line-height: 1.5;
+      font-weight: 400;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  &__button {
+    display: block;
+    flex-basis: 100%;
+    height: 100%;
+    align-self: center;
+    background-color: $azBlue;
+    color: white;
+    border: none;
+    margin-top: 24px;
+    padding: {
+      left: 20px;
+      right: 20px;
+      top: 8px;
+      bottom: 8px;
+    }
+
+    @media (min-width: $desktop-small) {
+      flex-basis: 20%;
+      margin: {
+        left: 24px;
+        top: 0;
+      }
+      padding: {
+        left: 24px;
+        right: 24px;
+      }
+    }
+
+    // Additional breakpoint, very specific flex-basis, and different button padding set for pixel perfect design/QC
+    @media (min-width: $desktop) {
+      flex-basis: 12.535%;
+      padding: {
+        left: 8px;
+        right: 8px;
+      }
+    }
+  }
+}

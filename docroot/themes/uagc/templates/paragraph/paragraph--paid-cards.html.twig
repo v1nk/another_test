@@ -1,0 +1,197 @@
+{% set cardFormat = paragraph.field_paid_cards_list_format.0.value %}
+{% set greyBackground = '' %}
+{% set leftAlignCards = '' %}
+{% set mobileAltView = '' %}
+{% set hideShowMorebtn = '' %}
+
+{% if paragraph.field_background_grey.value  == 1 %}
+    {% set greyBackground = ' --grey-background' %}
+{% endif %}
+
+{% if paragraph.field_left_align_content.value  == 1 %}
+    {% set leftAlignCards = ' --left-align-cards' %}
+{% endif %}
+
+{% if paragraph.field_reduce_cards_on_mobile.value  == 1 %}
+    {% set mobileAltView = ' --mobile-alt-view' %}
+{% endif %}
+
+<div class="paid-cards{{greyBackground}}{{leftAlignCards}}{{mobileAltView}}"  id="{{paragraph.field_anchor_id.0.value}}">
+    <div class="paid-cards__red-line"></div>
+    {% if content.field_navy_red_heading['#items'].value %}
+        <h2 class="paid-cards__heading">{{ content.field_navy_red_heading }}</h2>
+    {% else %}
+        <div style="height:32px;"></div>
+    {% endif %}
+    {% if content.field_content['#items'].value %}
+        <div class="paid-cards__content">{{ content.field_content.0 }}</div>
+    {% endif %}
+
+    {% if cardFormat == '-banner' %}
+
+        <div class="paid-cards__card--banner">
+            {% for item in paragraph.field_paid_card_list %}
+            {% if paragraph.field_reduce_cards_on_mobile.value  == 1 and loop.length < 7 %}
+                {% set hideShowMorebtn = ' --hide-show-more' %}
+            {% endif %}
+
+            {% if paragraph.field_reduce_cards_on_mobile.value  == 1 and loop.index > 6 %}
+                <a class="paid-cards__card-container --hide" href="{{ item.entity.field_cta.0.url }}">
+            {% else %}
+                <a class="paid-cards__card-container" href="{{ item.entity.field_cta.0.url }}">
+            {% endif %}
+
+                    <div class="paid-cards__card-heading">
+                        {% if item.entity.field_logo_upload.entity.field_media_file is not empty %}
+                            <div class="paid-cards__card-icon">
+                                {% set svg = file_url(item.entity.field_logo_upload.entity.field_media_file.entity.uri.0.value) |  replace({'%20': ' '}) %}
+
+                                {% set svgContents %}
+                                    {%  include( '.' ~ svg) ignore missing %}
+                                {% endset %}
+                                {{svgContents|stripsvgids|raw}}
+                            </div>
+                        {% elseif item.entity.field_logo_upload.entity.field_media_image is not empty %}
+                            <div class="paid-cards__card-icon">
+                                {% set src = file_url(item.entity.field_logo_upload.entity.field_media_image.entity.uri.0.value) |  replace({'%20': ' '}) %}
+                                <img src="{{src}}" alt="{{item.entity.field_logo_upload.entity.field_media_image.alt}}" />
+                            </div>
+                        {% elseif item.entity.field_paid_card_icon.0.value %}
+                            <div class="paid-cards__card-icon">
+                                {% if item.entity.field_paid_card_icon.0.value == 'right-arrow' %}
+                                    <span class="right-arrow">
+                                        {% include directory ~ '/templates/svg-icons/arrow-right.html.twig'%}
+                                    </span>
+                                {% elseif item.entity.field_paid_card_icon.0.value == 'credit-icon' %}
+                                    <span class="credit-icon">
+                                        {% include directory ~ '/templates/svg-icons/credit-icon.html.twig'%}
+                                    </span>
+                                {% elseif item.entity.field_paid_card_icon.0.value == 'happy-student' %}
+                                    <span class="happy-student">
+                                        {% include directory ~ '/templates/svg-icons/happy-student.html.twig'%}
+                                    </span>
+                                {% elseif item.entity.field_paid_card_icon.0.value == 'funding' %}
+                                    <span class="funding">
+                                        {% include directory ~ '/templates/svg-icons/funding.html.twig'%}
+                                    </span>
+                                {% endif %} 
+                            </div>
+                        {% endif %}
+                        {{ item.entity.field_heading_html.0.value|striptags('<p>,<u>,<strong>,<b>,<em>,<i>,<s>,<sup>,<sub>,<h1>,<h2>,<h3>,<h4>,<h5>')|raw }}
+                    </div>
+
+                    <div class="paid-cards__card-content">
+                        {% if item.entity.field_content.0.value %}
+                            <div class="paid-cards__card-text">{{ item.entity.field_content.0.value|striptags('<p>,<u>,<strong>,<b>,<em>,<i>,<s>,<sup>,<sub>,<ul>,<ol>,<li>,<h1>,<h2>,<h3>,<h4>,<h5>')|raw }}</div>
+                        {% endif %}
+                        <div class="paid-cards__card-cta-container">
+                            {% if item.entity.field_subheader_text.0.value %}
+                                <div class="paid-cards__degree-text">{{ item.entity.field_subheader_text.0.value }}</div>
+                            {% endif %}
+                            <div class="paid-cards__card-cta">
+                                <span class="paid-cards__card-cta-text">Learn More</span>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4.1665 10H15.8332" stroke="#AB0520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="#AB0520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </a> 
+
+            {% endfor %}
+        </div>
+        
+    {% elseif cardFormat == '-list-banner' %}
+
+        {% for item in paragraph.field_paid_card_list %}
+
+        {% if loop.index == 1 %}
+            <div class="paid-cards__card--banner">
+        {% elseif loop.index == 4 %}
+            <div class="paid-cards__card--list-banner">
+        {% endif %}
+
+            {% if paragraph.field_reduce_cards_on_mobile.value  == 1 and loop.length < 7 %}
+                {% set hideShowMorebtn = ' --hide-show-more' %}
+            {% endif %}
+
+            {% if paragraph.field_reduce_cards_on_mobile.value  == 1 and loop.index > 6 %}
+                <a class="paid-cards__card-container --hide" href="{{ item.entity.field_cta.0.url }}">
+            {% else %}
+                <a class="paid-cards__card-container" href="{{ item.entity.field_cta.0.url }}">
+            {% endif %}
+                <div class="paid-cards__card-heading">
+                    {% if item.entity.field_logo_upload.entity.field_media_file is not empty %}
+                        <div class="paid-cards__card-icon">
+                            {% set svg = file_url(item.entity.field_logo_upload.entity.field_media_file.entity.uri.0.value) |  replace({'%20': ' '}) %}
+
+                            {% set svgContents %}
+                                {%  include( '.' ~ svg) ignore missing %}
+                            {% endset %}
+                            {{svgContents|stripsvgids|raw}}
+                        </div>
+                    {% elseif item.entity.field_logo_upload.entity.field_media_image is not empty %}
+                        <div class="paid-cards__card-icon">
+                            {% set src = file_url(item.entity.field_logo_upload.entity.field_media_image.entity.uri.0.value) |  replace({'%20': ' '}) %}
+                            <img src="{{src}}" alt="{{item.entity.field_logo_upload.entity.field_media_image.alt}}" />
+                        </div>
+                    {% elseif item.entity.field_paid_card_icon.0.value %}
+                        <div class="paid-cards__card-icon">
+                            {% if item.entity.field_paid_card_icon.0.value == 'right-arrow' %}
+                                <span class="right-arrow">
+                                    {% include directory ~ '/templates/svg-icons/arrow-right.html.twig'%}
+                                </span>
+                            {% elseif item.entity.field_paid_card_icon.0.value == 'credit-icon' %}
+                                <span class="credit-icon">
+                                    {% include directory ~ '/templates/svg-icons/credit-icon.html.twig'%}
+                                </span>
+                            {% elseif item.entity.field_paid_card_icon.0.value == 'happy-student' %}
+                                <span class="happy-student">
+                                    {% include directory ~ '/templates/svg-icons/happy-student.html.twig'%}
+                                </span>
+                            {% elseif item.entity.field_paid_card_icon.0.value == 'funding' %}
+                                <span class="funding">
+                                    {% include directory ~ '/templates/svg-icons/funding.html.twig'%}
+                                </span>
+                            {% endif %} 
+                        </div>
+                    {% endif %}
+                    {{ item.entity.field_heading_html.0.value|striptags('<p>,<u>,<strong>,<b>,<em>,<i>,<s>,<sup>,<sub>,<h1>,<h2>,<h3>,<h4>,<h5>')|raw }}
+                </div>
+
+                <div class="paid-cards__card-content">
+                    {% if item.entity.field_content.0.value %}
+                        <div class="paid-cards__card-text">{{ item.entity.field_content.0.value|striptags('<p>,<u>,<strong>,<b>,<em>,<i>,<s>,<sup>,<sub>,<ul>,<ol>,<li>,<h1>,<h2>,<h3>,<h4>,<h5>')|raw }}</div>
+                    {% endif %}
+                    <div class="paid-cards__card-cta">
+                        <span class="paid-cards__card-cta-text">Learn More</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.1665 10H15.8332" stroke="#AB0520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="#AB0520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+            </a>
+
+        {% if loop.index == 3 %}
+            </div>
+        {% elseif loop.last %}
+            </div>
+        {% endif %}   
+
+        {% endfor %}
+    {% endif %}
+
+    {% if paragraph.field_reduce_cards_on_mobile.value  == 1 %}
+        <div class="paid-cards__view-more{{hideShowMorebtn}}">
+            <a href="javascript:void(0)" class="paid-cards__view-more-btn button--blue" id="js-show-more">
+                <span class="paid-cards__view-more-text">See More</span>
+                <svg class="paid-cards__view-more-svg" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 7.5L10 12.5L15 7.5" stroke="#0C234B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+    {% endif %}
+ 
+</div>

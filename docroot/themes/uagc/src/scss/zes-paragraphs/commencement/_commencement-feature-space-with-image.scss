@@ -1,0 +1,60 @@
+.commencement-feature-space-with-image {
+  max-height: 315px;
+  overflow: hidden; // hide skewed right side
+  position: relative;
+
+  .section__image {
+    overflow: hidden;
+    height: 225px;
+    background-position: top;
+    @include breakpoint(1024px, $no-query: true) {
+      height: 500px;
+    }
+  }
+
+  .section__wrapper {
+    display: flex;
+    justify-content: center;
+    top: unset;
+    bottom: 25px;
+    left: 0;
+    position: absolute;
+    width: 90%;
+    margin-right: 0px;
+    padding: {
+      top: 4%;
+      left: 2%;
+      bottom: 2%;
+      right: 2%;
+    }
+
+    @include breakpoint(min-width $bp--mobile) {
+      padding-top: 2%;
+      width: 40%;
+    }
+  }
+
+  .section__wrapper-inner {
+    .button--transparent {
+      @extend %button-primary;
+      display: inline;
+    }
+  }
+
+  .section__header {
+    @extend %h2;
+    color: white;
+    font-weight: 400;
+    @include breakpoint(1400px, $no-query: true) {
+    }
+
+    margin: 0;
+    span {
+      display: block;
+      font-size: 1.5rem;
+      @include breakpoint(1400px, $no-query: true) {
+      }
+      margin: 15px 0;
+    }
+  }
+}

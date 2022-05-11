@@ -1,0 +1,22 @@
+{#
+  content:
+  field-collection-item--field-img-link-blocks-top-row.html.twig
+  field-collection-item--field-img-link-blocks-bottom-row.html.twig
+#}
+
+<div class="layout-constrain--narrow">
+  <section class="section section--image-link-blocks">
+
+    {% if (content.field_title|render) %}
+      <div class="section__header-wrapper">
+        <h2 class="section__header">{{ content.field_title }}</h2>
+      </div>
+    {% endif %}
+    <div class="section__featured-row">
+      {{ content.field_img_link_blocks_top_row }}
+    </div>
+    <div class="section__secondary-row">
+      {{ content.field_img_link_blocks_bottom_row }}
+    </div>
+  </section>
+</div>

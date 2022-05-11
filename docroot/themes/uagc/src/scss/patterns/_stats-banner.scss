@@ -1,0 +1,265 @@
+@use "sass:math";
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+$statGutterMobile: 24px;
+$statGutterDesktop: 16px;
+
+.stats-banner {
+  @include globalGutters;
+  --backgroundColor: #{$azBlue};
+  --textColor: #ffffff;
+  --barColor: #{$orange};
+  --headerColor: #ffffff;
+  --preheaderColor: #ffffff;
+  --linkColor: #{$orange};
+  --linkColorHover: #{$orange};
+  --progressColor: #{$orange};
+  --listBackgroundColor: #ffffff;
+  --listFontColor: #{$azBlue};
+  --numberColor: #ffffff;
+
+  background-color: var(--backgroundColor);
+  color: var(--textColor);
+  &.--blue {
+    --backgroundColor: #{$azBlue};
+    --textColor: #ffffff;
+    --barColor: #{$orange};
+    --headerColor: #ffffff;
+    --preheaderColor: #ffffff;
+    --linkColor: #ffffff;
+    --linkColorHover: #{$azRed};
+    --progressColor: #{$orange};
+    --listFontColor: #{$azBlue};
+    --numberColor: #ffffff;
+  }
+  &.--grey {
+    --backgroundColor: #{$lighterGray};
+    --textColor: #{$black};
+    --barColor: #{$azRed};
+    --headerColor: #{$azBlue};
+    --preheaderColor: #{$azRed};
+    --linkColor: #{$azRed};
+    --linkColorHover: #{$black};
+    --progressColor: #{$orange};
+    --listFontColor: #{$azBlue};
+    --numberColor: #{$azBlue};
+  }
+
+  &__header {
+    position: relative;
+    @include headline5;
+
+    color: var(--headerColor);
+    text-align: center;
+    padding: {
+      top: 24px;
+    }
+    margin: {
+      bottom: 16px;
+    }
+
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        max-width: 1440px;
+        margin: {
+          left: auto;
+          right: auto;
+        }
+        padding: {
+          left: 0;
+          right: 0;
+        }
+      }
+	  }
+    &::before {
+      position: absolute;
+      content: "";
+      width: 80px;
+      height: 2px;
+      background-color: var(--barColor);
+      bottom: 100%;
+      left: calc(50% - 40px);
+    }
+  }
+  &__preheader {
+    @include headline7;
+    font-weight: 400;
+    color: var(--preheaderColor);
+    text-align: center;
+    margin: {
+      bottom: 40px;
+    }
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        max-width: 1440px;
+        margin: {
+          left: auto;
+          right: auto;
+        }
+        padding: {
+          left: 0;
+          right: 0;
+        }
+      }
+	  }
+  }
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    margin: {
+      left: $statGutterMobile * -1;
+      right: $statGutterMobile * -1;
+    }
+    @media (min-width: $desktop-small) {
+      margin: {
+        left: $statGutterDesktop * -1;
+        right: $statGutterDesktop * -1;
+      }
+    }
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        max-width: 1440px;
+        margin: {
+          left: auto;
+          right: auto;
+        }
+        padding: {
+          left: 0;
+          right: 0;
+        }
+      }
+	  }
+  }
+  &__item {
+    flex-basis: 100%;
+    margin: {
+      bottom: 24px;
+    }
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    @media (min-width: $desktop-small) {
+      flex-basis: math.div(1, 3) * 100%;
+      margin: {
+        bottom: 32px;
+      }
+    }
+
+    &:last-of-type {
+      margin-bottom: 0px;
+
+      @media (min-width: $desktop-small) {
+        margin-bottom: 24px;
+      }
+    }
+  }
+  &__item-content {
+    margin: {
+      left: $statGutterMobile;
+      right: $statGutterMobile;
+    }
+    position: relative;
+    @media (min-width: $desktop-small) {
+      margin: {
+        left: 16px;
+        right: 16px;
+      }
+    }
+  }
+  &__item-header {
+    @include subHeader;
+    color: var(--headerColor);
+  }
+  &__number {
+    @include rems(32px);
+    line-height: 1.25;
+    font-weight: 500;
+    color: var(--numberColor);
+
+    @media (min-width: $desktop-small) {
+      @include rems(48px);
+      line-height: 1.166667;
+    }
+  }
+  &__description {
+    @include textStyle1;
+  }
+  &__bar {
+    max-width: 100%;
+    height: 8px;
+    border-radius: 40px;
+    background-color: $orange;
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      border-radius: 40px;
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  &__list-items {
+    display: flex;
+  }
+  &__list-item {
+    background-color: var(--listBackgroundColor);
+    color: var(--listFontColor);
+    padding: {
+      top: 8px;
+      bottom: 8px;
+      left: 8px;
+      right: 8px;
+    }
+    border-radius: 8px;
+    margin: {
+      right: 4px;
+    }
+  }
+  &__link-container {
+    color: var(--linkColor);
+    text-align: center;
+    padding: {
+      top: 40px;
+    }
+
+    @media (min-width: $desktop-small) {
+      padding: {
+        top: 16px;
+      }
+    }
+    a {
+      @include textStyle1;
+      color: var(--linkColor);
+      text-decoration: underline;
+      &:visited {
+        color: var(--linkColor);
+      }
+      &:hover,
+      &:focus {
+        color: var(--linkColorHover);
+      }
+    }
+  }
+
+  &__source-text {
+    @include textSmall;
+    color: $lightGray;
+    text-align: center;
+    padding: {
+      top: 40px;
+    }
+
+    @media (min-width: $desktop-small) {
+      padding: {
+        top: 16px;
+      }
+    }
+  }
+}

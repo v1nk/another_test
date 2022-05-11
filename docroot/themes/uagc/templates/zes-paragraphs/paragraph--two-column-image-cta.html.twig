@@ -1,0 +1,32 @@
+<section class="section section--image-cta">
+  <div class="layout-constrain--narrow">
+    <div class="section__inner">
+      <a href="{{ content.field_link.0['#url'] }}" class="section__item">
+        <div class="section__item-image js-background-image">
+          {{ content.field_cta_image }}
+        </div>
+        <div class="section__item-text">
+          {% if content.field_title.0 is not empty %}
+            <h2>{{ content.field_title }}</h2>
+          {% else %}
+            <div></div>
+          {% endif %}
+          <p class="section__item-text-subtitle">{{ content.field_link.0['#title'] }}</p>
+        </div>
+      </a>
+      <a href="{{ content.field_link_2.0['#url'] }}" class="section__item">
+        <div class="section__item-image js-background-image">
+          {{ content.field_cta_image_2 }}
+        </div>
+        <div class="section__item-text">
+          {% if content.field_title_2.0 is not empty %}
+            <h2>{{ content.field_title_2 }}</h2>
+          {% else %}
+            <div></div>
+          {% endif %}
+          <p class="section__item-text-subtitle">{{ content.field_link_2.0['#title'] }}</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>

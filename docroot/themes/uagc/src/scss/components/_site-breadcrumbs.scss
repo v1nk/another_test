@@ -1,0 +1,93 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.site-breadcrumbs {
+  max-width: 100%;
+  width: 100%;
+  padding: {
+    top: 19px;
+    bottom: 19px;
+    left: $gutterSideMobile;
+    right: $gutterSideMobile;
+  }
+
+  @media (min-width: $tablet) {
+    padding: {
+      left: $gutterSideTablet;
+      right: $gutterSideTablet;
+    }
+  }
+
+  @media (min-width: $desktop) {
+    padding: {
+      top: 16px;
+      bottom: 16px;
+      left: $gutterSide;
+      right: $gutterSide;
+    }
+  }
+  &__items {
+    display: flex;
+  }
+
+  &__item {
+    display: flex;
+    &:last-child {
+      .site-breadcrumbs__link-arrow {
+        display: none;
+      }
+    }
+  }
+
+  &__link {
+    @include rems(14px);
+    line-height: calc(18 / 14 * 100%);
+    color: $darkGray;
+    display: flex;
+    align-items: center;
+    padding: {
+      right: 10px;
+    }
+    transition: color 0.25s;
+
+    &:hover {
+      color: $azRed;
+      text-decoration: underline;
+      svg {
+        stroke: $azRed !important;
+      }
+    }
+    &:focus {
+      color: $azRed;
+    }
+    @media (min-width: $desktop) {
+      @include rems(16px);
+      line-height: 1.5;
+      padding-right: 22px;
+    }
+    &.--current {
+      &:hover {
+        color: $darkGray;
+        text-decoration: none;
+      }
+    }
+  }
+  &__link-arrow {
+    display: flex;
+    align-items: center;
+    padding: {
+      right: 10px;
+    }
+    @media (min-width: $desktop) {
+      padding-right: 22px;
+    }
+    svg {
+      height: 10px;
+      width: 6px;
+      stroke: $darkGray;
+      transition: stroke 0.25s;
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a taxonomy term.
+ *
+ * Available variables:
+ * - url: URL of the current term.
+ * - name: Name of the current term.
+ * - content: Items for the content of the term (fields and description).
+ *   Use 'content' to print them all, or print a subset such as
+ *   'content.description'. Use the following code to exclude the
+ *   printing of a given child element:
+ *   @code
+ *   {{ content|without('description') }}
+ *   @endcode
+ * - attributes: HTML attributes for the wrapper.
+ * - page: Flag for the full page state.
+ * - term: The taxonomy term entity, including:
+ *   - id: The ID of the taxonomy term.
+ *   - bundle: Machine name of the current vocabulary.
+ * - view_mode: View mode, e.g. 'full', 'teaser', etc.
+ *
+ * @see template_preprocess_taxonomy_term()
+ *
+ * @ingroup themeable
+ */
+#}
+<div class="discipline__container">
+  <div class="discipline__left-column">
+    <h2 class="discipline__menu-title">More in this Section</h2>
+
+    {{ drupal_entity('block', 'degreeprograms', check_access=FALSE) }}
+  </div>
+
+  <div class="discipline__right-column">
+    <div{{ attributes }}>
+      <h1 class="discipline__title">{{ '@discipline Courses at Global Campus'|t({ '@discipline': name[0]['#context']['value'] }) }}</h1>
+      <div class="discipline__description">
+        {{ content.description }}
+      </div>
+      <hr>
+      <h2 class="discipline__header">{{ '@discipline Class Descriptions and Credit Information'|t({ '@discipline': name[0]['#context']['value'] }) }}</h2>
+      {{ drupal_view('discipline_courses', 'default', term.id) }}
+    </div>
+  </div>
+</div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    let dMenu = document.querySelector('.discipline__menu');
+    if(dMenu) {
+      if (window.innerWidth <= 768) {
+        dMenu.classList.add('--minimized');
+        let links = dMenu.querySelectorAll('.nav__link');
+        if (links.length > 0) {
+          let maxHeight = links.length * 48;
+          dMenu.style.maxHeight = maxHeight + 'px';
+        }
+
+        let menuTitle = document.querySelector('.discipline__menu-title');
+        if (menuTitle) {
+          menuTitle.addEventListener('click', function() {
+            dMenu.classList.toggle('--minimized');
+            menuTitle.classList.toggle('--open');
+          });
+        }
+
+      }
+    }
+  });
+</script>

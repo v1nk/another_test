@@ -1,0 +1,30 @@
+{% set useGreyBackground = "" %}
+{% if paragraph.field_display_grey_background.0.value == 1 %}
+    {% set useGreyBackground = "--use-grey-background" %}
+{% endif %}
+
+{% set useBottomPadding = "" %}
+{% if paragraph.field_add_bottom_spacer.0.value == 1 %}
+    {% set useBottomPadding = "--use-bottom-padding" %}
+{% endif %}
+
+<div class="hero-no-image {{ useGreyBackground }} {{ useBottomPadding }}">
+    <div class="hero-no-image__red-box">
+        {% if paragraph.field_pre_header.0.value is not empty %}
+            <div class="hero-no-image__pre-header">
+                {{paragraph.field_pre_header.0.value}}
+            </div>
+        {% endif %}
+        <h1 class="hero-no-image__header">{{paragraph.field_heading.0.value}}</h1>
+        {% if paragraph.field_subheading.0.value is not empty %}
+            <div class="hero-no-image__sub-header">
+                {{paragraph.field_subheading.0.value}}
+            </div>
+        {% endif %}
+        {% if paragraph.field_cta_link.0.title is not empty %}
+            <a href="{{paragraph.field_cta_link.0.uri}}" class="hero-no-image__cta-link button--blue">
+                {{paragraph.field_cta_link.0.title}}
+            </a>
+        {% endif %}
+    </div>
+</div>

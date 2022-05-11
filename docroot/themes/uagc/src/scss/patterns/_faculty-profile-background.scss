@@ -1,0 +1,129 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.faculty-profile-background {
+  &:last-child {
+    .faculty-profile-background__list {
+      margin-bottom: 0;
+    }
+  }
+
+  &__header-container {
+    display: flex;
+    align-items: center;
+    padding: {
+      bottom: 24px;
+    }
+  }
+
+  &__header {
+    @include rems(20px);
+    line-height: 1.2;
+    color: $azBlue;
+    font-weight: 500;
+    padding: {
+      left: 16px;
+    }
+    @media (min-width: $tablet) {
+      @include rems(24px);
+      line-height: 1.33;
+    }
+  }
+
+  &__icon {
+    svg {
+      width: 32px;
+      height: auto;
+    }
+    .--red & {
+      path {
+        stroke: $azRed;
+      }
+    }
+
+    .--orange & {
+      path {
+        stroke: $orange;
+      }
+    }
+  }
+
+  &__icon-grad-cap {
+    .--red & {
+      path {
+        &:last-child {
+          fill: $azRed;
+        }
+      }
+    }
+
+    .--orange & {
+      path {
+        &:last-child {
+          fill: $orange;
+        }
+      }
+    }
+  }
+
+  &__bullet {
+    float: left;
+    margin-left: -16px;
+    svg,
+    circle {
+      fill: $azRed;
+    }
+  }
+
+  &__list {
+    margin: {
+      bottom: 32px;
+    }
+
+    @media (min-width: $tablet) {
+      margin: {
+        bottom: 40px;
+      }
+    }
+  }
+
+  &__list-item {
+    @include rems(14px);
+    line-height: 1.29;
+    font-weight: 500;
+    color: $black;
+    position: relative;
+    margin: 0;
+    padding: {
+      bottom: 24px;
+      left: 20px;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    @media (min-width: $tablet) {
+      @include rems(16px);
+      line-height: 1.5;
+    }
+  }
+
+  &__list-text {
+    @include rems(14px);
+    line-height: 1.28571428;
+    font-weight: 400;
+    color: $black;
+    margin: {
+      bottom: 0;
+      top: 4px;
+    }
+
+    @media (min-width: $tablet) {
+      @include rems(16px);
+      line-height: 1.5;
+    }
+  }
+}

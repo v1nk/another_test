@@ -1,0 +1,87 @@
+{% set heroWithForm = '' %}
+{% if paragraph.field_add_form_to_hero.value == '1' %}
+  {% set heroWithForm = ' --hero-form' %}
+{% endif %}
+
+{% set whiteBackgroundClass = '' %}
+{% if paragraph.field_white_background.value == '1' %}
+  {% set whiteBackgroundClass = '--white-background' %}
+{% endif %}
+
+{# Changed default to inside content box to simplify as requested by uagc #}
+{% set subheaderPosition = '--subheading-inside-content-box' %}
+
+{% if paragraph.field_subheader_position.0.value != '' %}
+  {% set subeheaderPosition = '--subheading-' ~ paragraph.field_subheader_position.0.value %}
+{% endif %}
+
+{% if paragraph.field_add_form_to_hero.value == '1' %}
+<div class="paid-hero-space-form">
+  {# Additional if statement at bottom that closes this div #}
+{% endif %}
+<div class="paid-hero-space{{heroWithForm}} {{subheaderPosition}} {{whiteBackgroundClass}} {{ (node.getType == 'paid_landing_page') ? '--less-wide' : '' }}">
+ 
+    <div class="paid-hero-space__image background-cover js-background-image">
+      <img class="paid-hero-space__image-desktop" src="{{paragraph.field_media_library.entity.field_media_image.0.entity.uri.value|image_style('paid_hero_header_899x600')}}" alt="{{paragraph.field_media_library.entity.field_media_image.alt}}">
+      <img class="paid-hero-space__image-mobile" src="{{paragraph.field_media_library_mobile.entity.field_media_image.0.entity.uri.value|image_style('paid_hero_mobile_image_768x512')}}" alt="{{paragraph.field_media_library_mobile.entity.field_media_image.alt}}">
+    </div>
+    <div class="paid-hero-space__content-wrapper">
+      {% if paragraph.field_add_form_to_hero.value == '1' %}
+        <div class="paid-hero-space__content">
+          <h1 class="paid-hero-space__main-heading">{{ content.field_heading.0 }}</h1>
+        </div>
+      {% else %}
+        {% if content.field_subheading['#items'].value %}
+          <div class="paid-hero-space__heading-wrapper">
+            <p class="paid-hero-space__heading">{{ content.field_subheading.0 }}{{paragraph.field_white_background‎}}</p>
+          </div>
+        {% endif %}
+        {% if content.field_heading['#items'].value or content.field_text['#items'].value or content.field_cta['#items'].value %}
+          <div class="paid-hero-space__content">
+            {% if content.field_heading['#items'].value %}
+              <h1 class="paid-hero-space__main-heading">{{ content.field_heading.0 }}</h1>
+            {% endif %}
+            {% if content.field_text['#items'].value %}
+              <div class="paid-hero-space__copy-container">
+                <p class="paid-hero-space__copy">{{ content.field_text.0 }}</p>
+              </div>
+            {% endif %}
+            {% if content.field_cta['#items'].value %}
+              <div class="paid-hero-space__cta-container">
+                <a href="{{paragraph.field_cta.0.url}}" class="paid-hero-space__cta --alt-cta">{{paragraph.field_cta.0.title}}</a>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endif %}
+
+
+      {# Added three new fields so checking if they have a value. If any of the three fields below have value, do nothing or else display the original paragraph options #}
+      {% if content.field_heading['#items'].value or content.field_text['#items'].value or content.field_cta['#items'].value %}
+      {% else %}
+        {{ content.field_paragraphs }}
+      {% endif %}
+    </div>
+</div>
+
+{% if paragraph.field_add_form_to_hero.value == '1' %}
+  <div class="form-twostep js-show-fields-in-order js-form-twostep" id="{{paragraph.field_anchor_id.0.value}}" data-containerid="{{ node.bundle ~ node.getCreatedTime() | clean_class }}">
+    <div class="form-twostep__wrapper">
+      <h2 class="form-twostep__header">Request More Information</h2>
+      <div class="form-twostep__status">
+        <div class="form-twostep__status-steps">
+          <span class="form-twostep__status-label">Step 1 of 2</span>
+          <div class="form-twostep__status-bar"></div>
+        </div>
+      </div>
+      <div class="form-twostep__form one-step-webform" data-containerid="{{ node.bundle ~ node.getCreatedTime() | clean_class}}">
+        {{drupal_entity('webform', 'lead_flow_system', check_access=false)}}
+      </div>
+    </div>
+  </div>
+
+  {{attach_library('uagc/lead-form-logic')}}
+  {{attach_library('uagc/two-step-form')}}
+{# Closing div that opens at the top #}
+</div>
+{% endif %}

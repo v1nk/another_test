@@ -1,0 +1,440 @@
+.commencement-header {
+  width: 100%;
+}
+
+.commencement-header__close {
+  margin: {
+    left: auto;
+  }
+  z-index: 10;
+  width: 0;
+  height: 0;
+  position: relative;
+  background-color: $azBlue;
+  transform: translate(-20px, 20px);
+  outline: none;
+
+  &:before,
+  &:after {
+    content: " ";
+    width: 40px;
+    border-top: solid 3px #ffffff;
+    position: absolute;
+    left: 0;
+  }
+
+  &:before {
+    top: 15px;
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    bottom: 6px;
+    transform: rotate(-45deg);
+  }
+
+  &-container {
+    height: 40px;
+    width: 100%;
+    @include breakpoint(min-width $bp--desktop) {
+      display: none;
+    }
+  }
+}
+
+.commencement-header__hamburger {
+  flex-basis: 50%;
+  display: flex;
+  cursor: pointer;
+
+  button {
+    outline: none;
+
+    svg {
+      fill: $azBlue;
+      align-self: center;
+    }
+  }
+
+  @include breakpoint(min-width $bp--desktop) {
+    display: none;
+  }
+}
+
+.commencement-header__logo {
+  display: none;
+
+  &-mobile {
+    flex-basis: 50%;
+    align-self: center;
+    height: 90px;
+    display: flex;
+    @include breakpoint(min-width $bp--desktop) {
+      display: none;
+    }
+
+    img {
+      transform: translateX(-50%);
+      align-self: center;
+      max-width: 225px;
+      width: 100%;
+    }
+
+    a {
+      align-self: center;
+    }
+  }
+
+  a {
+    align-self: center;
+  }
+
+  img {
+    transform: translateX(-50%);
+    min-width: 225px;
+    max-width: 225px;
+    align-self: center;
+  }
+
+  @include breakpoint(min-width $bp--desktop) {
+    align-self: center;
+    height: 90px;
+    flex-basis: 10%;
+    margin-left: 20px;
+    display: flex;
+
+    img {
+      transform: none;
+    }
+  }
+
+  @include breakpoint(min-width $bp--big-desktop) {
+    flex-basis: 10%;
+    font-size: 1rem;
+  }
+}
+
+.commencement-header__cta {
+  font-size: 0.875rem;
+  font-weight: 600;
+  width: calc(100% - 74px);
+  margin: {
+    left: 25px;
+    right: auto;
+    top: 0;
+    bottom: 0;
+  }
+  position: relative;
+  text-decoration: none;
+  justify-content: center;
+  background-color: $orange;
+  color: $azBlue;
+  text-transform: none;
+  padding: {
+    left: 10px;
+    right: 10px;
+    top: 14px;
+    bottom: 14px;
+  }
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  order: 3;
+
+  @include breakpoint(min-width $bp--desktop) {
+    margin: 0 auto;
+    order: 2;
+    display: flex;
+    max-width: 235px;
+    width: 235px;
+    flex-basis: 35%;
+    margin: {
+      right: 20px;
+      top: 15px;
+      left: 0px;
+      right: 20px;
+    }
+    align-items: center;
+    align-self: flex-start;
+  }
+
+  @include breakpoint(min-width $bp--big-desktop) {
+    flex-basis: 15%;
+    font-size: 1rem;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: lighten($orange, 10%);
+    color: $azBlue;
+    text-decoration: none;
+  }
+}
+
+.commencement-header__menu {
+  justify-content: center;
+  padding: 15px;
+  margin: 0;
+  align-items: stretch;
+  order: 1;
+
+  @include breakpoint(min-width $bp--desktop) {
+    flex-basis: 50%;
+    display: flex;
+  }
+
+  &-wrapper {
+    display: flex;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.36);
+  }
+
+  &-title {
+    padding-left: 25px;
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-weight: 300;
+    position: relative;
+
+    @include breakpoint(min-width $bp--desktop) {
+      display: none;
+    }
+
+    &:after {
+      width: 75px;
+      height: 0;
+      border-top: solid 1px #ffffff;
+      content: " ";
+      display: block;
+      position: absolute;
+      left: 40%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &-item {
+    margin: {
+      bottom: 25px;
+    }
+    padding: {
+      left: 10px;
+      right: 10px;
+    }
+
+    list-style-type: none;
+    display: flex;
+    align-items: stretch;
+    text-align: center;
+
+    @include breakpoint(min-width $bp--desktop) {
+      margin: {
+        bottom: 0;
+      }
+    }
+    @include breakpoint(min-width $bp--medium-desktop) {
+      padding: {
+        left: 20px;
+        right: 20px;
+      }
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 700;
+
+      @include breakpoint(min-width $bp--desktop) {
+        color: $azBlue;
+      }
+
+      @include breakpoint(min-width $bp--medium-desktop) {
+        font-size: 1.125rem;
+      }
+
+      &:hover,
+      &:active,
+      &:focus,
+      &.\--active {
+        color: $orange;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &-container {
+    width: 320px;
+    height: 100vh;
+    position: absolute;
+    left: -320px;
+    justify-content: start;
+    background-color: $azBlue;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.5s ease;
+    flex-wrap: nowrap;
+    overflow: scroll;
+    padding-bottom: 85px;
+
+    @include breakpoint(min-width $bp--desktop) {
+      overflow: auto;
+      flex-wrap: wrap;
+      align-items: stretch;
+      background-color: #ffffff;
+      width: 100%;
+      position: relative;
+      display: flex;
+      height: 180px;
+      justify-content: space-between;
+      flex-direction: row;
+      left: 0;
+      transform: none;
+      padding-bottom: 0;
+    }
+
+    &.--hide-submenu-on-desktop {
+      @include breakpoint(min-width $bp--desktop) {
+        height: 90px;
+      }
+
+      .commencement-header__submenu-container {
+        @include breakpoint(min-width $bp--desktop) {
+          display: none;
+        }
+      }
+    }
+
+    &.\--open {
+      transform: translateX(100%);
+    }
+  }
+}
+
+.commencement-header__submenu {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  list-style-type: none;
+  display: flex;
+  align-items: stretch;
+  text-align: center;
+  padding: 15px;
+  margin: 0 auto;
+  width: 100%;
+
+  &-title {
+    padding-left: 25px;
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-weight: 300;
+    position: relative;
+
+    @include breakpoint(min-width $bp--desktop) {
+      display: none;
+    }
+
+    &:after {
+      width: 75px;
+      height: 0;
+      border-top: solid 1px #ffffff;
+      content: " ";
+      display: block;
+      position: absolute;
+      left: 60%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &-item {
+    display: flex;
+    margin: {
+      bottom: 20px;
+    }
+
+    padding: {
+      left: 10px;
+      right: 10px;
+    }
+
+    @include breakpoint(min-width $bp--desktop) {
+      margin: {
+        bottom: 0px;
+      }
+    }
+
+    @include breakpoint(min-width $bp--medium-desktop) {
+      padding: {
+        left: 20px;
+        right: 20px;
+      }
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      color: #ffffff;
+      font-size: 0.875rem;
+      font-weight: 600;
+
+      @include breakpoint(min-width $bp--medium-desktop) {
+        font-size: 1rem;
+      }
+
+      &:hover,
+      &:active,
+      &:focus,
+      &.\--active {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  @include breakpoint(min-width $bp--desktop) {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  &-container {
+    display: flex;
+    background-color: $azBlue;
+    width: 100%;
+    justify-content: start;
+    order: 2;
+    flex-direction: column;
+    align-items: stretch;
+
+    @include breakpoint(min-width $bp--desktop) {
+      flex-direction: row;
+      order: 3;
+      height: 90px;
+      justify-content: space-between;
+    }
+  }
+}
+
+.commencement-header__alert-bar {
+  width: 100%;
+  padding: {
+    top: 10px;
+    bottom: 10px;
+    left: 20px;
+    right: 20px;
+  }
+
+  color: white;
+  background-color: $azBlue;
+  text-align: center;
+
+  a,
+  a:visited,
+  a:hover {
+    color: white;
+    text-decoration: underline;
+  }
+}

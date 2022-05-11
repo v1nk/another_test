@@ -1,0 +1,43 @@
+{% set greyBackground = '' %}
+
+{% if paragraph.field_display_grey_background.value  == 1 %}
+    {% set greyBackground = ' --grey-background' %}
+{% endif %}
+
+{% set paddingSelection = paragraph.field_top_bottom_padding.0.value %}
+{% set paddingClass = '' %}
+
+{% if paddingSelection == '--default' %}
+  {% set paddingClass = ' --default' %}
+{% elseif paddingSelection == '--paid' %}
+  {% set paddingClass = ' --paid' %}
+{% elseif paddingSelection == '--reduced-padding' %}
+  {% set paddingClass = ' --reduced-padding' %}
+{% elseif paddingSelection == null and node.getType == 'paid_landing_page' %}
+  {% set paddingClass = ' --paid' %}
+{% elseif paddingSelection == null and node.getType != 'paid_landing_page' %}
+  {% set paddingClass = ' --default' %}
+{% endif %}
+
+{% if paragraph.field_custom_css.0.value is not empty %}
+  <style>
+    {{ paragraph.field_custom_css.0.value }}
+  </style>
+{% endif %}
+
+<div class="footnotes{{greyBackground}}{{paddingClass}}">
+  <div class="footnotes__wysiwyg">
+    {% for item in paragraph.field_disclaimer_footnotes %}
+      {% autoescape false %}
+      <div class="footnotes__disclaimer">
+        {% if item.entity.field_content.0.value %}
+          <span class="footnotes__symbol">{{item.entity.field_content.0.value}}</span>
+        {% else %}
+          <span>{{item.entity.field_disclaimer_symbol.0.value}} </span>
+        {% endif %}
+        {{ item.entity.field_disclaimer.entity.body.value}}
+      </div>
+      {% endautoescape %}
+    {% endfor %}
+  </div>
+</div>

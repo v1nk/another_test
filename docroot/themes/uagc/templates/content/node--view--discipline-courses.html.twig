@@ -1,0 +1,22 @@
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--display-mode-' ~ view_mode|clean_class,
+  ]
+%}
+{{ attach_library('classy/node') }}
+<article {{ attributes.addClass(classes) }}>
+  <h4 class="course-teaser__title" id="{{ node.id }}">
+    {{ label }}
+  </h4>
+  <div class="course-teaser__credits">
+    {{ content.field_course_credits }} Credits
+  </div>
+  <div class="course-teaser__description">
+    {{ content.body }}
+  </div>
+</article>

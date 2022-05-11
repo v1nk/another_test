@@ -1,0 +1,142 @@
+.section--degree-interest {
+  &-header.section--degree-interest-header.section--degree-interest-header.section--degree-interest-header.section--degree-interest-header {
+    font-size: 1.5625rem;
+
+    font-weight: 400;
+    color: $azBlue;
+  }
+
+  .section--degree-finder + &,
+  .section--testimony + &,
+  .section--degree-header + &,
+  .section--feature-space + &,
+  .section--feature-space-image + &,
+  .section--link-icon-block + &,
+  .section--media-bar + &,
+  .section--wysiwyg.has-background + & {
+    margin-top: -64px; // remove space between certain sections
+  }
+  margin: 0 0 16px 0;
+  background-size: 0;
+
+  @include breakpoint(700px, $no-query: true) {
+    position: relative;
+
+    &:after {
+      background: #fff;
+      bottom: 0;
+      content: "";
+      display: block;
+      left: 50%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 0;
+    }
+  }
+
+  .section__wrapper {
+    @include breakpoint(700px, $no-query: true) {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  .section__header {
+    background-image: url(../images/zes-images/blue-line-pattern.png);
+    width: 100%;
+    @include breakpoint(700px, $no-query: true) {
+      background-image: none;
+      flex-basis: 25%;
+    }
+
+    h2 {
+      margin: 0 0 4px 0;
+      padding: 20px 0 20px 15px;
+      @include breakpoint(870px, $no-query: true) {
+        margin: 0;
+        padding: 65px 0 0 40px;
+      }
+      span {
+        display: block;
+        @include breakpoint(870px, $no-query: true) {
+        }
+      }
+    }
+  }
+
+  .section__content {
+    background: #fff;
+    @include breakpoint(700px, $no-query: true) {
+      flex-basis: 75%;
+      padding: 25px 0 25px 25px;
+    }
+  }
+
+  .section__top-row {
+    padding-bottom: 15px;
+    p {
+      margin: 0 0 8px;
+    }
+  }
+
+  &.is-mobile {
+    .section__programs {
+    }
+  }
+}
+.section__programs {
+  @include breakpoint(1000px, $no-query: true) {
+    float: left;
+    width: 60%;
+  }
+
+  .view {
+    .view__content {
+      @include breakpoint($bp--mobile, $no-query: true) {
+        column-count: 2;
+      }
+    }
+  }
+  .view__row {
+    @include breakpoint($bp--mobile, $no-query: true) {
+      break-inside: avoid;
+      padding-bottom: 10px;
+    }
+    a {
+      color: $azRed;
+      text-decoration: underline;
+    }
+  }
+}
+.section__browse {
+  display: none;
+  @include breakpoint(700px, $no-query: true) {
+    display: block;
+    padding-top: 30px;
+  }
+  @include breakpoint(1000px, $no-query: true) {
+    float: left;
+    padding-left: 20px;
+    padding-top: 0;
+    width: 40%;
+  }
+  .block {
+    .block__title {
+      @extend h5;
+      margin-bottom: 15px;
+    }
+    .block__content {
+    }
+  }
+}
+
+.degree-program-requirements.degree-program-requirements.degree-program-requirements,
+.degree-program-spec-terms.degree-program-spec-terms.degree-program-spec-terms {
+  color: $azRed;
+  text-decoration: none;
+  font-weight: 700;
+}

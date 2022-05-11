@@ -1,0 +1,118 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/vars" as *;
+@use "sass:math";
+
+
+
+
+.block--modal-rfi, .block--academic-partnership-modal, .modalrfi  {
+
+  * {
+    font-family: 'Fira Sans', Arial, sans-serif;
+  }
+
+
+  select{
+    @include rems(16px, 18px);
+  }
+
+  label {
+    @include rems(20px, 18px);
+  }
+
+  input {
+    @include rems(16px,18px);
+  }
+
+  .block__content {
+    h2 {
+      @include rems(28px, 18px);
+      line-height: math.div(32.3, 28);
+
+      @media(min-width: 640px) {
+        @include rems(36px,  18px);
+      }
+    }
+  
+
+    h4 {
+      @include rems(16px,18px);
+      line-height: math.div(24, 16);
+
+      @media(min-width: 640px) {
+        @include rems(20px,18px);
+        line-height: math.div(24, 20);
+          
+      }
+    }
+
+
+    .form-item-firstname, .form-item-lastname, .form-item-phone1, .form-item-emailaddress, .form-item-state, .form-item-college-of-interest, .form-item-clientdegreeid{
+
+      label {
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        &:after {
+          content: '*';
+          color: $azRed;
+          @include rems(18px, 18px);
+          font-weight: 600;
+          align-self: flex-start;
+        }
+      }
+    }
+
+    .form-wrapper {
+      .registerednurse-validation-text p {
+        margin-bottom: 0px;
+        @include rems(16px, 18px);
+        color: $azRed;
+      }
+    }
+
+    .registered-nurse { 
+      label {
+        @include rems(14px, 18px);
+      }
+    }
+    
+    .edit-consent-container {
+      .form-actions {
+        .form-submit {
+          @include rems(16px, 18px);
+          font-weight: 600;
+        }
+      }
+      .form-consent-text { 
+        p {
+          @include rems(10px, 18px);
+        
+          sup {
+            @include rems(10px, 18px);
+          }
+        }
+      }
+    }
+  }
+
+  h2, h4 {
+    margin: {
+      top: 0;
+    }
+  }
+
+  h4 {
+    margin: {
+      bottom: 0;
+    }
+  }
+
+  label {
+    height: 25px;
+    &:after {
+      background-image: none;
+    }
+  }
+}

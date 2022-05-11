@@ -1,0 +1,82 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.success-story-profile {
+  @include globalGutters;
+  max-width: 1440px;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  &__body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: {
+      top: 24px;
+    }
+    @media (min-width: $tablet) {
+      flex-wrap: nowrap;
+      padding: {
+        top: 32px;
+      }
+    }
+  }
+  &__header {
+    padding: {
+      bottom: 24px;
+    }
+    border: {
+      bottom: 1px solid $lightGray;
+    }
+    @media (min-width: $desktop) {
+      padding: {
+        bottom: 32px;
+      }
+    }
+  }
+  &__biography {
+    // review later adding global style (leaving for now since these sizes aren't a heading mixin)
+    @include rems(28px);
+    line-height: 1.14;
+    color: $azBlue;
+    font-weight: 500;
+    margin: {
+      bottom: 32px;
+    }
+
+    @media (min-width: $tablet) {
+      @include rems(36px);
+      line-height: 1.33;
+    }
+  }
+
+  &__content {
+    flex-basis: 100%;
+    max-width: 906px;
+
+    .site-layout__article-content-section-wizzywig {
+      padding: {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+      }
+    }
+  }
+  &__sidebar {
+    flex-basis: 100%;
+    margin: {
+      bottom: 24px;
+    }
+    @media (min-width: $tablet) {
+      flex-basis: 280px;
+      margin: {
+        right: 32px;
+        bottom: 40px;
+      }
+    }
+  }
+}

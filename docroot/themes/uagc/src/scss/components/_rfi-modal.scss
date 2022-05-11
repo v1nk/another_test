@@ -1,0 +1,342 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/vars" as *;
+@use "sass:math";
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.block--modal-rfi,
+.block--academic-partnership-modal,
+.modalrfi {
+  display: none;
+  position: fixed;
+  z-index: 2147483645;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  select {
+    @include rems(16px);
+    color: $azBlue;
+    border-radius: 8px;
+    option {
+      color: $azBlue;
+    }
+  }
+
+  .js-form-type-select {
+    &:after {
+      height: 36px;
+      border-radius: 8px;
+      right: 2px;
+    }
+  }
+
+  label {
+    color: $azBlue;
+    @include rems(20px);
+    line-height: math.div(24, 20);
+    margin: {
+      bottom: 8px;
+    }
+  }
+
+  input {
+    color: $azBlue;
+    @include rems(16px);
+    border-radius: 8px;
+  }
+
+  .block__content {
+    background-color: white;
+    max-width: 645px;
+    padding: 16px;
+    margin: 0 auto;
+    position: relative;
+
+    @media (min-width: 640px) {
+      margin-top: 10vh;
+      border-radius: 16px;
+      padding: 40px;
+    }
+
+    h2 {
+      margin-bottom: 8px;
+      color: $azBlue;
+      font-weight: 500;
+      @include rems(28px);
+      line-height: math.div(32.3, 28);
+
+      @media (min-width: 640px) {
+        @include rems(36px);
+        line-height: math.div(48.3, 36);
+      }
+    }
+
+    h4 {
+      color: $black;
+      font-weight: 400;
+      @include rems(16px);
+      line-height: math.div(24, 16);
+
+      @media (min-width: 640px) {
+        @include rems(20px);
+        line-height: math.div(24, 20);
+      }
+    }
+
+    .form-item-firstname,
+    .form-item-lastname,
+    .form-item-phone1,
+    .form-item-emailaddress,
+    .form-item-state,
+    .form-item-college-of-interest,
+    .form-item-clientdegreeid {
+      input,
+      select {
+        color: $black;
+      }
+
+      label {
+        position: relative;
+        margin: {
+          top: 0;
+        }
+
+        &:after {
+          content: "*";
+          color: $azRed;
+          @include rems(18px);
+          display: inline-block;
+          font-weight: 500;
+          margin-left: 1px;
+          transform: translateY(-2px) scale(1.1);
+        }
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      right: 24px;
+      top: 24px;
+      width: 20px;
+      cursor: pointer;
+
+      path {
+        transition: stroke 0.25s ease;
+        stroke: $black;
+      }
+
+      &:hover {
+        path {
+          stroke: $azRed;
+        }
+      }
+    }
+
+    .form-wrapper {
+      display: flex;
+      flex-flow: wrap;
+      justify-content: space-between;
+      width: 100%;
+      align-items: flex-end;
+
+      .form-item {
+        margin-bottom: 24px;
+        flex: 0 0 100%;
+
+        .form-text,
+        .form-select,
+        .form-email,
+        .form-tel {
+          padding: {
+            left: 16px;
+            top: 8px;
+            bottom: 8px;
+          }
+          width: 100%;
+          border: 1px solid #aaa;
+          background-color: white;
+        }
+
+        .form-select {
+        }
+
+        .registerednurse-validation-text p {
+          margin-bottom: 0px;
+          @include rems(16px, 18px);
+          color: $azRed;
+        }
+
+        @media (min-width: 640px) {
+          &-phone1 {
+            flex: 0 0 48%;
+
+            .form-tel {
+              width: 100%;
+            }
+          }
+
+          &-emailaddress {
+            flex: 0 0 48%;
+          }
+
+          &-state,
+          &-college-of-interest,
+          &-clientdegreeid {
+            flex: 0 0 48%;
+          }
+        }
+      }
+
+      .registerednurse-validation-text,
+      .js-registerednurse-validation-message {
+        margin: {
+          bottom: 0;
+        }
+      }
+      .registered-nurse {
+        margin-bottom: 15px;
+        @media (min-width: 640px) {
+          flex: 0 0 48%;
+        }
+
+        .fieldset-wrapper {
+          display: flex;
+          margin: 0 auto;
+          justify-content: flex-start;
+          width: 100%;
+
+          .js-webform-radios {
+            display: flex;
+          }
+        }
+
+        legend {
+          margin-bottom: 3px;
+          span {
+            color: $darkGray;
+            font-weight: 500;
+          }
+        }
+
+        label {
+          @include rems(14px);
+        }
+
+        .js-form-type-radio {
+          margin: 0;
+          display: flex;
+          align-items: center;
+          label,
+          input {
+            margin: 0;
+          }
+          label {
+            margin: {
+              left: 5px;
+            }
+          }
+        }
+      }
+    }
+
+    .form-disclaimer {
+      display: none;
+    }
+
+    .edit-consent-container {
+      display: flex;
+      flex-flow: wrap;
+      justify-content: space-between;
+      flex: 0 0 100%;
+      align-items: flex-start;
+
+      .form-actions {
+        display: inline-block;
+        @media (min-width: 640px) {
+          flex: 0 0 48%;
+        }
+        position: relative;
+
+        &:after {
+          content: " ";
+          display: block;
+          height: 18px;
+          width: 18px;
+          background-image: url("../images/icons/arrow-right.svg");
+          position: absolute;
+          right: 28px;
+          top: 50%;
+          transform: translateY(-53%);
+          background-size: cover;
+          background-position: center;
+        }
+
+        .form-submit {
+          background-color: $orange;
+          padding: {
+            top: 8px;
+            left: 32px;
+            right: 56px;
+            bottom: 8px;
+          }
+          display: inline;
+          text-decoration: none !important;
+          color: $azBlue !important;
+          @include rems(16px);
+          font-weight: 500;
+          line-height: math.div(24, 16);
+          text-transform: capitalize;
+          text-align: center;
+          border: none;
+          width: 100%;
+          border-radius: 20px;
+          transition: background-color 0.25s ease;
+
+          &:hover {
+            border: none !important;
+            background-color: $orangeLight;
+          }
+        }
+      }
+
+      .form-consent-text {
+        margin-top: 16px;
+        margin-bottom: 0;
+        line-height: 0.9;
+        vertical-align: top;
+        margin-top: 1px;
+
+        @media (min-width: 640px) {
+          flex: 0 0 48%;
+          margin-top: 0;
+        }
+
+        p {
+          margin-top: 24px;
+          margin-bottom: 0;
+          @media (min-width: 640px) {
+            margin-top: -3px;
+          }
+          @include rems(10px);
+          line-height: math.div(12, 10);
+
+          sup {
+            @include rems(10px);
+            line-height: math.div(12, 10);
+          }
+        }
+        #block-rfitermsmodal .block__content {
+          margin-top: 0px;
+          padding: 0px;
+        }
+      }
+    }
+  }
+}

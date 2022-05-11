@@ -1,0 +1,156 @@
+{{ attach_library('uagc/signature-generator') }}
+
+<div class="signature-tool">
+  <div class="signature-tool__header">
+    <h1>Email Signature Generator</h1>
+  </div>
+  <div class="signature-tool__form-container">
+    <form class="signature-tool__form" id="st-form">
+      <div class="signature-tool__input-group">
+        <div class="signature-tool__input-group-item">
+          <label for="st-first-name">First Name</label><input type="text" id="st-first-name"/>
+        </div>
+        <div class="signature-tool__input-group-item">
+          <label for="st-middle-name">Middle Name</label><input type="text" id="st-middle-name"/>
+        </div>
+      </div>
+      <div class="signature-tool__input-group">
+        <div class="signature-tool__input-group-item">
+          <label for="st-last-name">Last Name</label><input type="text" id="st-last-name"/>
+        </div>
+        <div class="signature-tool__input-group-item">
+          <label for="st-suffix">Suffix</label><input type="text" id="st-suffix"/>
+        </div>
+      </div>
+      <div class="signature-tool__input-group">
+        <div class="signature-tool__input-group-item">
+          <label for="st-pronouns">Pronouns</label><input type="text" id="st-pronouns"/>
+        </div>
+      </div>
+      <div class="signature-tool__input-group">
+        <div class="signature-tool__input-group-item">
+          <label for="st-title">Job Title</label><input type="text" id="st-title"/>
+        </div>
+      </div>
+      <div class="signature-tool__input-group">
+        <div class="signature-tool__input-group-item">
+          <label for="st-department">Department, Unit, or College</label><input type="text" id="st-department"/>
+        </div>
+      </div>
+      <div class="signature-tool__input-group">
+        <div class="signature-tool__input-group-item">
+          <label for="st-address1">Address Line 1</label><input type="text" id="st-address1" value="180 South Arizona Avenue, Suite #301"/>
+        </div>
+      </div>
+      <div class="signature-tool__input-group">
+        <div class="signature-tool__input-group-item">
+          <label for="st-address2">Address Line 2</label><input type="text" id="st-address2" value="Chandler, AZ 85225"/>
+        </div>
+      </div>
+      <div class="signature-tool__input-group">
+        <div class="signature-tool__input-group-item">
+          <label for="st-office">Office Phone</label><input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" id="st-office" placeholder="123-456-7890" value="866-711-1700"/>
+          <div class="signature-tool__format">Format: 123-456-7890</div>
+        </div>
+        <div class="signature-tool__input-group-item" style="max-width: 140px">
+          <label for="st-ext">Office Phone Ext</label><input type="text" id="st-ext" placeholder="123" value=""/>
+        </div>
+        <div class="signature-tool__input-group-item">
+          <label for="st-cell">Cell Phone</label><input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" id="st-cell" placeholder="123-456-7890" value="866-711-1700"/>
+          <div class="signature-tool__format">Format: 123-456-7890</div>
+        </div>
+      </div>
+      <div class="signature-tool__input-group">
+        <div class="signature-tool__input-group-item">
+          <label for="st-email">Email</label><input type="email" id="st-email" value="contactus@uagc.edu"/>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="signature-tool__markup">
+    <div style="display: inline-block;">
+      <table width="600" style="width: 600px; border: 0; font-family: Arial, sans-serif; background: #ffffff" border="0" bgcolor="#FFFFFF" id="email-signature">
+        <tbody>
+          <tr>
+            <td width="140" valign="middle" style="padding-right: 0px" border="0">
+              <table style="width: 100%; border: 0" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+                <tbody>
+                  <tr>
+                    <td height="24"></td>
+                  </tr>
+                  <tr style="margin: 0; padding: 0">
+                    <td width="130" valign="middle" border="0">
+                      <img src="{{ url('<front>') }}themes/uagc/src/images/squareLogo.png" alt="The University of Arizona Global Campus" width="130" height="130" border="0" style="border: 0; border-color: #ffffff; border-style: hidden; outline: 0"/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td height="24"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td valign="middle" style=" padding-left: 24px; padding-top: 8px; padding-bottom: 8px; border-left: 1px solid #0c234b; border-left-color: #0c234b; border-left-style: solid; border-left-width: 1px; border-top: 0; border-bottom: 0; border-right: 0; border-top-width: 0; border-bottom-width: 0; border-right-width: 0; border-top-color: #ffffff; border-bottom-color: #ffffff; border-right-color: #ffffff;">
+              <table style="width: 100%; border: 0" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+                <tbody>
+                  <tr style="margin: 0; padding: 0">
+                    <td valign="top" cellpadding="0" cellspacing="0" style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5em; color: #0c234b; font-weight: bold">
+                      <strong>
+                        <span class="table-data" style="font-size: 16px; font-family: Arial, sans-serif" id="sc-first-name">Firstname</span>
+                        <span class="table-data" style="font-size: 16px; font-family: Arial, sans-serif" id="sc-middle-name"></span>
+                        <span class="table-data" style="font-size: 16px; font-family: Arial, sans-serif" id="sc-last-name">Lastname</span>
+                        <span class="table-data" style="font-size: 16px; font-family: Arial, sans-serif" id="sc-suffix"></span>
+                      </strong>
+                    </td>
+                  </tr>
+                  <tr style="margin: 0; padding: 0">
+                    <td valign="top" cellpadding="0" cellspacing="0" style="margin: 0; padding: 0; font-family: Arial, sans-serif; font-size: 12px; line-height: 18px; color: #343434" class="table-data" id="sc-pronouns">
+                      Optional pronouns
+                    </td>
+                  </tr>
+                  <tr style="margin: 0; padding: 0">
+                    <td valign="top" cellpadding="0" cellspacing="0" style=" margin: 0; padding-top: 0px; padding-left: 0px; padding-right: 0px; padding-bottom: 8px; font-family: Arial, sans-serif; font-size: 12px; line-height: 18px; color: #0c234b; font-style: italic;">
+                      <em class="table-data" style="font-family: Arial, sans-serif" id="sc-title">Title(s)</em>
+                    </td>
+                  </tr>
+                  <tr style="margin: 0; padding: 0">
+                    <td valign="top" cellpadding="0" cellspacing="0" style="margin: 0; padding: 0; font-family: Arial, sans-serif; font-size: 12px; line-height: 18px; color: #343434" class="table-data" id="sc-department">
+                      Department, Unit, or College
+                    </td>
+                  </tr>
+                  <tr style="margin: 0; padding: 0">
+                    <td valign="top" cellpadding="0" cellspacing="0" style="margin: 0; padding: 0; font-family: Arial, sans-serif; font-size: 12px; line-height: 18px; color: #343434">
+                      University of Arizona Global Campus
+                    </td>
+                  </tr>
+                  <tr style="margin: 0; padding: 0">
+                    <td valign="top" cellpadding="0" cellspacing="0" style="margin: 0; padding: 0; font-family: Arial, sans-serif; font-size: 12px; line-height: 18px; color: #343434">
+                      <span class="table-data" style="font-family: Arial, sans-serif" id="sc-address1">180 South Arizona Avenue, Suite #301</span>
+                    </td>
+                  </tr>
+                  <tr style="margin: 0; padding: 0">
+                    <td valign="top" cellpadding="0" cellspacing="0" style="margin: 0; padding: 0; font-family: Arial, sans-serif; font-size: 12px; line-height: 18px; color: #343434" class="table-data" id="sc-address2">
+                      Chandler, AZ 85225
+                    </td>
+                  </tr>
+                  <tr style="margin: 0; padding: 0">
+                    <td valign="top" cellpadding="0" cellspacing="0" style="padding: 0; margin: 0; font-family: Arial, sans-serif; font-size: 12px; line-height: 18px; text-decoration: none">
+                      <span style="color: #343434; font-family: Arial, sans-serif; text-decoration: none" class="js-office">O:&nbsp;</span>
+                      <a href="tel:828-123-4567" class="table-data" style="text-decoration: none; color: #ab0520" id="sc-office">866-711-1700</a>
+                      <span style="color: #343434; font-family: Arial, sans-serif; text-decoration: none" class="js-office-cell">&nbsp;|&nbsp;C:&nbsp;</span>
+                      <span style="color: #343434; font-family: Arial, sans-serif; text-decoration: none; display: none;" class="js-cell">C:&nbsp;</span>
+                      <a href="tel:828-987-6543" style="text-decoration: none; color: #ab0520" class="table-data" id="sc-cell">866-711-1700</a>
+                      <span style="color: #343434; font-family: Arial, sans-serif; text-decoration: none" class="js-office-cell-email">&nbsp;|&nbsp;</span>
+                      <a href="mailto:contactus@uagc.edu" style="text-decoration: none; color: #ab0520" class="table-data" id="sc-email">contactus@uagc.edu
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+</tbody></table></div></div><div class="signature-tool__buttons"><button type="button" id="signature-copy">Copy Signature</button></div><textarea id="sc-value" style="height: 0px; opacity: 0;"></textarea>{{content}}</div>

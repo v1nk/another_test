@@ -1,0 +1,49 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/vars" as *;
+
+.site-container {
+  max-width: 1920px;
+  position: relative;
+  padding: {
+    top: $headerHeightMobile;
+  }
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  overflow: hidden;
+  @media (min-width: $desktop) {
+    padding: {
+      top: $headerHeightDesktop;
+    }
+
+    &.--no-utility-menu {
+      padding: {
+        top: 80px;
+      }
+    }
+
+
+  }
+}
+
+body.page--node-type-degree {
+  .site-container {
+    padding: {
+      top: 78px;
+    }
+
+    @media (min-width: $desktop-small) {
+      padding: {
+        top: 142px;
+      }
+    }
+
+    @media (min-width: $desktop) {
+      padding: {
+        top: 142px;
+      }
+    }
+  }
+}

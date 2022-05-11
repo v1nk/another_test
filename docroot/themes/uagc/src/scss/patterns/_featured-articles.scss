@@ -1,0 +1,367 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/vars" as *;
+
+.featured-articles {
+  @include globalGutters;
+  max-width: unset;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+
+  @media (min-width: $desktop) {
+    max-width: 1440px;
+  }
+  @media (min-width: $desktop-medium-large) {
+    &:not(.columns__left &) {
+      padding: {
+        left: 0;
+        right: 0;
+      }
+    }
+  }
+
+  &__red-line {
+    position: relative;
+
+    &::after {
+      content: "";
+      border-top: 2px solid $azRed;
+      width: 80px;
+      position: absolute;
+    }
+  }
+
+  &__heading {
+    @include rems(28px);
+    line-height: 1.14;
+    font-weight: 500;
+    color: $azBlue;
+    padding: {
+      top: 24px;
+      bottom: 32px;
+    }
+
+    @media (min-width: $tablet) {
+      @include rems(36px);
+      line-height: 1.33;
+    }
+  }
+
+  &__container {
+    display: block;
+
+    @media (min-width: $desktop) {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    &.--featured-stories {
+      @media (min-width: $desktop) {
+        grid-template-rows: repeat(2, 1fr);
+      }
+    }
+  }
+
+  &__featured-card {
+    @media (min-width: $desktop) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    .featured-articles__card-container & {
+      &:last-child {
+        .featured-articles__content {
+          margin: {
+            bottom: 0;
+          }
+        }
+      }
+
+      // //Hide 4th card in three column layout that appears on tablet, on mobile the 4th card/last-child appears again
+      // @media (min-width: $tablet) {
+      //   &:last-child {
+      //     display: none;
+      //   }
+      // }
+
+      // @media (min-width: $desktop) {
+      //   grid-column: span 1;
+      //   grid-row: span 1;
+
+      //   &:last-child {
+      //     display: flex;
+      //   }
+      // }
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+
+    .featured-articles__featured-card & {
+      display: block;
+
+      @media (min-width: $tablet) {
+        display: none;
+      }
+
+      @media (min-width: $desktop) {
+        display: block;
+      }
+    }
+  }
+
+  &__featured-image {
+    display: none;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+
+    @media (min-width: $tablet) {
+      display: block;
+    }
+
+    @media (min-width: $desktop) {
+      display: none;
+    }
+  }
+
+  &__card-container {
+    display: block;
+
+    @media (min-width: $tablet) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 32px;
+    }
+
+    @media (min-width: $desktop) {
+      grid-column: span 2;
+      grid-row: span 2;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__category {
+    @include rems(16px);
+    line-height: 1.5;
+    font-weight: 500;
+    color: $azRed;
+    text-transform: uppercase;
+    padding: {
+      top: 24px;
+      bottom: 8px;
+    }
+  }
+
+  &__subheading {
+    @include rems(16px);
+    line-height: 1.5;
+    font-weight: 500;
+    color: $azRed;
+    padding: {
+      top: 0;
+      bottom: 8px;
+    }
+
+    .featured-articles__featured-card & {
+      @media (min-width: $tablet) {
+        @include rems(24px);
+        line-height: 1.33;
+      }
+    }
+  }
+
+  &__title {
+    @include rems(24px);
+    line-height: 1.33;
+    font-weight: 500;
+    color: $black;
+    padding: {
+      bottom: 32px;
+    }
+
+    .featured-articles__featured-card & {
+      @include rems(24px);
+      line-height: 1.333333333;
+      font-weight: 500;
+      color: $black;
+      padding: {
+        bottom: 8px;
+      }
+
+      @media (min-width: $tablet) {
+        @include rems(32px);
+        line-height: 1.25;
+      }
+    }
+
+    .--featured-stories & {
+      padding: {
+        top: 24px;
+        bottom: 8px;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin: {
+      bottom: 32px;
+    }
+
+    @media (min-width: $tablet) {
+      margin: {
+        bottom: 0;
+      }
+    }
+
+    .featured-articles__card-container & {
+      justify-content: space-between;
+    }
+
+    .featured-articles__featured-card & {
+      margin: {
+        bottom: 32px;
+      }
+
+      @media (min-width: $desktop) {
+        margin: {
+          bottom: 0;
+        }
+      }
+    }
+  }
+
+  &__featured-copy {
+    //wysiwyg styling
+    p {
+      @include rems(16px);
+      line-height: 1.5;
+      color: $black;
+      margin: {
+        bottom: 32px;
+      }
+
+      @media (min-width: $tablet) {
+        @include rems(24px);
+        line-height: 1.33;
+      }
+    }
+
+    .--featured-stories .featured-articles__card-container & {
+      p {
+        @include rems(16px);
+        line-height: 1.5;
+      }
+    }
+  }
+
+  &__info-container {
+    display: flex;
+    position: relative;
+
+    &::after {
+      content: "";
+      border-bottom: 1px solid $lightGray;
+      width: 100%;
+      position: absolute;
+      align-self: flex-end;
+      transition: border-bottom-color 0.25s ease-in-out;
+
+      .featured-articles__link:hover & {
+        border-bottom: 1px solid $azRed;
+      }
+    }
+  }
+
+  &__info {
+    @include rems(14px);
+    line-height: 1.28571428571;
+    font-weight: 400;
+    color: $darkGray;
+    margin: {
+      right: 8px;
+      bottom: 24px;
+    }
+  }
+
+  &__ellipse {
+    display: inline-block;
+    background: $darkGray;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    margin: {
+      top: 4px;
+      bottom: 4px;
+      left: 8px;
+      right: 8px;
+    }
+
+    .featured-articles__card-container & {
+      margin: {
+        left: 4px;
+        right: 4px;
+      }
+    }
+  }
+
+  &__cta-container {
+    display: block;
+    @include rems(14px);
+    line-height: 1.28571428571;
+    font-weight: 500;
+    color: $azRed;
+    margin: {
+      left: auto;
+    }
+    opacity: 1;
+    transition: opacity 0.25s ease-in-out;
+
+    .featured-articles__link:hover & {
+      opacity: 1;
+    }
+
+    @media (min-width: $desktop) {
+      opacity: 0;
+    }
+
+    .featured-articles__featured-card & {
+      @include rems(14px);
+    }
+  }
+
+  &__cta {
+    display: flex;
+    align-items: center;
+  }
+
+  &__cta-text {
+    padding: {
+      right: 10px;
+    }
+    @media (min-width: 1280px) {
+      display: none;
+    }
+    @media (min-width: 1366px) {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{{ attach_library('uagc/main') }}
+{{ attach_library('uagc/faculty-landing-page') }}
+
+{# article element can be switch out for section element if its a listing page #}
+{%
+  set classes = [
+    'site-layout__article',
+    node.getType,
+  ]
+%}
+
+<script type="text/javascript">
+  window.ashfordlfs = window.ashfordlfs || {};
+  window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }} = window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }} || {};
+
+  {% if node.field_clientdocumentid.value != '' %}
+    window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }}.clientdocumentid = '{{ node.field_clientdocumentid.value }}';
+  {% endif %}
+
+  {% if node.field_sourceid.value != '' %}
+    window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }}.sourceid = '{{ node.field_sourceid.value }}';
+  {% endif %}
+
+  {% if node.field_revisionid.value != '' %}
+    window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }}.revisionid = '{{ node.field_revisionid.value }}';
+  {% endif %}
+
+  {% if node.field_form_id_class	.value != '' %}
+    window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }}.formidclass = '{{ node.field_form_id_class	.value }}';
+  {% endif %}
+
+
+
+  window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }}.degrees = [
+  {% for key, item in node.field_degrees if key|first != '#' %}
+  '{{item.entity.title.value}}',
+  {% endfor %}
+  ];
+  
+  window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }}.interests = [
+  {% for key, item in node.field_interests if key|first != '#' %}
+    '{{item.entity.name.value | raw}}',
+  {% endfor %}
+  ];
+
+
+
+
+</script>
+
+
+<article {{ attributes.addClass(classes) }}>
+    <header class="site-layout__article-header">
+      {# hero content #}
+      {{content.field_header_paragraphs}}
+    </header>
+    <div class="site-layout__article-content">
+        {# sections for  width restricted and full width  can have multiple of each type #}
+            {# section for content that is restricted to 1440px #}
+
+
+        {{content.field_paragraphs}}
+        
+    </div>
+</article>

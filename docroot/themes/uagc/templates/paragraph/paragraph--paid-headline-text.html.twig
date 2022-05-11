@@ -1,0 +1,44 @@
+{% set greyBackground = '' %}
+
+{% if paragraph.field_display_grey_background.value  == 1 %}
+    {% set greyBackground = ' --grey-background' %}
+{% endif %}
+
+{% if paragraph.field_swap_order.value == 1 %}
+    {% set orderClass = ' --swap-sides' %}
+{% endif %}
+
+
+<div class="paid-headline-text{{greyBackground}}"  id="{{paragraph.field_anchor_id.0.value}}">
+    {% if content.field_centered_heading['#items'].value %}
+        <h2 class="paid-headline-text__top-heading">{{ content.field_centered_heading }}</h2>
+    {% endif %}
+    
+    <div class="paid-headline-text__container{{orderClass}}">
+        <div class="paid-headline-text__heading-container">
+            <div class="paid-headline-text__red-line"></div>
+            {% if content.field_navy_red_heading['#items'].value %}
+                <h2 class="paid-headline-text__heading">{{ content.field_navy_red_heading }}</h2>
+            {% endif %}
+            {% if content.field_text['#items'].value %}
+                <div class="paid-headline-text__subheading">{{ content.field_text.0 }}</div>
+            {% endif %}
+            {% if content.field_cta['#items'].value %}
+                <a href="{{paragraph.field_cta.0.url}}" class="paid-headline-text__cta button--blue --first-cta">{{paragraph.field_cta.0.title}}</a>
+            {% endif %}
+            {% if content.field_link['#items'].value %}
+                <a href="{{paragraph.field_link.0.url}}" class="paid-headline-text__cta button--blue">{{paragraph.field_link.0.title}}</a>
+            {% endif %}
+        </div>
+        <div class="paid-headline-text__wysiwyg">{{ content.field_content.0 }}</div>
+    </div>
+
+    <div class="paid-headline-text__mobile-cta-container">
+        {% if content.field_cta['#items'].value %}
+            <a href="{{paragraph.field_cta.0.url}}" class="paid-headline-text__mobile-cta button--blue">{{paragraph.field_cta.0.title}}</a>
+        {% endif %}
+        {% if content.field_link['#items'].value %}
+            <a href="{{paragraph.field_link.0.url}}" class="paid-headline-text__mobile-cta button--blue">{{paragraph.field_link.0.title}}</a>
+        {% endif %}
+    </div>
+</div>

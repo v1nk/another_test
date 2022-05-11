@@ -1,0 +1,178 @@
+@use "vars" as *;
+@use "colors" as *;
+@use "mixins" as *;
+
+body * {
+  font-family: "Fira Sans", Arial, sans-serif;
+}
+
+%h1 {
+  @include rems(40px);
+  line-height: 1.15;
+  color: $azBlue;
+  font-weight: 500;
+  @include marginMedium;
+
+  @media (min-width: $desktop) {
+    @include rems(64px);
+    line-height: 1.25;
+  }
+}
+
+%h2 {
+  @include rems(32px);
+  line-height: 1.25;
+  color: $azBlue;
+  font-weight: 500;
+  @include marginMedium;
+
+  @media (min-width: $desktop) {
+    @include rems(48px);
+    line-height: 1.166667;
+  }
+}
+
+%h3 {
+  @include rems(24px);
+  line-height: 1.333333;
+  color: $azBlue;
+  font-weight: 500;
+  @include marginMedium;
+
+  @media (min-width: $desktop) {
+    @include rems(40px);
+    line-height: 1.4;
+  }
+}
+
+%h4 {
+  @include rems(16px);
+  line-height: 1.5;
+  color: $azBlue;
+  font-weight: 500;
+  @include marginMedium;
+
+  @media (min-width: $desktop) {
+    @include rems(32px);
+    line-height: 1.25;
+  }
+}
+
+%h5 {
+  @include rems(14px);
+  line-height: 1.29;
+  color: $azBlue;
+  font-weight: 500;
+  @include marginMedium;
+
+  @media (min-width: $desktop) {
+    @include rems(16px);
+    line-height: 1.5;
+  }
+}
+
+p,
+.p {
+  @include rems(16px);
+  line-height: 1.5;
+  @include marginSmall;
+
+  @media (min-width: $tablet) {
+    @include rems(20px);
+    line-height: 1.2;
+  }
+}
+
+.p-large {
+  @include rems(24px);
+  line-height: 1.33333;
+}
+
+.p-medium {
+  @include rems(16px);
+  line-height: 1.5;
+}
+
+.p-small {
+  @include rems(14px);
+  line-height: 1.286;
+}
+
+.p-micro {
+  @include rems(11px);
+  line-height: 1.4545;
+}
+
+li {
+  color: $black;
+  @include rems(16px);
+  line-height: 1.5;
+  padding-left: 0px;
+  @media (min-width: $desktop) {
+    @include rems(20px);
+  }
+}
+
+.eyebrow {
+  @include rems(16px);
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: $azRed;
+}
+
+.spacing {
+  &-none {
+    margin-bottom: 0;
+  }
+
+  &-xsmall {
+    margin-bottom: 4px;
+    @media (min-width: $desktop) {
+      margin-bottom: 8px;
+    }
+  }
+
+  &-small {
+    margin-bottom: 8px;
+    @media (min-width: $desktop) {
+      margin-bottom: 16px;
+    }
+  }
+
+  &-medium {
+    margin-bottom: 16px;
+    @media (min-width: $desktop) {
+      margin-bottom: 24px;
+    }
+  }
+
+  &-large {
+    margin-bottom: 24px;
+    @media (min-width: $desktop) {
+      margin-bottom: 32px;
+    }
+  }
+
+  &-xlarge {
+    margin-bottom: 40px;
+    @media (min-width: $desktop) {
+      margin-bottom: 80px;
+    }
+  }
+}
+
+.visually-hidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.indented {
+  padding: {
+    left: 40px;
+  }
+}

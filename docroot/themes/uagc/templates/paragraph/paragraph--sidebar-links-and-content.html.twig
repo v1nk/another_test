@@ -1,0 +1,36 @@
+{{attach_library('uagc/catalog')}}
+
+{%
+  set classes = [
+    'site-layout__article-content-section',
+  ]
+%}
+
+<section {{ attributes.addClass(classes) }}>
+  <div class="sidebar-links-content">
+      <aside class="sidebar-links-content__links">
+        <div class="sidebar-links-content__links-header-container">
+          <h3 class="sidebar-links-content__links-header">{{ content.field_sidebar_heading }}</h3>
+        </div>
+          <div class="sidebar-links-content__links-container">
+            <div class="sidebar-links-content__dropdown-container">
+            <button type="button" class="sidebar-links-content__dropdown">
+              <span class="sidebar-links-content__dropdown-text">{{ content.field_mobile_accordion_header }}</span>
+              <span class="sidebar-links-content__dropdown-toggle">
+              Hide Sections
+              </span>
+            </button>
+            </div>
+            <div class="sidebar-links-content__link-items">
+            {{ content.field_links }}
+            </div>
+          </div>
+      </aside>
+
+      <div class="sidebar-links-content__content">
+          <div class="wizzywig">
+              {{ content.field_content }}
+          </div>
+      </div>
+  </div>
+</section>

@@ -1,0 +1,9 @@
+$legacy-support-for-ie6: false;
+$legacy-support-for-ie7: false;
+$legacy-support-for-ie8: false;
+
+@import 'zes-paragraphs/breakpoint-sass';
+@import 'zes-paragraphs/global/variables/layout';
+@import 'zes-paragraphs/global/variables/colors';
+@import 'zes-paragraphs/global/html-elements';
+@import 'zes-paragraphs/footer';

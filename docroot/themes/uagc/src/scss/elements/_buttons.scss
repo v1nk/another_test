@@ -1,0 +1,124 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+@mixin buttons {
+  @include rems(16px);
+  line-height: 1.5;
+  text-align: center;
+  padding: {
+    left: 39px;
+    right: 39px;
+    top: 8px;
+    bottom: 8px;
+  }
+  color: $azBlue;
+  background-color: $orange;
+  border-radius: 20px;
+  transition: 0.25s background-color ease, 0.25s color ease;
+  border: none;
+  font-weight: 500;
+  box-sizing: border-box;
+  border: solid 1px transparent;
+  cursor: pointer;
+  font-family: inherit;
+
+  &:hover {
+    background-color: $orangeLight;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &:active,
+  &:focus {
+    background-color: $orangeLight;
+    border: solid 1px #975b00;
+  }
+
+  &.--small {
+    @include rems(14px);
+    line-height: 1.29;
+    padding: {
+      left: 24px;
+      right: 24px;
+      top: 8px;
+      bottom: 8px;
+    }
+  }
+}
+
+@mixin buttonsBlue {
+  @include rems(16px);
+  line-height: 1.5;
+  text-align: center;
+  position: relative;
+  padding: {
+    left: 24px;
+    right: 24px;
+    top: 7px;
+    bottom: 7px;
+  }
+  color: $azBlue;
+  background-color: white;
+  border-radius: 20px;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  border: none;
+  font-weight: 500;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: solid 1px $azBlue;
+  display: inline-block;
+  &:hover {
+    background-color: $azBlue;
+    color: white;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &:active,
+  &:focus {
+    background-color: $darkGray;
+    color: #fff;
+    border: solid 1px $azBlue;
+  }
+
+  &.--small {
+    @include rems(14px);
+    line-height: 1.29;
+    padding: {
+      top: 8px;
+      bottom: 8px;
+      left: 16px;
+      right: 16px;
+    }
+  }
+  &.--arrow {
+    padding: {
+      right: 46px;
+    }
+    &::after {
+      content: "";
+      background-image: url("../images/icons/arrow-right.svg");
+    }
+  }
+
+  //Adding sentence case to buttons as requested
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
+button,
+.button {
+  @include buttons;
+}
+
+.button--blue {
+  @include buttonsBlue;
+}

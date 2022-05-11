@@ -1,142 +1,90 @@
-# Ignore configuration files that may contain sensitive information.
-local.settings.php
-local.drush.yml
-local.site.yml
-local.services.yml
-tests/behat/local.yml
-box/local.config.yml
-*.local
-local.blt.yml
-
-# Ignore drupal core.
-docroot/core
-
-# Ignore paths that contain user-generated content.
-docroot/sites/*/files
-/files-private
-docroot/sites/*/private
-
-# Ignore contrib modules. These should be created during build process.
-docroot/modules/contrib
-docroot/themes/contrib
-docroot/profiles/contrib
-docroot/libraries
-drush/Commands
-
-# Ignore custom theme build artifacts
-docroot/themes/custom/*/node_modules
-docroot/themes/custom/*/css
-docroot/themes/custom/*/styleguide
-
-# Ignore build artifacts
-deployment_identifier
-/deploy
-bin/*
-tmp
-reports
-
-# OS X
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Thumbnails
-._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
-
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
-
-# Folder config file
-Desktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Eclipse
-*.pydevproject
++# IDE specific files
+.buildpath
 .project
-.metadata
-tmp/**
-tmp/**/*
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
-.classpath
-.settings/
-.loadpath
+.settings
+.idea
 
-# External tool builders
-.externalToolBuilders/
 
-# Locally stored "Eclipse launch configurations"
-*.launch
+docroot/themes/uagc/.cache/
+docroot/themes/uagc/dist/
 
-# CDT-specific
-.cproject
 
-# PDT-specific
-.buildpathk
 
-# Emacs
-*~
-\#*\#
-/.emacs.desktop
-/.emacs.desktop.lock
-*.elc
-auto-save-list
-tramp
-.\#*
+#  SMTP SETTINGS
+docroot/config/sync/smtp.settings.yml
 
-# User-specific stuff:
-.idea/
+# Ignored Settings Directory
+docroot/config/syncignore/*.yml
 
-#XHProf
-xhprof_*
 
-#Composer vendor
-vendor/
-vendor/.git
+# Vagrant
+.vagrant
 
-#Sass
+# NPM
+node_modules
+
+# OSX file
+.DS_Store
+
+/_site
+
+# Local configuration
+Vagrantfile.local
+settings.local.php
+docroot/sites/development.services.yml
+
+
+# System performance config
+docroot/config/sync/system.performance.yml
+
+# SASS cache
 .sass-cache
-*.css.map
 
-#Netbeans IDE
-nbproject
-nbproject/*
+# Composer
+/vendor
 
-# DrupalVM
-.vagrant/
+docroot/*
+!docroot/.htaccess
+!docroot/sites/
+!/docroot/legacy-sitemap.xml
+!docroot/robots.txt
+docroot/sites/default/files
+docroot/sites/default/services.local.yml
+docroot/sites/default/settings.docker.php
 
-# DevDesktop
-*.dd
 
-#Exports
-*.gz
-*.sql
-*.zip
 
-# PHPStorm
-atlassian-ide-plugin.xml
+# favicons
+!docroot/*.png
+!docroot/browserconfig.xml
+!docroot/*.ico
+!docroot/manifest.json
+!docroot/*.svg
 
-#NPM
-npm-debug.log
+!docroot/config/
+!docroot/libraries/
+docroot/libraries/*
+!docroot/libraries/dropzone
+!docroot/libraries/imagesloaded
+!docroot/libraries/masonry
+!docroot/libraries/slick
+!docroot/libraries/jquery-ui-touch-punch
+!docroot/themes/
+!docroot/modules/
+docroot/modules/contrib/
+!docroot/modules/custom/
+!docroot/static
+bower_components
+modernizr-custom.min.js
 
-# Drush 9 Checksums
-drush/sites/.checksums
+# Google Webmaster verification file
+!docroot/*.html
 
-# Deprecation detector rules
-.rules
+.docker-sync
 
-/sites/default/files
+#legacy sitemap
+
+
+googlecreds.json
 /.editorconfig
 /.gitattributes
-/travis_wait*
-.phpcs-cache

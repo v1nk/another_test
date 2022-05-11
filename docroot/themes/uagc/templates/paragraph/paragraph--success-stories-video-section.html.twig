@@ -1,0 +1,60 @@
+
+{{ attach_library('uagc/swiper-slider') }}
+{% set videoBackground = '' %}
+
+<div class="site-layout__article-content-section --full-width">
+    <div class="success-stories-video">
+        <div class="success-stories-video__wrapper">
+            <div class="success-stories-video__header-wrapper">
+                {% if paragraph.field_subheader_text.value %}
+                    <div class="success-stories-video__subheader">{{ content.field_subheader_text }}</div>
+                {% endif %}
+                <div class="success-stories-video__header">{{ content.field_header_text }}</div>
+                <div class="success-stories-video__description">{{ content.field_description_text }}</div>
+                {% if content.field_cta.0 is not empty %}
+                    <a href="{{content.field_cta.0['#url']}}" class="success-stories-video__cta-link button">
+                        {{content.field_cta.0['#title']}}
+                        {% include directory ~ '/templates/svg-icons/arrow-right.html.twig' %}
+                    </a>
+                {% endif %}
+            </div>
+            <div class="success-stories-video__story-container swiper-container">
+                <div class="success-stories-video__story-wrapper swiper-wrapper">
+                {% for item in content.field_success_story_video['#items'] %}
+                    {% if loop.length == 3 %}
+                        {% set videoBackground = file_url(item.entity.field_image.0.entity.field_media_image.0.entity.uri.value|image_style('success_video_3_column_387x650')) %}
+                    {% elseif loop.length == 2 %}
+                        {% set videoBackground = file_url(item.entity.field_image.0.entity.field_media_image.0.entity.uri.value|image_style('success_video_2_column_580x650')) %}
+                    {% elseif loop.length == 1 %}
+                        {% set videoBackground = file_url(item.entity.field_image.0.entity.field_media_image.0.entity.uri.value|image_style('success_video_1_column_1160x650')) %}
+                    {% endif %}
+                        <div class="success-stories-video__single-story swiper-slide" >
+                                <a class="success-stories-video__video-link" target="_blank" rel="noopener" href="{{item.entity.field_link_url.value}}" style="background-image: url({{ videoBackground }})">
+                                <div class="success-stories-video__story-text-wrapper">
+                                    <div class="success-stories-video__play-button">
+                                        {% include directory ~ "/templates/svg-icons/play.html.twig" %}
+                                    </div>
+                                    <div class="success-stories-video__video-header">{{item.entity.field_header_text.value}}</div>
+                                    <div class="success-stories-video__video-subheader">{{item.entity.field_subheader_text.value}}</div>
+                                </div>  
+                            </a>
+                        </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="success-stories-video__pagination swiper-pagination"></div>
+    </div>
+</div>
+
+<div class='youtube-modal'>
+    <div class="block__content">
+        <svg class="modal-close js-modal-close" alt="close button" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 8L8 24" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 8L24 24" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="youtube-modal__embed">
+            <iframe src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>

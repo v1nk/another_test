@@ -1,0 +1,15 @@
+{% set greyBackground = '' %}
+
+{% if paragraph.field_display_grey_background.value  == 1 %}
+    {% set greyBackground = ' --grey-background' %}
+{% endif %}
+
+<div class="site-layout__article-content-section faculty-grid__section {{ greyBackground }}">
+    <div class="faculty-grid__main-wrapper {{ greyBackground }}">
+        <div class="faculty-grid__main-header">
+            <div class="faculty-grid__red-bar"></div>
+            <div class="faculty-grid__main-header-text">Meet our Faculty</div>
+        </div>
+        {{ drupal_view('faculty_grid', 'block_1') }}
+    </div>
+</div>

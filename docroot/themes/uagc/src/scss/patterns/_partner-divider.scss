@@ -1,0 +1,321 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.partner-divider {
+  width: 100%;
+
+  &.\--grey-background {
+    background-color: $lighterGray;
+  }
+
+  &.\--dark-blue-background {
+    background-color: $azBlue;
+  }
+
+  &__red-line {
+    position: relative;
+    margin-bottom: 24px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      border-top: 2px solid $azRed;
+      width: 80px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      .\--dark-blue-background & {
+        border-top: 2px solid $orange;
+      }
+    }
+  }
+
+  &__wrapper {
+    @include globalGutters;
+    max-width: 1440px;
+    margin: {
+      left: auto;
+      right: auto;
+    }
+  }
+
+  &__logo-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 24px;
+    max-width: 1220px;
+    width: 100%;
+    justify-content: center;
+    margin: {
+      top: 0;
+      bottom: 24px;
+      left: auto;
+      right: auto;
+    }
+
+    @media (min-width: $tablet) {
+      flex-direction: row;
+      gap: 32px;
+    }
+  }
+
+  &__logo {
+    text-align: center;
+    align-self: center;
+
+    img {
+      max-width: 160px;
+      max-height: 80px;
+      height: auto;
+      width: auto;
+      transform: translateZ(0);
+      image-rendering: -webkit-optimize-contrast;
+
+      @media (min-width: $tablet) {
+        max-width: 225px;
+        max-height: 100px;
+      }
+    }
+  }
+
+  &__heading {
+    color: $azBlue;
+    text-align: center;
+    margin: {
+      bottom: 24px;
+    }
+
+    span {
+      padding: {
+        left: 6px;
+      }
+
+      &:first-child {
+        padding: {
+          left: 0;
+        }
+      }
+    }
+
+    .--navy-heading,
+    .--red-heading {
+      @include rems(28px);
+      line-height: 1.14;
+      font-weight: 500;
+
+      @media (min-width: $tablet) {
+        @include rems(36px);
+        line-height: 1.33;
+      }
+    }
+
+    .--navy-heading {
+      .\--dark-blue-background & {
+        color: white;
+      }
+    }
+
+    .--red-heading {
+      color: $azRed;
+      .\--dark-blue-background & {
+        color: $orange;
+      }
+    }
+  }
+
+  &__content {
+    color: $black;
+    text-align: center;
+    margin: {
+      bottom: 24px;
+    }
+
+    .\--dark-blue-background & {
+      color: white;
+
+      a,
+      a:hover,
+      a:visited {
+        color: $orange;
+      }
+    }
+
+    @media (min-width: $tablet) {
+      margin: {
+        bottom: 40px;
+      }
+    }
+
+    @media (min-width: $desktop) {
+      max-width: calc(100% - 208px);
+      margin: {
+        top: 0px;
+        bottom: 24px;
+        left: auto;
+        right: auto;
+      }
+    }
+
+    // wysiwyg styling
+    p,
+    li {
+      @include textXMedium;
+      font-weight: 400;
+      margin: 0;
+      margin: {
+        bottom: 24px;
+      }
+
+      @media (min-width: $tablet) {
+        @include textLarge;
+      }
+
+      &:last-child {
+        margin: {
+          bottom: 0;
+        }
+      }
+    }
+
+    &.\--reduce-font {
+      p,
+      li {
+        @media (min-width: $tablet) {
+          @include textXMedium;
+        }
+      }
+    }
+
+    strong,
+    b {
+      font-weight: 500;
+    }
+
+    a {
+      color: $azRed;
+      text-decoration: underline;
+    }
+
+    ul {
+      list-style: inside;
+      padding: {
+        top: 16px;
+        bottom: 16px;
+        left: unset;
+      }
+
+      &.columns--2 {
+        list-style: disc;
+        display: flex;
+        flex-wrap: wrap;
+        padding: {
+          left: 22px;
+        }
+
+        li {
+          flex-basis: 50%;
+          max-width: 50%;
+
+          &:nth-child(odd) {
+            padding: {
+              right: 24px;
+            }
+          }
+        }
+      }
+    }
+
+    ol {
+      list-style: number;
+    }
+
+    li {
+      font-weight: 500;
+      margin: {
+        bottom: 16px;
+      }
+
+      &:last-child {
+        margin: {
+          bottom: 0;
+        }
+      }
+
+      &::marker {
+        color: $azRed;
+        font-size: 1.5625rem;
+      }
+    }
+
+    //custom class that was added to wysiwyg
+    .top-bottom-spacing {
+      padding: {
+        top: 24px;
+        bottom: 24px;
+      }
+    }
+  }
+
+  &__cta-container {
+    text-align: center;
+  }
+
+  &__cta {
+    display: inline-block;
+    text-decoration: none;
+    background-color: $azBlue;
+    color: white;
+    padding: {
+      left: 24px;
+      right: 24px;
+      top: 8px;
+      bottom: 8px;
+    }
+
+    &:hover {
+      background-color: transparent;
+      color: $azBlue;
+    }
+
+    .\--dark-blue-background & {
+      color: $azBlue;
+      background-color: $orange;
+
+      &:hover {
+        background-color: $azBlue;
+        color: $orange;
+        border: solid 1px orange;
+      }
+    }
+  }
+
+  &__secondary-cta {
+    background-color: transparent;
+    border-radius: 30px;
+    transition: border 0.25s ease, color 0.25s ease, background-color 0.25s ease;
+    padding: {
+      left: 24px;
+      right: 24px;
+      top: 8px;
+      bottom: 8px;
+    }
+
+    .\--dark-blue-background & {
+      color: white;
+      border: solid 1px white;
+
+      &:hover {
+        color: $orange;
+        border: solid 1px orange;
+      }
+    }
+  }
+
+  &__cta-divider {
+    display: block;
+    margin-top: 24px;
+  }
+}

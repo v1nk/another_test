@@ -1,0 +1,145 @@
+{#
+/**
+ * @file
+ * Theme implementation to display a Text Link Blocks with Tabs paragraph.
+ *
+ * Available variables:
+ * - field_title: text.
+ * - field_subtitle: text.
+ * - field_tabbed_tiles: field collection.
+ *
+ * @ingroup themeable
+ */
+#}
+{% set classes = ['section', 'section--tabs', 'has-tabs', '--degree-listing'] %}
+
+<section{{ attributes.addClass(classes) }}>
+  <div class="layout-constrain--narrow">
+    <div class="section__content-wrapper">
+      <h3 class="section__header">{{content.field_headline_html}}</h3>
+      <div class="section__content">{{content.field_content}}</div>
+      <div class="section__link-wrapper">
+          <div class="section__item" data-tab="0">
+            <a href="#" class="section__link">Bachelor's Degrees</a>
+          </div>
+          <div class="section__item" data-tab="1">
+            <a href="#" class="section__link">Associate's Degrees</a>
+          </div>
+          <div class="section__item" data-tab="2">
+            <a href="#" class="section__link">Master's Degrees</a>
+          </div>
+          <div class="section__item" data-tab="3">
+            <a href="#" class="section__link">Doctoral Degrees</a>
+          </div>
+      </div>
+      <div class="section__tab-content-wrapper js-degree-listings-displayurl">
+        <div class="section__tab-content" data-tab="0">
+          {{ drupal_view('degree_programs_bachelors') }} 
+        </div>
+        <div class="section__tab-content" data-tab="1">
+          {{ drupal_view('degree_programs_associates') }} 
+        </div>
+        <div class="section__tab-content" data-tab="2">
+          {{ drupal_view('degree_programs_masters') }} 
+        </div>
+        <div class="section__tab-content" data-tab="3">
+          {{ drupal_view('degree_programs_doctoral') }} 
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+
+<script type="text/javascript">
+  if (window.innerWidth < 870) {
+    var container = document.querySelector('.section--tabs.--degree-listing');
+    var tabs = container.querySelectorAll('.section__tab-content');
+    tabs.forEach(function(e, i) {
+      var results = e.querySelector('.view__filters .view__header.view__header--mobile');
+      var container = e.querySelector('.view__collapsible-wrapper');
+      container.after(results);
+
+    });
+
+    var targetNodes  = document.querySelectorAll('.section--tabs.--degree-listing .section__tab-content');
+
+
+    targetNodes.forEach(function(e, i, arr) {
+      var targetNode = e;
+
+      // Options for the observer (which mutations to observe)
+      var config = { attributes: true, childList: true, subtree: true };
+
+      var callback = function(mutationsList, observer) {
+        for(var mutation of mutationsList) {
+            if (mutation.type === 'childList') {
+              var results = mutation.target.querySelector('.view__filters .view__header.view__header--mobile');
+              var container = mutation.target.querySelector('.view__collapsible-wrapper');
+
+              if (results && container) {
+                container.after(results);
+              }
+            }
+        }
+      };
+
+      // Create an observer instance linked to the callback function
+      var observer = new MutationObserver(callback);
+
+      // Start observing the target node for configured mutations
+      observer.observe(targetNode, config);
+
+    });
+  }
+
+
+  var fixDisplayLinksOnTabbedDegrees = function() {
+    var links = document.querySelectorAll('.js-degree-listings-displayurl .js-displaypage-url');
+
+
+    links.forEach(function(e, i, arr) {
+      var displayUrl = e.getAttribute('data-displaypageurl');
+      if ( displayUrl !== '') {
+        e.setAttribute('href', displayUrl);
+      }
+    });
+  }
+
+ 
+  fixDisplayLinksOnTabbedDegrees();
+
+
+
+  var targetNodes  = document.querySelectorAll('.section--tabs.--degree-listing .section__tab-content');
+
+
+  targetNodes.forEach(function(e, i, arr) {
+    var targetNode = e;
+
+    // Options for the observer (which mutations to observe)
+    var config = { attributes: true, childList: true, subtree: true };
+
+    var callback = function(mutationsList, observer) {
+      for(var mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+         
+          fixDisplayLinksOnTabbedDegrees();
+        }
+      }
+    };
+
+    // Create an observer instance linked to the callback function
+    var observer = new MutationObserver(callback);
+
+    // Start observing the target node for configured mutations
+    observer.observe(targetNode, config);
+
+  });
+
+
+
+
+</script>

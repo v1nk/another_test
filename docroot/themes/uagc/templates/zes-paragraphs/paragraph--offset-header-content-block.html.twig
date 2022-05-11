@@ -1,0 +1,18 @@
+{% set greyBackgroundClass = '' %}
+  
+{% if paragraph.field_display_grey_background.value  == 1 %}
+  {% set greyBackgroundClass = '--grey-background' %}
+{% endif %}
+
+
+
+  <section class="section section--offset-header-content-block{% if content.field_is_right.0['#markup'] == "Right" %} is-reversed{% endif %} {{ greyBackgroundClass }}">
+    <div class="section__wrapper">
+      <div class="section__header-wrapper">
+        <h2 class="section__header">{{ content.field_title }} <span>{{ content.field_subtitle }}</span></h2>
+      </div>
+      <div class="section__content">
+        {{ content.field_paragraph_body }}
+      </div>  
+    </div>
+  </section>

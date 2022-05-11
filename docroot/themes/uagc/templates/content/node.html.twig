@@ -1,0 +1,31 @@
+
+    {{ attach_library('uagc/paid') }}
+
+{# article element can be switch out for section element if its a listing page #}
+{%
+  set classes = [
+    'site-layout__article',
+    node.getType,
+  ]
+%}
+<article {{ attributes.addClass(classes) }}>
+    <header class="site-layout__article-header">
+      {# hero content #}
+    </header>
+    <div class="site-layout__article-content">
+        {# sections for  width restricted and full width  can have multiple of each type #}
+        <section class="site-layout__article-content-section">
+            {# section for content that is restricted to 1440px #}
+            {{content}}
+        </section>
+        <section class="site-layout__article-content-section --full-width">
+            {# section for content not restricted usually for colored background #}
+        </section>
+    </div>
+</article>
+{% if bottom_content|keys is not empty %}
+    <div class="site-layout__footer">
+        {{ bottom_content }}
+    </div>
+{% endif %}
+

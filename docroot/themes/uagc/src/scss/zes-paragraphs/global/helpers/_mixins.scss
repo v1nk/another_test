@@ -1,0 +1,137 @@
+@use "sass:math";
+
+$xSmallMb: 4px;
+$xSmall: 8px;
+$SmallMb: 8px;
+$Small: 16px;
+$MediumMb: 12px;
+$Medium: 24px;
+$LargeMb: 16px;
+$Large: 32px;
+$xLargeMb: 40px;
+$xLarge: 80px;
+
+
+@mixin marginXSmall {
+  margin: {
+    bottom: $xSmallMb;
+  }
+
+  @media(min-width: $desktop) {
+    margin: {
+      bottom: $xSmall;
+    }
+  }
+}
+
+@mixin marginSmall {
+  margin: {
+    bottom: $SmallMb;
+  }
+
+  @media(min-width: $desktop) {
+    margin: {
+      bottom: $Small;
+    }
+  }
+}
+
+
+
+
+@mixin marginMedium {
+  margin: {
+    bottom: $MediumMb;
+  }
+
+  @media(min-width: $desktop) {
+    margin: {
+      bottom: $Medium;
+    }
+  }
+}
+
+@mixin paddingMedium {
+  padding: {
+    bottom: $MediumMb/2;
+    top: $MediumMb/2;
+  }
+
+  @media(min-width: $desktop) {
+    padding: {
+      bottom: $Medium/2;
+      top: $Medium/2;
+    }
+  }
+}
+
+
+@mixin paddingLarge {
+  padding: {
+    top: 12px;
+    bottom: 12px;
+  }
+
+  @media(min-width: $desktop) {
+    padding: {
+      top: 16px;
+      bottom: 16px;
+    }
+  }
+}
+
+@mixin paddingXLarge {
+  padding: {
+    top: 20px;
+    bottom: 20px;
+  }
+
+  @media(min-width: $desktop) {
+    padding: {
+      top: 40px;
+      bottom: 40px;
+    }
+  }
+}
+
+@mixin sectionPadding {
+  @include paddingLarge();
+}
+
+
+@mixin rems($size) {
+  font-size: math.div($size, 16px)*1rem;
+}
+
+
+
+
+@mixin flexGrid($numerator : 1, $denominator : 12) {
+  flex-basis: math.div($numerator, $denominator) * 100%;
+  max-width: math.div($numerator, $denominator) * 100%;
+}
+
+@mixin globalGutters() {
+  padding: {
+    top: $gutterTopBottomMobile;
+    bottom: $gutterTopBottomMobile;
+    left: $gutterSideMobile;
+    right: $gutterSideMobile;
+  }
+
+  @media(min-width: $tablet) {
+        padding: {
+            top: $gutterTopBottom;
+            bottom: $gutterTopBottom;
+            left: $gutterSideTablet;
+            right: $gutterSideTablet;
+        }
+    }
+
+  @media(min-width: $desktop) {
+    padding: {
+        left: $gutterSide;
+        right: $gutterSide;
+    }
+  }
+}

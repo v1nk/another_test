@@ -1,0 +1,127 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+@use "../elements/buttons" as *;
+@use "sass:math";
+
+.site-search-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100000;
+  &.--open {
+    display: block;
+  }
+  &__container {
+    position: relative;
+    background-color: #ffffff;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.06);
+    border-radius: 16px;
+    padding: {
+      top: 16px;
+      left: 16px;
+      right: 16px;
+    }
+    margin: {
+      left: 16px;
+      right: 16px;
+    }
+    top: 72px;
+    min-height: 200px;
+    max-height: 80vh;
+    //pixel perfect to figma comp
+    @media (min-width: 756px) {
+      padding: {
+        top: 40px;
+        left: 40px;
+        right: 40px;
+      }
+    }
+    @media (min-width: $tablet) {
+      margin: {
+        left: auto;
+        right: auto;
+      }
+      max-width: 784px;
+      height: 612px;
+      top: 40px;
+    }
+  }
+  &__close {
+    display: block;
+    position: relative;
+    margin: {
+      left: auto;
+      right: 0;
+      bottom: 8px;
+    }
+  }
+  &__close-button {
+    display: flex;
+    align-items: center;
+    position: relative;
+    font-weight: 500;
+    @include rems(14px);
+    line-height: 1.29;
+    text-align: center;
+    color: $azRed;
+    padding: 0;
+    border: unset;
+    border-radius: unset;
+    margin: {
+      left: auto;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+    background-color: transparent;
+    &:focus,
+    &:hover {
+      background-color: transparent;
+    }
+  }
+  &__close-icon {
+    display: flex;
+    padding: {
+      left: 10px;
+    }
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+    svg path {
+      width: 10px;
+      height: 10px;
+      stroke: $azRed;
+    }
+  }
+
+  &__header {
+    position: relative;
+    font-size: 1.75rem;
+    line-height: 1.1428571429;
+    font-weight: 500;
+    color: #0c234b;
+    text-align: center;
+    margin-bottom: 32px;
+    margin: {
+      bottom: 8px;
+      top: 0;
+      left: auto;
+      right: auto;
+    }
+    display: block;
+    @media (min-width: 756px) {
+      font-size: 2.25rem;
+      line-height: 1.3333333333;
+    }
+  }
+  &__header-red-text {
+    color: $azRed;
+  }
+}

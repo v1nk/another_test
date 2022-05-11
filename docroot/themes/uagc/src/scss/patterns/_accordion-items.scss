@@ -1,0 +1,194 @@
+@use "sass:math";
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+@use "../base/icons" as *;
+@use "../elements/buttons" as *;
+
+.accordion-items {
+  &__item {
+    &.--open {
+      .accordion-items__item-toggle {
+        color: $azRed;
+        border-bottom: 0;
+        &::after {
+          transform: rotateZ(-90deg);
+          background-image: url("/images/icons/chevron-right-red.svg");
+        }
+        &:focus {
+          border: {
+            bottom-color: $azRed;
+          }
+        }
+      }
+      .accordion-items__item-container {
+        border-bottom: 1px solid $azRed;
+        overflow: hidden;
+
+        .accordion-items__item-content {
+          margin-top: 0;
+          height: auto;
+          transition: margin-top 0.5s;
+        }
+      }
+    }
+  }
+  &__item-toggle {
+    width: 100%;
+    font-weight: 500;
+    @include rems(20px);
+    line-height: 1.2;
+    color: $azBlue;
+    text-align: left;
+    background-color: transparent;
+    position: relative;
+    padding: {
+      top: 16px;
+      bottom: 16px;
+      left: 0;
+      right: 32px;
+    }
+    border-radius: 0;
+    border: {
+      bottom: 1px solid $azBlue;
+    }
+    @media (min-width: $tablet) {
+      @include rems(24px);
+      line-height: 1.33;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      top: calc(50% - 12px);
+      right: 0;
+      background-image: url("/images/icons/chevron-right.svg");
+      background-position: center;
+      background-size: contain;
+      transform: rotateZ(90deg);
+      transition: transform 0.25s;
+    }
+    &:hover {
+      background-color: transparent;
+    }
+    &:focus {
+      background-color: transparent;
+      border: {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom-color: $azBlue;
+      }
+    }
+    &:active {
+      background-color: $azBlue;
+      color: #fff;
+    }
+  }
+  &__item-container {
+    //height: 0;
+    //transition: height 0.25s ease-in-out;
+    overflow: hidden;
+  }
+  &__item-content {
+    margin-top: -100%;
+    transition: margin-top 0.5s ease-in-out;
+    color: $black;
+    height: 0;
+    p {
+      margin: {
+        bottom: 24px;
+      }
+    }
+    ul {
+      list-style: disc;
+      margin: {
+        left: 28px;
+        bottom: 24px;
+      }
+    }
+    ol {
+      list-style: decimal;
+      margin: {
+        left: 28px;
+        bottom: 24px;
+      }
+    }
+    a {
+      @include defaultLinks;
+    }
+    a.button {
+      color: $azBlue;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    ol li {
+      @include rems(16px);
+      line-height: 1.5;
+      margin-bottom: 16px;
+      @media (min-width: $tablet) {
+        @include rems(20px);
+        line-height: 1.2;
+      }
+      &::marker {
+        color: #ab0520;
+        @include rems(16px);
+        line-height: 1.5;
+        @media (min-width: $tablet) {
+          @include rems(20px);
+          line-height: 1.2;
+        }
+      }
+    }
+    ul li {
+      @include rems(16px);
+      line-height: 1.5;
+      margin-bottom: 16px;
+      @media (min-width: $tablet) {
+        @include rems(20px);
+        line-height: 1.2;
+      }
+      &::marker {
+        color: #ab0520;
+        @include rems(16px);
+        line-height: 1.5;
+        @media (min-width: $tablet) {
+          @include rems(20px);
+          line-height: 1.2;
+        }
+      }
+    }
+  }
+  .accordion-external {
+    @include buttonsBlue;
+    background-color: transparent;
+    padding: {
+      left: 16px;
+      right: 38px;
+    }
+    @include rems(14px);
+    line-height: 1.29;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      right: 8px;
+      top: calc(50% - 10px);
+      background-image: url("../images/icons/arrow-up-right.svg");
+      background-size: contain;
+      background-position: center;
+    }
+    &:hover {
+      &::after {
+        background-image: url("../images/icons/arrow-up-right-white.svg");
+      }
+    }
+  }
+}

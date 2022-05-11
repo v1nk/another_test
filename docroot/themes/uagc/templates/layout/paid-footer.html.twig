@@ -1,0 +1,21 @@
+{{attach_library('uagc/zes-old-footer')}}
+
+{% set mobileFooterHeight = '' %}
+{% set hasSidebar = '' %}
+
+{% if node.getType == 'paid_landing_page' %}
+    {% set mobileFooterHeight = ' --mobile-height' %}
+{% endif %}
+
+{% if (node.field_hide_sidebar_rfi.0.value != '1') %}
+  {% set hasSidebar = ' --sidebar' %}
+{% endif %}
+
+<footer class="paid-footer{{mobileFooterHeight}}{{hasSidebar}}">
+  <p class="p-medium">The <a href="/" class="paid-footer__link">University of Arizona Global Campus</a>, 180 South Arizona Avenue, Suite #301 Chandler, AZ 85225</p>
+  <p class="p-medium"><a href="/privacy-policy" class="paid-footer__link">Privacy Policy</a> | <a href="/terms-and-conditions" class="paid-footer__link">Terms and Conditions</a> | <a href="/do-not-sell" class="paid-footer__link">Do not sell my information</a> | Forbes School of Business and Technology® is used under license. </p>
+  
+  {% if page.footer %}
+    {{ page.footer }}
+  {% endif %}
+</footer>

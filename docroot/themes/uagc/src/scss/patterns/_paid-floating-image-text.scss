@@ -1,0 +1,415 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.paid-floating-image-text {
+  max-width: 1920px;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  @media (min-width: $desktop-medium-large) {
+    &:not(.columns__left &) {
+      width: 100%;
+    }
+  }
+
+  &.\--alt-background {
+    background-color: $lighterGray;
+  }
+
+  &.\--gray {
+    @media (min-width: $desktop-small) {
+      background-color: $lighterGray;
+    }
+  }
+
+  &.\--white {
+    @media (min-width: $desktop-small) {
+      background-color: white;
+    }
+  }
+
+  &__red-line {
+    position: relative;
+
+    &::after {
+      content: "";
+      border-top: 2px solid $azRed;
+      width: 80px;
+      position: absolute;
+    }
+
+    &:not(.columns__left &) {
+      .--hide-image & {
+        max-width: 1440px;
+        margin: {
+          left: auto;
+          right: auto;
+        }
+      }
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column-reverse;
+
+    @media (min-width: $desktop-small) {
+      flex-direction: row;
+    }
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        &:not(.--hide-image &) {
+          max-width: 1440px;
+          margin: {
+            right: auto;
+            left: auto;
+          }
+        }
+      }
+    }
+  }
+
+  &__text-wrapper {
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        .--hide-image & {
+          max-width: 1440px;
+          margin: {
+            left: auto;
+            right: auto;
+          }
+        }
+      }
+    }
+  }
+
+  &__text-container {
+    @include globalGuttersPaid;
+    background-color: $lighterGray;
+    z-index: 1;
+    margin: {
+      top: -10%;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+    }
+
+    @media (min-width: $desktop-small) {
+      flex-basis: 63%;
+      max-width: 63%;
+      z-index: 0;
+      margin: unset;
+    }
+
+    @media (min-width: $desktop) {
+      padding: {
+        right: 160px;
+      }
+    }
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        &:not(.--hide-image &) {
+          padding: {
+            left: 0;
+          }
+
+          position: relative;
+          &:before {
+            display: block;
+            position: absolute;
+            content: "";
+            background: {
+              color: $lighterGray;
+            }
+            height: 100%;
+            width: 300px;
+            top: 0;
+            left: -300px;
+          }
+          .--alt-background & {
+            &:before {
+              background: {
+                color: #ffffff;
+              }
+            }
+          }
+
+          .--gray & {
+            &:before {
+              background-color: $lighterGray;
+            }
+          }
+
+          .--white & {
+            &:before {
+              background-color: white;
+            }
+          }
+        }
+      }
+      &:not(.columns__left &) {
+        .--hide-image & {
+          padding: {
+            left: 0;
+            right: 0;
+          }
+        }
+      }
+    }
+
+    .--hide-image & {
+      @include globalGuttersPaid;
+      flex-basis: 100%;
+      max-width: 100%;
+      margin: unset;
+      z-index: unset;
+    }
+
+    .--alt-background & {
+      background-color: white;
+    }
+
+    .--gray & {
+      @media (min-width: $desktop-small) {
+        background-color: $lighterGray;
+      }
+    }
+
+    .--white & {
+      @media (min-width: $desktop-small) {
+        background-color: white;
+      }
+    }
+
+    .--remove-padding-top & {
+      @media (min-width: $desktop-small) {
+        padding-top: 0;
+      }
+    }
+  }
+
+  &__image-container {
+    align-self: center;
+
+    @media (min-width: $desktop-small) {
+      flex-basis: 37%;
+      max-width: 37%;
+    }
+
+    .--hide-image & {
+      flex-basis: 0;
+      max-width: 0;
+    }
+  }
+
+  &__image {
+    display: none;
+
+    @media (min-width: $desktop-small) {
+      display: block;
+      transform: translateX(-70px);
+      max-width: 520px;
+      max-height: 440px;
+      width: 100%;
+      height: auto;
+    }
+
+    .--hide-image & {
+      display: none;
+    }
+  }
+
+  &__image-mobile {
+    display: block;
+    width: 100%;
+    height: auto;
+
+    @media (min-width: $desktop-small) {
+      display: none;
+    }
+
+    .--hide-image & {
+      display: none;
+    }
+  }
+
+  &__heading {
+    color: $azBlue;
+    font-weight: 500;
+    margin: {
+      top: 24px;
+      bottom: 16px;
+    }
+
+    @media (min-width: $desktop-small) {
+      margin: {
+        bottom: 24px;
+      }
+    }
+
+    span {
+      padding: {
+        left: 6px;
+      }
+
+      &:first-child {
+        padding: {
+          left: 0;
+        }
+      }
+    }
+
+    // review later adding global style (leaving for now since these sizes aren't a heading mixin)
+    .--navy-heading,
+    .--red-heading {
+      @include rems(28px);
+      line-height: 1.14;
+
+      @media (min-width: $tablet) {
+        @include rems(36px);
+        line-height: 1.3333333;
+      }
+    }
+
+    .--red-heading {
+      color: $azRed;
+    }
+  }
+
+  //Styling for wysiwyg
+  &__wysiwyg {
+    word-break: break-word;
+    margin-bottom: 0;
+
+    p,
+    li {
+      @include textMedium;
+      color: $black;
+      margin: 0;
+      font-weight: 400;
+
+      @media (min-width: $tablet) {
+        @include textXMedium;
+      }
+    }
+
+    strong,
+    b {
+      font-weight: 700;
+    }
+
+    a {
+      color: $azRed;
+      text-decoration: underline;
+    }
+
+    ul {
+      list-style: disc;
+      padding: {
+        left: 32px;
+      }
+      margin: {
+        bottom: 0;
+      }
+    }
+
+    ol {
+      list-style: number;
+    }
+
+    //custom class that was added to wysiwyg
+    .top-bottom-spacing {
+      padding: {
+        top: 24px;
+        bottom: 24px;
+      }
+    }
+  }
+
+  &__cta {
+    display: block;
+    text-decoration: none;
+    background-color: $azBlue;
+    color: white;
+    padding: {
+      left: 24px;
+      right: 24px;
+    }
+    margin: {
+      top: 16px;
+      right: 0px;
+    }
+
+    @media (min-width: $tablet) {
+      display: inline-block;
+      margin: {
+        top: 24px;
+        right: 8px;
+      }
+    }
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        .--hide-image & {
+          margin-left: calc((100vw - 1440px) / 2);
+        }
+      }
+    }
+
+    &:hover {
+      background-color: transparent;
+      color: $azBlue;
+    }
+  }
+
+  &__learn-more-cta {
+    display: block;
+    text-decoration: none;
+    background: transparent;
+    margin: {
+      top: 16px;
+    }
+    transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+
+    &:hover {
+      background-color: $azBlue;
+      color: white;
+    }
+
+    @media (min-width: $tablet) {
+      display: none;
+    }
+  }
+
+  &__advisor-cta {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background-color: $azBlue;
+    color: white;
+    margin: {
+      top: 24px;
+    }
+    transition: transform 0.25s ease-in-out, color 0.25s ease-in-out;
+    &:hover {
+      background-color: transparent;
+      color: $azBlue;
+    }
+
+    @media (min-width: $tablet) {
+      display: inline-block;
+    }
+
+    @media (min-width: $desktop-small) {
+      display: none;
+    }
+
+    .--v6 & {
+      @media (min-width: $desktop-small) {
+        display: inline-block;
+      }
+    }
+  }
+}

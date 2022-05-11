@@ -1,0 +1,106 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.dual-colored-blocks {
+  --textColor: #ffffff;
+  --backgroundColor: $orange;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  @include globalGutters;
+  @media (min-width: $desktop) {
+    flex-wrap: nowrap;
+  }
+  &__link {
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: var(--backgroundColor);
+    color: var(--textColor);
+    position: relative;
+    @include allPadding(large);
+    border-radius: 8px;
+    transition: transform 0.3s;
+    margin: {
+      bottom: 24px;
+    }
+    &:hover {
+      transform: scale(1.05);
+    }
+    &:focus {
+      border: 2px solid $black;
+      transform: scale(1.05);
+    }
+    &:visited {
+      color: var(--textColor);
+    }
+    &:last-child {
+      margin: {
+        bottom: 0;
+      }
+    }
+
+    @media (min-width: $desktop) {
+      flex-basis: calc(50% - 16px);
+      margin-bottom: 0;
+    }
+    &.--azRed {
+      --textColor: #ffffff;
+      --backgroundColor: #{$azRed};
+    }
+    &.--azBlue {
+      --textColor: #ffffff;
+      --backgroundColor: #{$azBlue};
+    }
+    &.--orange {
+      --textColor: #{$azBlue};
+      --backgroundColor: #{$orange};
+    }
+    &.--blue {
+      --textColor: #ffffff;
+      --backgroundColor: #{$blue};
+    }
+    &.--river {
+      --textColor: #ffffff;
+      --backgroundColor: #{$river};
+    }
+  }
+  &__content {
+    flex-basis: 50%;
+    min-height: 226px;
+    @media (min-width: $desktop) {
+      min-height: 324px;
+    }
+  }
+  &__preheader {
+    color: var(--textColor);
+    @include textStyle2;
+    @include marginMedium;
+  }
+  &__title {
+    @include headline1;
+    @include marginMedium;
+    color: var(--textColor);
+  }
+  &__bottom-text {
+    @include textStyle1;
+    color: var(--textColor);
+    position: absolute;
+    @include marginLarge;
+    bottom: 0;
+  }
+  &__image {
+    flex-basis: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

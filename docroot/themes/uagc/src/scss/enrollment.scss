@@ -1,0 +1,2241 @@
+$legacy-support-for-ie6: false;
+$legacy-support-for-ie7: false;
+$legacy-support-for-ie8: false;
+$tablet-size: 768px;
+
+@import "zes-paragraphs/breakpoint-sass/stylesheets/breakpoint"; // github.com/Team-Sass/breakpoint
+@import "zes-paragraphs/footer";
+@import "zes-paragraphs/nondiscrimination-policy";
+
+@include breakpoint-set("no queries", false);
+@include breakpoint-set("no query fallbacks", false);
+
+@import "zes-paragraphs/global";
+
+@charset "UTF-8";
+
+/* SITE VARIABLES */
+/* ---------- UNIVERSAL STYLING ---------- */
+.enrollment-tour {
+  position: relative;
+  top: 50px;
+  @include breakpoint($tablet-size) {
+    top: 0px;
+  }
+}
+.enrollment-tour .layout-constrain--narrow {
+  max-width: 1145px;
+}
+.enrollment-tour .slide-bottom-content {
+  position: relative;
+
+  display: flex;
+
+  justify-content: flex-end;
+
+  align-items: center;
+  margin: 2em auto;
+
+  &.\--split-controls {
+    justify-content: space-between;
+  }
+}
+
+.enrollment-tour .slide-bottom-content .slide-controls .slide-next,
+.enrollment-tour .slide-bottom-content .slide-controls .slide-prev,
+.enrollment-tour .slide-bottom-content .slide-controls .slide-apply {
+  z-index: 1;
+
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.enrollment-tour .slide-bottom-content .slide-controls .slide-prev {
+  margin-right: 20px;
+  align-self: center;
+  font-size: 1rem;
+  color: $blue;
+  font-weight: 700;
+}
+.enrollment-tour .slide-bottom-content .slide-controls .slide-apply {
+  @extend %button-primary;
+  padding: 15px;
+
+  border: none;
+  cursor: pointer;
+}
+.enrollment-tour .slide-bottom-content .slide-controls .slide-apply:hover {
+}
+.enrollment-tour .next-btn {
+  padding: 16px 32px;
+  border: none;
+
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.enrollment-tour .next-btn:hover {
+}
+@media screen and (min-width: 768px) {
+  .enrollment-tour .next-btn {
+    padding: 18px 63px;
+    display: inline-block;
+  }
+}
+.enrollment-tour .enrollment-nav {
+  margin: {
+    top: 30px;
+    bottom: 30px;
+  }
+  padding: 0;
+}
+.enrollment-tour .enrollment-nav .slick-track .nav-item {
+  outline: none;
+
+  display: flex !important;
+
+  justify-content: space-around;
+
+  align-items: center;
+  margin: 0 5px;
+}
+.enrollment-tour .enrollment-nav .slick-track .nav-item h4 {
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+.enrollment-tour .enrollment-nav .slick-track .nav-item h4:hover {
+}
+.enrollment-tour
+  .enrollment-nav
+  .slick-track
+  .nav-item.slick-active.slick-current
+  .step {
+}
+.enrollment-tour
+  .enrollment-nav
+  .slick-track
+  .nav-item.slick-active.slick-current
+  h4 {
+  text-decoration: underline;
+}
+.enrollment-tour .enrollment-nav .slick-track .nav-item.slick-active .step {
+}
+.enrollment-tour .enrollment-nav .slick-track .nav-item.slick-active h4 {
+}
+@media screen and (min-width: 925px) {
+  .enrollment-tour .enrollment-nav .slick-track {
+    padding: 0 20px;
+  }
+  .enrollment-tour .enrollment-nav .slick-track .nav-item {
+    justify-content: center;
+  }
+  .enrollment-tour .enrollment-nav .slick-track .slick-slide h4 {
+  }
+  .enrollment-tour .enrollment-nav .slick-track .slick-slide .step,
+  .enrollment-tour .enrollment-nav .slick-track .slick-slide img {
+    display: none;
+  }
+}
+.enrollment-tour .enrollment-nav img {
+  display: inline-block;
+}
+.enrollment-tour .progress {
+  position: relative;
+  display: block;
+  width: 90%;
+  height: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1em;
+
+  background-repeat: no-repeat;
+  background-size: 0 100%;
+
+  transition: background-size 0.3s ease-in-out;
+}
+.enrollment-tour .progress #progress-dot {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  background-color: $blue;
+}
+@media screen and (min-width: 925px) {
+  .enrollment-tour .progress {
+    width: 63em;
+    max-width: 885px;
+    left: 10px;
+  }
+}
+.enrollment-tour .progress .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.enrollment-tour .slick-counter {
+  font-style: italic;
+
+  display: inline-block;
+  position: relative;
+  left: 2px;
+  margin: 0 5px 10px;
+
+  transition: all 0.5s ease-in-out;
+}
+@media screen and (min-width: 925px) {
+  .enrollment-tour .slick-counter {
+    display: none;
+  }
+}
+.enrollment-tour .enrollment-slider .slider-content:focus {
+  outline: none;
+}
+.enrollment-tour .enrollment-slider .slider-content.first-slide {
+  position: relative;
+  max-height: 550px;
+}
+.enrollment-tour .enrollment-slider .slider-content.first-slide img {
+  width: 100%;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content.first-slide
+  .text-container {
+  padding: 25px;
+  text-align: center;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content.first-slide
+  .text-container
+  p {
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content.first-slide
+  .text-container
+  .intro {
+  margin-bottom: 0.5em;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content.first-slide
+  .text-container
+  .intro
+  .larger-txt {
+  text-transform: uppercase;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content.first-slide
+  .text-container
+  .small {
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content.first-slide
+  #firstSlideNext {
+  position: relative;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  padding: 23px 68px;
+  margin-top: 10px;
+}
+@media screen and (min-width: 768px) {
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content.first-slide
+    .text-container {
+    position: absolute;
+    top: 50%;
+    left: 200px;
+    max-width: 400px;
+
+    transform: translateY(-50%);
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content.first-slide
+    .text-container
+    .intro {
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content.first-slide
+    .text-container
+    .intro
+    .larger-txt {
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content.first-slide
+    #firstSlideNext {
+    position: absolute;
+    bottom: 32px;
+    right: 160px;
+    left: initial;
+
+    transform: none;
+  }
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content.payment-tuition-fees-slide
+  h4 {
+  text-transform: uppercase;
+}
+.enrollment-tour .enrollment-slider .slider-content .stripes {
+  padding: 0 0 15px 0;
+}
+.enrollment-tour .enrollment-slider .slider-content .stripes .slide-headline {
+  text-align: center;
+  width: 100%;
+  display: none;
+  @include breakpoint($tablet-size) {
+    display: block;
+  }
+
+  text-transform: uppercase;
+  padding: 5px 0;
+
+  clip-path: polygon(2% 0%, 100% 0%, 98% 100%, 0% 100%);
+  margin-bottom: 15px;
+}
+.enrollment-tour .enrollment-slider .slider-content .slide-headline {
+  text-align: center;
+  width: 100%;
+  display: none;
+  @include breakpoint($tablet-size) {
+    display: block;
+  }
+
+  text-transform: uppercase;
+  padding: 5px 0;
+
+  clip-path: polygon(2% 0%, 100% 0%, 98% 100%, 0% 100%);
+  margin-bottom: 15px;
+}
+.enrollment-tour .enrollment-slider .slider-content .slide-paragraph {
+  display: block;
+
+  text-align: left;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+  @include breakpoint($bp--desktop) {
+    text-align: center;
+    width: 75%;
+    padding: 5px 0;
+    margin: 15px auto;
+  }
+}
+.enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content {
+  display: flex;
+
+  justify-content: center;
+  align-items: stretch;
+
+  flex-wrap: wrap;
+  padding: 20px;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content.gray {
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content.white {
+  background: #fff;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .img-container {
+  width: 100%;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .img-container
+  img {
+  width: 100%;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .slide-text {
+  width: 100%;
+  margin-top: 2em;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .slide-text
+  p {
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .slide-text
+  a {
+  text-decoration: underline;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .slide-text
+  a:hover {
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .slide-text
+  ul {
+  list-style: none;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .slide-text
+  ul
+  li {
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .slide-text
+  ul
+  li::before {
+  content: "\2022";
+  display: inline-block;
+
+  width: 1em;
+  margin-left: -1em;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .slide-text
+  ul.lighter-list {
+  list-style: initial;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .slide-text
+  ul.lighter-list
+  .split {
+  margin-bottom: 0;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .slide-text
+  ul.lighter-list
+  li {
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .slide-text
+  ul.lighter-list
+  li::before {
+  content: none;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .hover-content-container {
+  width: 100%;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+
+  .hover-content-container-image {
+    padding-top: 80%;
+  }
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .hover-content-container
+  img {
+  width: 100%;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .hover-content-container
+  .info-slide {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 0;
+  padding: 0 3em;
+  overflow: hidden;
+  text-align: center;
+
+  transition: height 0.4s ease-in-out;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .hover-content-container
+  .info-slide
+  .text-container {
+  position: relative;
+  top: 50%;
+
+  transform: translateY(-50%);
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .hover-content-container
+  .info-slide
+  p {
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .hover-content-container
+  .info-slide
+  p.italic {
+  font-style: italic;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .hover-content-container:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .hover-content-container:hover
+  .info-slide,
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .hover-content-container:active
+  .info-slide {
+  height: 100%;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .split {
+  width: 100%;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .split:not(:last-child) {
+  margin-bottom: 25px;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .split.expectations {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+  margin: 1em 5px;
+  width: 100%;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .split.expectations
+  .img-container {
+  width: 10%;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .split.expectations
+  p {
+  width: calc(90% - 10px);
+  margin-bottom: 0;
+  font-size: 1rem;
+  color: $azBlue;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .start-steps {
+  margin: 0.5em 0;
+  margin-bottom: 30px;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .start-steps
+  img:first-child {
+  margin: 0 auto;
+  margin-bottom: 20px;
+  height: 55px;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .start-steps
+  .step-text {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: stretch;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .start-steps
+  .step-text
+  span {
+  border-radius: 50%;
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .start-steps
+  .step-text
+  p {
+  width: calc(100% - 55px);
+
+  margin-bottom: 0;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .start-steps
+  .step-text
+  p
+  a {
+  text-decoration: underline;
+  margin-top: 10px;
+  display: block;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .start-steps
+  .step-text
+  p
+  a:hover {
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .start-callout {
+  width: 100%;
+  background: #f4f4f4;
+  padding: 10px;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .start-callout
+  .flexer-container {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .start-callout
+  .flexer-container
+  .img-container {
+  width: 60px;
+  margin-right: 15px;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content
+  .start-callout
+  .flexer-container
+  p {
+  text-transform: uppercase;
+  margin-bottom: 0;
+
+  text-align: center;
+}
+@media screen and (min-width: 768px) {
+  .enrollment-tour .enrollment-slider .slider-content .stripes .flexer-content {
+    justify-content: space-between;
+
+    align-items: stretch;
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .flexer-content.expect {
+    justify-content: space-around;
+    min-height: 320px;
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .flexer-content
+    .img-container {
+    width: calc(50% - 15px);
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .flexer-content
+    .slide-text {
+    width: calc(50% - 30px);
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .flexer-content
+    .slide-text
+    ul.lighter-list {
+    margin-left: 0;
+
+    display: flex;
+
+    justify-content: space-between;
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .flexer-content
+    .hover-content-container {
+    width: calc(33.3% - 5px);
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .flexer-content
+    .hover-content-container:not(:last-child) {
+    margin-bottom: 0;
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .flexer-content
+    .hover-content-container
+    .info-slide
+    p.italic {
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .flexer-content
+    .split {
+    width: calc(50% - 15px);
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .flexer-content
+    .split.expectations
+    .img-container {
+    width: 5%;
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .flexer-content
+    .split.expectations
+    p {
+    width: calc(95% - 10px);
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .flexer-content
+    .half-step {
+    width: calc(50% - 10px);
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .flexer-content
+    .one-third-step {
+    width: calc(34% - 10px);
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .flexer-content
+    .one-third-step.complete-enrollment {
+    margin-right: 13px;
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .flexer-content
+    .start-steps
+    .step-text
+    p {
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 900px) {
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .flexer-content
+    .one-third-step.complete-enrollment {
+    left: 25px;
+    bottom: 17px;
+    position: relative;
+  }
+}
+@media screen and (min-width: 992px) {
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .flexer-content
+    .hover-content-container
+    .info-slide
+    p.italic {
+  }
+}
+.enrollment-tour .enrollment-slider .slider-content .stripes .why-desktop {
+  display: none;
+}
+.enrollment-tour .enrollment-slider .slider-content .stripes .why-mobile {
+  padding: 15px;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .why-mobile
+  .item-container {
+  border: 1px solid $azBlue;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .why-mobile
+  .item-container:not(:last-child) {
+  margin-bottom: 15px;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .why-mobile
+  .item-container
+  .show-btn {
+  position: relative;
+
+  margin: 0;
+  padding: 15px;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .why-mobile
+  .item-container
+  .arrow {
+  position: absolute;
+  right: 20px;
+  top: 18px;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .why-mobile
+  .item-container
+  .arrow.rotate {
+  transform: rotate(180deg);
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .why-mobile
+  .item-container
+  ul {
+  margin: 0 20px 0;
+  padding-bottom: 20px;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .why-mobile
+  .item-container
+  ul
+  h6 {
+  text-transform: capitalize;
+
+  border-bottom: 1px solid #fff;
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .why-mobile
+  .item-container
+  ul
+  li {
+  margin-left: 20px;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .why-mobile
+  .item-container
+  ul
+  li
+  a {
+  color: $azBlue;
+  text-decoration: none;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .why-mobile
+  .item-container
+  ul
+  a {
+  text-decoration: underline;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content.about-au-content {
+  padding: 0;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content.tuition-content {
+  align-items: flex-start;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content.tuition-content
+  .payment {
+  width: 100%;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content.tuition-content
+  .payment
+  .payment-copy {
+  display: flex;
+
+  justify-content: space-between;
+
+  flex-wrap: wrap;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content.tuition-content
+  .tuition {
+  width: 100%;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content.tuition-content
+  .tuition
+  ul {
+  padding: 0;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content.tuition-content
+  .tuition
+  ul
+  li {
+  margin: 15px 0;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content.tuition-content
+  .half {
+  width: 100%;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content.tuition-content
+  .flexer-container {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+  margin-bottom: 15px;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content.tuition-content
+  .flexer-container
+  .img-container {
+  width: 45px;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content.tuition-content
+  .flexer-container
+  p {
+  width: calc(100% - 55px);
+  margin-bottom: 0;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .flexer-content.about-you-content
+  ul
+  li {
+}
+.enrollment-tour .price-calculator-link {
+  display: flex;
+
+  width: 50%;
+  margin: 0 auto;
+  background-color: $gray;
+  display: none;
+
+  .slick-active & {
+    display: flex;
+  }
+}
+
+.enrollment-tour .price-calculator-link div {
+  justify-content: center;
+}
+.enrollment-tour .price-calculator-link img {
+  display: block;
+  margin: 0 auto;
+}
+@media screen and (min-width: 768px) {
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .flexer-content.about-you-content
+    ul
+    li {
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .flexer-content.tuition-content
+    .payment {
+    width: 50%;
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .flexer-content.tuition-content
+    .tuition {
+    width: calc(50% - 15px);
+  }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .why-mobile {
+    display: none;
+  }
+  .payment-tuition-fees-slide .why-mobile {
+    padding-bottom: 15px;
+    display: block;
+  }
+  .enrollment-tour .enrollment-slider .slider-content .stripes .why-desktop {
+    display: flex;
+
+    padding: 20px;
+
+    justify-content: center;
+
+    align-items: center;
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .why-desktop
+    .item-nav {
+    width: 20%;
+    border-right: 1px solid white;
+    background-color: $azBlue;
+    color: white;
+    padding: 20px;
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .why-desktop
+    .item-nav
+    ul {
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .why-desktop
+    .item-nav
+    ul
+    li {
+    padding: 10px 20px;
+    border-right: 1px solid white;
+
+    margin: 0;
+    cursor: pointer;
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .why-desktop
+    .item-nav
+    ul
+    li:hover {
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .why-desktop
+    .item-nav
+    ul
+    li.active {
+    border-right: 7px solid white;
+    width: 102.2%;
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .why-desktop
+    .items {
+    width: 80%;
+    padding-top: 15px;
+
+    align-self: flex-start;
+    @include breakpoint($tablet-size) {
+      min-height: 355px;
+    }
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .why-desktop
+    .items
+    .item
+    .headline {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+    text-align: center;
+    padding-right: 20px;
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .why-desktop
+    .items
+    .item
+    .headline
+    h4 {
+    margin-bottom: 0;
+    margin-left: 15px;
+    font-size: 1.875rem;
+    width: 100%;
+    border-bottom: 1px solid $azBlue;
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .why-desktop
+    .items
+    .item
+    .headline
+    img {
+    width: 55px;
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .why-desktop
+    .items
+    .item
+    ul {
+    display: flex;
+    margin: 30px auto 0;
+
+    justify-content: space-between;
+    max-width: 709px;
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .why-desktop
+    .items
+    .item
+    ul
+    .split {
+    width: calc(50% - 15px);
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .why-desktop
+    .items
+    .item
+    ul
+    .split
+    h6 {
+    text-transform: capitalize;
+
+    border-bottom: 1px solid #fff;
+    padding-bottom: 4px;
+    margin-bottom: 4px;
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .why-desktop
+    .items
+    .item
+    ul
+    .split
+    li {
+    margin-left: 20px;
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .why-desktop
+    .items
+    .item
+    ul
+    a {
+    text-decoration: underline;
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .why-desktop
+    .items
+    .item
+    ul.value-links-list
+    li {
+    margin-bottom: 5px;
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .why-desktop
+    .items
+    #support
+    ul
+    .split
+    li {
+    margin-bottom: 0;
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .why-desktop
+    .items
+    #support
+    ul
+    .split:nth-child(2)
+    li {
+    margin-left: 20px;
+  }
+
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .flexer-content.tuition-content
+    .half {
+    width: calc(50% - 10px);
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .flexer-content.get-started-content {
+    justify-content: space-around;
+
+    align-items: flex-start;
+    min-height: 320px;
+    background-color: $gray;
+    align-content: center;
+  }
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .degrees-container {
+  background: #fff;
+  padding: 5px;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .degrees-container
+  .flexer-content {
+  padding: 5px;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .degrees-container
+  .degree-overview {
+  flex: 0 0 100%;
+  background-color: $azBlue;
+  padding: 15px 30px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: stretch;
+
+  @include breakpoint($tablet-size) {
+    padding: 55px 30px;
+    flex: 0 0 49%;
+  }
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .degrees-container
+  .degree-overview
+  div
+  h3 {
+  margin-bottom: 15px;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .degrees-container
+  .degree-overview
+  div
+  ul {
+  margin: 0;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .degrees-container
+  .course-structure {
+  flex: 0 0 100%;
+
+  @include breakpoint($tablet-size) {
+    flex: 0 0 49%;
+  }
+
+  background: #f4f4f4;
+  padding: 33px;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .degrees-container
+  .course-structure
+  .course-content
+  h3 {
+  text-align: center;
+  margin-bottom: 0;
+}
+.enrollment-tour
+  .enrollment-slider
+  .slider-content
+  .stripes
+  .degrees-container
+  .split {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+@media screen and (min-width: 768px) {
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .degrees-container
+    .degree-overview {
+    width: 35%;
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .degrees-container
+    .course-structure {
+    width: calc(65% - 5px);
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .degrees-container
+    .course-structure
+    .course-content {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .degrees-container
+    .split {
+    width: calc(25% - 15px);
+  }
+  .enrollment-tour
+    .enrollment-slider
+    .slider-content
+    .stripes
+    .degrees-container
+    .split:not(:last-child) {
+    margin-bottom: 0;
+  }
+}
+.enrollment-tour .video-icon {
+  cursor: pointer;
+}
+.enrollment-tour .video-overlay {
+  display: none;
+  position: fixed;
+  z-index: 1000000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+}
+.enrollment-tour .video-overlay:after {
+  content: url("../../enrollment-tour/assets/img/close-btn.svg");
+  position: absolute;
+  top: 20%;
+  left: 80%;
+
+  transform: translate(-50%, -50%);
+}
+.enrollment-tour .video-overlay iframe {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+  width: 75%;
+  max-width: 640px;
+  border: none;
+}
+
+////// new stuff /////////
+
+.enrollment-tour {
+  .section--feature-space {
+    padding: {
+      top: 32px;
+      bottom: 32px;
+    }
+    @include breakpoint(min-width $tablet-header) {
+    }
+    .section__header {
+      max-width: 800px;
+      margin: {
+        left: auto;
+        right: auto;
+      }
+    }
+  }
+  .nav-item {
+    color: $azBlue;
+    text-decoration: none;
+    display: flex;
+    flex-wrap: wrap;
+    @include breakpoint(min-width $tablet-header) {
+    }
+
+    .step {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $azBlue;
+      color: #fff;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      text-decoration: none;
+    }
+
+    &.slick-current {
+      color: $azRed;
+      text-decoration: underline;
+    }
+  }
+
+  .progress {
+    background-color: $tan;
+    background-image: linear-gradient(14deg, $orange 0%, $orange 100%);
+    transition: background-size 0.3s ease-in-out;
+  }
+  .enrollment-slider {
+    .slider-content {
+      .slide-headline {
+        font-weight: 700;
+        background-color: $azBlue;
+        clip-path: none;
+        color: #fff;
+        font-size: rem(16px);
+        line-height: 1;
+        padding: {
+          top: 8px;
+          bottom: 8px;
+        }
+      }
+      .slide-paragraph {
+        color: $gray4;
+        margin: {
+          bottom: 30px;
+        }
+      }
+    }
+  }
+  .enrollment-slider {
+    .info-slide {
+      color: #fff;
+      background-color: $azBlue;
+      .text-container {
+        .italic {
+          font-size: rem(36px);
+          line-height: 1.15;
+          font-weight: 500;
+          margin: {
+            bottom: 27px;
+          }
+        }
+      }
+    }
+    .slide-controls {
+      display: flex;
+
+      .slide-next {
+        @extend %button-primary-alt;
+        background-color: $azRed;
+      }
+    }
+  }
+
+  .why-desktop,
+  .why-mobile {
+    background-color: white;
+    color: $azBlue;
+  }
+
+  .why-desktop {
+    .item-nav {
+      .active {
+        background-color: lighten($azBlue, 5%);
+        color: white;
+      }
+    }
+  }
+
+  .why-mobile {
+    .item-container {
+      background-color: white;
+      border: 1px solid white;
+    }
+    ul {
+      padding-left: 10px;
+    }
+  }
+
+  .degree-overview {
+    color: white;
+    h3 {
+      font-size: 1.875rem;
+      font-weight: 700;
+    }
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+  }
+
+  .course-structure.course-structure.course-structure.course-structure.course-structure {
+    background-color: $gray;
+    color: $gray4;
+
+    h3 {
+      color: $azBlue;
+      font-size: 1.875rem;
+      font-weight: 700;
+
+      @include breakpoint($bp--desktop) {
+        font-size: 1.875rem;
+      }
+    }
+  }
+
+  .tuition-content.tuition-content.tuition-content.tuition-content.tuition-content {
+    .tuition {
+      h4 {
+        background-color: $gray;
+        color: $azBlue;
+        padding: 5px;
+        line-height: 1;
+      }
+      ul {
+        padding-left: 25px;
+        li {
+          color: $azBlue;
+        }
+      }
+    }
+  }
+
+  .payment {
+    h4 {
+      background-color: $gray;
+      color: $azBlue;
+      padding: 5px;
+      line-height: 1;
+    }
+
+    &-copy {
+      padding: 15px;
+
+      p {
+        color: $azBlue;
+      }
+    }
+  }
+
+  .price-calculator__content {
+    h2 {
+      font-size: 2rem;
+      font-weight: 400;
+      color: $azBlue;
+    }
+
+    .button {
+      @extend %button-primary-alt;
+      display: inline-block;
+      margin-top: 25px;
+    }
+  }
+
+  .one-third-step {
+    .step-text {
+      span {
+        color: white;
+        background-color: $azRed;
+        border-radius: 50%;
+      }
+      p {
+        align-self: center;
+        font-size: 1.125rem;
+        color: $azBlue;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .slick-track .nav-item {
+    span.step {
+      height: 20px;
+      width: 20px;
+      font-size: 0.75rem;
+      align-self: flex-start;
+    }
+
+    h4 {
+      font-size: 0.625rem;
+      max-width: 170px;
+      @include breakpoint($bp--desktop) {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .price-calculator-link.price-calculator-link.price-calculator-link.price-calculator-link.price-calculator-link.price-calculator-link {
+    display: none;
+  }
+
+  .slick-active {
+    .price-calculator-link.price-calculator-link.price-calculator-link.price-calculator-link.price-calculator-link.price-calculator-link {
+      display: flex;
+    }
+  }
+}
+
+.page--node-type-enrollment-tour {
+  .footer {
+    padding: {
+      top: 30px;
+    }
+
+    .copyright {
+      text-align: left;
+      padding: {
+        bottom: 30px;
+      }
+    }
+  }
+
+  .section__header {
+    font-weight: 500;
+    font-size: 1.75rem;
+    display: none;
+    @include breakpoint($tablet-size) {
+      display: block;
+      font-size: 2.625rem;
+    }
+  }
+
+  .mobile-menu {
+    display: none;
+  }
+}
+
+.price-calculator-link {
+  display: none !important;
+}
+
+.skiplinks {
+  display: none;
+}
+
+.mobile-tour {
+  &__header {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    z-index: 100;
+    @include breakpoint($tablet-size) {
+      display: none;
+    }
+  }
+  &__blue-header {
+    margin-bottom: 10px;
+    position: relative;
+    top: 50px;
+    background-color: $azBlue;
+    @include breakpoint($tablet-size) {
+      top: 0px;
+    }
+
+    .section__header {
+      margin: 0;
+      img {
+        display: block;
+        margin: 0 auto;
+      }
+    }
+  }
+  &__next-button {
+    @extend %button-primary-alt;
+    color: white;
+    display: inline;
+    position: absolute;
+    background-color: $azRed;
+    right: 0;
+    height: 50px;
+    padding: {
+      top: 15px;
+      bottom: 15px;
+    }
+    &:active {
+      background-color: $azRed;
+    }
+    &:hover {
+      background-color: $azRed;
+    }
+  }
+  &__get-started-button {
+    @extend %button-primary-alt;
+    background-color: $orange;
+    color: $azBlue;
+    right: 0;
+    padding: {
+      top: 15px;
+      bottom: 15px;
+    }
+    position: absolute;
+  }
+  &__header-text {
+    @extend %h5;
+    display: block;
+    color: white;
+    text-align: center;
+    @include breakpoint($tablet-size) {
+      display: none;
+    }
+  }
+  &__logo {
+    max-width: 50%;
+    height: 40px;
+    margin: {
+      left: 16px;
+      right: 16px;
+      top: 0;
+      bottom: 0;
+    }
+  }
+  &__sticky-footer {
+    z-index: 1000;
+    position: fixed;
+    bottom: 0;
+    height: 80px;
+    display: flex;
+    @include breakpoint($tablet-size) {
+      display: none;
+    }
+  }
+  &__step-link {
+    background-color: white;
+    flex: 0 0 20%;
+    color: $azBlue;
+    border: 1px solid #d0d0ce;
+    font-size: 0.5rem;
+    text-align: center;
+    max-height: 74px;
+    position: relative;
+    top: 6px;
+    padding: {
+      top: 10px;
+      left: 5px;
+      bottom: 10px;
+      right: 5px;
+    }
+    &.\--active-step {
+      background-color: $orange;
+      height: 100%;
+      max-height: 80px;
+      top: 0px;
+    }
+  }
+  &__step-number {
+    font-size: 0.937rem;
+    text-align: center;
+    display: block;
+  }
+  &__slide-headline {
+    background-color: transparent;
+    color: $azBlue;
+    font-weight: bold;
+    font-size: 1.25rem;
+    @include breakpoint($tablet-size) {
+      display: none;
+    }
+  }
+
+  &__step1-slider-wrapper {
+    display: block;
+    @include breakpoint($tablet-size) {
+      display: none;
+    }
+    .slick-dots {
+      width: 90%;
+    }
+  }
+
+  &__text-container {
+    background-color: $azBlue;
+    color: white;
+    padding: 15px;
+    min-height: 170px;
+    max-height: 150px;
+    a {
+      color: white;
+    }
+  }
+
+  &__step5-text-container {
+    background-color: $azBlue;
+    color: white;
+    padding: 15px;
+    min-height: 175px;
+    max-height: 175px;
+  }
+
+  &__text-container-header {
+    @extend %h5;
+    color: white;
+    margin: {
+      bottom: 15px;
+    }
+    a {
+      @extend %h5;
+      color: white;
+    }
+  }
+  &__text-container-content {
+    font-size: 0.937rem;
+    margin: {
+      bottom: 20px;
+    }
+    a {
+      font-size: 0.937rem;
+    }
+  }
+
+  &__stripes-mobile {
+    display: block;
+    @include breakpoint($tablet-size) {
+      display: none;
+    }
+  }
+  &__stripes-desktop {
+    display: none;
+    @include breakpoint($tablet-size) {
+      display: block;
+    }
+  }
+
+  &__step5-desktop.mobile-tour__step5-desktop.mobile-tour__step5-desktop.mobile-tour__step5-desktop.mobile-tour__step5-desktop.mobile-tour__step5-desktop.mobile-tour__step5-desktop {
+    display: none;
+    @include breakpoint($tablet-size) {
+      display: flex;
+    }
+  }
+
+  &__step5-mobile {
+    display: block;
+    @include breakpoint($tablet-size) {
+      display: none;
+    }
+  }
+
+  &__small {
+    @include breakpoint($tablet-size) {
+      font-size: 0.75rem;
+      display: block;
+      margin: {
+        top: 10px;
+        left: 110px;
+        bottom: 10px;
+        right: 70px;
+      }
+    }
+  }
+}
+
+.first-slider .stripes {
+  display: none;
+  @include breakpoint($tablet-size) {
+    display: block;
+  }
+}
+
+div[data-slick-index="2"] {
+  .stripes .layout-constrain--narrow {
+    padding: {
+      left: 0px;
+      right: 0px;
+    }
+    @include breakpoint($tablet-size) {
+      padding: {
+        left: 20px;
+        right: 20px;
+      }
+    }
+  }
+
+  .degrees-container.degrees-container.degrees-container.degrees-container.degrees-container,
+  .flexer-content.flexer-content.flexer-content.flexer-content.flexer-content.flexer-content {
+    padding: {
+      left: 0px;
+      right: 0px;
+    }
+    @include breakpoint($tablet-size) {
+      padding: {
+        left: 5px;
+        right: 5px;
+      }
+    }
+  }
+
+  .slide-paragraph.slide-paragraph.slide-paragraph.slide-paragraph.slide-paragraph {
+    padding: {
+      left: 0px;
+      right: 0px;
+    }
+
+    margin: {
+      bottom: 10px;
+    }
+    @include breakpoint($tablet-size) {
+      margin: {
+        bottom: 30px;
+      }
+    }
+  }
+}
+
+.why-mobile .payment-copy p {
+  color: $azBlue;
+  padding-left: 10px;
+  padding-top: 17px;
+}
+
+.payment-tuition-fees-slide .flexer-container {
+  display: flex;
+}
+
+.why-mobile .payment h4 {
+  color: $azBlue;
+  background-color: white;
+  @include breakpoint($tablet-size) {
+    background-color: #f1f5f6;
+    color: #0c234b;
+  }
+}
+
+.slide-bottom-content.slide-bottom-content.slide-bottom-content.slide-bottom-content {
+  display: none;
+  @include breakpoint($tablet-size) {
+    display: flex;
+  }
+}
+
+#value small {
+  @include breakpoint($tablet-size) {
+    margin: 30px auto 0;
+    max-width: 709px;
+  }
+}
+
+.step-4 .img-container {
+  min-width: 57px;
+  @include breakpoint($tablet-size) {
+    min-width: unset;
+  }
+}
+
+.step-3 a {
+  color: #4962e9;
+}
+.step-3 .course-content h3 a {
+  color: $azBlue;
+}
+.step-3 .degree-overview a {
+  color: white;
+}
+.payment a {
+  color: #4962e9;
+  @include breakpoint($tablet-size) {
+    color: #4962e9;
+  }
+}
+.payment h4 a,
+.tuition h4 a {
+  color: $azBlue;
+}
+.step-2 .why-desktop .items .item.item.item.item.item.item.item.item.item li a {
+  color: $azBlue;
+  text-decoration: none;
+}
+.section--feature-space {
+  padding: {
+    top: 15px;
+    bottom: 15px;
+  }
+  @include breakpoint($tablet-size) {
+    padding: {
+      top: 0px;
+      bottom: 0px;
+    }
+  }
+}
+
+.step-1 .hover-content-container a {
+  color: white;
+}
+.payment .show-btn {
+  background-color: white;
+  color: $azBlue;
+}
+.payment .payment-copy {
+  color: $azBlue;
+}

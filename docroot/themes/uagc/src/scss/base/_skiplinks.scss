@@ -1,0 +1,53 @@
+// @file
+// Styles for accessible skiplinks.
+@use "colors" as *;
+@use "../base/vars" as *;
+a.skiplinks {
+  position: absolute;
+  width: 200px;
+  z-index: 999999999;
+  top: 48px;
+  overflow: hidden;
+  display: block;
+  height: 0;
+  text-align: center;
+  background-color: #ffffff;
+  color: $azBlue;
+  left: calc(50% - 100px);
+
+  @media (min-width: $desktop-small) {
+    top: 112px;
+  }
+  &:focus {
+    opacity: 1;
+    height: auto;
+    padding: 12px;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.skiplinks__link:visited,
+.skiplinks__link:focus {
+  background-color: white;
+  border: 2px solid #eee;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top: 0;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  color: $azBlue;
+  white-space: nowrap;
+  display: inline-block;
+
+  margin: 0;
+  outline: 1;
+  text-align: center;
+  text-decoration: underline;
+  width: 164px;
+}
+
+// Remove :focus styles for skiplink targets.
+#main:focus {
+  outline: 0;
+}

@@ -1,0 +1,15 @@
+<svg id="Icon-Quality" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="60" viewBox="0 0 60 60">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_225" data-name="Path 225" d="M0-60H60V0H0Z" transform="translate(0 60)" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="Group_225" data-name="Group 225" clip-path="url(#clip-path)">
+    <g id="Group_223" data-name="Group 223">
+      <path id="Path_223" data-name="Path 223" d="M0,0A28,28,0,0,0,0,56,28.032,28.032,0,0,0,28,28,28.032,28.032,0,0,0,0,0M0,58A30,30,0,0,1,0-2,30.034,30.034,0,0,1,30,28,30.034,30.034,0,0,1,0,58" transform="translate(30 2)" fill="#fff"/>
+    </g>
+    <g id="Group_224" data-name="Group 224">
+      <path id="Path_224" data-name="Path 224" d="M0,0A1,1,0,0,1-.7-.288l-11.412-11.25a1,1,0,0,1-.01-1.414,1,1,0,0,1,1.414-.01L-.031-2.435,17.855-21.681a1,1,0,0,1,1.414-.051,1,1,0,0,1,.051,1.413L.732-.319A1,1,0,0,1,.022,0Z" transform="translate(26.412 41)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

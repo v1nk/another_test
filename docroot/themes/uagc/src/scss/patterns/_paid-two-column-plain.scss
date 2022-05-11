@@ -1,0 +1,308 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.paid-two-column-plain {
+  @include globalGuttersPaid;
+  width: 100%;
+  position: relative;
+  @media (min-width: $desktop-small) {
+    margin: {
+      left: 0;
+      right: 0;
+    }
+  }
+  @media (min-width: $desktop-medium-large) {
+    &:not(.columns__left &) {
+      &:not(.--center-content &) {
+        width: 100%;
+        padding: {
+          left: 0;
+          right: 0;
+        }
+      }
+    }
+  }
+
+  &__red-line {
+    max-width: 1000px;
+    margin: {
+      bottom: 24px;
+      left: auto;
+      right: auto;
+    }
+
+    @media (min-width: $desktop-small) {
+      max-width: 1440px;
+      margin: {
+        left: auto;
+        right: auto;
+      }
+    }
+
+    &::after {
+      content: "";
+      border-top: 2px solid $azRed;
+      width: 80px;
+      position: absolute;
+    }
+
+    .--center-content & {
+      &::after {
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .--extend-width & {
+      max-width: unset;
+      @media (min-width: $desktop-small) {
+        max-width: 1440px;
+      }
+    }
+  }
+
+  &.\--grey-background {
+    background-color: $lighterGray;
+  }
+
+  &__heading {
+    color: $azBlue;
+    font-weight: 500;
+    text-align: left;
+    max-width: 1000px;
+    margin: {
+      left: auto;
+      right: auto;
+      bottom: 24px;
+    }
+    @media (min-width: $desktop-small) {
+      max-width: 1440px;
+      margin: {
+        left: auto;
+        right: auto;
+      }
+    }
+
+    span {
+      padding: {
+        left: 6px;
+      }
+
+      &:first-child {
+        padding: {
+          left: 0;
+        }
+      }
+    }
+
+    .--navy-heading,
+    .--red-heading {
+      @include rems(28px);
+      line-height: 1.14;
+
+      @media (min-width: $tablet) {
+        @include rems(36px);
+        line-height: 1.33;
+      }
+    }
+
+    .--red-heading {
+      color: $azRed;
+    }
+
+    .--center-content & {
+      text-align: center;
+    }
+
+    .--extend-width & {
+      max-width: unset;
+      @media (min-width: $desktop-small) {
+        max-width: 1440px;
+      }
+    }
+  }
+
+  //Styling for wysiwyg
+  &__wysiwyg {
+    max-width: 1000px;
+    text-align: left;
+    margin: {
+      left: auto;
+      right: auto;
+      bottom: 24px;
+    }
+    @media (min-width: $desktop-small) {
+      &:not(.--center-content &) {
+        max-width: 1440px;
+        margin: {
+          left: auto;
+          right: auto;
+        }
+      }
+    }
+
+    .--center-content & {
+      text-align: center;
+    }
+
+    p {
+      @include textMedium;
+      color: $black;
+
+      @media (min-width: $tablet) {
+        @include textXMedium;
+      }
+    }
+
+    p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    li {
+      @include textXMedium;
+    }
+
+    .--extend-width & {
+      max-width: unset;
+      @media (min-width: $desktop-medium-large) {
+        &:not(.columns__left &) {
+          &:not(.--center-content &) {
+            max-width: 1440px;
+          }
+        }
+      }
+    }
+  }
+
+  &__two-column-container {
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        &:not(.--center-content &) {
+          max-width: 1440px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+    }
+    .paid-two-column {
+      margin: {
+        bottom: 24px;
+      }
+
+      @media (min-width: $tablet) {
+        margin: {
+          bottom: 40px;
+        }
+      }
+
+      &:last-child {
+        margin: {
+          bottom: 0;
+        }
+      }
+    }
+  }
+
+  &__cta-container {
+    text-align: left;
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        &:not(.--center-content &) {
+          max-width: 1440px;
+          margin: {
+            left: auto;
+            right: auto;
+          }
+        }
+      }
+    }
+
+    .--center-content & {
+      text-align: center;
+    }
+
+    .--extend-width & {
+      max-width: unset;
+      @media (min-width: $desktop-medium-large) {
+        &:not(.columns__left &) {
+          &:not(.--center-content &) {
+            max-width: 1440px;
+          }
+        }
+      }
+    }
+  }
+
+  &__cta {
+    display: block;
+    text-decoration: none;
+    background: transparent;
+    height: unset;
+    padding: {
+      left: 24px;
+      right: 24px;
+    }
+
+    @media (min-width: $tablet) {
+      display: inline-block;
+    }
+
+    //this modifier class is added when the two column plain pattern is used below the text banner. This adds spacing for the cta
+    .--extend-width & {
+      margin: {
+        bottom: 24px;
+      }
+      @media (min-width: $tablet) {
+        margin: {
+          bottom: 40px;
+        }
+      }
+    }
+  }
+
+  &__learn-more-container {
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        &:not(.--center-content &) {
+          max-width: 1440px;
+          margin: {
+            left: auto;
+            right: auto;
+          }
+        }
+      }
+    }
+  }
+
+  &__learn-more-cta {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background-color: $azBlue;
+    color: white;
+    margin: {
+      top: 24px;
+    }
+    transition: transform 0.25s ease-in-out, color 0.25s ease-in-out;
+    &:hover {
+      background-color: transparent;
+      color: $azBlue;
+    }
+
+    @media (min-width: $tablet) {
+      display: inline-block;
+    }
+
+    @media (min-width: $desktop-small) {
+      display: none;
+    }
+
+    .--v6 & {
+      @media (min-width: $desktop-small) {
+        display: inline-block;
+      }
+    }
+  }
+}

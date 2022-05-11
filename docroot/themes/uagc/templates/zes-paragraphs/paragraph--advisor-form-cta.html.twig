@@ -1,0 +1,19 @@
+
+
+{% set blueBackgroundClass = '' %}
+
+{% if paragraph.field_dark_blue_background.value  == 1 %}
+  {% set blueBackgroundClass = '--blue-background' %}
+{% endif %}
+
+
+
+
+<section class="section section--advisor-form {{blueBackgroundClass}}"  data-containerid="{{ node.bundle ~ node.getCreatedTime() | clean_class}}">
+  <div class="section__spacer">
+    <div class="layout-constrain--narrow section--advisor-form-wrapper">
+      <h3 class="section--advisor-form-header">{% if content.field_heading|render is not empty  %}{{ content.field_heading }}{% else %}Questions? Request Information{% endif %}</h3>
+      {{drupal_entity('webform', 'lead_flow_cta', check_access=false)}}    </div>
+  </div>
+</section>
+

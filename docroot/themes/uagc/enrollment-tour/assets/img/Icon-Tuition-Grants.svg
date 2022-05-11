@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="57" height="57" viewBox="0 0 57 57">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_790" data-name="Path 790" d="M0-60H31.714v31.714H0Z" transform="translate(0 60)" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="Icon-Tuition-Grants" transform="translate(-943 -447)">
+    <circle id="Ellipse_292" data-name="Ellipse 292" cx="28.5" cy="28.5" r="28.5" transform="translate(943 447)" fill="#AB0520"/>
+    <g id="Group_898" data-name="Group 898" transform="translate(955.286 459.898)">
+      <g id="Group_897" data-name="Group 897" clip-path="url(#clip-path)">
+        <g id="Group_894" data-name="Group 894" transform="translate(5.286)">
+          <path id="Path_787" data-name="Path 787" d="M-9.429-.943a9.525,9.525,0,0,0-9.514,9.514,9.525,9.525,0,0,0,9.514,9.514A9.525,9.525,0,0,0,.085,8.571,9.525,9.525,0,0,0-9.429-.943m0,20.085A10.583,10.583,0,0,1-20,8.571,10.583,10.583,0,0,1-9.429-2,10.583,10.583,0,0,1,1.143,8.571,10.583,10.583,0,0,1-9.429,19.143" transform="translate(20 2)" fill="#fff"/>
+        </g>
+        <g id="Group_895" data-name="Group 895" transform="translate(15.899 14.807)">
+          <path id="Path_788" data-name="Path 788" d="M-5.741-15.079a.527.527,0,0,1-.458-.264l-5.908-10.23a.529.529,0,0,1,.193-.723.528.528,0,0,1,.722.194l5.349,9.262,1.987-5.3a.532.532,0,0,1,.58-.336l5.358.876-5.63-9.593a.529.529,0,0,1,.189-.724.527.527,0,0,1,.723.189l6.2,10.563a.527.527,0,0,1-.02.566.529.529,0,0,1-.521.223l-6.041-.987-2.228,5.937a.53.53,0,0,1-.452.341l-.043,0" transform="translate(12.177 31.986)" fill="#fff"/>
+        </g>
+        <g id="Group_896" data-name="Group 896" transform="translate(0 14.812)">
+          <path id="Path_789" data-name="Path 789" d="M-8.367-15.075l-.039,0a.528.528,0,0,1-.453-.332l-2.352-5.946-5.921.987a.532.532,0,0,1-.522-.222.527.527,0,0,1-.02-.567l6.2-10.559a.527.527,0,0,1,.723-.189.528.528,0,0,1,.189.723L-16.191-21.6l5.229-.871a.531.531,0,0,1,.578.327l2.107,5.326L-2.917-26.1a.528.528,0,0,1,.722-.193A.529.529,0,0,1-2-25.574L-7.909-15.339a.528.528,0,0,1-.458.264" transform="translate(17.747 31.977)" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

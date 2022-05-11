@@ -1,0 +1,9 @@
+.commencement-largecontent {
+    padding: 20px;
+    @include breakpoint(min-width $bp--desktop) {
+        padding: 60px;
+    }
+    &__wrapper {
+        padding: 0px;
+    }
+}

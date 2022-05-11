@@ -1,0 +1,24 @@
+{% if content.field_commencement_background['#items'].value == '1' %}
+    <div class="commencement --background">
+{% else %}
+    <div class="commencement">
+{% endif %}
+        <img src="/themes/uagc/src/images/commencement-heading.svg" alt="Congratulations, 2021 Graduates!" class="commencement__heading">
+        <img src="/themes/uagc/src/images/commencement-heading-mobile.svg" alt="Congratulations, 2021 Graduates!" class="commencement__heading-mobile">
+
+        {% if content.field_commencement_live_feed %}
+            {{ content.field_commencement_live_feed }}
+        {% endif %}
+        
+        <div class="commencement__body">
+            {% if content.field_commencement_tiles %}
+                <div class="commencement-tile-container">
+                    {{ content.field_commencement_tiles }}
+                </div>
+            {% endif %}
+
+            {% if content.field_commencement_learn_more %}
+                {{ content.field_commencement_learn_more }}
+            {% endif %}
+        </div>
+    </div>

@@ -1,0 +1,24 @@
+{{ attach_library('uagc/main') }}
+
+{# Not sure if we removed the image or just never had it but we should be able to add it back if we need to #}
+{# {% set imageURL = node.field_featured_image.0.entity.field_media_image.0.entity.uri.0.value | image_style('success_grid_image') %} #}
+{% set imageURL = '' %}
+<div class="faculty-grid__single-wrapper listing-view__single-wrapper">
+<div class="listing-view__link-container">
+    <a href="{{ path('entity.node.canonical', {'node': node.id}) }}" class="faculty-grid__link">
+        
+            {% if imageURL is not empty %}
+                <div class="faculty-grid__img-container">
+                    <div class="faculty-grid__img-container-spacer">
+                        <img src="{{ imageURL  }}" class="faculty-grid__img">
+                    </div>
+                </div>
+            {% endif %}
+        
+        <div class="faculty-grid__college">{{content.field_college.0['#title']}}</div>
+        <div class="faculty-grid__name">{{node.field_faculty_member_name.0.value}}</div>
+        <div class="faculty-grid__position">{{node.field_header_text.0.value}}</div>
+    </a>
+    </div>
+</div>
+

@@ -1,0 +1,12 @@
+<div class="accessibility-feedback">
+    {% if label %}
+        <h2 class="accessibility-feedback__title">{{ label }}</h2>
+    {% endif %}
+
+    {% block content %}
+        <div class="accessibility-feedback__content">
+        {{ content }}
+        </div>
+    {% endblock %}
+</div>
+    

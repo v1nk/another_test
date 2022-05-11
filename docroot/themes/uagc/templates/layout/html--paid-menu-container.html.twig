@@ -1,0 +1,14 @@
+{% set catch_cache = content|render %}
+
+<header class="site-header">
+  <div class="site-header__content">
+    <div class="site-header__logo">
+      <a href="{{ logoLink }}" class="site-header__logo-link"><img src="/themes/uagc/src/images/uagc-logo.svg" alt="The University of Arizona Global Campus"></a>
+    </div>
+    <div class="site-header__cta-links">
+      <a href="tel://18663477781" class="site-header__cta-link --phone">+ 1 866 347 7781</a>
+    </div>
+  </div>
+</header>
+<div class="site-header__spacer js-spacer-display {{ (not navDisplay) ? '--paid-nav-spacer' : '' }}"></div>
+

@@ -1,0 +1,32 @@
+<div class="skinny-links" id="skinny-links">
+  <ul  class="skinny-links__items">
+  {% for item in paragraph.field_skinny_link_items %}
+  {% set linkUrl = item.entity.field_skinny_link_item[0].url %}
+    <li  class="skinny-links__item">
+      {% if linkUrl.toString() is not empty %}
+      <span class="skinny-links__check">✓</span><a href="{{ linkUrl }}"  class="skinny-links__link">{{ item.entity.field_skinny_link_item[0].title }}</a>
+      {% else %}
+      <span class="skinny-links__check">✓</span><span  class="skinny-links__link">{{ item.entity.field_skinny_link_item[0].title }}</span>
+      {% endif %}
+    </li>
+  {% endfor %}
+  </ul>
+</div>
+
+
+{% if  paragraph.field_move_to_header_above_form.value == '1' %}
+
+  <script type="text/javascript">
+
+    //Move the links to header on mobile.
+    //This is here because it needs to be fast, as the page loads.
+    if (window.innerWidth <= 1024) {
+      var skinnyLinks = document.querySelector('.skinny-links');
+      var header = document.querySelector('.mediumformheader__form, .stickyformheader__form');
+      if (header) {
+        header.parentNode.insertBefore(skinnyLinks, header);
+      }
+    }
+  </script>
+
+{% endif %}

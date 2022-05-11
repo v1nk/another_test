@@ -1,0 +1,156 @@
+.grid {
+  &__items {
+    display: block;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 10px;
+
+    @include breakpoint($bp--tablet, $no-query: true) {
+      display: flex;
+      justify-content: space-evenly;
+    }
+  }
+
+  &__item {
+    flex-basis: 33%;
+    max-width: 500px;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    padding: {
+      top: 20px;
+      right: 0;
+      bottom: 20px;
+      left: 0;
+    }
+    &.\--icon-grid-item {
+      @media (max-width: 699px) {
+        border-bottom: 2px solid #a9a9a9;
+        &:nth-child(odd) {
+          padding-right: 5px;
+          border-right: 2px solid #a9a9a9;
+          margin-right: 0;
+        }
+        &:nth-child(even) {
+          margin-left: 0;
+          padding-left: 5px;
+        }
+        &:last-child,
+        &:nth-last-child(2) {
+          border-bottom: 0;
+        }
+      }
+    }
+
+    &-wrapper {
+      margin: 0 auto;
+    }
+
+    @include breakpoint($bp--mobile, $no-query: true) {
+      max-width: 400px;
+    }
+
+    &-header {
+      width: 100%;
+      text-align: center;
+
+      .page--node-type-microsite-pages & {
+      }
+
+      padding: {
+        top: 0;
+        right: 15px;
+        bottom: 15px;
+        left: 15px;
+      }
+
+      @include breakpoint($bp--tablet, $no-query: true) {
+        padding-top: 15px;
+      }
+    }
+
+    &-image {
+      width: 100%;
+      padding-top: 100%;
+      margin: 0 auto;
+      display: block;
+      background-position: center;
+      background-size: auto 110%;
+      background-repeat: no-repeat;
+      position: relative;
+
+      &:before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+      }
+
+      &-wrapper {
+        width: 33%;
+        max-width: 100px;
+        margin: 0 auto;
+
+        @include breakpoint($bp--tablet, $no-query: true) {
+          flex-basis: 30%;
+          width: 150px;
+          height: 150px;
+          margin: 0 auto;
+        }
+
+        @include breakpoint($bp--desktop, $no-query: true) {
+          width: 185px;
+          height: 185px;
+        }
+
+        @include breakpoint(1500px, $no-query: true) {
+          width: 220px;
+          height: 220px;
+        }
+
+        .\--icon-grid-item & {
+          @include breakpoint($bp--tablet, $no-query: true) {
+            width: 100px;
+            height: 100px;
+          }
+
+          @include breakpoint($bp--desktop, $no-query: true) {
+            width: 100px;
+            height: 100px;
+          }
+
+          @include breakpoint(1500px, $no-query: true) {
+            width: 100px;
+            height: 100px;
+          }
+        }
+      }
+
+      img {
+        display: none;
+      }
+    }
+
+    &-content {
+      &-wrapper {
+        width: 100%;
+        text-align: center;
+        max-width: 300px;
+        margin: 0 auto;
+        flex-basis: 70%;
+      }
+
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  &__header {
+    text-align: center;
+
+    margin-bottom: 0;
+
+    .page--node-type-microsite-pages & {
+    }
+  }
+}

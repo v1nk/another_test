@@ -1,0 +1,452 @@
+@use "sass:math";
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+@use "../base/icons" as *;
+
+.grid-filter {
+  width: 100%;
+  margin: {
+    bottom: 24px;
+  }
+  @media (min-width: $desktop-small) {
+    padding: {
+      top: 24px;
+      left: 24px;
+      right: 24px;
+    }
+    margin: {
+      bottom: 32px;
+    }
+  }
+  label {
+    color: $darkGray;
+    margin: {
+      bottom: 0;
+      top: 0;
+    }
+  }
+  select {
+    width: 100%;
+  }
+
+  .form-item {
+    margin: {
+      bottom: 16px;
+    }
+
+    @media (min-width: $tablet) {
+      margin: {
+        bottom: 24px;
+      }
+    }
+
+    &:last-child {
+      margin: {
+        bottom: 0;
+      }
+    }
+  }
+  .form-item-title {
+    position: relative;
+    margin: {
+      bottom: 0;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 32px;
+      right: 8px;
+      width: 18px;
+      height: 18px;
+      background-image: url("../images/icons/search.svg");
+      background-size: contain;
+      background-position: center;
+    }
+    label {
+      margin: {
+        top: 0;
+        bottom: 0;
+      }
+
+      @media (min-width: $desktop) {
+        margin: {
+          bottom: 0;
+        }
+      }
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: {
+        left: 3px;
+        right: 32px;
+      }
+      margin: {
+        bottom: 24px;
+      }
+      &::placeholder {
+        color: $azBlue;
+      }
+    }
+  }
+  &__dropdown-wrapper {
+    background-color: $azBlue;
+    padding: {
+      top: 0;
+      left: 16px;
+      bottom: 0;
+      right: 16px;
+    }
+
+    &[open] {
+      padding: {
+        bottom: 16px;
+      }
+
+      .grid-filter__dropdown-summary {
+        padding: {
+          bottom: 0;
+        }
+        margin: {
+          bottom: 24px;
+        }
+      }
+
+      .grid-filter__hide-filters-text {
+        display: inline;
+      }
+      .grid-filter__show-filters-text {
+        display: none;
+      }
+      .grid-filter__mobile-controls-open {
+        display: flex;
+      }
+      .grid-filter__mobile-controls-close {
+        display: none;
+      }
+    }
+
+    border-radius: 24px;
+    min-height: 48px;
+    border: 1px solid $azBlue;
+    background-image: linear-gradient(
+      $azBlue,
+      $azBlue 48px,
+      #ffffff 48px,
+      #ffffff 100%
+    );
+
+    @media (min-width: $desktop-small) {
+      background-image: none;
+      border: none;
+    }
+    &:before {
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 48px;
+      overflow: hidden;
+      content: "";
+      background-color: $azBlue;
+      @media (min-width: $desktop-small) {
+        display: none;
+      }
+    }
+    .grid-filter__dropdown-summary {
+      padding: {
+        bottom: 0px;
+      }
+    }
+    .grid-filter__mobile-controls-close {
+      display: flex;
+    }
+    .grid-filter__hide-filters-text {
+      display: none;
+    }
+    .grid-filter__show-filters-text {
+      display: inline;
+    }
+    .grid-filter__mobile-controls-open {
+      display: none;
+    }
+
+    &.--js-desktop-open {
+      @media (min-width: $desktop-small) {
+        background-color: #ffffff;
+        padding: {
+          top: 0px;
+          left: 0px;
+          bottom: 0px;
+          right: 0px;
+        }
+        .grid-filter__dropdown-summary {
+          // display: none;
+          &::marker {
+            content: "";
+          }
+        }
+      }
+    }
+
+    .form-checkboxes div.js-form-type-checkbox {
+      display: inline-block;
+      margin: {
+        right: 8px;
+      }
+      @media (min-width: $desktop-small) {
+        display: block;
+      }
+    }
+
+    a.bef-toggle {
+      display: none;
+    }
+    label.option {
+      background-color: #ffffff;
+      width: unset;
+      display: inline-block;
+      @include textMicro;
+      font-weight: 500;
+      padding: {
+        top: 4px;
+        left: 8px;
+        bottom: 4px;
+        right: 8px;
+      }
+      margin: {
+        bottom: 0;
+      }
+      border: 1px solid $azBlue;
+      border-radius: 4px;
+      color: $azBlue;
+      &:before {
+        display: none;
+      }
+      @media (min-width: $tablet) {
+        @include rems(14px);
+        line-height: math.div(18.3, 14);
+      }
+
+      @media (min-width: $desktop-small) {
+        padding: {
+          top: 8px;
+          left: 16px;
+          bottom: 8px;
+          right: 16px;
+        }
+      }
+    }
+    .--js-checkbox-checked.--js-checkbox-checked {
+      color: white;
+      background-color: $azBlue;
+    }
+    input.form-checkbox {
+      display: none;
+    }
+  }
+
+  &__summary-title {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    align-items: center;
+    display: flex;
+    @include rems(16px);
+    line-height: 1.5;
+  }
+
+  &__dropdown-summary {
+    position: relative;
+    margin: {
+      top: 8px;
+    }
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: {
+      left: 10px;
+    }
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::marker {
+      display: none;
+      content: "";
+    }
+    @media (min-width: $desktop-small) {
+      display: none;
+    }
+  }
+  &__mobile-controls {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: {
+      left: auto;
+      right: -8px;
+    }
+    color: $silver;
+    @media (min-width: $desktop-small) {
+      display: none;
+    }
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+  &__mobile-controls-open {
+    display: none;
+    background-color: #ffffff;
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    align-items: center;
+    justify-content: center;
+    margin: {
+      left: 8px;
+    }
+  }
+  &__hide-filters-text {
+    display: none;
+    @include rems(14px);
+    line-height: 1.29;
+  }
+  &__show-filters-text {
+    display: inline;
+    @include rems(14px);
+    line-height: 1.29;
+  }
+  &__mobile-controls-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    margin: {
+      left: 8px;
+    }
+  }
+
+  &__fieldset {
+    .form-item {
+      margin: {
+        bottom: 8px;
+      }
+      &:last-child {
+        margin: {
+          bottom: 0;
+        }
+        &::after {
+          content: "";
+          clear: both;
+          display: table;
+        }
+      }
+    }
+    legend {
+      display: none;
+      @include rems(11px);
+      line-height: 1.45;
+      color: $darkGray;
+      margin: {
+        bottom: 16px;
+      }
+    }
+    .fieldset-wrapper > label {
+      @include rems(14px);
+      line-height: 1.29;
+      color: $darkGray;
+      margin-bottom: 8px;
+    }
+    input[type="checkbox"] + label {
+      height: auto;
+    }
+  }
+  &__all-news {
+    display: inline-block;
+    @media (min-width: $desktop-small) {
+      display: block;
+      margin: {
+        bottom: 8px;
+      }
+    }
+  }
+  &__all-news-label {
+    cursor: pointer;
+    background-color: #ffffff;
+    width: unset;
+    display: inline;
+    @include textMicro;
+    padding: {
+      top: 8px;
+      left: 24px;
+      bottom: 8px;
+      right: 24px;
+    }
+    border: 1px solid $azBlue;
+    border-radius: 16px;
+    color: $azBlue;
+    &:before {
+      display: none;
+    }
+    &.--js-checkbox-checked.--js-checkbox-checked {
+      color: white;
+      background-color: $azBlue;
+    }
+  }
+  &__no-results-container {
+    flex-basis: 100%;
+    @media (min-width: $desktop-small) {
+      flex-basis: 69.09%;
+      margin: {
+        right: -16px;
+      }
+    }
+    @media (min-width: $desktop) {
+      flex-basis: 76.97%;
+    }
+  }
+  &__no-results {
+    color: $azRed;
+    @include rems(16px);
+    line-height: 1.5;
+    font-weight: 500;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &::before {
+      content: "";
+      display: block;
+      background-image: url("../images/icons/searchEx.svg");
+      background-size: contain;
+      background-position: center;
+      position: relative;
+
+      height: 32px;
+      width: 32px;
+      margin: {
+        right: 8px;
+      }
+    }
+  }
+  .js-form-item-title input.form-text {
+    @include headline3;
+    color: $azBlue;
+  }
+  .js-form-type-select select {
+    @include headline3;
+    color: $azBlue;
+    padding: {
+      left: 3px;
+    }
+  }
+}

@@ -1,0 +1,442 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.article-header {
+  display: block;
+  position: relative;
+  background: $azBlue;
+  @media (min-width: $tablet) {
+    padding: {
+      bottom: 0;
+    }
+    display: flex;
+  }
+
+  &.\--white-background {
+    background: white;
+  }
+
+  &.\--subheading-inside-content-box {
+    padding-bottom: 0;
+
+    .article-header__heading-wrapper {
+      background-color: $azRed;
+    }
+  }
+
+  &.\--subheading-above-image.\--subheading-above-image {
+    padding: {
+      top: 40px;
+      bottom: 24px;
+    }
+
+    @media (min-width: $tablet) {
+      padding: {
+        top: 0px;
+        bottom: 0;
+      }
+    }
+
+    .article-header__heading-wrapper {
+      background-color: $azBlue;
+      position: absolute;
+      top: 0;
+      height: 40px;
+      width: 100%;
+
+      @media (min-width: $tablet) {
+        padding: {
+          left: 0;
+        }
+        margin: {
+          bottom: 24px;
+        }
+        position: relative;
+        background-color: transparent;
+      }
+    }
+
+    .article-header__content {
+      width: calc(100% - 48px);
+      margin: {
+        top: 5px;
+      }
+    }
+  }
+
+  &.\--quote-header {
+    padding-bottom: 0;
+  }
+
+  &.\--subheading-below-image {
+    padding-bottom: 0;
+
+    .article-header__heading-wrapper {
+      @media (min-width: $tablet) {
+        margin: {
+          bottom: 24px;
+        }
+      }
+    }
+  }
+
+  .article-header__content {
+    font-size: 4rem;
+  }
+
+  &__content {
+    position: relative;
+    margin: 0 auto;
+    background: $azRed;
+    width: 100%;
+    padding: 16px;
+    p {
+      color: white;
+      font-size: 2rem;
+      margin-bottom: 0;
+    }
+
+    @media (min-width: $tablet) {
+      width: 100%;
+      max-width: 590px;
+      padding: 24px;
+      margin: 0;
+      p {
+        font-size: 3rem;
+        max-width: 100%;
+        font-weight: 500;
+      }
+
+      .\--long-text p {
+        font-size: 2.25rem;
+      }
+    }
+    @media (min-width: $desktop) {
+      p {
+        font-size: 4rem;
+      }
+
+      .\--long-text p {
+        font-size: 2.75rem;
+      }
+    }
+
+    &.\--quote-content {
+      padding: {
+        top: 16px;
+        left: 24px;
+        right: 24px;
+        bottom: 75px;
+      }
+
+      @media (min-width: $tablet) {
+        @include flexGrid(5, 7);
+      }
+
+      @media (min-width: $desktop) {
+        @include flexGrid(7, 7);
+        padding: {
+          top: 32px;
+          left: 32px;
+          right: 32px;
+          bottom: 75px;
+        }
+      }
+
+      @media (min-width: $desktop-large) {
+        @include flexGrid(5, 7);
+      }
+    }
+
+    &.\--cta-content {
+      padding: {
+        left: 8px;
+        right: 8px;
+      }
+      @media (min-width: $tablet) {
+        @include flexGrid(6, 7);
+      }
+
+      @media (min-width: $desktop) {
+        padding: {
+          top: 32px;
+          bottom: 32px;
+          left: 16px;
+          right: 16px;
+        }
+      }
+    }
+
+    .\--subheading-inside-content-box & {
+      padding: {
+        top: 0;
+      }
+      @media (min-width: $desktop) {
+        padding: {
+          top: 0;
+        }
+      }
+    }
+  }
+
+  &__content-wrapper {
+    @media (min-width: $tablet) {
+      @include flexGrid(5, 6);
+      position: absolute;
+      bottom: 80px;
+      left: 80px;
+    }
+    @media (min-width: $tablet) {
+      @include flexGrid(7, 12);
+      left: 112px;
+    }
+  }
+
+  &__content-header {
+    .\--cta-content & {
+      margin: {
+        left: 16px;
+        right: 16px;
+      }
+    }
+  }
+
+  &__cta {
+    text-align: center;
+    padding: {
+      top: 7px;
+      bottom: 7px;
+      left: 24px;
+      right: 24px;
+    }
+
+    margin: {
+      top: 8px;
+      bottom: 8px;
+      left: 16px;
+      right: 16px;
+    }
+
+    font-size: 1rem;
+    font-weight: 500;
+    color: $azBlue;
+    line-height: 1.5;
+    border: solid 1px white;
+    border-radius: 20px;
+    background-color: white;
+    flex-basis: calc(45% - 10px);
+    min-width: 200px;
+    width: calc(100% - 10px);
+    flex-grow: 1;
+
+    text-decoration: none;
+
+    &.\--outline-button {
+      background-color: transparent;
+      color: white;
+    }
+  }
+
+  &__cta-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &__heading {
+    @include h2;
+    color: #ffffff;
+  }
+
+  &__subheading {
+    @include textMedium;
+    font-weight: 500;
+    color: #ffffff;
+    @include marginSmall;
+  }
+
+  &__heading-wrapper {
+    .\--quote-header & {
+      @media (min-width: $tablet) {
+        @include flexGrid(5, 7);
+      }
+    }
+
+    .\--cta-header & {
+      @media (min-width: $tablet) {
+        @include flexGrid(6, 7);
+      }
+    }
+
+    .\--subheading-inside-content-box & {
+      padding: {
+        left: 24px;
+        top: 14px;
+      }
+
+      @media (min-width: $tablet) {
+        padding: {
+          left: 32px;
+          top: 22px;
+        }
+      }
+    }
+  }
+
+  &__quote,
+  &__quote p {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.3333;
+    @media (min-width: $tablet) {
+      font-size: 1.75rem;
+      line-height: 1.25;
+    }
+
+    .\--long-text & {
+      font-size: 1.375rem;
+
+      @media (min-width: $tablet) {
+        font-size: 1.5rem;
+      }
+
+      @media (min-width: $desktop) {
+        font-size: 1.75rem;
+      }
+    }
+  }
+
+  &__quote p {
+    display: inline;
+  }
+
+  &__quote-source {
+    margin: {
+      top: 16px;
+    }
+
+    font-size: 1.25rem;
+    line-height: 1.2;
+    font-weight: 400;
+    color: $lighterGray;
+
+    @media (min-width: $desktop) {
+      font-size: 1.5rem;
+      line-height: 1.3333;
+    }
+  }
+
+  &__quote-link {
+    font-size: 0.875rem;
+    line-height: 1.286;
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.25s ease-in-out;
+    &:visited,
+    &:hover {
+      color: white;
+    }
+
+    svg {
+      margin-left: 10px;
+      transition: transform 0.25s ease-in-out;
+    }
+
+    &:hover {
+      svg {
+        transform: translateX(7px);
+      }
+    }
+  }
+
+  &__quote-header {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  &__mobile-subheading {
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 24px;
+    color: $lighterGray;
+    @include rems(20px);
+    line-height: 1.2;
+
+    @media (min-width: $tablet) {
+      display: none;
+    }
+  }
+
+  &__image {
+    // forcing background image that gets added through js in paragraph--paid-hero.html.twig to none when it hits the mobile design breakpoint
+    @media (max-width: 767px) {
+      background-image: none !important;
+    }
+
+    @media (min-width: $tablet) {
+      @include flexGrid(6, 9);
+      background-image: unset;
+      position: relative;
+      height: 600px;
+      max-height: unset;
+      min-height: 315px;
+      background-size: cover;
+      background-position: center center;
+      margin: {
+        left: auto;
+      }
+    }
+
+    &::before {
+      @media (min-width: $tablet) {
+        content: "";
+        border-top: 5px solid $azRed;
+        width: 160px;
+        position: absolute;
+        top: 17%;
+        left: -12%;
+      }
+
+      @media (min-width: $desktop) {
+        left: -10%;
+      }
+    }
+
+    .\--quote-header &,
+    .\--cta-header & {
+      &:before {
+        @media (min-width: $tablet) {
+          top: 8%;
+        }
+      }
+    }
+  }
+
+  &__image-desktop {
+    display: none;
+  }
+
+  &__image-mobile {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 430px;
+
+    @media (min-width: $tablet) {
+      display: none;
+    }
+  }
+}

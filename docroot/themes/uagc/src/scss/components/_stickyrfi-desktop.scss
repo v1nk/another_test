@@ -1,0 +1,244 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/vars" as *;
+@use "sass:math";
+
+.stickyrfi-desktop {
+  display: none;
+  min-height: 80px;
+  position: absolute;
+  top: 100%;
+  padding: {
+    top: 16px;
+    bottom: 16px;
+    left: 24px;
+    right: 24px;
+  }
+  background-color: $azBlue;
+  width: 100%;
+  border: {
+    bottom: solid 1px $azBlue;
+  }
+
+  &.--jumplinks-present {
+    top: calc(100% + 32px);
+  }
+
+  .\--next-button.\--next-button.\--next-button {
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      font-weight: 500;
+      margin-right: 8px;
+    }
+
+    &:after {
+      content: "";
+      display: inline-block;
+      background-image: url(../images/icons/arrow-right.svg);
+      margin: {
+        left: 12px;
+      }
+      height: 20px;
+      width: 20px;
+      background-position: 0 -2px;
+    }
+  }
+
+  .webform-options-display-side-by-side {
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+
+    .form-item-registerednurse {
+      display: flex;
+      align-items: center;
+
+      input,
+      label {
+        margin: {
+          top: 0;
+        }
+      }
+
+      label {
+        @include rems(16px);
+      }
+    }
+  }
+
+  .js-registerednurse-validation-message {
+    margin: {
+      left: auto;
+      right: auto;
+    }
+    p {
+      color: $azBlue;
+      font-size: 1rem;
+      margin: {
+        top: 16px;
+        left: auto;
+        right: auto;
+      }
+      transform: translateX(-94px);
+      max-width: 545px;
+    }
+
+    .js-form-item {
+      display: none;
+    }
+  }
+
+  &__header {
+    font-weight: 500;
+    @include rems(16px);
+    line-height: math.div(24, 16);
+    color: #ffffff;
+    max-width: 160px;
+    margin: 0;
+
+    @media (min-width: $desktop) {
+      @include rems(20px);
+      line-height: math.div(24, 20);
+      max-width: 188px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-basis: 86.494%;
+    align-items: flex-start;
+    padding: {
+      left: 16px;
+      top: 4px;
+    }
+
+    @media (min-width: $desktop) {
+      padding: {
+        left: 24px;
+      }
+    }
+
+    form {
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    .form-item.js-form-type-select {
+      flex-basis: 40.28%;
+      padding: {
+        left: 8px;
+        right: 8px;
+      }
+
+      @media (min-width: $desktop) {
+        flex-basis: 33.3333333333333%;
+      }
+
+      &:first-of-type {
+        flex-basis: 30.57%;
+        padding-left: 0;
+
+        @media (min-width: $desktop) {
+          flex-basis: 33.3333333333333%;
+          padding: {
+            left: 8px;
+            right: 8px;
+          }
+        }
+      }
+
+      &:last-of-type {
+        flex-basis: 30.57%;
+        padding-right: 0;
+
+        @media (min-width: $desktop) {
+          flex-basis: 33.3333333333333%;
+          padding: {
+            left: 8px;
+            right: 8px;
+          }
+        }
+      }
+
+      select {
+        width: 100%;
+        color: $darkGray;
+        border-radius: 8px;
+        border: 1px solid $lightGray;
+        padding: {
+          left: 16px;
+          top: 8px;
+          bottom: 8px;
+        }
+      }
+
+      label {
+        display: none;
+      }
+
+      &:after {
+        bottom: unset;
+        top: 6px;
+        right: 10px;
+        width: 30px;
+        height: 28px;
+        border-radius: 8px;
+        transform: unset;
+        background-image: url(../images/icons/chevron-down-red.svg);
+      }
+    }
+
+    .webform-actions {
+      flex-basis: 25%;
+      margin-left: 16px;
+
+      @media (min-width: $desktop) {
+        flex-basis: 19%;
+        margin-left: 0;
+      }
+      button {
+        width: 100%;
+        padding: {
+          left: 16px;
+          right: 16px;
+          top: 7px;
+          bottom: 7px;
+        }
+
+        @media (min-width: $desktop) {
+          margin-left: 16px;
+          padding: {
+            left: 8px;
+            right: 8px;
+          }
+        }
+      }
+    }
+
+    div[data-drupal-selector="edit-interest-information"] {
+      display: flex;
+      flex-basis: 73%;
+
+      @media (min-width: $desktop) {
+        flex-basis: 80.597%;
+      }
+    }
+
+    fieldset[data-drupal-selector="edit-registerednurse"] {
+      display: none;
+      margin: {
+        top: 24px;
+        left: auto;
+        right: auto;
+      }
+      width: 100%;
+      transform: translateX(-94px);
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{{ attach_library('uagc/events-two-column-cards') }}
+
+{% set hideShowMorebtn = '' %}
+
+<div class="events-two-column">
+    <div class="events-two-column__wrapper">
+        <div class="events-two-column__red-line"></div>
+        <h2 class="events-two-column__heading">{{ content.field_navy_red_heading }}</h2>
+        
+        <div class="events-two-column__container">
+            {% for item in paragraph.field_events %}
+            {% if loop.length < 5 %}
+                {% set hideShowMorebtn = ' --hide-show-more' %}
+            {% endif %}
+            {% if loop.index > 4 %}
+                <a class="events-two-column__link --hide" href="{{ item.entity.field_cta.0.url }}">
+            {% else %}
+                <a class="events-two-column__link" href="{{ item.entity.field_cta.0.url }}">
+            {% endif %}
+                    <div class="events-two-column__content">
+                        <h3 class="events-two-column__title">{{ item.entity.title.0.value }}</h3>
+                        <div class="events-two-column__copy">{{ item.entity.body.0.value|striptags('<p>,<u>,<strong>,<b>,<em>,<i>,<s>,<sup>,<sub>,<ul>,<ol>,<li>,<h1>,<h2>,<h3>,<h4>,<h5>')|raw }}</div>
+
+                        <div class="events-two-column__cta-container">
+                            <div class="events-two-column__date-container">
+                                <p class="events-two-column__date">{{item.entity.field_date.0.date|date('F j g:i A T')}}</p>
+                            </div>
+                            <div class="events-two-column__cta">
+                                <div class="events-two-column__cta-text">Learn More</div>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4.1665 10H15.8332" stroke="#AB0520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="#AB0520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+            <div class="events-two-column__view-more{{hideShowMorebtn}}">
+                <a href="javascript:void(0)" id="js-show-more">
+                    <span class="events-two-column__view-more-text">View More</span>
+                    <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.5 1.5L6.5 6.5L11.5 1.5" stroke="#0C234B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>    
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

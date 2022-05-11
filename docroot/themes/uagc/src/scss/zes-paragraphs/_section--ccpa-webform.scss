@@ -1,0 +1,76 @@
+@use "base/fonts";
+@import "global/variables/colors";
+
+%button {
+  -webkit-appearance: none;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  box-sizing: border-box;
+  background-color: #ffffff;
+
+  font-size: rem(14px);
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.9333px;
+
+  padding: {
+    top: 12px;
+    bottom: 12px;
+    left: 20px;
+    right: 20px;
+  }
+  border: 0;
+  margin: 0;
+  &:hover,
+  &:active,
+  &:focus {
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    color: currentColor;
+  }
+}
+
+%button-primary-alt {
+  @extend %button;
+  background-color: $blue;
+  color: #ffffff;
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: darken($blue, 10%);
+    color: #ffffff;
+  }
+}
+
+.section--ccpa-webform {
+  font-family: "Fira Sans";
+  margin-top: 32px;
+
+  label,
+  select,
+  option {
+    font-family: "Fira Sans";
+  }
+
+  label {
+    font-size: 1.125rem;
+
+    &.option {
+      font-size: 1.125rem;
+    }
+  }
+
+  select,
+  input {
+    font-size: 1rem;
+  }
+
+  select {
+    padding: 10px 30px 10px 18px;
+  }
+
+  .button {
+    @extend %button-primary-alt;
+  }
+}

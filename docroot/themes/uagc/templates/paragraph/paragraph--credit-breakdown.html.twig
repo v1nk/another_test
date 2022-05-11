@@ -1,0 +1,37 @@
+{% if content.field_total|render|striptags|trim %}
+  <div class="zes-two-column-tabs__credit">
+      <div class="zes-two-column-tabs__credit-header">Credit Breakdowns</div>
+      <div class="zes-two-column-tabs__credit-content">
+          <div class="zes-two-column-tabs__credit-column --general">
+              <div class="zes-two-column-tabs__credit-label">General Education</div>
+              <div class="zes-two-column-tabs__credit-block">
+                  <div class="zes-two-column-tabs__credit-circle">{{content.field_general_education_credits}}</div>
+                  <div class="zes-two-column-tabs__credit-bottom-label">Credits</div>
+              </div>
+          </div>
+          <div class="zes-two-column-tabs__credit-column --major {{ last }}">
+              <div class="zes-two-column-tabs__credit-label">Major Credit Requirements</div>
+              <div class="zes-two-column-tabs__credit-block">
+                  <div class="zes-two-column-tabs__credit-circle">{{content.field_major_requirements}}</div>
+                  <div class="zes-two-column-tabs__credit-bottom-label">Credits</div>
+              </div>
+          </div>
+          {% if content.field_electives|render|striptags|trim %}
+          <div class="zes-two-column-tabs__credit-column --elective">
+              <div class="zes-two-column-tabs__credit-label">Electives from Your Emphasis</div>
+              <div class="zes-two-column-tabs__credit-block">
+                  <div class="zes-two-column-tabs__credit-circle">{{content.field_electives}}</div>
+                  <div class="zes-two-column-tabs__credit-bottom-label">Credits</div>
+              </div>
+          </div>
+          {% endif %}
+          <div class="zes-two-column-tabs__credit-column --total">
+              <div class="zes-two-column-tabs__credit-label">Total Credits</div>
+              <div class="zes-two-column-tabs__credit-block">
+                  <div class="zes-two-column-tabs__credit-circle">{{content.field_total}}</div>
+                  <div class="zes-two-column-tabs__credit-bottom-label">Credits</div>
+                  </div>
+          </div>
+      </div>
+  </div>
+  {% endif %}

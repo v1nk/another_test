@@ -1,0 +1,346 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.wizzywig {
+  max-width: 100%;
+  width: 100%;
+  color: $black;
+  word-break: break-word;
+  margin: {
+    bottom: 32px;
+  }
+
+  &.\--footnotes {
+    margin: {
+      bottom: 0;
+    }
+
+    p:last-of-type {
+      margin: {
+        bottom: 0;
+      }
+    }
+  }
+
+  &__tldr {
+    background-color: $orange;
+    color: $azBlue;
+    display: inline-block;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    font-weight: 500;
+    padding: {
+      top: 8px;
+      bottom: 8px;
+      left: 8px;
+      right: 8px;
+    }
+    margin: {
+      right: 8px;
+      bottom: 16px;
+    }
+    border: 2px solid transparent;
+    border-radius: 8px;
+    transition: background-color 0.3s, border-color 0.3s;
+    @media (min-width: $tablet) {
+      margin: {
+        bottom: 24px;
+      }
+    }
+  }
+
+  &__summary {
+    margin-bottom: 24px;
+    &.--use-large-paragraph {
+      @include textLarge;
+    }
+  }
+
+  h1 {
+    @include h1;
+    @include marginMedium;
+  }
+  /* I know, I'm just going off of the figma. */
+  h2,
+  h3 {
+    @include heroheader;
+
+    margin: {
+      bottom: 32px;
+    }
+  }
+  h4 {
+    @include headline6;
+    margin: {
+      bottom: 16px;
+    }
+  }
+  h5 {
+    @include h5;
+    @include marginMedium;
+  }
+  h6 {
+    @include h6;
+    @include marginMedium;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+  em {
+    font-style: italic;
+  }
+  ul {
+    list-style: initial;
+    padding: {
+      left: 40px;
+    }
+    @include marginLarge;
+
+    .--center-content & {
+      list-style: inside;
+      padding-left: unset;
+      margin-bottom: unset;
+    }
+  }
+
+  ol {
+    list-style: numbers;
+    padding: {
+      left: 40px;
+    }
+    @include marginLarge;
+  }
+  li {
+    margin: {
+      top: $MediumMb;
+      bottom: $MediumMb;
+    }
+    @media (min-width: $desktop) {
+      margin: {
+        top: $Medium;
+        bottom: $Medium;
+      }
+    }
+    &::marker {
+      color: $azRed;
+      font-size: 1.5625rem;
+    }
+  }
+
+  //Added a class that can be added in text editor to match unique Figma design
+  ul.reduce-spacing {
+    margin-bottom: 0;
+
+    ol {
+      margin: 0;
+    }
+
+    li {
+      margin: {
+        top: 0;
+        bottom: 0;
+      }
+
+      &::marker {
+        color: $black;
+      }
+    }
+  }
+
+  pre {
+    @include marginSmall;
+    font-family: monospace;
+  }
+  a {
+    color: $azRed;
+    text-decoration: underline;
+  }
+  hr {
+    max-width: 400px;
+    border: 0;
+    border-bottom: {
+      width: 1px;
+      color: $lightGray;
+      style: solid;
+    }
+    margin: {
+      left: auto;
+      right: auto;
+    }
+    @include marginSmall;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: {
+      bottom: 32px;
+    }
+  }
+
+  figure {
+    @include textSmall;
+    @include marginMedium;
+
+    @media (min-width: $desktop) {
+      margin: {
+        top: 8px;
+        bottom: 32px;
+      }
+    }
+
+    img {
+      margin: {
+        bottom: $xSmall;
+      }
+    }
+  }
+  figcaption {
+    color: $darkGray;
+    &::before {
+      content: "-";
+    }
+  }
+
+  table {
+    border: 1px solid $azBlue;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-collapse: unset;
+    background-color: #ffffff;
+    max-width: 100%;
+    overflow-x: scroll;
+    margin: {
+      bottom: 32px;
+    }
+    caption {
+      background-color: $azBlue;
+      color: #ffffff;
+      text-align: left;
+      padding: {
+        left: 16px;
+        right: 16px;
+        top: 8px;
+        bottom: 8px;
+      }
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      @include textMedium;
+    }
+  }
+  thead {
+    tr {
+      background-color: $lighterGray;
+    }
+  }
+  tr {
+    &:nth-child(even) {
+      background-color: $lighterGray;
+    }
+  }
+  th {
+    font-weight: bold;
+    text-align: left;
+    padding: {
+      left: 8px;
+      right: 8px;
+      top: 8px;
+      bottom: 8px;
+    }
+    @media (min-width: $tablet) {
+      padding: {
+        left: 16px;
+        right: 16px;
+        top: 16px;
+        bottom: 16px;
+      }
+    }
+  }
+  tbody {
+    tr:last-child {
+      td:first-child {
+        border-bottom-left-radius: 8px;
+      }
+      td:last-child {
+        border-bottom-right-radius: 8px;
+      }
+    }
+  }
+  td {
+    padding: {
+      left: 8px;
+      right: 8px;
+      top: 8px;
+      bottom: 8px;
+    }
+    @media (min-width: $tablet) {
+      padding: {
+        left: 16px;
+        right: 16px;
+        top: 16px;
+        bottom: 16px;
+      }
+    }
+  }
+
+  //Adding custom styling that uagc requested -
+  blockquote {
+    @include textLarge;
+    p {
+      @include textLarge;
+      display: block;
+      border-width: 2px 0;
+      border-style: solid;
+      border-color: #eee;
+      position: relative;
+      padding: {
+        top: 24px;
+        bottom: 24px;
+        left: 0;
+        right: 0;
+      }
+      margin: {
+        top: 24px;
+        bottom: 24px !important;
+        left: 0;
+        right: 0;
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        background-image: url("../images/icons/quote.png");
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+  figure.align-left {
+    margin-right: 24px;
+  }
+  img.align-left {
+    margin-right: 24px;
+  }
+
+  iframe {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+
+  //custom class that was added to wysiwyg
+  .top-bottom-spacing {
+    padding: {
+      top: 24px;
+      bottom: 24px;
+    }
+  }
+}

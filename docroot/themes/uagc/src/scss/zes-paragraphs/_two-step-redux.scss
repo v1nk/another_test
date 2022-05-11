@@ -1,0 +1,186 @@
+
+.webform-submission-lead-flow-system-form {
+    max-width: 500px;
+
+    @include breakpoint(min-width $bp--desktop, $no-query: true) {
+      background-image: none;
+    }
+
+    .\--preface {
+      display: none;
+    }
+
+    .form-disclaimer {
+      border-top: 0;
+      padding-top: 0;
+      margin-top: 0;
+
+      p {
+
+      }
+    }
+
+    .js-form-item {
+      margin-bottom: 5px;
+
+      select {
+        background-color: white;
+      }
+
+      select,input[type="text"], input[type="email"], input[type="tel"] {
+
+        width: 100%;
+      }
+
+      input,
+      select {
+        padding: 10px;
+      }
+
+      label {
+        display: none;
+      }
+      
+      .js-form-item-registerednurse label {
+        display: block !important;
+      }
+
+    }
+
+    input[type="submit"][type="submit"],
+    input[type="button"][type="button"] {
+      @extend %button-primary;
+    }
+}
+
+.rfi-lfs__progressbar {
+    width: 100%;
+    margin-bottom: 15px;
+
+    &-bar {
+      width: 100%;
+      height: 8px;
+      background-color: $blue;
+      position: relative;
+
+      &:before {
+        
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 50%;
+        transition: right 0.3s;
+      }
+    }
+
+    &.\--step-two {
+      .rfi-lfs__progressbar-bar:before {
+        right: 0;
+      }
+    }
+
+    &-title {
+      text-align: left;
+      margin-bottom: 0;
+      margin-bottom: 8px;
+      text-transform: none;
+    }
+}
+
+.--request-information-page {
+  .webform-submission-lead-flow-system-form {
+    padding-top: 20vh;
+    height: 100vh;
+  }
+  .rfi-lfs__heading {
+    &::before {
+      content: none;
+    }
+    div {
+
+        text-align: center;
+      }
+    }
+      .rfi-lfs {
+        &__form-wrapper {
+          top: 5%;
+          left: 50%;
+          transform: translateX(-50%);
+          background-image: none;
+          background-color: white;
+          position: absolute;
+          width: 100%;
+          max-width: 800px;
+
+          select, input[type="text"], input[type="email"], input[type="tel"] {
+            background-color: #f2f2f2; 
+            width: 100%;
+          }
+
+          .fieldset-legend.fieldset-legend.fieldset-legend {
+          
+          }
+
+          .form-item-registerednurse {
+            label {
+            
+            }
+          }
+
+          .js-registerednurse-validation-message.js-registerednurse-validation-message {
+            p {
+            
+            }
+          }
+
+
+          @include breakpoint($bp--desktop) {
+            top: 25%;
+          }
+
+        }
+
+        &__progressbar-bar {
+          background-color: #cccccc;
+        }
+
+        &__heading {
+          div {
+          
+
+          }
+        }
+      }
+
+      .block--rfi-terms {
+        .block__content {
+          p {
+          
+          }
+
+        }
+      }
+      .webform-submission-lead-flow-system-form .form-validation-mark.--success input, .webform-submission-lead-flow-system-form .form-validation-mark--select.--success select{
+        border-color: #cccccc;
+      }
+      .webform-submission-lead-flow-system-form .form-validation-mark--select.--success:after{
+        content: none;
+      }
+
+      .webform-submission-lead-flow-system-form .form-validation-mark.--success input {
+        border-color: #cccccc;
+      }
+      .webform-submission-lead-flow-system-form .form-validation-mark.--success:after {
+        content: none;
+      }
+      .webform-submission-lead-flow-system-form .form-validation-mark.--error:after {
+        content: none;
+      }
+
+      .webform-submission-lead-flow-system-form .form-disclaimer p {
+
+      }
+}

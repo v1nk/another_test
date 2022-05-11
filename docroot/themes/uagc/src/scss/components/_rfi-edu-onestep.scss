@@ -1,0 +1,28 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/vars" as *;
+
+.rfi-edu-onestep {
+  &__header {
+    color: white;
+    font-size: 2rem;
+    line-height: 1.25;
+    margin-bottom: 16px;
+
+    @media (min-width: $tablet) {
+      color: $azBlue;
+      text-align: center;
+      font-weight: 500;
+      padding-top: 40px;
+      margin-bottom: 0px;
+    }
+
+    .\--red-heading {
+      color: $azRed;
+    }
+
+    .\--blue-heading {
+      color: $azBlue;
+    }
+  }
+}

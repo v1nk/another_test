@@ -1,0 +1,76 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.paid-two-column {
+  display: flex;
+  flex-direction: column;
+
+  &__heading {
+    @include textMedium;
+    color: $black;
+    font-weight: 500;
+    padding: {
+      bottom: 16px;
+    }
+
+    @media (min-width: $tablet) {
+      @include textXMedium;
+      padding: {
+        bottom: 32px;
+      }
+    }
+  }
+
+  &__wysiwyg {
+    margin-bottom: 0;
+    padding: {
+      left: 0;
+    }
+
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        max-width: 1440px;
+        margin: {
+          left: auto;
+          right: auto;
+        }
+      }
+    }
+
+    p + ul {
+      margin: {
+        top: 24px;
+      }
+    }
+
+    ul {
+      padding: {
+        left: 32px;
+      }
+      margin: {
+        bottom: 0;
+      }
+    }
+
+    p,
+    li {
+      @include textMedium;
+      color: $black;
+      margin: 0;
+
+      @media (min-width: $tablet) {
+        @include textXMedium;
+      }
+    }
+
+    ul {
+      list-style: disc;
+    }
+
+    ol {
+      list-style: number;
+    }
+  }
+}

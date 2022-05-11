@@ -1,0 +1,20 @@
+{% set whiteBackgroundClass = '' %}
+
+{% if paragraph.field_white_background.value == '1' %}
+  {% set whiteBackgroundClass = ' --white-background-homepage' %}
+{% endif %}
+
+
+<div class="form-onestep js-form-onestep{{whiteBackgroundClass}}" id="{{paragraph.field_anchor_id.0.value}}" data-containerid="{{ node.bundle ~ node.getCreatedTime() | clean_class }}">
+  <div class="form-onestep__wrapper">
+    <h2 class="form-onestep__header">{% if paragraph.field_navy_red_heading is empty %} Questions? Request More Information {% else %} {{ content.field_navy_red_heading }} {% endif %}</h2>
+    <div class="form-onestep__form one-step-webform" data-containerid="{{ node.bundle ~ node.getCreatedTime() | clean_class}}">
+      {{drupal_entity('webform', 'lead_flow_cta', check_access=false)}}
+
+
+    </div>
+  </div>
+</div>
+
+{{attach_library('uagc/lead-form-logic')}}
+{{attach_library('uagc/two-step-paid')}}

@@ -1,0 +1,51 @@
+{{ attach_library('uagc/success-story') }}
+
+{%
+  set classes = [
+    'site-layout__article',
+    node.getType,
+  ]
+%}
+<article {{ attributes.addClass(classes) }}>
+    <header class="site-layout__article-header">
+        {{ content.field_header_paragraphs }}
+    </header>
+    <div class="site-layout__article-content-with-sidebar">
+        {% if sidebar_left|keys is not empty %}
+        <aside class="site-layout__article-sidebar --left">
+            {{ sidebar_left }}
+        </aside>
+        {% endif %}
+
+        <section class="site-layout__article-content-with-sidebar-section">
+            {{ content.field_paragraphs }}
+        </section>
+
+        {% if sidebar_right|keys is not empty or sidebar_right_tools is not empty %}
+        <aside class="site-layout__article-sidebar --right">
+            {% if sidebar_right|keys is not empty %}
+                {{ sidebar_right }}
+            {% endif %}
+
+            {% if sidebar_right_tools |keys is not empty %}
+                <div class="sucess-stories-sidebar__wrapper">
+                    {{ sidebar_right_tools  }}
+                </div>
+            {% endif %}
+        </aside>
+        {% endif %}
+
+        {% if sidebar_right|keys is not empty %}
+        <aside class="site-layout__article-sidebar --right">
+            {{ sidebar_right }}
+        </aside>
+        {% endif %}
+
+
+    </div>
+</article>
+{% if bottom_content|keys is not empty %}
+    <div class="site-layout__footer">
+        {{ bottom_content }}
+    </div>
+{% endif %}

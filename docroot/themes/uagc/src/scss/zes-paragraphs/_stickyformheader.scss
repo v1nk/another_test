@@ -1,0 +1,346 @@
+.stickyformheader {
+  &__content {
+    position: absolute;
+    bottom: 0;
+    /* specific request from client */
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 20px;
+    max-width: 100%;
+    width: 100%;
+    left: 0;
+
+    //Because of course ie11 doesn't support unset.
+    @include breakpoint(max-width $bp--desktop, $no-query: true) {
+      right: 0;
+    }
+
+    @include breakpoint(min-width $bp--desktop, $no-query: true) {
+      width: 100%;
+      left: 0px;
+      padding-left: 50px;
+    }
+
+    @include breakpoint(min-width 1300px, $no-query: true) {
+      width: 60%;
+      left: 0px;
+      padding-left: 50px;
+    }
+
+    @include breakpoint(min-width 1600px, $no-query: true) {
+      width: 45%;
+    }
+
+    &-container {
+      position: relative;
+      min-height: 300px;
+      @include breakpoint(min-width $bp--desktop, $no-query: true) {
+        min-height: 450px;
+      }
+
+      background-size: cover;
+      background-position: center;
+
+      img {
+        display: none;
+      }
+    }
+  }
+
+  &__header {
+    @extend %h1;
+    font-weight: 400;
+    margin-bottom: 10px;
+    color: white;
+    line-height: 1.2;
+
+    @include breakpoint(min-width $bp--desktop, $no-query: true) {
+    }
+  }
+
+  &__text {
+    @extend %h4;
+
+    margin-bottom: 0;
+
+    display: none;
+
+    @include breakpoint(min-width $bp--desktop, $no-query: true) {
+      color: white;
+      font-size: 2rem;
+      line-height: 1.33;
+      display: block;
+    }
+  }
+
+  &__wascblock {
+    display: none;
+
+    hr {
+      margin-bottom: 25px;
+    }
+
+    p {
+      font-size: 0.625rem;
+    }
+
+    @include breakpoint(min-width $bp--desktop, $no-query: true) {
+      display: block;
+    }
+  }
+
+  &__form {
+    padding: 20px;
+    color: white;
+    background-color: $azBlue;
+
+    &:target {
+      @include breakpoint(max-width $bp--mobile, $no-query: true) {
+        padding-top: 100px;
+        margin-top: -100px;
+      }
+    }
+
+    form {
+      @include breakpoint(min-width $bp--desktop, $no-query: true) {
+        margin-bottom: 0;
+      }
+    }
+
+    @include breakpoint(min-width $bp--desktop, $no-query: true) {
+      padding-top: 0;
+    }
+
+    @include breakpoint(min-width 1500px, $no-query: true) {
+      padding-top: 50px;
+    }
+
+    .button--cta-with-icon {
+      @extend %button-primary;
+      background-color: $orange;
+      color: $azBlue;
+      display: inline-block;
+      font-weight: 700;
+    }
+
+    .sticky & {
+      transition: top 0.3s;
+      position: fixed;
+      top: 50px;
+
+      &.\--short-header {
+        top: 50px;
+      }
+    }
+
+    .sticky-bottom & {
+      transition: top 0;
+      position: relative;
+      top: 0;
+      width: auto;
+    }
+
+    &-header {
+      color: white;
+      font-weight: 400;
+      margin-top: 32px;
+      margin-bottom: 15px;
+      text-align: left;
+      font-size: 2.5rem;
+      font-size: 1.2;
+
+      @include breakpoint(min-width $bp--desktop, $no-query: true) {
+      }
+    }
+
+    .webform-submission-lead-flow-system-form {
+      max-width: 100%;
+      width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+
+      @include breakpoint(min-width $bp--desktop, $no-query: true) {
+        max-width: 500px;
+        background-image: none;
+      }
+
+      .\--preface {
+        display: none;
+      }
+
+      .form-item-tcpa-checkbox {
+        display: none;
+        align-items: center;
+        margin: {
+          top: 10px;
+          bottom: 10px !important;
+          left: 0px;
+          right: 0px;
+        }
+
+        input[type="checkbox"] {
+          appearance: none;
+          background-color: #ffffff !important;
+          width: auto;
+          width: 24px;
+          height: 24px;
+          border: 1px solid #000000;
+          vertical-align: middle;
+          padding: 0px;
+          cursor: pointer;
+
+          &:checked {
+            background-color: #e49829 !important;
+
+            &:before {
+              content: url("../images/zes-images/rfi-checkmark.svg");
+              display: block;
+              text-align: center;
+            }
+          }
+        }
+
+        .field-suffix {
+          font-size: 0.75rem;
+          line-height: 1.333;
+          padding-left: 8px;
+        }
+      }
+
+      .form-disclaimer {
+        border-top: 0;
+        padding-top: 0;
+        margin: {
+          top: 20px;
+          bottom: 20px;
+        }
+
+        p {
+          @extend %small-body-copy;
+          font-size: 0.625rem;
+          margin-bottom: 0;
+        }
+      }
+
+      .js-form-item {
+        margin-bottom: 5px;
+
+        select {
+          background-color: white;
+        }
+
+        select {
+          background-image: url(../images/zes-images/arrow-down-white.png);
+          background-repeat: no-repeat;
+          background-position: right 10px top 50%;
+
+          background-size: 12px 7px;
+          width: 100%;
+        }
+
+        input,
+        select {
+          padding: 10px;
+          background-color: $azBlue;
+          color: white;
+          &:focus {
+            outline-color: rgba(255, 255, 255, 0.5);
+          }
+        }
+
+        input::placeholder {
+          color: white;
+        }
+
+        label {
+          display: none !important;
+        }
+      }
+
+      input[type="submit"][type="submit"],
+      input[type="button"][type="button"] {
+        @extend %button-primary;
+        background-color: $orange;
+        display: inline-block;
+        border: none;
+        width: auto;
+        margin: 0 auto 0 0;
+      }
+
+      a.--next-btn-disabled,
+      input.--request-btn-disabled {
+        background-color: #cccccc !important;
+      }
+    }
+
+    @include breakpoint($bp--desktop, $no-query: true) {
+      background-image: none;
+    }
+
+    .rfi-lfs__progressbar {
+      width: 100%;
+      margin-bottom: 15px;
+
+      &-bar {
+        width: 100%;
+        height: 8px;
+        background-color: white;
+        position: relative;
+
+        &:before {
+          content: " ";
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 50%;
+          transition: right 0.3s;
+          background-color: $orange;
+        }
+      }
+
+      &.\--step-two {
+        .rfi-lfs__progressbar-bar:before {
+          right: 0;
+        }
+      }
+
+      &-title {
+        text-align: left;
+        font-size: 0.937rem;
+        font-weight: 400;
+        line-height: 3;
+        margin-bottom: 0;
+        margin-bottom: 8px;
+        text-transform: none;
+      }
+    }
+
+    .button--cta-with-icon.--cta-arrow-test.--next-button,
+    .webform-button--submit.button.button--primary.webform-button--submit.button.button--primary {
+      width: 100%;
+      text-align: center;
+      margin-top: 5px;
+    }
+  }
+
+  .js-webform-type-radios {
+    legend {
+      span.fieldset-legend {
+        color: white;
+      }
+    }
+    label {
+      color: white;
+    }
+  }
+
+  .js-registerednurse-validation-message {
+    .form-item {
+      p {
+        color: white;
+      }
+    }
+  }
+}

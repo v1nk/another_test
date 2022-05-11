@@ -1,0 +1,21 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.course-teaser {
+  &__title {
+    @include rems(24px);
+    font-weight: 600;
+    color: $azBlue;
+    span {
+      line-height: 1.25;
+    }
+  }
+
+  &__credits {
+    margin-bottom: 10px;
+  }
+
+
+}

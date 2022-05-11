@@ -1,0 +1,48 @@
+{% set learnMoreBackgroundClass = '' %}
+{% set extendWidth = '' %}
+
+{% if paragraph.field_learn_more_background.0.entity.name.value == 'Navy Blue' %}
+  {% set learnMoreBackgroundClass = '--navy-bg' %}
+
+{% elseif paragraph.field_learn_more_background.0.entity.name.value == 'Navy Confetti' %}
+  {% set learnMoreBackgroundClass = '--navy-confetti-bg' %}
+
+{% elseif paragraph.field_learn_more_background.0.entity.name.value == 'White' %}
+  {% set learnMoreBackgroundClass = '--white-bg' %}
+{% endif %}
+
+{% if paragraph.field_extend_width_of_text_area.0.value == '1' %}
+  {% set extendWidth = '--extend-width' %}
+{% endif %}
+
+
+{%
+  set classes = [
+    'commencement-learn-more',
+    learnMoreBackgroundClass,
+    extendWidth
+  ]
+%}
+
+<div {{ attributes.addClass(classes) }}>
+    <div class="commencement-learn-more__content">
+        <h2 class="commencement-learn-more__content-heading">{{ content.field_learn_more_heading['#items'].value }}</h2>
+        <div class="commencement-learn-more__content-text">{{ content.field_learn_more_text['#items'].value|raw }}</div>
+        
+        {% if paragraph.field_learn_more_cta.value %}
+          <a href="{{ content.field_learn_more_cta.0['#url'] }}" class="commencement-learn-more__content__link">{{ content.field_learn_more_cta.0['#title'] }}</a>
+        {% endif %}
+    </div>
+
+    {% if paragraph.field_icon_option.value == '0' %}
+      <div class="commencement-learn-more__grad-cap">
+        <svg width="130" height="132" viewBox="0 0 130 132" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M27.0952 71.6532H100.852V98.1453C100.852 98.1453 81.575 117.801 63.9738 117.801C46.3727 117.801 27.0952 98.1453 27.0952 98.1453V71.6532Z" fill="#E49829"/><path d="M2.89295 66.0714L65.1348 40.6556L127.377 66.0714L65.1348 95.7228L2.89295 66.0714Z" fill="#E49829" stroke="#0C234B" stroke-width="2"/><path d="M62.2974 67.3803C62.2974 67.3803 63.3189 64.2555 66.3836 62.1723C69.4483 60.0891 71.4914 60.0891 71.4914 60.0891C71.4914 60.0891 75.5777 60.0891 78.6424 59.0475C81.7071 58.0059 82.7286 54.8811 82.7286 54.8811C82.7286 54.8811 83.7502 52.7979 86.8149 50.7147C89.8796 48.6316 92.9443 48.6316 92.9443 48.6316C92.9443 48.6316 97.0305 48.6316 99.0737 46.5484C101.117 44.4652 103.16 42.382 103.16 42.382" stroke="white" stroke-width="2"/><path d="M107.738 43.5578C106.067 44.6332 103.869 44.1357 102.827 42.4467C101.786 40.7577 102.296 38.5168 103.967 37.4414L105.473 36.4716L109.245 42.588L107.738 43.5578Z" fill="white"/><path d="M108.188 41.6399C110.774 40.2106 116.611 37.3113 119.271 37.1479" stroke="white" stroke-width="2"/><path d="M105.943 37.9228C109.606 35.8989 117.43 31.2492 119.423 28.841" stroke="white" stroke-width="2"/><path d="M107.069 39.7818C107.069 39.7818 111.592 37.2836 114.823 35.4991C118.054 33.7147 123.594 31.4713 123.594 31.4713" stroke="white" stroke-width="2"/></svg>
+      </div>
+
+    {% elseif paragraph.field_icon_option.value == '1' %}
+      <div class="commencement-learn-more__red-line"></div>
+
+    {% endif %}
+    
+        
+</div>

@@ -1,0 +1,64 @@
+{% set greyBackground = '' %}
+
+{% if paragraph.field_display_grey_background.value  == 1 %}
+    {% set greyBackground = ' --grey-background' %}
+{% endif %}
+
+<div class="column-text-block{{greyBackground}}">
+    <div class="column-text-block__red-line"></div>
+        {% if content.field_navy_red_heading['#items'].value %}
+            <h2 class="column-text-block__main-heading">{{ content.field_navy_red_heading }}</h2>
+        {% else %}
+            <div style="height:24px;"></div>
+        {% endif %}
+
+        {% if content.field_content['#items'].value %}
+            <div class="column-text-block__main-copy wizzywig">{{ content.field_content.0 }}</div>
+        {% endif %}
+
+        {% if content.field_cta['#items'].value %}
+            <div class="column-text-block__main-cta-container">
+                <a href="{{paragraph.field_cta.0.url}}" class="column-text-block__main-cta">{{paragraph.field_cta.0.title}}</a>
+            </div>
+            
+        {% endif %}
+
+    <div class="column-text-block__wrapper">
+        {% for item in paragraph.field_text_block %}
+        {% set loopLength = loop.length %}
+            <div class="column-text-block__container --columns-{{loopLength}}">
+                {% if item.entity.field_text_block_icon.entity.field_media_file is not empty %}
+                    <div class="column-text-block__icon">
+                        {% set svg = file_url(item.entity.field_text_block_icon.entity.field_media_file.entity.uri.0.value) |  replace({'%20': ' '}) %}
+
+                        {% set svgContents %}
+                            {%  include( '.' ~ svg) ignore missing %}
+                        {% endset %}
+                        {{svgContents|stripsvgids|raw}}
+                    </div>
+                {% elseif item.entity.field_text_block_icon.entity.field_media_image is not empty %}
+                    <div class="column-text-block__icon">
+                        {% set src = file_url(item.entity.field_text_block_icon.entity.field_media_image.entity.uri.0.value) |  replace({'%20': ' '}) %}
+                        <img src="{{src}}" alt="{{item.entity.field_text_block_icon.entity.field_media_image.alt}}" />
+                    </div>
+                {% endif %}
+
+
+
+                <div class="column-text-block__heading">{{ item.entity.field_heading.0.value }}</div>
+                <div class="column-text-block__copy">{{ item.entity.field_text.0.value }}</div>
+                <div class="column-text-block__cta-container">
+                    <a class="column-text-block__cta button--blue" href="{{ item.entity.field_cta.0.url }}">{{item.entity.field_cta.0.title}}</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    
+    {% if content.field_text['#items'].value %}
+        <div class="column-text-block__disclaimer-container">
+            <p class="column-text-block__disclaimer">{{ content.field_text.0 }}</p>
+        </div>
+    {% endif %}
+
+
+</div>

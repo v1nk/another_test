@@ -1,0 +1,268 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.paid-hero-space-form {
+  position: relative;
+
+  // overriding some default styling from form-twostep to work within hero to our 1280px breakpoint
+  .form-twostep {
+    @media (min-width: $desktop) {
+      padding: {
+        left: 14px;
+        right: 14px;
+      }
+    }
+
+    @media (min-width: $desktop) {
+      left: 71%;
+      position: absolute;
+      width: 340px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: transparent;
+      padding: 0;
+    }
+
+    @media (min-width: $desktop-medium) {
+      left: 65%;
+    }
+
+    .\--next-button.\--next-button.\--next-button {
+      @media (min-width: $desktop) {
+        margin: {
+          top: 0;
+        }
+        width: 25%;
+        flex-basis: 25%;
+      }
+
+      @media (min-width: $desktop) {
+        width: 100%;
+        flex-basis: 100%;
+
+        margin: {
+          top: 32px;
+        }
+      }
+    }
+
+    .form-wrapper[data-drupal-selector="edit-interest-information"],
+    .form-wrapper[data-drupal-selector="edit-contact-information"] {
+      padding: {
+        top: 0;
+      }
+    }
+
+    &__header {
+      margin: {
+        bottom: 20px;
+      }
+      @media (min-width: $desktop) {
+        @include textLarge;
+        padding: 16px;
+        margin: {
+          bottom: 0;
+        }
+      }
+    }
+
+    &__status {
+      @media (min-width: $desktop) {
+        display: flex;
+        width: 100%;
+        padding: {
+          left: 16px;
+          right: 16px;
+        }
+      }
+    }
+    .form-item-state,
+    .form-item-college-of-interest,
+    .form-item-clientdegreeid,
+    .form-item-firstname,
+    .form-item-lastname,
+    .form-item-phone1,
+    .form-item-emailaddress {
+      label {
+        @media (min-width: $desktop) {
+          display: none;
+        }
+      }
+
+      @media (min-width: $desktop) {
+        margin: {
+          top: 0;
+        }
+      }
+    }
+
+    .form-item-state,
+    .form-item-college-of-interest,
+    .form-item-clientdegreeid {
+      @media (min-width: $tablet) and (max-width: $desktop) {
+        display: block !important;
+      }
+    }
+
+    &__status-steps {
+      width: calc(100% - 48px);
+      margin: 0 auto;
+
+      @media (min-width: $desktop) {
+        flex-basis: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+    &__status-label {
+      @include textSmall;
+      color: $azBlue;
+      font-weight: 500;
+      flex-basis: 100%;
+      max-width: 100%;
+      text-align: left;
+      margin-bottom: 8px;
+    }
+
+    &__status-bar {
+      background-color: $tan;
+      border-radius: 10px;
+      height: 8px;
+      padding-top: 8px;
+      flex-basis: 100%;
+      max-width: 100%;
+      position: relative;
+      overflow: hidden;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        height: 8px;
+        width: 50%;
+        display: block;
+        background-color: $orange;
+        top: 0;
+        border-radius: 10px;
+        transition: width 0.5s ease;
+      }
+    }
+
+    &.\--second-step .form-twostep__status-bar::after {
+      width: 100%;
+    }
+
+    &__form {
+      @media (min-width: $desktop) {
+        padding: {
+          top: 0;
+          bottom: 16px;
+          left: 16px;
+          right: 16px;
+        }
+
+        .form-item-tcpa-checkbox label {
+          margin-right: 8px !important;
+        }
+
+        .js-form-type-select:after {
+          right: 1.5px;
+        }
+
+        .form-item-tcpa-checkbox span {
+          @include rems(13px);
+          line-height: 1.384615384615385;
+          color: $azBlue;
+        }
+
+        .webform-actions {
+          max-width: unset;
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    label {
+      @media (min-width: $desktop) {
+        display: none;
+      }
+    }
+
+    input {
+      @media (min-width: $desktop) {
+        margin-bottom: 8px;
+      }
+    }
+
+    .webform-actions input[type="submit"] {
+      @media (min-width: $desktop) {
+        margin-top: 8px;
+      }
+    }
+  }
+
+  .form-wrapper[data-drupal-selector="edit-interest-information"] .form-item {
+    @media (min-width: $desktop) {
+      flex-basis: 100%;
+      max-width: unset;
+      padding: 0;
+    }
+  }
+
+  .form-wrapper[data-drupal-selector="edit-interest-information"]
+    .form-item-registerednurse {
+    @media (min-width: $desktop) {
+      padding: {
+        left: 12px;
+        right: 12px;
+      }
+
+      label {
+        display: block;
+      }
+    }
+  }
+
+  .form-wrapper[data-drupal-selector="edit-interest-information"],
+  .form-wrapper[data-drupal-selector="edit-contact-information"] {
+    @media (min-width: $desktop) {
+      display: block;
+      padding: {
+        top: 0;
+        bottom: 0;
+      }
+    }
+  }
+
+  .form-wrapper[data-drupal-selector="edit-contact-information"] .form-item {
+    padding: 0;
+  }
+
+  .form-item-college-of-interest,
+  .form-item-clientdegreeid {
+    @media (min-width: $desktop) {
+      margin-top: 16px !important;
+    }
+  }
+
+  .form-twostep .\--next-button.\--next-button.\--next-button {
+    @media (min-width: $desktop) {
+      flex-basis: 100%;
+      max-width: unset;
+      margin: {
+        top: 16px;
+        left: 0;
+      }
+    }
+  }
+
+  .form-disclaimer p {
+    @include textMicro;
+    color: $azBlue;
+    text-align: left;
+  }
+}

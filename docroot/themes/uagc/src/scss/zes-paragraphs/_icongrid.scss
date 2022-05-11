@@ -1,0 +1,305 @@
+.icongrid {
+  padding: {
+    bottom: 30px;
+    top: 30px;
+    left: 20px;
+    right: 20px;
+  }
+
+  @include breakpoint(min-width $bp--desktop) {
+    padding: {
+      top: 32px;
+      bottom: 32px;
+    }
+  }
+
+  &.icongrid {
+    margin-bottom: 0;
+  }
+
+  &.\--grey-background {
+    background-color: #f4f4f4;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 0;
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: $azBlue;
+    p {
+      margin-bottom: 0;
+    }
+
+    @include breakpoint(min-width $bp--mobile) {
+      margin-bottom: 45px;
+    }
+  }
+
+  &__loadmore {
+    padding: 10px 40px;
+    border: solid 2px $blue;
+    border-bottom: solid 2px $blue;
+    text-transform: uppercase;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 400px;
+    width: 85%;
+    background-color: white;
+    color: $blue;
+
+    &:hover,
+    &:visited {
+      border: solid 2px $blue;
+    }
+
+    @include breakpoint(min-width $bp--mobile) {
+      display: none;
+    }
+  }
+
+  &__items {
+    max-width: 951px;
+    width: auto;
+    margin: 0 auto;
+    position: relative;
+    padding: {
+      top: 0;
+      right: 20px;
+      bottom: 20px;
+      left: 20px;
+    }
+
+    @include breakpoint($bp--mobile, $no-query: true) {
+      padding: 0px;
+      display: flex;
+      justify-content: left;
+      flex-wrap: wrap;
+    }
+
+    &-container {
+      width: 100%;
+    }
+  }
+
+  &__item {
+    position: relative;
+    flex-basis: 45%;
+    width: 100%;
+    max-width: 317px;
+    margin: 0 auto;
+    border-bottom: solid 2px #dddddd;
+    transition: max-height 2s;
+    max-height: 600px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    svg {
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+    &-header,
+    &-content {
+      transition: color 0.3s ease, color 0.3s ease;
+    }
+
+    &:last-of-type {
+      border-bottom: 0;
+    }
+
+    &:nth-of-type(n + 4) {
+      @include breakpoint($bp--mobile, $no-query: true) {
+        overflow: visible;
+      }
+
+      .\--show-all & {
+        visibility: visible;
+        max-height: 600px;
+      }
+    }
+
+    @include breakpoint($bp--mobile, $no-query: true) {
+      max-height: 600px;
+      display: block;
+      flex-basis: 32.333333%;
+      border-bottom: solid 1px #dddddd;
+      margin: 0;
+
+      &:nth-of-type(1),
+      &:nth-of-type(3n + 1),
+      &:nth-of-type(3n + 2) {
+        border: {
+          right: solid 1px #dddddd;
+        }
+      }
+
+      &:nth-of-type(n + 4) {
+        max-height: 600px;
+        visibility: visible;
+      }
+
+      &.\--no-bottom-border {
+        border-bottom: 0;
+      }
+    }
+
+    &:hover {
+      .icongrid__item-image svg {
+        transform: rotateY(-360deg);
+      }
+    }
+
+    &-spacer {
+      width: 100%;
+    }
+
+    &-wrapper {
+      padding: {
+        top: 25px;
+        right: 35px;
+        left: 35px;
+        bottom: 25px;
+      }
+
+      @include breakpoint(min-width $bp--mobile) {
+        padding-bottom: 50px;
+      }
+    }
+
+    &-image {
+      svg {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+        display: block;
+        fill: $azRed;
+      }
+    }
+
+    &-content {
+      text-align: center;
+    }
+
+    &-header {
+      padding-left: 0;
+      padding-right: 0;
+      margin: 0 auto;
+      text-align: center;
+      margin-bottom: 15px;
+      color: $azBlue;
+      font-weight: 500;
+      font-size: 1.375rem;
+    }
+
+    &-tooltip {
+      position: absolute;
+      height: 20px;
+      width: 20px;
+      top: 5%;
+      right: 5%;
+      border-radius: 50%;
+      background-color: $blue;
+      color: white;
+      font-size: 0.937rem;
+      text-align: center;
+
+      cursor: pointer;
+
+      &:hover,
+      &.\--show-tooltip {
+        .icongrid__item-tooltip-spacer {
+          display: block;
+          position: absolute;
+          top: 5%;
+          left: 95%;
+          border-radius: 10px;
+          background-color: #ebebeb;
+
+          padding: 15px;
+          z-index: 1;
+          transform: translateX(-25px) translateY(35px);
+
+          &:before {
+            content: " ";
+            width: 0;
+            height: 0;
+            display: block;
+            border-left: solid 12px #ebebeb;
+            border-right: solid 12px transparent;
+            border-top: solid 20px transparent;
+            top: -20px;
+            position: absolute;
+          }
+        }
+      }
+
+      &-spacer {
+        display: none;
+        min-width: 150px;
+      }
+
+      &-content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        color: black;
+      }
+    }
+
+    &:last-of-type,
+    &:nth-of-type(3n + 3) {
+      .icongrid__item-tooltip-spacer {
+        transform: translateX(5px) translateY(35px);
+        right: 5%;
+        left: unset;
+
+        &:before {
+          right: 14px;
+          position: absolute;
+          border-left: solid 12px transparent;
+          border-right: solid 12px #ebebeb;
+          border-top: solid 20px transparent;
+        }
+      }
+    }
+
+    @include breakpoint(max-width $bp--mobile) {
+      .icongrid__item-tooltip-spacer.icongrid__item-tooltip-spacer {
+        transform: translateX(5px) translateY(35px);
+        right: 5%;
+        left: unset;
+
+        &:before {
+          right: 14px;
+          position: absolute;
+          border-left: solid 12px transparent;
+          border-right: solid 12px #ebebeb;
+          border-top: solid 20px transparent;
+        }
+      }
+    }
+  }
+
+  /* fix icon grid in mobile to show in grid instead of flex */
+  @media (max-width: 699px) {
+    .icongrid__item {
+      flex-basis: 45%;
+      border-bottom: none;
+    }
+    .icongrid__items {
+      display: grid;
+      grid-template-columns: auto auto;
+      padding-right: 0px;
+      padding-left: 0px;
+    }
+    .icongrid__item-content {
+      font-size: 0.875rem;
+    }
+    .icongrid__item-header {
+      font-size: 1.125rem;
+      margin-bottom: 10px;
+    }
+    .icongrid__item-wrapper {
+      padding: 12px;
+    }
+  }
+}

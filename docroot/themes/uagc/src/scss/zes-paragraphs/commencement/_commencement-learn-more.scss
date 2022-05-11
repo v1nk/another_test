@@ -1,0 +1,232 @@
+.commencement-learn-more {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 190px;
+  flex-direction: column-reverse;
+  align-items: center;
+
+  padding: {
+    top: 65px;
+    bottom: 65px;
+    left: 20px;
+    right: 20px;
+  }
+
+  .commencement__body & {
+    margin-bottom: -1px;
+    flex-direction: row;
+    padding: {
+      top: 28px;
+      bottom: 36px;
+    }
+
+    @media (min-width: $bp--mobile) {
+      padding: 0px;
+    }
+  }
+
+  &.\--navy-bg {
+    background: $azBlue;
+  }
+
+  &.\--navy-confetti-bg {
+    background: {
+      image: url("../images/bg/confetti-background.svg");
+      position: center center;
+    }
+  }
+
+  &.\--white-bg {
+    background: #ffffff;
+  }
+
+  &__content {
+    text-align: center;
+    width: 100%;
+
+    .commencement__body & {
+      max-width: 750px;
+      padding: {
+        top: 25px;
+        bottom: 25px;
+        left: 0;
+      }
+
+      @media (min-width: $bp--mobile) {
+        padding-left: 40px;
+        text-align: left;
+      }
+    }
+
+    &-heading {
+      text-align: center;
+      font-weight: 600;
+      font-size: 2rem;
+      line-height: 1.22;
+      color: #ffffff;
+      padding-bottom: 15px;
+      margin: 0px 20px;
+
+      .--white-bg & {
+        color: $azBlue;
+      }
+
+      @media (min-width: $bp--mobile) {
+        margin: 0px;
+        font-size: 2.5rem;
+        line-height: 1.225;
+
+        .commencement__body & {
+          text-align: left;
+        }
+      }
+
+      .commencement__body & {
+        font-size: 1.5rem;
+        line-height: 1.21;
+      }
+    }
+
+    &-text {
+      text-align: center;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 1.125rem;
+      line-height: 1.22;
+      letter-spacing: 0px;
+      max-width: 810px;
+      color: #ffffff;
+      margin: {
+        left: auto;
+        right: auto;
+        bottom: 20px;
+        top: 0px;
+      }
+
+      p {
+        margin-bottom: 10px;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 600;
+        font-size: 1.375rem;
+        line-height: 1.23;
+        margin-bottom: 10px;
+      }
+
+      ul {
+        list-style-position: inside;
+        padding-inline-start: 0px;
+        font-weight: 500;
+        font-size: 1rem;
+        line-height: 1.25;
+
+        li {
+          margin-bottom: 20px;
+        }
+
+        @media (min-width: $bp--mobile) {
+          font-size: 1.125rem;
+          line-height: 1.778;
+
+          li {
+            margin-bottom: 0px;
+          }
+        }
+      }
+
+      .--white-bg & {
+        color: #000;
+      }
+
+      .--extend-width & {
+        max-width: 1025px;
+      }
+
+      .commencement__body & {
+        text-align: center;
+        font-size: 0.875rem;
+        line-height: 1.21;
+        margin: {
+          left: 20px;
+          right: 20px;
+          bottom: 20px;
+          top: 0px;
+        }
+
+        @media (min-width: $bp--mobile) {
+          text-align: left;
+          margin: {
+            left: 0px;
+            right: 0px;
+            bottom: 20px;
+            top: 0px;
+          }
+        }
+      }
+    }
+
+    &__link {
+      @extend %button-primary;
+      display: inline-block;
+      min-width: 290px;
+      height: 44px;
+      text-transform: capitalize;
+      margin: auto;
+
+      .commencement__body & {
+        display: flex;
+        max-width: 290px;
+      }
+
+      @media (min-width: $bp--mobile) {
+        margin: 0 auto;
+
+        .commencement__body & {
+          margin: 0px;
+        }
+      }
+    }
+  }
+
+  &__grad-cap {
+    width: 100%;
+    max-width: 250px;
+    display: flex;
+    justify-content: center;
+
+    .commencement__body & {
+      display: none;
+      @media (min-width: $bp--mobile) {
+        width: 100%;
+        max-width: 250px;
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+    .--white-bg & {
+      display: none;
+    }
+  }
+
+  &__red-line {
+    border-top: 5px solid #ab0520;
+    width: 64px;
+    margin: {
+      left: auto;
+      right: auto;
+      bottom: 16px;
+    }
+
+    .commencement__body & {
+      display: none;
+    }
+  }
+}

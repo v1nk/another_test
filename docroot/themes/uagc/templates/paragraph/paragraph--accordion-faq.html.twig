@@ -1,0 +1,12 @@
+{% if 'On' in content.field_background_grey.0 %}
+  {% set color = '--grey' %}
+  {% else %}
+    {% set color = '--white' %}
+{% endif %}
+
+{% set classes = ['site-layout__article-content-section', color, '--full-width' ] %}
+<section {{ attributes.addClass(classes) }} >
+    <div class="accordion-faq">
+      {{content}}
+    </div>
+</section>

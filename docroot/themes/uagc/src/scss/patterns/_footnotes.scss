@@ -1,0 +1,113 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/vars" as *;
+
+.footnotes {
+  &.\--default {
+    @include globalGutters;
+  }
+  &.\--paid {
+    @include globalGuttersPaid;
+  }
+  &.\--reduced-padding {
+    @include globalGutters;
+    //Overriding the top/bottom padding for globalGutters at all breakpoints to 24px
+    padding: {
+      top: 24px;
+      bottom: 24px;
+    }
+    @media (min-width: $tablet) {
+      padding: {
+        top: 24px;
+        bottom: 24px;
+      }
+    }
+  }
+
+  @media (min-width: $desktop-medium-large) {
+    &:not(.columns__left &) {
+      padding: {
+        left: 0;
+        right: 0;
+      }
+    }
+  }
+
+  background-color: white;
+
+  &__disclaimer {
+    padding-bottom: 8px;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+    span {
+      @include rems(11px);
+      line-height: 1.4545;
+      color: $darkGray;
+      font-weight: 400;
+    }
+
+    p {
+      display: inline;
+    }
+  }
+
+  &__wysiwyg {
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        max-width: 1440px;
+        margin: {
+          left: auto;
+          right: auto;
+        }
+      }
+    }
+    p {
+      @include rems(11px);
+      line-height: 1.4545;
+      color: $darkGray;
+      font-weight: 400;
+
+      &:last-child {
+        margin: {
+          bottom: 0;
+        }
+      }
+    }
+
+    strong,
+    b {
+      font-weight: 700;
+    }
+
+    a {
+      color: $azBlue;
+    }
+  }
+
+  &__symbol {
+    strong,
+    b {
+      font-weight: 700;
+    }
+    em,
+    i {
+      font-style: italic;
+    }
+
+    sup {
+      vertical-align: super;
+      font-size: smaller;
+    }
+
+    sub {
+      vertical-align: sub;
+      font-size: smaller;
+    }
+  }
+
+  &.\--grey-background {
+    background-color: $lighterGray;
+  }
+}

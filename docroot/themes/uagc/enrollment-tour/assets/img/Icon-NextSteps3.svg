@@ -1,0 +1,27 @@
+<svg id="Icon-NextSteps3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64.761" height="52.479" viewBox="0 0 64.761 52.479">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_744" data-name="Path 744" d="M0-47H64.761V5.479H0Z" transform="translate(0 47)" fill="#621b4b"/>
+    </clipPath>
+  </defs>
+  <g id="Group_843" data-name="Group 843" clip-path="url(#clip-path)">
+    <g id="Group_837" data-name="Group 837" transform="translate(0)">
+      <path id="Path_738" data-name="Path 738" d="M.357,1.865,28.2,17.336,56.053,1.865,28.2-13.606ZM28.2,19.73a1.114,1.114,0,0,1-.543-.141L-2.485,2.841a1.117,1.117,0,0,1-.574-.976A1.117,1.117,0,0,1-2.485.889L27.662-15.859a1.117,1.117,0,0,1,1.085,0L58.895.889a1.117,1.117,0,0,1,0,1.952L28.747,19.589a1.12,1.12,0,0,1-.543.141" transform="translate(3.059 16)" fill="#621b4b"/>
+    </g>
+    <g id="Group_838" data-name="Group 838" transform="translate(60.294 16.877)">
+      <path id="Path_739" data-name="Path 739" d="M.117,2.331A1.116,1.116,0,0,1-1,1.215v-20.1A1.116,1.116,0,0,1,.117-20a1.116,1.116,0,0,1,1.117,1.117v20.1A1.116,1.116,0,0,1,.117,2.331" transform="translate(1 20)" fill="#621b4b"/>
+    </g>
+    <g id="Group_839" data-name="Group 839" transform="translate(58.061 36.847)">
+      <path id="Path_740" data-name="Path 740" d="M.35.233A1.117,1.117,0,1,0,1.466,1.35,1.118,1.118,0,0,0,.35.233M.35,4.7A3.35,3.35,0,1,1,.35-2a3.35,3.35,0,0,1,0,6.7" transform="translate(3 2)" fill="#621b4b"/>
+    </g>
+    <g id="Group_840" data-name="Group 840" transform="translate(46.896 24.693)">
+      <path id="Path_741" data-name="Path 741" d="M.117,2.448A1.116,1.116,0,0,1-1,1.331V-19.883A1.116,1.116,0,0,1,.117-21a1.116,1.116,0,0,1,1.117,1.117V1.331A1.116,1.116,0,0,1,.117,2.448" transform="translate(1 21)" fill="#621b4b"/>
+    </g>
+    <g id="Group_841" data-name="Group 841" transform="translate(13.399 24.693)">
+      <path id="Path_742" data-name="Path 742" d="M.117,2.448A1.116,1.116,0,0,1-1,1.331V-19.883A1.116,1.116,0,0,1,.117-21a1.116,1.116,0,0,1,1.117,1.117V1.331A1.116,1.116,0,0,1,.117,2.448" transform="translate(1 21)" fill="#621b4b"/>
+    </g>
+    <g id="Group_842" data-name="Group 842" transform="translate(13.399 46.011)">
+      <path id="Path_743" data-name="Path 743" d="M1.865.675A34.917,34.917,0,0,1-15.476-3.731a1.115,1.115,0,0,1-.353-1.538,1.117,1.117,0,0,1,1.538-.355A33.3,33.3,0,0,0,1.865-1.558,33.3,33.3,0,0,0,18.022-5.623a1.118,1.118,0,0,1,1.538.355,1.115,1.115,0,0,1-.353,1.538A34.917,34.917,0,0,1,1.865.675" transform="translate(16 5.792)" fill="#621b4b"/>
+    </g>
+  </g>
+</svg>

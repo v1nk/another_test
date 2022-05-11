@@ -1,0 +1,99 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.paid-hero {
+  display: flex;
+  position: relative;
+  min-height: 450px;
+  background: $azBlue;
+
+  &__content {
+    position: absolute;
+    bottom: -29%;
+    left: -36%;
+    width: 121%;
+    max-width: 400px;
+
+    @media (min-width: $tablet) {
+      bottom: 9%;
+      left: -40%;
+      width: 100%;
+      max-width: 700px;
+    }
+  }
+
+  &__subheading {
+    @include h5;
+    @include marginMedium;
+    background: transparent;
+    color: #ffffff;
+    text-transform: uppercase;
+  }
+
+  &__heading {
+    @include h1;
+    background: $azRed;
+    color: #ffffff;
+    padding: 24px;
+    margin-bottom: 24px;
+
+    @media (min-width: $tablet) {
+      font-size: 4rem;
+    }
+  }
+
+  &__image {
+    flex-basis: 69.5%;
+    max-width: 69.5%;
+    position: relative;
+    max-height: 350px;
+    min-height: 315px;
+    background-size: cover;
+    background-position: center center;
+    margin: {
+      left: auto;
+    }
+
+    @media (min-width: $tablet) {
+      @include flexGrid(6, 9);
+      height: 600px;
+      max-height: unset;
+    }
+
+    img {
+      display: none;
+    }
+
+    &::before {
+      @media (min-width: $tablet) {
+        content: "";
+        border-top: 5px solid $azRed;
+        width: 160px;
+        position: absolute;
+        top: 17%;
+        left: -12%;
+      }
+
+      @media (min-width: $desktop) {
+        left: -10%;
+      }
+    }
+
+    &::after {
+      @media (min-width: $tablet) {
+        content: "";
+        border-top: 5px solid $orange;
+        width: 95px;
+        position: absolute;
+        bottom: 13%;
+        right: 13%;
+      }
+
+      @media (min-width: $desktop) {
+        right: 0;
+      }
+    }
+  }
+}

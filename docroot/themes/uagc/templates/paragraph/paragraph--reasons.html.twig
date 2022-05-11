@@ -1,0 +1,9 @@
+{% set iconClass = paragraph.field_reasons_icon.0.value %}
+
+<div class="reasons__icon-wrapper">
+    <div class="reasons__icon {{iconClass}}"></div>
+    <div class="reasons__icon-content-container">
+        <div class="reasons__icon-heading">{{ content.field_heading_html }}</div>
+        <div class="reasons__icon-content">{{ content.field_content }}</div>
+    </div>
+</div>

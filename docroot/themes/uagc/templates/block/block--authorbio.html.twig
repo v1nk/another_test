@@ -1,0 +1,47 @@
+{% set imgSrc = file_url(node.Owner.user_picture[0].entity.uri.value) %}
+{% set alt = node.Owner.field_display_name.value %}
+{% set width = node.Owner.user_picture[0].width %}
+{% set height = node.Owner.user_picture[0].height %}
+
+<div class="author-bio">
+    <div class="author-bio__header">
+        <div class="author-bio__image-container">
+            {% if node.Owner.user_picture.value %}
+                <img src="{{ imgSrc }}" alt="{{ alt }}" width="{{width}}" height="{{height}}" class="author-bio__image" />
+            {% else %}
+                <img src="/themes/uagc/src/images/uagc-logo-small.png" alt="University of Arizona Global Campus Logo" width="{{width}}" height="{{height}}" class="author-bio__image" />
+            {% endif %}
+        </div>
+        <div class="author-bio__content">
+            <div class="author-bio__label">Author</div>
+            {% if node.Owner.field_display_name.value %}
+                <div class="author-bio__name">{{node.Owner.field_display_name.value}}</div>
+            {% else %}
+                <div class="author-bio__name">UAGC Staff Member</div>
+            {% endif %}
+            {% if node.Owner.field_titles.value %}
+                <div class="author-bio__titles">{{node.Owner.field_titles.value}}</div>
+            {% endif %}
+            {% if node.Owner.field_biography.value or node.Owner.field_linkedin.value %}
+                <div class="author-bio__links">
+                    {% if node.Owner.field_biography.value %}
+                        <a href="{{ node.Owner.field_biography.0.url}}" class="author-bio__link">
+                            Biography
+                        </a>
+                    {% endif %}
+                    {% if node.Owner.field_linkedin.value %}
+                        <a href="{{ node.Owner.field_linkedin.0.url}}" class="author-bio__link">
+                            LinkedIn
+                        </a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if node.Owner.field_short_bio.value %}
+        <div class="author-bio__excerpt">
+            <p>{{node.Owner.field_short_bio.value}}</p>
+        </div>
+    {% endif %}
+</div>

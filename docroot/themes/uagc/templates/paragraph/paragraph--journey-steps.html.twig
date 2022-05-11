@@ -1,0 +1,98 @@
+{% set ranKey = random() %}
+<div class="completion-journey__step-item">
+  <h2 class="completion-journey__step-items-header">{{paragraph.field_headline.value}}</h2>
+
+  <div class="completion-journey__step-items-content">{% autoescape false %}{{paragraph.field_header_content.value}}{%endautoescape %}</div>
+  {% if paragraph.field_accordion_items is not empty %}
+  <ul class="accordion-items js-accordion-block" data-key="{{ ranKey }}">
+    {% for item in paragraph.field_accordion_items %}
+
+    {% set openClass = '' %}
+
+
+    <li class="accordion-items__item js-accordion-block-item {{openClass}}" data-accord="{{loop.index}}">
+      <h3 class="accordion-items__item-heading">
+        <button type="button"class="accordion-items__item-toggle js-accordion-item-toggle" data-accord="{{loop.index}}">{{item.entity.title.value}}</button>
+      </h3>
+      <div class="accordion-items__item-container js-accordion-content" data-accord="{{loop.index}}" data-a-height="auto" style="height: auto;">
+        <div class="accordion-items__item-content">
+          {% autoescape false %}
+            {{item.entity.body.value}}
+          {% endautoescape %}
+
+          {% if item.entity.field_link is not empty %}
+            <p><a href="{{item.entity.field_link.uri}}" class="accordion-external">{{ item.entity.field_link.title }}</a></p>
+          {% endif %}
+
+
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+
+  {% endif %}
+  {% if paragraph.field_accordion_items is not empty %}
+  {# field_accordion_text
+  field_course_postfix
+  field_override_position
+  field_tab_text #}
+      {% set overrides = [] %}
+      {% for item in paragraph.field_courses %}
+        {% set overrideItem = item.entity %}
+        {% set position = overrideItem.field_override_position.0.value %}
+        {% set postfix = overrideItem.field_course_postfix.0.value %}
+        {% set text = overrideItem.field_accordion_text.0.value %}
+        {% set tabText = overrideItem.field_tab_text.0.value %}
+        {% set ctaUrl = overrideItem.field_cta.uri %}
+        {% set ctaText = overrideItem.field_cta.title %}
+        {% set itemData = {'position': position, 'postfix': postfix, 'text':text, 'tabText': tabText, 'cta': {'url': ctaUrl, 'text': ctaText}} %}
+        {% set overrides = overrides|merge([itemData]) %}
+      {% endfor %}
+      {# begin the terrible things here #}
+      <script>
+      let orObject{{ranKey}} = {
+        overrideData: JSON.parse('{{ overrides|json_encode|e('js') }}'),
+        baseElement: document.querySelector('[data-key="{{ranKey}}"]'),
+        run: function(){
+        if(this.baseElement) {
+          let accordItems = this.baseElement.querySelectorAll('.js-accordion-block-item');
+          for(let i = 0; i<this.overrideData.length; i++) {
+            if(this.overrideData[i].position == null) {
+              this.overrideData.splice(i, 1);
+            }
+          }
+          for(let i = 0; i<this.overrideData.length; i++) {
+            let data = this.overrideData[i];
+            let position = parseInt(data.position);
+            if(accordItems[position - 1]) {
+              let currentAccord = accordItems[position-1];
+              let headerTextElement = currentAccord.querySelector('.js-accordion-item-toggle');
+              let bodyTextElement = currentAccord.querySelector('.accordion-items__item-content');
+              let linkElement = '<p><a href="@@linkHref@@" class="accordion-external">@@linkText@@</a></p>';
+              let tempText = headerTextElement.innerText;
+              if(data.tabText != null) {
+                tempText = data.tabText;
+              }
+              if(data.postfix != null) {
+                tempText = tempText+data.postfix
+              }
+              if(data.text) {
+                bodyTextElement.innerHTML = data.text;
+              }
+
+              if (data.cta.url !== null && data.cta.text !== null) {
+                linkElement = linkElement.replace('@@linkHref@@', data.cta.url).replace('@@linkText@@', data.cta.text);
+                bodyTextElement.innerHTML += linkElement;
+              }
+
+              headerTextElement.innerText = tempText;
+            }
+          }
+        }
+        }
+      }
+      orObject{{ranKey}}.run();
+      </script>
+    {% endif %}
+</div>

@@ -1,0 +1,25 @@
+name: UAGC
+type: theme
+description: UAGC
+package: Core
+core_version_requirement: ^9
+base theme: stable
+features:
+  favicon: true
+favicon:
+  use_default: false
+regions:
+  alert_bar: "Alert Bar"
+  page_top: "Page top"
+  header: Header
+  navigation: Navigation
+  breadcrumb: Breadcrumb
+  content: Content
+  postscript: Postscript
+  footer: Footer
+  page_bottom: "Page bottom"
+  sidebar_left: "Sidebar Left"
+  sidebar_right: "Sidebar Right"
+  bottom_content: "Bottom Content"
+ckeditor_stylesheets:
+  - dist/scss/zes-pages.css

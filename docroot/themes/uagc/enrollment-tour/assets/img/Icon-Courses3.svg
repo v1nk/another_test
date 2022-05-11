@@ -1,0 +1,24 @@
+<svg id="Icon-Courses3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="54" viewBox="0 0 60 54">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_402" data-name="Path 402" d="M0-54H60V0H0Z" transform="translate(0 54)" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_446" data-name="Group 446" clip-path="url(#clip-path)">
+    <g id="Group_441" data-name="Group 441">
+      <path id="Path_397" data-name="Path 397" d="M0,0H-34a1,1,0,0,1-1-1,1,1,0,0,1,1-1H0A1,1,0,0,0,1-3V-39a1,1,0,0,0-1-1H-54a1,1,0,0,0-1,1V-3a1,1,0,0,0,1,1h10a1,1,0,0,1,1,1,1,1,0,0,1-1,1H-54a3,3,0,0,1-3-3V-39a3,3,0,0,1,3-3H0a3,3,0,0,1,3,3V-3A3,3,0,0,1,0,0" transform="translate(57 42)" fill="#AB0520"/>
+    </g>
+    <g id="Group_442" data-name="Group 442">
+      <path id="Path_398" data-name="Path 398" d="M0,0H-36a1,1,0,0,1-1-1,1,1,0,0,1,1-1H0A1,1,0,0,1,1-1,1,1,0,0,1,0,0" transform="translate(48 14)" fill="#AB0520"/>
+    </g>
+    <g id="Group_443" data-name="Group 443">
+      <path id="Path_399" data-name="Path 399" d="M0,0H-36a1,1,0,0,1-1-1,1,1,0,0,1,1-1H0A1,1,0,0,1,1-1,1,1,0,0,1,0,0" transform="translate(48 22)" fill="#AB0520"/>
+    </g>
+    <g id="Group_444" data-name="Group 444">
+      <path id="Path_400" data-name="Path 400" d="M0,0H-24a1,1,0,0,1-1-1,1,1,0,0,1,1-1H0A1,1,0,0,1,1-1,1,1,0,0,1,0,0" transform="translate(36 30)" fill="#AB0520"/>
+    </g>
+    <g id="Group_445" data-name="Group 445">
+      <path id="Path_401" data-name="Path 401" d="M0,0A1.013,1.013,0,0,1-.341-.06,1,1,0,0,1-1-1V-13a1,1,0,0,1,1-1,1,1,0,0,1,1,1v9.238L9.231-13.64a1,1,0,0,1,1.41-.128,1,1,0,0,1,.128,1.408l-10,12A1,1,0,0,1,0,0" transform="translate(13 54)" fill="#AB0520"/>
+    </g>
+  </g>
+</svg>

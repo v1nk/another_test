@@ -1,0 +1,92 @@
+// @file
+// Styles for form items.
+
+.form-item {
+  margin-bottom: 24px;
+  .form-item {
+    margin-bottom: 0;
+  }
+
+  &.is-focusable {
+    padding-top: 25px;
+  }
+
+  label {
+    display: block;
+    &.option {
+      display: inline-block;
+    }
+  }
+
+  .description {
+    margin: 8px 0;
+  }
+}
+
+.webform-options-display-side-by-side {
+  .form-item {
+    float: left;
+    margin-right: 16px !important;
+  }
+}
+
+.form-tel,
+.form-email,
+.form-text,
+.form-textarea {
+  border: 2px solid #ccc;
+  padding: 8px 10px;
+  transition: border-color 0.25s ease-in-out;
+  &:hover {
+    border-color: #555;
+  }
+
+  &:active,
+  &:focus {
+    border-color: #555;
+    outline: 0;
+  }
+}
+
+.form-select {
+  @include svg-background(arrow-down-blue);
+  appearance: none;
+  background-position: 96% 50%;
+  background-position: right 10px top 50%;
+  background-size: 12px 7px;
+  border: 2px solid $form-border;
+  border-radius: 0;
+  padding: 8px 30px 8px 18px;
+}
+
+%form-select--purple {
+  background-color: transparent;
+  @include svg-background(arrow-down-white);
+  border-color: #fff;
+
+  option {
+    background: #fff;
+  }
+}
+
+.form-disclaimer {
+  border-top: 1px solid $border;
+  margin-bottom: 32px;
+  margin-top: 32px;
+  padding-top: 48px;
+}
+
+.form-required {
+  &:after {
+    content: "";
+    vertical-align: super;
+    display: inline-block;
+    /* Use a background image to prevent screen readers from announcing the text. */
+    @include svg-background(required);
+    background-repeat: no-repeat;
+    background-size: 6px 6px;
+    width: 6px;
+    height: 6px;
+    margin: 0 0.48px;
+  }
+}

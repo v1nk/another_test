@@ -1,0 +1,78 @@
+<header class="commencement-header">
+  <div class="commencement-header__alert-bar">
+    If you're having trouble, please visit our <a href="/student-experience/graduation/fall-2021/support">support and troubleshooting guide.</a>
+  </div>
+  
+  <div class="commencement-header__menu-wrapper">
+    <div class="commencement-header__hamburger">
+      <button class="js-menu-hamburger">
+        <svg width="40" height="32" viewBox="0 0 40 32" xmlns="http://www.w3.org/2000/svg">
+          <rect width="40" height="4"/>
+          <rect y="14" width="40" height="4"/>
+          <rect y="28" width="40" height="4"/>
+          </svg>
+          
+      </button>
+    </div>
+
+    {% set subMenuHideClass = '' %}
+
+      {% if node.field_hide_submenu_on_desktop.value == '1' %}
+        {% set subMenuHideClass = '--hide-submenu-on-desktop' %}
+      {% endif %}
+
+    <div class="commencement-header__logo-mobile"><a href="/"><img src="/themes/uagc/src/images/icons/UAGC_logo.svg" alt="The University of Arizona Global Campus"></a></div>
+    <div class="commencement-header__menu-container  {{subMenuHideClass}}">
+      <div class="commencement-header__close-container">
+        <button class="commencement-header__close js-menu-close"></button>
+      </div>
+      <div class="commencement-header__logo"><a href="/"><img src="/themes/uagc/src/images/icons/UAGC_logo.svg" alt="The University of Arizona Global Campus"></a></div>
+      <h4 class="commencement-header__menu-title">Experience</h4>
+      <ul class="commencement-header__menu">
+
+        {% for item in commencementMenu %}
+          <li class="commencement-header__menu-item"><a href="{{item.url}}">{{ item.title }}</a></li>
+
+
+        {% endfor %}
+      </ul>
+      <a href="/request-information" class="commencement-header__cta">Learn About UAGC</a>
+      <div class="commencement-header__submenu-container">
+        <h4 class="commencement-header__submenu-title">Recognitions & Resources</h4>
+          <ul class="commencement-header__submenu">
+            {% for item in commencementSubmenu %}
+              <li class="commencement-header__submenu-item"><a href="{{item.url}}">{{ item.title }}</a></li>
+            {% endfor %}
+        </ul>
+    
+      </div>
+    </div>
+
+  </div>
+
+
+
+</header>
+
+<script type="text/javascript">
+  var btnMenu = document.querySelectorAll('.js-menu-hamburger, .js-menu-close');
+
+  btnMenu.forEach(function(e,i,arr) {
+    e.addEventListener('click', function() {
+      var menu = document.querySelector('.commencement-header__menu-container');
+      var body = document.querySelector('body');
+      var alert = document.querySelector('.commencement-header__alert-bar');
+
+      var height = alert.offsetHeight;
+
+      menu.classList.toggle('--open');
+      body.classList.toggle('--menu-open');
+
+
+      menu.style.height = 'calc(100vh - ' +height + 'px)';
+    });
+  });
+
+</script>
+
+

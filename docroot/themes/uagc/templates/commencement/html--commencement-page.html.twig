@@ -1,0 +1,89 @@
+{#
+  /**
+   * @file
+   * Theme override for the basic structure of a single Drupal page.
+   *
+   * Variables:
+   * - logged_in: A flag indicating if user is logged in.
+   * - root_path: The root path of the current page (e.g., node, admin, user).
+   * - node_type: The content type for the current node, if the page is a node.
+   * - head_title: List of text elements that make up the head_title variable.
+   *   May contain or more of the following:
+   *   - title: The title of the page.
+   *   - name: The name of the site.
+   *   - slogan: The slogan of the site.
+   * - page_top: Initial rendered markup. This should be printed before 'page'.
+   * - page: The rendered page markup.
+   * - page_bottom: Closing rendered markup. This variable should be printed after
+   *   'page'.
+   * - db_offline: A flag indicating if the database is offline.
+   * - placeholder_token: The token for generating head, css, js and js-bottom
+   *   placeholders.
+   *
+   * @see template_preprocess_html()
+   */
+  #}
+  {%
+    set body_classes = [
+      logged_in ? 'user-logged-in',
+      not root_path ? 'path-frontpage' : 'path-' ~ root_path|clean_class,
+      not root_path ? 'front' : 'not-front',
+      node_type ? 'page--node-type-' ~ node_type|clean_class,
+    ]
+  %}
+  
+  
+  <!DOCTYPE html>
+  <html{{ html_attributes }} class="no-js">
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <head-placeholder token="{{ placeholder_token|raw }}">
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+      <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+      <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+      <title>{{ head_title|safe_join(' | ') }}</title>
+
+      <link rel="manifest" href="/manifest.json">
+      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+      <meta name="theme-color" content="#ffffff">
+      <meta name="msvalidate.01" content="58FD1E7C02DD3CBFBA2EF6DE5134E61C" />
+      <meta name="facebook-domain-verification" content="mr4y0l1vgkddmtnlrtmgfkpl8d6vaw" />
+      <css-placeholder token="{{ placeholder_token|raw }}">
+      <js-placeholder token="{{ placeholder_token|raw }}">
+      <link rel="stylesheet" href="/themes/uagc/dist/scss/commencement.css">
+
+    </head>
+    <body{{ attributes.addClass(body_classes) }}>
+      
+      {% if node_type == 'commencement_page' %}
+        {{ attach_library('uagc/zes') }}
+      {% endif %}
+
+      <div id="tly-DPixel"></div>
+  
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PBPJPNX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- End Google Tag Manager -->
+  
+      <div class="skiplinks">
+        <a href="#main-content" class="skiplinks__link focusable"  tabindex="0">{{ 'Skip to main content'|t }}</a>
+      </div>
+      {{ page_top }}
+      {{ page }}
+      {{ page_bottom }}
+      <js-bottom-placeholder token="{{ placeholder_token|raw }}">
+      <script id="LeadiDscript" type="text/javascript">
+      (function() {
+      var s = document.createElement('script');
+      s.id = 'LeadiDscript_campaign';
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = '//create.lidstatic.com/campaign/9465c100-a5bc-3ebe-15d9-aa916d591b25.js?snippet_version=2';
+      var LeadiDscript = document.getElementById('LeadiDscript');
+      LeadiDscript.parentNode.insertBefore(s, LeadiDscript);
+      })();
+      </script>
+      <noscript><img src='//create.leadid.com/noscript.gif?lac=13dfb90a-9b9d-11e1-b18c-22000a1c5064&lck=9465c100-a5bc-3ebe-15d9-aa916d591b25&snippet_version=2' /></noscript>
+    </body>
+  </html>
+  

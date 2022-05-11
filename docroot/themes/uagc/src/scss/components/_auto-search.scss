@@ -1,0 +1,311 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+@use "../elements/buttons" as *;
+
+/* REMOVE THIS */
+
+.auto-search {
+  * {
+    font-family: "Fira Sans", Arial, sans-serif !important;
+  }
+  &__view-details {
+    flex-basis: 100%;
+    @include boldLarge;
+    color: $azRed;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    right: 0px;
+    bottom: 24px;
+    transition: opacity ease-in-out 0.25s;
+    margin: {
+      top: 24px;
+    }
+    @media (min-width: $desktop-small) {
+      flex-basis: calc(119 / 576 * 100%);
+      opacity: 0;
+      position: absolute;
+    }
+    @media (min-width: $desktop) {
+      flex-basis: calc(119 / 904 * 100%);
+    }
+
+    svg {
+      position: relative;
+      margin-left: 10px;
+      width: 20px;
+      height: 20px;
+    }
+    svg path {
+      stroke: $azRed;
+    }
+  }
+  #search-block-form {
+    width: 100%;
+    margin: {
+      top: 0px;
+    }
+    overflow-y: auto;
+    height: calc(100vh - 96px);
+
+    padding: {
+      bottom: 96px;
+    }
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    @media (min-width: $desktop) {
+      margin: {
+        top: 0px;
+        bottom: 24px;
+      }
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+  }
+  input.form-submit {
+    display: none;
+  }
+  input.form-autocomplete {
+    width: 100%;
+    height: 56px;
+    font-family: "Fira Sans", Arial, sans-serif;
+    @include rems(20px);
+    line-height: 1.2;
+    padding: {
+      top: 8px;
+      left: 24px;
+      bottom: 8px;
+      right: 24px;
+    }
+    border: 1px solid $silver;
+    border-radius: 16px;
+    background-image: none;
+  }
+  /* top level ul for results */
+  .ui-autocomplete.ui-menu.ui-widget.ui-widget-content.ui-autocomplete.ui-front {
+    display: block !important; /* needed to override injected inline styles */
+    position: static !important;
+    width: unset !important;
+    border: none;
+    box-shadow: none;
+    margin: {
+      top: 24px;
+    }
+  }
+
+  .ui-autocomplete-field-created.ui-autocomplete-field-created,
+  .ui-autocomplete-field-nothing.ui-autocomplete-field-nothing {
+    display: none;
+  }
+  .ui-autocomplete-field-title.ui-autocomplete-field-title.ui-autocomplete-field-title {
+    @include rems(18px);
+    line-height: 1.333334;
+    font-weight: 500;
+    color: $azBlue;
+    padding: {
+      bottom: 8px;
+    }
+
+    @media (min-width: $tablet) {
+      @include textLarge;
+    }
+
+    a {
+      color: $azBlue;
+    }
+  }
+  .ui-menu-item-wrapper {
+    padding: 0px;
+    margin: {
+      top: 0px;
+      left: 0px;
+      bottom: 0px;
+      right: 0px;
+    }
+    position: relative;
+  }
+  // ul.ui-menu {
+  //   li.ui-menu-item:first-child {
+  //     padding: {
+  //       top: 0px !important;
+  //     }
+  //   }
+  // }
+  li.ui-menu-item:first-of-type {
+    padding: {
+      top: 0px !important;
+    }
+    &:hover {
+      padding: {
+        top: 0px;
+      }
+    }
+  }
+  .ui-menu-item.ui-menu-item.ui-menu-item {
+    display: block;
+    max-width: 90vw;
+    padding: {
+      top: 16px;
+      left: 0px;
+      right: 32px;
+      bottom: 8px;
+    }
+    border: {
+      top: none;
+      bottom: 1px solid $silver;
+    }
+    &:hover {
+      padding: {
+        top: 16px;
+        left: 0px;
+        right: 0px;
+        bottom: 8px;
+      }
+      .ui-autocomplete-field-title {
+        color: $azBlue;
+        font-weight: 500;
+      }
+      .ui-menu-item-wrapper::after {
+        opacity: 1;
+      }
+      background-color: #ffffff;
+      color: $azBlue;
+      &:last-child {
+        padding: 0px;
+      }
+    }
+    &:last-child {
+      &::before {
+        display: none;
+      }
+      border-bottom: none;
+      .ui-autocomplete-field.ui-autocomplete-field.ui-autocomplete-field.ui-autocomplete-field.ui-autocomplete-field.ui-autocomplete-field {
+        @include buttons;
+        @include headline3;
+        font-style: normal;
+        font-weight: 500;
+        display: flex;
+        margin: {
+          top: 24px;
+          left: auto;
+          right: auto;
+        }
+        padding: {
+          left: 24px;
+          right: 16px;
+          top: 7px;
+          bottom: 7px;
+        }
+        &::after {
+          content: "";
+          background-image: url(../images/icons/arrow-right.svg);
+          background-position: right;
+          background-repeat: no-repeat;
+          width: 20px;
+          height: 20px;
+          align-self: center;
+          padding: {
+            left: 10px;
+          }
+        }
+      }
+      .ui-menu-item-wrapper {
+        &:after {
+          display: none;
+        }
+      }
+      .ui-autocomplete-fields {
+        display: flex;
+        margin: {
+          right: 0px;
+        }
+      }
+    }
+    &.ui-autocomplete-field-group {
+      border-bottom: none;
+      padding: 0px;
+    }
+  }
+  // Forcing any result after 5 to be hidden from bug when same search term is entered twice
+  .ui-menu-item:nth-of-type(n + 6) {
+    border: none !important;
+    padding: 0 !important;
+
+    .ui-autocomplete-field-title {
+      display: none !important;
+    }
+  }
+  /* category label */
+  .ui-autocomplete-field-group.ui-autocomplete-field-group.ui-autocomplete-field-group.ui-autocomplete-field-group.ui-autocomplete-field-group {
+    display: none;
+  }
+  .ui-autocomplete-field-term.ui-autocomplete-field-term {
+    border-bottom: none;
+    font-weight: 500;
+  }
+  .ui-autocomplete-field-group.ui-state-disabled.more_results.ui-menu-divider.ui-widget-content {
+    display: none;
+  }
+  .ui-autocomplete-field.ui-autocomplete-field.ui-autocomplete-field {
+    font-style: normal;
+  }
+  a.ui-autocomplete-fields {
+    margin: {
+      right: 152px;
+    }
+  }
+  .ui-autocomplete-fields {
+    background-color: white;
+    border: none;
+  }
+  div.ui-menu-item-wrapper.ui-menu-item-wrapper.ui-menu-item-wrapper.ui-menu-item-wrapper::after {
+    bottom: -24px;
+    @media (min-width: $tablet) {
+      bottom: 0px;
+    }
+  }
+  .ui-autocomplete-field-field_college {
+    margin: {
+      bottom: 24px;
+    }
+    @media (min-width: $tablet) {
+      margin: {
+        bottom: 0px;
+      }
+    }
+  }
+  .ui-autocomplete-field-field_college a {
+    color: $azRed;
+    @include boldLarge;
+    font-weight: 400;
+  }
+  &__catalog-search-button.auto-search__catalog-search-button {
+    color: $azBlue;
+    background-image: url("../images/icons/search.svg");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-color: white;
+    margin: {
+      right: 16px;
+    }
+    padding: {
+      right: 48px;
+    }
+    transition: box-shadow 0.25s ease-in-out;
+    &:hover {
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.06);
+    }
+  }
+  details.search-advanced.js-form-wrapper.form-wrapper {
+    display: none;
+  }
+}

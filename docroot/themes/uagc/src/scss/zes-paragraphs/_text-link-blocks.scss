@@ -1,0 +1,343 @@
+$text-links-blocks-bp: 1024px;
+$block-breakdown: 1440px;
+
+.section--text-link-blocks {
+  padding: {
+    top: 32px;
+    bottom: 32px;
+  }
+
+  margin: {
+    top: 0;
+    left: 0px;
+    bottom: 0px;
+    right: 0;
+  }
+  max-width: 100%;
+
+  @include breakpoint($text-links-blocks-bp, $no-query: true) {
+    overflow: hidden;
+    position: relative;
+    margin: {
+      top: 0;
+      left: 0px;
+      bottom: 0px;
+      right: 0;
+    }
+    &:after {
+      background: #fff;
+      bottom: 0;
+      content: "";
+      display: block;
+      left: 0;
+      position: absolute;
+      right: 75%;
+      top: 0;
+      z-index: 0;
+    }
+
+    &.\--no-margin-top {
+      margin-top: -64px;
+    }
+  }
+
+  .layout-constrain--narrow {
+    padding: {
+      left: 0px;
+      right: 0px;
+    }
+  }
+
+  &.--hide-tabbed-content {
+  }
+
+  &--outer-wrapper {
+    max-width: 1440px;
+    padding: {
+      left: 15px;
+      right: 15px;
+    }
+    margin: {
+      right: auto;
+      left: auto;
+    }
+    @include breakpoint($text-links-blocks-bp, $no-query: true) {
+      width: 100%;
+      padding: {
+        left: 0px;
+        right: 0px;
+      }
+    }
+  }
+
+  .section__wrapper {
+    @extend %clearfix;
+    @include breakpoint($text-links-blocks-bp, $no-query: true) {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+  }
+  .section__header-wrapper {
+    background: #fff;
+    flex-basis: 100%;
+    padding: {
+      left: 20px;
+      right: 20px;
+    }
+    @include breakpoint($text-links-blocks-bp, $no-query: true) {
+      padding: {
+        top: 0px;
+        left: 50px;
+        bottom: 0px;
+        right: 16px;
+      }
+      flex-basis: 25%;
+    }
+
+    .section__header {
+      @extend %h4;
+      position: relative;
+      width: 200px;
+      padding: {
+        top: 22px;
+      }
+      margin: {
+        top: 0px;
+        left: 0px;
+        bottom: 20px;
+        right: 0px;
+      }
+      @include breakpoint($text-links-blocks-bp, $no-query: true) {
+        margin: {
+          top: 0px;
+          left: auto;
+          bottom: 20px;
+          right: auto;
+        }
+      }
+      @include breakpoint($block-breakdown, $no-query: true) {
+        margin: {
+          top: 0px;
+          left: 0px;
+          bottom: 0px;
+          right: 0px;
+        }
+        flex-basis: 25%;
+      }
+      &::before {
+        border-top: 5px solid #ab0520;
+        content: "";
+        display: block;
+        margin-top: 0px;
+        margin-left: 0px;
+        margin-bottom: 20px;
+        margin-right: 0px;
+        width: 64px;
+        @include breakpoint($text-links-blocks-bp, $no-query: true) {
+          position: relative;
+          right: -40px;
+        }
+        @include breakpoint($block-breakdown, $no-query: true) {
+          right: 0px;
+        }
+      }
+      span {
+        @extend %h5;
+        font-weight: 400;
+        display: block;
+        font-size: 1.38rem;
+      }
+    }
+  }
+
+  .section__content-wrapper {
+    @include breakpoint($text-links-blocks-bp, $no-query: true) {
+      background-image: none;
+      padding: {
+        top: 0px;
+        left: 20px;
+        bottom: 0px;
+        right: 0px;
+      }
+    }
+    @include breakpoint($block-breakdown, $no-query: true) {
+      flex-basis: 75%;
+    }
+  }
+
+  .section__link-wrapper {
+    position: relative;
+    padding: {
+      top: 0px;
+      left: 0px;
+      bottom: 20px;
+      right: 0px;
+    }
+    overflow: visible;
+    @include breakpoint($text-links-blocks-bp, $no-query: true) {
+      padding: {
+        left: 50px;
+        bottom: 0;
+      }
+      display: inline-flex;
+      max-width: 959px;
+    }
+    @include breakpoint($block-breakdown, $no-query: true) {
+      padding-left: 0px;
+    }
+    &:after {
+      @include breakpoint($text-links-blocks-bp, $no-query: true) {
+        background: url(../images/zes-images/blue-line-pattern.png);
+        content: "";
+        position: absolute;
+        height: 180px;
+        width: 100vw;
+        left: 95%;
+        z-index: 100;
+      }
+    }
+    .section__item {
+      margin: {
+        right: 5px;
+      }
+      z-index: 200;
+
+      @include breakpoint($text-links-blocks-bp, $no-query: true) {
+        max-width: 321px;
+        min-width: 160px;
+        height: 180px;
+        display: flex;
+        flex-basis: 25%;
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+      &:last-child .section__link {
+        border-bottom: none;
+        @include breakpoint($text-links-blocks-bp, $no-query: true) {
+          border-right: none;
+        }
+      }
+    }
+
+    .section__link {
+      background-color: get-color(gray, 3);
+      background-size: 100%;
+      border-bottom: 1px solid #ffffff;
+      display: inline-block;
+      padding: {
+        top: 21px;
+        left: 35px;
+        bottom: 87px;
+      }
+      position: relative;
+      text-decoration: none;
+      width: 100%;
+      z-index: 1;
+      color: $azBlue;
+      @include breakpoint($text-links-blocks-bp, $no-query: true) {
+        border-bottom: none;
+        border-right: 1px solid #fff;
+        width: 100%;
+        padding: {
+          top: 28px;
+          left: 21px;
+        }
+      }
+
+      // Gradient transition
+      // src: https://medium.com/@dave_lunny/animating-css-gradients-using-only-css-d2fd7671e759#.1z1knqg7o
+      &:before {
+        content: "";
+        display: block;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        width: 100%;
+        z-index: -100;
+        transition: opacity 0.3s;
+      }
+      &:hover,
+      &.is-active {
+        background-color: $azRed;
+        color: white;
+        &:before {
+          opacity: 1;
+        }
+      }
+
+      &:hover,
+      &.is-active {
+        h3 {
+        }
+      }
+
+      h3 {
+        font-weight: 500;
+        font-size: 1.375rem;
+        line-height: 1.18;
+        margin: {
+          top: 0px;
+          bottom: 0px;
+        }
+        position: relative;
+        padding: {
+          right: 30px;
+        }
+        span {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &.has-tabs {
+    .section__link {
+      &:hover {
+        h3:after {
+          @include svg-background(arrow-down-white);
+        }
+      }
+      &.is-active {
+        h3:after {
+          @include svg-background(arrow-up-white);
+        }
+      }
+    }
+  }
+
+  .section__tab-content {
+    display: none;
+
+    padding: {
+      top: 8px;
+      left: 35px;
+      bottom: 16px;
+      right: 35px;
+    }
+    @include breakpoint($text-links-blocks-bp, $no-query: true) {
+      padding: {
+        top: 16px;
+        left: 50px;
+        bottom: 16px;
+        right: 16px;
+      }
+    }
+    @include breakpoint($block-breakdown, $no-query: true) {
+      padding: {
+        top: 16px;
+        left: 0px;
+        bottom: 16px;
+        right: 16px;
+      }
+    }
+    p {
+      display: inline-block;
+      margin: 0 0 4px 0;
+    }
+  }
+}

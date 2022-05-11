@@ -1,0 +1,242 @@
+@use "sass:math";
+@use "vars" as *;
+@use "colors" as *;
+@use "mixins" as *;
+
+@mixin h1 {
+  @include rems(40px);
+  line-height: 1.15;
+  color: $azBlue;
+  font-weight: 500;
+
+  @media (min-width: $tablet) {
+    @include rems(64px);
+    line-height: 1.25;
+  }
+}
+
+@mixin h2 {
+  @include rems(32px);
+  line-height: 1.25;
+  color: $azBlue;
+  font-weight: 500;
+
+  @media (min-width: $tablet) {
+    @include rems(48px);
+    line-height: 1.166667;
+  }
+}
+
+@mixin h3 {
+  @include rems(24px);
+  line-height: 1.333333;
+  color: $azBlue;
+  font-weight: 500;
+
+  @media (min-width: $tablet) {
+    @include rems(40px);
+    line-height: 1.4;
+  }
+}
+
+@mixin h4 {
+  @include rems(16px);
+  line-height: 1.5;
+  color: $azBlue;
+  font-weight: 500;
+
+  @media (min-width: $tablet) {
+    @include rems(32px);
+    line-height: 1.25;
+  }
+}
+
+@mixin h5 {
+  @include rems(14px);
+  line-height: 1.29;
+  color: $azBlue;
+  font-weight: 500;
+
+  @media (min-width: $tablet) {
+    @include rems(16px);
+    line-height: 1.5;
+  }
+}
+
+@mixin h6 {
+  @include rems(14px);
+  line-height: 1.29;
+  color: $azBlue;
+  font-weight: 500;
+
+  @media (min-width: $tablet) {
+    @include rems(16px);
+    line-height: 1.5;
+  }
+}
+
+@mixin textLarge {
+  @include rems(24px);
+  line-height: 1.333334;
+}
+
+@mixin textXMedium {
+  @include rems(20px);
+  line-height: 1.2;
+}
+
+@mixin textMedium {
+  @include rems(16px);
+  line-height: 1.5;
+}
+
+@mixin textSmall {
+  @include rems(14px);
+  line-height: 1.286;
+}
+
+@mixin textMicro {
+  @include rems(11px);
+  line-height: 1.4545;
+}
+
+@mixin filterPlaceholder {
+  @include rems(16px);
+  color: $azBlue;
+  font-weight: 500;
+  line-height: 1.33;
+}
+
+@mixin boldLarge {
+  @include rems(16px);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+@mixin boldSmall {
+  @include rems(14px);
+  font-weight: 500;
+  line-height: math.div(18px, 14px);
+}
+
+@mixin headline1 {
+  @include rems(26px);
+  line-height: math.div(32px, 26px);
+  font-weight: 500;
+
+  @media (min-width: $tablet) {
+    @include rems(28px);
+    line-height: 1.43;
+  }
+}
+
+@mixin headline2 {
+  @include rems(20px);
+  line-height: 1.33;
+  font-weight: 500;
+
+  @media (min-width: $tablet) {
+    @include rems(24px);
+    line-height: 1.5;
+  }
+}
+
+@mixin headline3 {
+  @include rems(16px);
+  line-height: 1.5;
+  font-weight: 500;
+
+  @media (min-width: $tablet) {
+    @include rems(16px);
+    line-height: 1.5;
+  }
+}
+
+@mixin headline4 {
+  @include rems(40px);
+  line-height: 1.15;
+  font-weight: 500;
+
+  @media (min-width: $tablet) {
+    @include rems(64px);
+    line-height: 1.25;
+  }
+}
+
+@mixin headline5 {
+  @include rems(28px);
+  line-height: math.div(32, 28);
+  font-weight: 500;
+
+  @media (min-width: $tablet) {
+    @include rems(36px);
+    line-height: math.div(48, 36);
+  }
+}
+
+@mixin headline6 {
+  @include rems(26px);
+  line-height: math.div(32px, 26px);
+  font-weight: 500;
+
+  @media (min-width: $tablet) {
+    @include rems(28px);
+    line-height: 1.43;
+  }
+}
+
+@mixin headline7 {
+  @include rems(20px);
+  line-height: math.div(24px, 20px);
+  font-weight: 500;
+
+  @media (min-width: $tablet) {
+    @include rems(24px);
+    line-height: math.div(32.2px, 24px);
+  }
+}
+
+@mixin textStyle1 {
+  @include rems(14px);
+  font-weight: 400;
+  line-height: math.div(18px, 14px);
+  @media (min-width: $tablet) {
+    @include rems(20px);
+    line-height: math.div(24px, 20px);
+  }
+}
+
+@mixin textStyle2 {
+  @include rems(12px);
+  line-height: math.div(16px, 12px);
+  font-weight: 500;
+
+  @media (min-width: $tablet) {
+    @include rems(16px);
+    line-height: 1.5;
+  }
+}
+
+@mixin preheader {
+  @include textStyle2;
+}
+
+@mixin subHeader {
+  @include rems(16px);
+  line-height: 1.5;
+  font-weight: 400;
+  @media (min-width: $tablet) {
+    @include rems(20px);
+    line-height: math.div(24px, 20px);
+  }
+}
+
+@mixin heroheader {
+  @include rems(24px);
+  font-weight: 500;
+  line-height: 1.33;
+  @media (min-width: $tablet) {
+    @include rems(32px);
+    line-height: 1.25;
+  }
+}

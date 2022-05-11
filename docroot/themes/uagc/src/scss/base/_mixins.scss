@@ -1,0 +1,295 @@
+@use "sass:math";
+@use "vars" as *;
+@use "colors" as *;
+
+$xSmallMb: 4px;
+$xSmall: 8px;
+$SmallMb: 8px;
+$Small: 16px;
+$MediumMb: 12px;
+$Medium: 24px;
+$LargeMb: 16px;
+$Large: 32px;
+$xLargeMb: 40px;
+$xLarge: 80px;
+
+@mixin marginXSmall {
+  margin: {
+    bottom: $xSmallMb;
+  }
+
+  @media (min-width: $desktop) {
+    margin: {
+      bottom: $xSmall;
+    }
+  }
+}
+
+@mixin marginSmall {
+  margin: {
+    bottom: $SmallMb;
+  }
+
+  @media (min-width: $desktop) {
+    margin: {
+      bottom: $Small;
+    }
+  }
+}
+
+@mixin marginMedium {
+  margin: {
+    bottom: $MediumMb;
+  }
+
+  @media (min-width: $desktop) {
+    margin: {
+      bottom: $Medium;
+    }
+  }
+}
+@mixin marginLarge {
+  margin: {
+    bottom: $LargeMb;
+  }
+
+  @media (min-width: $desktop) {
+    margin: {
+      bottom: $Large;
+    }
+  }
+}
+
+@mixin marginXLarge {
+  margin: {
+    bottom: $Large;
+  }
+
+  @media (min-width: $desktop) {
+    margin: {
+      bottom: $xLargeMb;
+    }
+  }
+}
+
+@mixin paddingMedium {
+  padding: {
+    bottom: $MediumMb/2;
+    top: $MediumMb/2;
+  }
+
+  @media (min-width: $desktop) {
+    padding: {
+      bottom: $Medium/2;
+      top: $Medium/2;
+    }
+  }
+}
+
+@mixin paddingLarge {
+  padding: {
+    top: 12px;
+    bottom: 12px;
+  }
+
+  @media (min-width: $desktop) {
+    padding: {
+      top: 16px;
+      bottom: 16px;
+    }
+  }
+}
+
+@mixin paddingXLarge {
+  padding: {
+    top: 20px;
+    bottom: 20px;
+  }
+
+  @media (min-width: $desktop) {
+    padding: {
+      top: 40px;
+      bottom: 40px;
+    }
+  }
+}
+
+@mixin sectionPadding {
+  @include paddingLarge();
+}
+
+@mixin rems($size, $baseSize: 16px) {
+  font-size: math.div($size, $baseSize) * 1rem;
+}
+
+@mixin flexGrid($numerator: 1, $denominator: 12) {
+  flex-basis: math.div($numerator, $denominator) * 100%;
+  max-width: math.div($numerator, $denominator) * 100%;
+}
+
+@mixin globalGutters() {
+  padding: {
+    top: $gutterTopBottomMobile;
+    bottom: $gutterTopBottomMobile;
+    left: $gutterSideMobile;
+    right: $gutterSideMobile;
+  }
+
+  @media (min-width: $tablet) {
+    padding: {
+      top: $gutterTopBottom;
+      bottom: $gutterTopBottom;
+      left: $gutterSideTablet;
+      right: $gutterSideTablet;
+    }
+  }
+
+  @media (min-width: $desktop) {
+    padding: {
+      left: $gutterSide;
+      right: $gutterSide;
+    }
+  }
+}
+
+@mixin globalGuttersPaid() {
+  padding: {
+    top: $gutterTopBottomMobile;
+    bottom: $gutterTopBottomMobile;
+    left: $gutterSideMobile;
+    right: $gutterSideMobile;
+  }
+
+  @media (min-width: $tablet) {
+    padding: {
+      //only difference between globalGutters is the top/bottom padding here
+      top: $gutterTopBottomPaidDesktop;
+      bottom: $gutterTopBottomPaidDesktop;
+      //end
+      left: $gutterSideTablet;
+      right: $gutterSideTablet;
+    }
+  }
+
+  @media (min-width: $desktop) {
+    padding: {
+      left: $gutterSide;
+      right: $gutterSide;
+    }
+  }
+}
+
+@mixin globalSideGutters() {
+  padding: {
+    left: $gutterSideMobile;
+    right: $gutterSideMobile;
+  }
+
+  @media (min-width: $tablet) {
+    padding: {
+      left: $gutterSideTablet;
+      right: $gutterSideTablet;
+    }
+  }
+
+  @media (min-width: $desktop) {
+    padding: {
+      left: $gutterSide;
+      right: $gutterSide;
+    }
+  }
+}
+
+@mixin globalSideBottomGutters() {
+  padding: {
+    left: $gutterSideMobile;
+    right: $gutterSideMobile;
+    bottom: $gutterTopBottomMobile;
+  }
+
+  @media (min-width: $tablet) {
+    padding: {
+      left: $gutterSideTablet;
+      right: $gutterSideTablet;
+      bottom: $gutterTopBottom;
+    }
+  }
+
+  @media (min-width: $desktop) {
+    padding: {
+      left: $gutterSide;
+      right: $gutterSide;
+    }
+  }
+}
+
+@mixin allPadding($size) {
+  @if $size == small {
+    padding: {
+      left: $SmallMb;
+      right: $SmallMb;
+      top: $SmallMb;
+      bottom: $SmallMb;
+    }
+    @media (min-width: $desktop) {
+      padding: {
+        left: $Small;
+        right: $Small;
+        top: $Small;
+        bottom: $Small;
+      }
+    }
+  } @else if $size == medium {
+    padding: {
+      left: $MediumMb;
+      right: $MediumMb;
+      top: $MediumMb;
+      bottom: $MediumMb;
+    }
+    @media (min-width: $desktop) {
+      padding: {
+        left: $Medium;
+        right: $Medium;
+        top: $Medium;
+        bottom: $Medium;
+      }
+    }
+  } @else if $size == large {
+    padding: {
+      left: $LargeMb;
+      right: $LargeMb;
+      top: $LargeMb;
+      bottom: $LargeMb;
+    }
+    @media (min-width: $desktop) {
+      padding: {
+        left: $Large;
+        right: $Large;
+        top: $Large;
+        bottom: $Large;
+      }
+    }
+  }
+}
+
+@mixin eyebrow {
+  position: relative;
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -24px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background-color: $azRed;
+  }
+}
+
+@mixin defaultLinks {
+  color: $azRed;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

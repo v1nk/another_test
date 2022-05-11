@@ -1,0 +1,77 @@
+{% if paragraph.field_display_grey_background.value  == 1 %}
+  <div class="icon-text-block --grey-background">
+  {% else %}
+    <div class="icon-text-block">
+    {% endif %}
+    <div class="icon-text-block__inner-wrapper">
+
+
+      {% if ( paragraph.field_show_uagc_forbes_logo.value == 0 )
+        and ( paragraph.field_heading.0.value is empty )
+        and ( paragraph.field_content.0.value is empty )
+     %}
+        {# do not render red bar because logo, heading and content are all empty #}
+      {% else %}
+        <div class="icon-text-block__red-bar"></div>
+
+        <div class="icon-text-block__content-block">
+          {% if paragraph.field_show_uagc_forbes_logo.value == 1 %}
+            <img class="icon-text-block__uagc-forbes-logo" src="/themes/uagc/src/images/UAGC-Forbes-logo.png" alt="Forbes School of Business and Technology®">
+          {% endif %}
+          {% if paragraph.field_heading.0.value is not empty %}
+            <h2 class="icon-text-block__heading">
+              {{ paragraph.field_heading.0.value }}
+            </h2>
+          {% endif %}
+          {% if paragraph.field_content.0.value is not empty %}
+            <div class="icon-text-block__text-block">
+              {{ paragraph.field_content.0.value | raw }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+      {% for item in paragraph.field_icon_block %}
+        {% if loop.first %}
+          {% if loop.length == 4 %}
+            <div class="icon-text-block__icon-block-grid --four-columns">
+            {% elseif loop.length == 2 %}
+              <div class="icon-text-block__icon-block-grid --two-columns">
+              {% else %}
+                <div class="icon-text-block__icon-block-grid">
+                {% endif %}
+              {% endif %}
+              {# {{ dump(item|keys) }} #}
+              {% if loop.length == 4 %}
+                <div class="icon-text-block__icon-block --four-columns">
+                {% elseif loop.length == 2 %}
+                  <div class="icon-text-block__icon-block --two-columns">
+                  {% else %}
+                    <div class="icon-text-block__icon-block">
+                    {% endif %}
+                    {% if item.entity.field_text_block_icon.entity.field_media_file is not empty %}
+                      <div class="icon-text-block__icon">
+                        {% set svg = file_url(item.entity.field_text_block_icon.entity.field_media_file.entity.uri.0.value) |  replace({'%20': ' '}) %}
+                        {% set svgContents %}
+                        {% include( '.' ~ svg) ignore missing %}
+                        {% endset %}
+                        {{svgContents|stripsvgids|raw}}
+
+
+                      </div>
+                    {% elseif item.entity.field_text_block_icon.entity.field_media_image is not empty %}
+                      <div class="icon-text-block__icon">
+                        {% set src = file_url(item.entity.field_text_block_icon.entity.field_media_image.entity.uri.0.value) |  replace({'%20': ' '}) %}
+                        <img src="{{src}}" alt="{{item.entity.field_text_block_icon.entity.field_media_image.alt}}"/>
+                      </div>
+                    {% endif %}
+                    <div class="icon-text-block__icon-text">
+                      {{ item.entity.field_description_text.0.value }}
+                    </div>
+                  </div>
+                  {% if loop.last %}
+                  </div>
+                  {# close .icon-text-block__icon-block-grid #}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>

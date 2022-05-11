@@ -1,0 +1,1115 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+@use "sass:math";
+
+.paid-twostep {
+  width: 100%;
+  background-color: $azBlue;
+  padding: {
+    top: 16px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .node--type-paid-landing-page & {
+    padding: {
+      top: 56px;
+      bottom: 56px;
+    }
+    @media (min-width: $desktop) {
+      padding: {
+        top: 0;
+        bottom: 0;
+      }
+    }
+
+    &__header {
+      margin-bottom: 16px;
+      padding: {
+        left: 0;
+        right: 0;
+      }
+      @media (min-width: $tablet) {
+        margin-bottom: 0px;
+      }
+    }
+
+    &__status-bar {
+      background-color: $silver;
+    }
+
+    &__form {
+      @media (max-width: 767px) {
+        padding: {
+          left: 0;
+          right: 0;
+        }
+      }
+    }
+
+    .form-wrapper[data-drupal-selector="edit-interest-information"] .form-item {
+      @media (min-width: $desktop) {
+        margin-top: 0;
+        padding: {
+          left: 24px;
+          right: 24px;
+          bottom: 16px;
+        }
+      }
+    }
+
+    .form-wrapper[data-drupal-selector="edit-interest-information"]
+      .form-item.js-form-item-clientdegreeid {
+      // display: block !important;
+      @media (min-width: $desktop) {
+        padding-bottom: 24px;
+      }
+    }
+
+    &__form .js-form-type-select:after {
+      @media (min-width: $tablet) {
+        right: 14px;
+      }
+      @media (min-width: $desktop) {
+        right: 26px;
+      }
+    }
+
+    &__form .webform-actions {
+      padding: 0;
+      @media (min-width: $desktop) {
+        margin-bottom: 16px;
+
+        input[type="submit"] {
+          margin-top: 16px;
+        }
+      }
+    }
+
+    &__form
+      div[data-drupal-selector="edit-registerednurse-validation-message-container"].validation-message.validation-message
+      .form-item {
+      padding: 0;
+    }
+
+    .form-wrapper[data-drupal-selector="edit-contact-information"]
+      .form-item.form-item-emailaddress {
+      padding-bottom: 0;
+    }
+
+    &__form .form-item-tcpa-checkbox {
+      @media (min-width: $desktop) {
+        padding-top: 16px;
+      }
+
+      span {
+        padding-top: 4px;
+        color: $azBlue;
+        @media (min-width: $desktop) {
+          color: white;
+          text-align: left;
+          padding-top: 0;
+        }
+      }
+    }
+
+    .form-disclaimer p {
+      color: $azBlue;
+      @media (min-width: $desktop) {
+        @include textMicro;
+        color: white;
+        text-align: left;
+      }
+    }
+
+    input[type="checkbox"],
+    .form-item-tcpa-checkbox {
+      & + label {
+        &:before {
+          left: 0;
+          top: 0;
+        }
+      }
+
+      &:checked + label:after {
+        left: 0;
+        top: 0;
+      }
+    }
+  }
+
+  &.\--midpage-rfi {
+    @include globalGuttersPaid;
+
+    .paid-twostep__wrapper {
+      padding: {
+        left: 24px;
+        right: 24px;
+      }
+      @media (min-width: $tablet) {
+        padding: 0;
+      }
+    }
+
+    .paid-twostep__form {
+      padding: {
+        left: 0;
+        right: 0;
+      }
+      @media (min-width: $tablet) {
+        padding: {
+          left: 40px;
+          right: 40px;
+        }
+      }
+    }
+
+    .paid-twostep__header {
+      padding: {
+        left: 0;
+        right: 0;
+      }
+      @media (min-width: $tablet) {
+        text-align: center;
+        padding: {
+          left: 40px;
+          right: 40px;
+        }
+      }
+    }
+
+    .paid-twostep__form .js-form-type-select label {
+      display: block;
+      @include textMedium;
+      margin-top: 0;
+
+      @media (min-width: $desktop) {
+        @include textXMedium;
+      }
+    }
+
+    .form-wrapper[data-drupal-selector="edit-interest-information"] {
+      padding-top: 0;
+      @media (min-width: $tablet) {
+        padding-top: 32px;
+      }
+    }
+
+    .form-wrapper[data-drupal-selector="edit-contact-information"] {
+      padding-top: 0;
+      @media (min-width: $tablet) {
+        padding: {
+          top: 32px;
+          bottom: 0;
+        }
+      }
+      @media (min-width: $desktop) {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    .form-wrapper[data-drupal-selector="edit-interest-information"] .form-item {
+      padding: {
+        left: 0;
+        right: 0;
+      }
+      @media (min-width: $tablet) {
+        padding: {
+          left: 16px;
+          right: 16px;
+        }
+      }
+      @media (min-width: $desktop-small) {
+        flex-basis: 33%;
+      }
+    }
+
+    .paid-twostep__form .js-form-type-select:after {
+      right: 17px;
+      top: 34px;
+    }
+
+    .paid-twostep__form .webform-actions {
+      @media (min-width: $desktop) {
+        margin-bottom: 0;
+      }
+    }
+
+    .form-disclaimer {
+      margin: {
+        left: 0 !important;
+        right: 0 !important;
+      }
+      @media (min-width: $tablet) {
+        margin: {
+          left: auto !important;
+          right: auto !important;
+        }
+      }
+      @media (min-width: $desktop) {
+        max-width: unset !important;
+      }
+    }
+
+    .form-disclaimer p {
+      @include rems(14px);
+      line-height: math.div(18, 14);
+      font-weight: 400;
+      color: $darkGray;
+      text-align: left;
+      @media (min-width: $tablet) {
+        text-align: center;
+      }
+    }
+
+    .paid-twostep__form .form-item-tcpa-checkbox span {
+      color: $black;
+      font-weight: 400;
+      @include rems(14px);
+      line-height: math.div(18, 14);
+      display: inline-flex;
+      align-items: center;
+      user-select: none;
+      pointer-events: none;
+    }
+  }
+
+  .\--next-button.\--next-button.\--next-button {
+    font-weight: 400;
+    @include rems(16px);
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 100%;
+    height: auto;
+    max-height: 40px;
+    justify-self: flex-end;
+    align-self: flex-end;
+    margin: {
+      top: 16px;
+    }
+
+    span {
+      font-weight: 500;
+      margin-right: 8px;
+    }
+
+    @media (min-width: $tablet) {
+      max-width: 260px;
+      margin-top: 0;
+    }
+
+    @media (min-width: $desktop) {
+      max-width: 100%;
+      margin-top: 16px;
+    }
+
+    &:after {
+      content: " ";
+      display: inline-block;
+      background-image: url(../images/icons/arrow-right.svg);
+      margin: {
+        left: 12px;
+      }
+      height: 24px;
+      width: 24px;
+      background-position: 0 -1px;
+    }
+
+    .node--type-paid-landing-page & {
+      max-width: unset;
+      margin: {
+        top: 16px;
+        left: auto;
+        right: auto;
+      }
+      padding: {
+        left: 24px;
+        right: 24px;
+      }
+    }
+  }
+
+  .\--always-display {
+    display: block !important;
+  }
+
+  &.\--gray-background {
+    .columns__right & {
+      .paid-twostep__wrapper {
+        background-color: $azBlue;
+      }
+    }
+
+    .paid-twostep__wrapper {
+      @media (min-width: $tablet) {
+        background-color: $lighterGray;
+      }
+    }
+
+    .form-wrapper {
+      &[data-drupal-selector="edit-interest-information"],
+      &[data-drupal-selector="edit-contact-information"] {
+        background-color: $lighterGray;
+      }
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    select {
+      background-color: $lighterGray;
+    }
+  }
+
+  input.--request-btn-disabled {
+    background-color: #cccccc !important;
+  }
+
+  @media (min-width: $tablet) {
+    padding: {
+      top: 80px;
+      bottom: 80px;
+      left: 24px;
+      right: 24px;
+    }
+  }
+
+  .columns__left & {
+    .form-item-tcpa-checkbox {
+      text-align: center;
+
+      span {
+        @media (min-width: $tablet) {
+          color: $azBlue;
+        }
+      }
+    }
+
+    .form-disclaimer {
+      max-width: 545px;
+      margin: {
+        left: auto;
+        right: auto;
+        top: 16px;
+      }
+      p {
+        @media (min-width: $tablet) {
+          color: $darkGray;
+        }
+      }
+    }
+  }
+
+  .columns__right & {
+    @media (min-width: $desktop) {
+      padding: 0;
+      top: 80px;
+    }
+  }
+
+  .form-item label {
+    margin: {
+      top: 24px;
+    }
+  }
+
+  .js-form-item-state,
+  .js-form-item-firstname {
+    label {
+      margin: {
+        top: 0px;
+      }
+    }
+  }
+
+  &__wrapper {
+    background-color: $azBlue;
+    padding: {
+      left: 16px;
+      right: 16px;
+    }
+
+    .\--gray-background & {
+      background-color: $lighterGray;
+
+      @media (min-width: $tablet) {
+        background-color: white;
+      }
+    }
+
+    @media (min-width: $tablet) {
+      background-color: white;
+      padding: 0;
+      border-radius: 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .columns__right & {
+      @media (min-width: $desktop) {
+        background-color: $azBlue;
+        border-radius: 0px;
+        padding: {
+          left: 16px;
+          right: 16px;
+        }
+      }
+    }
+  }
+
+  &__header {
+    color: white;
+    @include rems(36px);
+    line-height: math.div(48.3, 36);
+    font-weight: 500;
+    margin-bottom: 16px;
+
+    .\--gray-background & {
+      color: $azBlue;
+    }
+
+    @media (min-width: $tablet) {
+      color: $azBlue;
+      text-align: center;
+      font-weight: 500;
+      padding-top: 40px;
+      margin-bottom: 0px;
+    }
+
+    .columns__right & {
+      @media (min-width: $desktop) {
+        color: white;
+        text-align: left;
+        font-weight: 500;
+        padding-top: 0;
+        margin-bottom: 16px;
+        @include rems(36px);
+        line-height: math.div(48.3, 36);
+      }
+    }
+  }
+
+  &__status {
+    width: 100%;
+    display: flex;
+    margin: {
+      bottom: 16px;
+    }
+
+    @media (min-width: $tablet) {
+      display: none;
+    }
+
+    .columns__right & {
+      @media (min-width: $desktop) {
+        display: flex;
+      }
+    }
+  }
+
+  &__status-steps {
+    @include flexGrid(6, 6);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  &__status-label {
+    color: white;
+    @include flexGrid(3, 3);
+    text-align: left;
+    font-size: 0.875rem;
+    line-height: 1.29;
+    margin-bottom: 8px;
+    .\--gray-background & {
+      color: $azBlue;
+    }
+
+    .\--inactive & {
+      opacity: 0.5;
+    }
+  }
+
+  &__status-bar {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    height: 8px;
+    padding-top: 8px;
+    @include flexGrid(6, 6);
+    position: relative;
+    overflow: hidden;
+
+    &:after {
+      position: absolute;
+      left: 0;
+      height: 8px;
+      width: 50%;
+      content: " ";
+      display: block;
+      background-color: $orange;
+      top: 0;
+      border-radius: 10px;
+      transition: width 0.5s ease;
+    }
+
+    .\--step-2 &:after {
+      width: 100%;
+    }
+  }
+
+  .form-wrapper {
+    &[data-drupal-selector="edit-interest-information"],
+    &[data-drupal-selector="edit-contact-information"] {
+      background-color: white;
+      border-radius: 20px;
+      padding: {
+        top: 24px;
+        left: 24px;
+        bottom: 8px;
+        right: 24px;
+      }
+
+      @media (min-width: $tablet) {
+        margin: 0 auto;
+        display: flex;
+        justify-content: flex-start;
+
+        .form-item {
+          max-width: 260px;
+        }
+      }
+
+      .columns__right & {
+        @media (min-width: $desktop) {
+          display: block;
+
+          .form-item {
+            max-width: 100%;
+          }
+        }
+      }
+    }
+
+    &[data-drupal-selector="edit-interest-information"] {
+      flex-wrap: wrap;
+
+      .form-item {
+        margin: 0;
+
+        &:nth-of-type(1),
+        &:nth-of-type(2),
+        &:nth-of-type(3),
+        &:nth-of-type(4) {
+          padding: {
+            bottom: 16px;
+          }
+        }
+
+        &:nth-of-type(odd) {
+          margin: {
+            right: 0px;
+          }
+        }
+
+        &:nth-of-type(even) {
+          margin: {
+            left: 0px;
+          }
+        }
+      }
+
+      @media (min-width: $tablet) {
+        max-width: 865px;
+        padding: {
+          left: 0;
+          right: 0;
+          bottom: 8px;
+        }
+        justify-content: center;
+        .form-item {
+          flex-basis: 33%;
+          margin: 0;
+          padding: {
+            left: 12px;
+            right: 12px;
+            bottom: 16px;
+          }
+          max-width: 284px;
+
+          @media (min-width: $tablet) {
+            padding: {
+              bottom: 0;
+            }
+          }
+
+          @media (min-width: $desktop) {
+            padding: {
+              bottom: 16px;
+              left: 24px;
+              right: 24px;
+            }
+          }
+        }
+
+        label {
+          margin-top: 0;
+        }
+      }
+
+      .columns__right & {
+        @media (min-width: $desktop) {
+          max-width: 100%;
+
+          .form-item:nth-child(n + 2) {
+            label {
+              margin-top: 24px;
+            }
+          }
+        }
+      }
+    }
+
+    &[data-drupal-selector="edit-contact-information"] {
+      .form-item {
+        margin: 0;
+
+        &:nth-of-type(1),
+        &:nth-of-type(2),
+        &:nth-of-type(3),
+        &:nth-of-type(4) {
+          padding: {
+            bottom: 16px;
+          }
+        }
+
+        &:nth-of-type(odd) {
+          margin: {
+            right: 0px;
+          }
+        }
+
+        &:nth-of-type(even) {
+          margin: {
+            left: 0px;
+          }
+        }
+      }
+
+      @media (min-width: $tablet) {
+        max-width: 545px;
+        padding: {
+          left: 0;
+          right: 0;
+          bottom: 0;
+        }
+        flex-wrap: wrap;
+        .form-item {
+          flex-basis: 48%;
+          max-width: 260px;
+          label {
+            margin-top: 0;
+          }
+
+          &:nth-of-type(1),
+          &:nth-of-type(2) {
+            padding: {
+              bottom: 24px;
+            }
+          }
+
+          &:nth-of-type(3),
+          &:nth-of-type(4) {
+            padding: {
+              bottom: 0;
+            }
+          }
+        }
+
+        .form-item-phone1,
+        .form-item-emailaddress {
+          label {
+            margin-top: 24px;
+          }
+        }
+      }
+      @media (min-width: $desktop-small) {
+        .js-form-item-firstname,
+        .js-form-item-lastname {
+          label {
+            margin-top: 24px;
+          }
+        }
+      }
+
+      @media (min-width: $desktop) {
+        .form-item {
+          margin: 0;
+
+          &:nth-of-type(1),
+          &:nth-of-type(2),
+          &:nth-of-type(3),
+          &:nth-of-type(4) {
+            padding: {
+              bottom: 16px;
+            }
+          }
+
+          &:nth-of-type(odd) {
+            margin: {
+              right: 0px;
+            }
+          }
+
+          &:nth-of-type(even) {
+            margin: {
+              left: 0px;
+            }
+          }
+        }
+      }
+
+      @media (min-width: $desktop) {
+        padding: {
+          top: 24px;
+          left: 24px;
+          bottom: 8px;
+          right: 24px;
+        }
+        max-width: 95%;
+        flex-wrap: nowrap;
+
+        .form-item {
+          margin: {
+            right: 0;
+          }
+        }
+      }
+
+      .columns__left & {
+        @media (min-width: $desktop) {
+          padding: {
+            left: 0;
+            right: 0;
+          }
+        }
+      }
+
+      .columns__right & {
+        @media (min-width: $desktop) {
+          max-width: 100%;
+
+          .form-item:nth-child(n + 2) {
+            label {
+              margin-top: 24px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .webform-type-radios {
+    legend {
+      color: $black;
+      margin: {
+        top: 24px;
+        bottom: 16px;
+        left: auto;
+        right: auto;
+      }
+    }
+  }
+
+  .js-registerednurse-validation-message.js-registerednurse-validation-message {
+    padding: {
+      bottom: 0;
+    }
+  }
+
+  .form-item-registerednurse.form-item-registerednurse.form-item-registerednurse.form-item-registerednurse.form-item-registerednurse.form-item-registerednurse {
+    display: flex !important;
+    flex-basis: auto;
+    align-items: center;
+    padding: {
+      bottom: 0;
+    }
+
+    label {
+      font-size: 1rem;
+      margin: 0;
+      padding: {
+        left: 8px;
+        right: 0;
+        bottom: 0;
+        top: 0;
+      }
+    }
+
+    input {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  &__form {
+    color: white;
+    padding: {
+      top: 0px;
+      bottom: 16px;
+    }
+
+    @media (min-width: $tablet) {
+      padding: {
+        bottom: 16px;
+      }
+    }
+
+    .columns__right & {
+      @media (min-width: $desktop) {
+        padding: {
+          top: 40px;
+        }
+      }
+    }
+
+    .columns__right & {
+      padding: 0;
+    }
+
+    .js-registerednurse-validation-message {
+      display: none;
+      margin: 0 auto;
+
+      .webform-options-display-side-by-side {
+        display: flex;
+        justify-content: center;
+      }
+
+      .js-form-type-processed-text {
+        display: none;
+      }
+    }
+
+    .js-registerednurse-validation-message p {
+      color: $azBlue;
+      font-size: 1rem;
+    }
+
+    .form-item-tcpa-checkbox {
+      display: none;
+      margin-bottom: 0px;
+      margin-top: 16px;
+      position: relative;
+
+      @media (min-width: $tablet) {
+        max-width: 545px;
+        margin: 0 auto;
+        margin-top: 24px;
+      }
+
+      @media (min-width: $desktop) {
+        margin-top: 24px;
+      }
+
+      &.\--step-two {
+        display: flex;
+        align-items: center;
+      }
+
+      label {
+        margin-top: 0;
+        top: 3px;
+        border-radius: 4px;
+      }
+
+      span {
+        color: white;
+        @include rems(14px);
+        line-height: math.div(18.3, 14);
+
+        display: inline-flex;
+        align-items: center;
+        user-select: none;
+        pointer-events: none;
+
+        @media (min-width: $tablet) {
+          color: $azBlue;
+        }
+
+        @media (min-width: $desktop) {
+          color: white;
+        }
+      }
+
+      label {
+        display: none;
+      }
+    }
+
+    .form-disclaimer {
+      width: 100%;
+      max-width: 545px;
+      margin: {
+        top: 16px;
+        bottom: 0;
+        left: auto;
+        right: auto;
+      }
+      display: none;
+
+      & p {
+        color: white;
+        @include rems(11px);
+        line-height: math.div(16, 11);
+
+        @media (min-width: $tablet) {
+          color: $azBlue;
+        }
+
+        @media (min-width: $desktop) {
+          color: white;
+        }
+      }
+    }
+
+    input,
+    select,
+    button {
+      max-width: 100%;
+      width: 100%;
+      margin-top: 16px;
+      color: $azBlue;
+      font-family: "Fira Sans", Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.5;
+      font-weight: 500;
+
+      &::placeholder {
+        color: $darkGray;
+      }
+
+      &.\--grey-default {
+        color: $darkGray;
+      }
+    }
+
+    input[type="submit"],
+    .--arrow-submit {
+      margin: {
+        top: 16px;
+      }
+    }
+
+    select,
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"] {
+      padding: {
+        left: 16px;
+      }
+      border: solid 1px $lightGray;
+      border-radius: 8px;
+
+      &.\--gray-text {
+        color: $darkGray;
+      }
+    }
+
+    .js-form-type-select {
+      &:after {
+        border-radius: 14px;
+        height: 36px;
+        right: 14px;
+        background-image: url(../images/icons/chevron-down-red.svg);
+        bottom: unset;
+        top: 2px;
+        transform: unset;
+
+        @media (min-width: $desktop) {
+          right: 26px;
+        }
+      }
+
+      label {
+        display: none;
+      }
+    }
+
+    .js-form-type-textfield,
+    .js-form-type-tel,
+    .js-form-type-email {
+      label {
+        display: none;
+      }
+    }
+
+    .webform-actions {
+      @media (min-width: $tablet) {
+        max-width: 260px;
+        margin: 0 auto;
+      }
+
+      .columns__right & {
+        @media (min-width: $desktop) {
+          max-width: 100%;
+        }
+      }
+    }
+
+    input[type="radio"] {
+      width: auto;
+
+      & + label {
+        margin: 5px;
+      }
+    }
+
+    h2 {
+      display: none;
+    }
+  }
+
+  &__wascblock {
+    display: none;
+
+    hr {
+      margin: {
+        bottom: 25px;
+        top: 16px;
+      }
+    }
+
+    p {
+      font-size: 0.625rem;
+      color: white;
+    }
+
+    img {
+      max-width: 100px;
+      margin: {
+        top: 30px;
+        bottom: 30px;
+        left: auto;
+        right: auto;
+      }
+    }
+
+    h3 {
+      text-align: center;
+      font-size: 1.125rem;
+      font-weight: 500;
+      line-height: 1.22;
+      color: white;
+    }
+
+    @media (min-width: $desktop) {
+      display: block;
+    }
+  }
+}

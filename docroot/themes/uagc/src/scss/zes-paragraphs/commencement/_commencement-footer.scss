@@ -1,0 +1,85 @@
+.commencement-footer {
+  width: 100%;
+  background-color: $azBlue;
+  display: flex;
+  min-height: 90px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column-reverse;
+  align-items: center;
+  padding: {
+    top: 20px;
+    bottom: 20px;
+  }
+
+  @include breakpoint(min-width $bp--tablet) {
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  &.\--invert-colors {
+    background-color: #ffffff;
+    color: $azBlue;
+
+    a,
+    a:hover,
+    a:visited {
+      color: $azRed;
+    }
+
+    .commencement-footer__legal {
+      color: $azBlue;
+    }
+
+    svg {
+      fill: $azBlue;
+    }
+  }
+
+  &__legal {
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: {
+      left: 20px;
+      right: 20px;
+    }
+    font-size: 0.75rem;
+
+    a,
+    a:visited,
+    a:hover {
+      color: $orange;
+    }
+  }
+
+  &__social {
+    &-item {
+      margin: {
+        left: 10px;
+        right: 10px;
+      }
+      height: 32px;
+
+      svg {
+        height: 32px;
+        width: 32px;
+        fill: #ffffff;
+      }
+    }
+
+    &-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: {
+        right: 20px;
+        left: 20px;
+      }
+
+      @include breakpoint(min-width $bp--tablet) {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

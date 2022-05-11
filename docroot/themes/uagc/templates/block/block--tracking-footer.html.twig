@@ -1,0 +1,23 @@
+{%
+  set classes = [
+    'block',
+    'block--' ~ configuration.label|clean_class,
+    'tracking-alert',
+    '--gradient-primary'
+  ]
+%}
+
+{% block content %}
+<div{{ attributes.addClass(classes) }}>
+  <div class="tracking-alert__container">
+    <div class="block__content tracking-alert__content-wrapper">
+      {% autoescape false %}
+      <div class="tracking-alert__content wizzywig">{{ content.field_alert['#items'][0].value }}</div>
+      <button class="tracking-alert__button js-tracking-alert-allow button--blue" value="Accept Cookies">Accept Cookies</button>
+    </div>
+  </div>
+
+    {% endautoescape %}
+</div>
+
+{% endblock %}

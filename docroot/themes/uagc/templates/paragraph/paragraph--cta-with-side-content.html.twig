@@ -1,0 +1,68 @@
+
+{% if 'On' in content.field_flip_sides.0 %}
+  {% set direction = '--flip' %}
+  {% else %}
+  {% set direction = '' %}
+{% endif %}
+
+{% if 'On' in content.field_background_grey.0 %}
+  {% set color = '--grey' %}
+  {% else %}
+    {% set color = '--white' %}
+{% endif %}
+
+{% set classes = ['site-layout__article-content-section','--full-width' ] %}
+
+<section {{ attributes.addClass(classes) }}>
+  <div class="cta-side-content {{color}} {{direction}}">
+    <div class="cta-side-content__container">
+      <div class="cta-side-content__half">
+        {% if content.field_pre_header %}
+        <div class="cta-side-content__preheader">
+          {{ content.field_pre_header }}
+        </div>
+        {% endif %}
+        {% if content.field_header %}
+        <div class="cta-side-content__header">
+          {{ content.field_header }}
+        </div>
+        {% endif %}
+        {% if content.field_body_content %}
+        <div class="cta-side-content__content wizzywig">
+          {{ content.field_body_content }}
+        </div>
+        {% endif %}
+        {% if paragraph.field_link is not empty %}
+        <div class="cta-side-content__link">{{ content.field_link }}</div>
+        {% endif %}
+      </div>
+      {% set vid = content.field_video_id %}
+      {% set vidCheck = content.field_video_id|render is not empty %}
+      {% set imageCheck = content.field_image_to_display|render is not empty %}
+      {% if ( vidCheck) or ( imageCheck ) %}
+      <div class="cta-side-content__half --media">
+        {% if vidCheck %}
+        <div class="cta-side-content__video">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ vid.0['#context'].value }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        {% endif %}
+        
+        {% if imageCheck %}
+        <div class="cta-side-content__image">
+          {{ content.field_image_to_display }}
+        </div>
+        {% endif %}
+
+      </div>
+      {% endif %}
+      <div class="cta-side-content__half --bottom">
+
+        {% if content.field_side_content  and imageCheck == false %}
+        <div class="cta-side-content__side-content wizzywig">
+          {{ content.field_side_content }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

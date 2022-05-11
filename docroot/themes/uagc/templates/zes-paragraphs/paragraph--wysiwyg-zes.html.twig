@@ -1,0 +1,27 @@
+{% set verticalSpacingClass = '' %}
+
+{% if paragraph.field_vertically_spaced_body_cop.value == 1 %}
+
+  {% set verticalSpacingClass = '--tall-body-copy' %}
+
+{% endif %}
+
+{% set grayBackgroundClass = '' %}
+
+{% if paragraph.field_display_grey_background.value == 1 %}
+
+  {% set grayBackgroundClass = '--gray-background' %}
+
+{% endif %}
+
+
+
+<section class="section section--wysiwyg {{ verticalSpacingClass }} {{ grayBackgroundClass }}">
+  <div class="section--wysiwyg__wrapper">
+    <div class="layout-constrain--narrow">
+      <div class="section__content">
+        {{ content.field_paragraph_body }}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,383 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+.degree-list-sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  @media (min-width: $desktop-small) {
+    justify-content: flex-start;
+  }
+  &__main-wrapper {
+    @include globalGutters;
+    width: 100%;
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        max-width: 1440px;
+        padding: {
+          left: 0;
+          right: 0;
+        }
+        margin: {
+          left: auto;
+          right: auto;
+        }
+      }
+    }
+    &.--hide-college {
+      .js-form-item-field-college-target-id {
+        display: none;
+      }
+    }
+    &.--hide-interest {
+      .js-form-item-field-interest-target-id {
+        display: none;
+      }
+    }
+    &.--hide-level {
+      .js-form-item-field-degree-level-target-id {
+        display: none;
+      }
+    }
+    &.--disable-all {
+      .js-form-item-field-degree-level-target-id select,
+      label {
+        opacity: 0.6;
+        pointer-events: none;
+      }
+      .js-form-item-field-interest-target-id select,
+      label {
+        opacity: 0.6;
+        pointer-events: none;
+      }
+      .js-form-item-field-college-target-id select,
+      label {
+        opacity: 0.6;
+        pointer-events: none;
+      }
+    }
+  }
+
+  &__red-bar {
+    width: 80px;
+    height: 2px;
+    background-color: $azRedLight;
+    margin: {
+      bottom: 24px;
+    }
+  }
+  &__heading {
+    @include headline5;
+    color: $azBlue;
+    margin: {
+      bottom: 24px;
+    }
+  }
+  &__header-content {
+    @include subHeader;
+    color: $black;
+    padding: {
+      bottom: 32px;
+    }
+    border-bottom: 1px solid $lightGray;
+    margin: {
+      bottom: 32px;
+    }
+    p {
+      @include subHeader;
+      color: $black;
+      margin: {
+        bottom: 0px;
+      }
+    }
+  }
+  &__filter-wrapper.degree-list-sidebar__filter-wrapper {
+    margin: {
+      bottom: 8px;
+    }
+    @media (min-width: $desktop-small) {
+      padding: {
+        top: 0px;
+        left: 0px;
+        right: 24px;
+      }
+      margin: {
+        right: 32px;
+      }
+    }
+    @media (min-width: $desktop) {
+      padding: {
+        right: 31px;
+      }
+    }
+  }
+  &__details-wrapper {
+    @media (min-width: $desktop-small) {
+      .js-form-type-select.js-form-type-select {
+        width: 248px;
+        margin: {
+          bottom: 24px;
+        }
+
+        .form-select {
+          width: 100%;
+        }
+      }
+    }
+    &::marker {
+      display: none;
+    }
+    .grid-filter__dropdown-summary {
+      padding: {
+        left: 0px;
+      }
+    }
+    .grid-filter__summary-title {
+      left: 0px;
+    }
+  }
+  &__degree-list-wrapper {
+    display: flex;
+    flex-basis: 100%;
+    align-self: flex-start;
+    @media (min-width: $desktop-small) {
+      flex-basis: calc(100% - 304px);
+      margin: {
+        right: 0px;
+        top: -32px;
+      }
+    }
+    @media (min-width: $desktop) {
+      flex-basis: calc(100% - 312px);
+    }
+  }
+  &__single-degree {
+    flex-basis: 100%;
+
+    border-bottom: 1px solid $silver;
+  }
+  &__degree-link {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    padding: {
+      top: 24px;
+    }
+    @media (min-width: $desktop-small) {
+      padding: {
+        top: 32px;
+        bottom: 24px;
+      }
+    }
+    &:hover {
+      .degree-list-sidebar__view-details {
+        opacity: 1;
+      }
+    }
+  }
+  &__degree-header {
+    @include headline7;
+    color: $azBlue;
+    margin: {
+      bottom: 8px;
+    }
+  }
+  &__degree-college {
+    @include h5;
+    font-weight: 400;
+    color: $azRed;
+    margin: {
+      bottom: 8px;
+    }
+  }
+  &__degree-description {
+    @include h5;
+    font-weight: 400;
+    color: $black;
+    margin: {
+      bottom: 24px;
+    }
+    @media (min-width: $desktop-small) {
+      margin: {
+        bottom: 0px;
+      }
+    }
+    p {
+      @include h5;
+      font-weight: 400;
+      color: $black;
+      margin: {
+        bottom: 0px;
+      }
+    }
+  }
+  &__content-wrapper {
+    flex-basis: 100%;
+    @media (min-width: $desktop-small) {
+      flex-basis: calc(457 / 576 * 100%);
+      padding-right: 32px;
+    }
+    @media (min-width: $desktop) {
+      flex-basis: calc(785 / 904 * 100%);
+    }
+  }
+  &__view-details {
+    flex-basis: 100%;
+    @include boldLarge;
+    color: $azRed;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    right: 0px;
+    bottom: 24px;
+    transition: opacity ease-in-out 0.25s;
+    margin: {
+      top: 24px;
+    }
+    @media (min-width: $desktop-small) {
+      flex-basis: calc(119 / 576 * 100%);
+      opacity: 0;
+      position: absolute;
+    }
+    @media (min-width: $desktop) {
+      flex-basis: calc(119 / 904 * 100%);
+    }
+
+    svg {
+      position: relative;
+      margin-left: 10px;
+      width: 20px;
+      height: 20px;
+    }
+    svg path {
+      stroke: $azRed;
+    }
+  }
+
+  &__pager-arrow {
+    svg {
+      margin: {
+        top: 5px;
+        left: 5px;
+      }
+      transition: width 0.25s ease-in-out, height 0.25s ease-in-out;
+    }
+    svg path {
+      color: $azBlue;
+    }
+  }
+  &__pager-link {
+    @include textMedium;
+    font-weight: 500;
+    color: $azBlueLight;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 7px;
+  }
+
+  nav.pager {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    padding: {
+      top: 48px;
+      bottom: 24px;
+    }
+    @media (min-width: $desktop-small) {
+      justify-content: flex-end;
+      padding: {
+        top: 56px;
+        right: 24px;
+      }
+    }
+    .pager__items {
+      display: flex;
+      position: relative;
+    }
+    .pager__item {
+      @include textMedium;
+      border: 1px solid $lightGray;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      width: 40px;
+      height: 40px;
+      color: $azBlueLight;
+      margin: {
+        left: 4px;
+        right: 4px;
+      }
+      transition: background-color 0.25s ease-in-out;
+
+      &:hover {
+        background-color: $lightGray;
+      }
+
+      &.is-active {
+        border-color: $orange;
+      }
+      &--ellipsis {
+        display: none;
+        border: none;
+        cursor: default;
+        &:hover {
+          background-color: transparent;
+        }
+        @media (min-width: $desktop-small) {
+          display: flex;
+        }
+      }
+      &--next {
+        border: none;
+        position: absolute;
+        right: -48px;
+        transition: background-color 0.25s;
+        @media (min-width: $desktop-small) {
+          position: static;
+        }
+        &:hover {
+          background-color: #ffffff;
+          svg {
+            width: 28px;
+            height: 28px;
+          }
+        }
+      }
+      &--previous {
+        border: none;
+        position: absolute;
+        left: -48px;
+        transition: background-color 0.25s;
+        @media (min-width: $desktop-small) {
+          position: static;
+        }
+        &:hover {
+          background-color: #ffffff;
+          svg {
+            width: 28px;
+            height: 28px;
+          }
+        }
+      }
+      &--last {
+        display: none;
+      }
+      &--first {
+        display: none;
+      }
+    }
+  }
+
+  &__no-results {
+    @include headline7;
+    color: $azBlue;
+    margin: {
+      bottom: 0;
+    }
+  }
+}

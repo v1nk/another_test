@@ -1,0 +1,78 @@
+{{ attach_library('uagc/main') }}
+{{ attach_library('uagc/catalog') }}
+{{ attach_library('uagc/paid') }}
+
+
+{# {{ content.field_body_paragraphs }} #}
+
+
+{# article element can be switch out for section element if its a listing page #}
+{%
+  set classes = [
+    'site-layout__article',
+    node.getType,
+  ]
+%}
+
+{{ page.preface}}
+{{ page.header }}
+
+  {{ page.breadcrumb }}
+
+  {{ page.highlighted }}
+
+  {{ page.help }}
+
+<article {{ attributes.addClass(classes) }}>
+    {{ title_suffix }}
+    <header class="site-layout__article-header">
+      {{ content.field_header_paragraphs }}
+    </header>
+
+
+  <div class="sidebar-links-content">
+      <aside class="sidebar-links-content__links">
+        <div class="sidebar-links-content__links-header-container">
+          <h3 class="sidebar-links-content__links-header">More in this Section</h3>
+        </div>
+          <div class="sidebar-links-content__links-container">
+            <div class="sidebar-links-content__dropdown-container">
+            <button type="button" class="sidebar-links-content__dropdown">
+              <span class="sidebar-links-content__dropdown-text">Sections</span>
+              <span class="sidebar-links-content__dropdown-toggle">
+                Hide Sections
+              </span>
+            </button>
+            </div>
+            <div class="sidebar-links-content__link-items js-catalog-builder">
+
+            {% if catalogSidebar is not empty %}
+              {% for menuItem in catalogSidebar %}
+              {% if menuItem.url is empty %}
+              <span>{{menuItem.title}}</span>
+              {% else %}
+                <a href="{{menuItem.url}}">{{menuItem.title}}</a>
+              {% endif %}
+                {% for secondLevelItem in menuItem.children %}
+                  <a href="{{secondLevelItem.url}}" class="--indent">{{secondLevelItem.title}}</a>
+                {% endfor %}
+              {% endfor %}
+            {% endif %}
+  
+              {# {{ drupal_view('catelog_menu', 'block_1') }} #}
+            </div>
+          </div>
+      </aside>
+
+      <div class="sidebar-links-content__content js-catalog-builder-content">
+        {% for i in content.field_paragraphs['#items']|keys %}
+            {{ content.field_paragraphs[i] }}
+        {% endfor %}
+      </div>
+  </div>
+</article>
+{% if bottom_content|keys is not empty %}
+    <div class="site-layout__footer">
+        {{ bottom_content }}
+    </div>
+{% endif %}

@@ -1,0 +1,350 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.blog-tools {
+  @include globalGutters;
+  display: flex;
+  flex-direction: column;
+  max-width: 1440px;
+  width: 100%;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  padding: {
+    top: 32px;
+    bottom: 32px;
+  }
+
+  @media (min-width: $desktop-small) {
+    flex-direction: row;
+  }
+
+  .site-layout__footer & {
+    padding-top: 0;
+  }
+
+  &__container {
+    flex-basis: 50%;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 8px;
+    transition: transform 0.3s;
+    padding: 24px !important;
+    //Using !important because there is a .site-layout__footer *:last-child messing with the styling on the custom block type version. Can come back to this later to fix root cause
+
+    @media (min-width: $desktop-small) {
+      padding: 32px !important;
+    }
+
+    @media (min-width: $desktop) {
+      padding: 40px !important;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+    &:focus {
+      border: 2px solid $black;
+      transform: scale(1.05);
+    }
+
+    &.\--orange {
+      background: $orange;
+      color: $azBlue;
+      p,
+      h3 {
+        color: $azBlue;
+      }
+    }
+
+    &.\--river {
+      background: $river;
+      color: white;
+      p,
+      h3 {
+        color: white;
+      }
+    }
+
+    &.\--purple {
+      background: $purple;
+      color: white;
+      p,
+      h3 {
+        color: white;
+      }
+    }
+
+    &.\--blue {
+      background: $blue;
+      color: white;
+      p,
+      h3 {
+        color: white;
+      }
+    }
+
+    &.\--az-blue {
+      background: $azBlue;
+      color: white;
+      p,
+      h3 {
+        color: white;
+      }
+    }
+
+    &.\--az-red {
+      background: $azRed;
+      color: white;
+      p,
+      h3 {
+        color: white;
+      }
+    }
+
+    &.\--light-gray {
+      background: $lighterGray;
+      color: $azBlue;
+      p,
+      h3 {
+        color: $azBlue;
+      }
+    }
+
+    &:nth-child(odd) {
+      margin: {
+        bottom: 24px;
+      }
+
+      .site-layout__footer & {
+        margin: {
+          bottom: 32px;
+        }
+
+        @media (min-width: $desktop-small) {
+          margin: {
+            bottom: 0;
+          }
+        }
+      }
+
+      @media (min-width: $desktop-small) {
+        margin: {
+          right: 12px;
+          bottom: 0;
+        }
+      }
+
+      @media (min-width: $desktop) {
+        margin: {
+          right: 16px;
+        }
+      }
+    }
+
+    &:nth-child(even) {
+      @media (min-width: $desktop-small) {
+        margin: {
+          left: 12px;
+        }
+      }
+
+      @media (min-width: $desktop) {
+        margin: {
+          left: 16px;
+        }
+      }
+    }
+  }
+
+  &__content {
+    /*171/327 (width at 375px)  = .5229 */
+    flex-basis: calc((100% + 48px) * 0.5229);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 0;
+
+    /* 196/420 (width at 1025px) = .4667*/
+    @media (min-width: $tablet) {
+      flex-basis: calc((100% + 64px) * 0.4667);
+    }
+
+    /* 239/592 (width at 1025px) = .40235*/
+    @media (min-width: $desktop) {
+      flex-basis: calc((100% + 80px) * 0.40235);
+    }
+  }
+
+  &__heading {
+    @include rems(12px);
+    line-height: 1.33;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: {
+      bottom: 8px;
+    }
+
+    @media (min-width: $tablet) {
+      @include rems(16px);
+      line-height: 1.5;
+      padding: {
+        bottom: 16px;
+      }
+    }
+
+    @media (min-width: $desktop) {
+      padding: {
+        bottom: 24px;
+      }
+    }
+  }
+
+  &__wysiwyg {
+    padding: {
+      bottom: 8px;
+    }
+
+    @media (min-width: $tablet) {
+      padding: {
+        bottom: 16px;
+      }
+    }
+
+    @media (min-width: $desktop) {
+      padding: {
+        bottom: 24px;
+      }
+    }
+
+    p,
+    h3 {
+      @include rems(24px);
+      line-height: 1.33;
+      margin: 0;
+      font-weight: 500;
+
+      @media (min-width: $tablet) {
+        @include rems(28px);
+        line-height: 1.43;
+      }
+    }
+  }
+
+  &__subheading {
+    @include rems(14px);
+    line-height: 1.29;
+    font-weight: 400;
+    margin: {
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: auto;
+    }
+
+    @media (min-width: $tablet) {
+      @include rems(20px);
+      line-height: 1.2;
+    }
+  }
+
+  &__icon-container {
+    align-self: center;
+    flex-grow: 0;
+    flex-basis: content;
+    flex-shrink: 0;
+    width: auto;
+
+    /* 
+    Calc is 96px on desktop on a width of 592px is 16.2%.
+    64px is the padding which isn't counted in the 100%
+    Gets us to the correct distance relatively.
+    Chad probably knows a better way.
+    */
+    margin: {
+      right: calc((100% + 48px) * 0.1162 - 24px);
+    }
+
+    @media (min-width: $desktop-small) {
+      right: calc((100% + 64px) * 0.162 - 32px);
+
+      margin: {
+        left: auto;
+        right: 0;
+      }
+    }
+    @media (min-width: $desktop) {
+      margin-right: calc((100% + 80px) * 0.162 - 40px);
+    }
+  }
+
+  &__icon {
+    width: auto;
+    margin: {
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+
+    & > span {
+      display: inline-block;
+    }
+
+    @media (min-width: $tablet) {
+      display: inline-block;
+    }
+
+    .--orange &,
+    .--light-gray & {
+      .set-fill-color {
+        fill: $azBlue;
+      }
+
+      .set-stroke-color {
+        stroke: $azBlue;
+      }
+    }
+
+    .--river &,
+    .--purple &,
+    .--blue &,
+    .--az-blue &,
+    .--az-red & {
+      .set-fill-color {
+        fill: white;
+      }
+
+      .set-stroke-color {
+        stroke: white;
+      }
+    }
+  }
+
+  &__icon-find-degree {
+    svg {
+      width: 56px;
+      height: auto;
+
+      @media (min-width: $tablet) {
+        width: 128px;
+        height: 128px;
+      }
+    }
+  }
+
+  &__icon-online-learning {
+    svg {
+      width: 56px;
+      height: auto;
+
+      @media (min-width: $tablet) {
+        width: 128px;
+        height: 128px;
+      }
+    }
+  }
+}

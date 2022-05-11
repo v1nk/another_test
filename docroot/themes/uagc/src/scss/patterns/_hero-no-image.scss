@@ -1,0 +1,97 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.hero-no-image {
+  @include globalSideGutters;
+  position: relative;
+  background-color: white;
+  display: flex;
+  min-height: 152px;
+  padding: {
+    top: 24px;
+  }
+  &.\--use-grey-background {
+    background-color: $lighterGray;
+  }
+  &.\--use-bottom-padding {
+    padding: {
+      bottom: 40px;
+    }
+    @media (min-width: $desktop) {
+      padding: {
+        bottom: 80px;
+      }
+    }
+  }
+  @media (min-width: $tablet) {
+    min-height: 128px;
+    padding: {
+      top: 40px;
+    }
+  }
+  @media (min-width: $desktop) {
+    min-height: 168px;
+    padding: {
+      top: 80px;
+    }
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: $azBlue;
+    z-index: 10;
+    height: 58%;
+  }
+  &__red-box {
+    position: relative;
+    background-color: $azRed;
+    z-index: 20;
+    flex-basis: 100%;
+    padding: {
+      bottom: 16px;
+      left: 24px;
+      top: 16px;
+      right: 24px;
+    }
+    @media (min-width: $tablet) {
+      @include flexGrid(8);
+      max-width: 590px;
+      padding: {
+        top: 24px;
+        bottom: 24px;
+      }
+    }
+  }
+  &__pre-header {
+    @include textMedium;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin: {
+      bottom: 24px;
+    }
+  }
+  &__header {
+    @include heroheader;
+    color: #ffffff;
+  }
+  &__sub-header {
+    @include subHeader;
+    color: white;
+    margin: {
+      top: 8px;
+    }
+  }
+  &__cta-link {
+    margin: {
+      top: 24px;
+    }
+    display: inline-block;
+    color: $azRed;
+    border: none;
+  }
+}

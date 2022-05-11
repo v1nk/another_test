@@ -1,0 +1,24 @@
+.section--feature-space {
+  position: relative;
+  padding: 4% 10%;
+  background-color: $azBlue;
+  margin: {
+    bottom: 30px;
+  }
+
+  &.is-blue {
+  }
+
+  .section__header {
+    font-size: 2rem;
+    font-weight: 600;
+    color: white;
+    line-height: 1.22;
+    @include breakpoint(600px, $no-query: true) {
+      font-size: 2.5rem;
+    }
+
+    margin: 0;
+    text-align: center;
+  }
+}

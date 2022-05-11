@@ -1,0 +1,811 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/vars" as *;
+@use "sass:math";
+
+.blog-sidebar-form {
+  width: 100%;
+  background-color: $azBlue;
+  @include globalGutters;
+  padding: {
+    left: 16px;
+    right: 16px;
+  }
+  margin: {
+    bottom: 32px;
+  }
+
+  @media (min-width: $tablet) {
+    @include globalGutters;
+  }
+
+  @media (min-width: $desktop) {
+    padding: 16px;
+  }
+
+  .\--next-button.\--next-button.\--next-button {
+    font-weight: 400;
+    @include rems(16px);
+    line-height: 1.5;
+    color: $azBlue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 100%;
+    height: auto;
+    max-height: 40px;
+    max-width: unset;
+    justify-self: flex-end;
+    align-self: flex-end;
+    padding: {
+      left: 16px;
+      right: 16px;
+    }
+    margin: {
+      top: 24px;
+    }
+
+    span {
+      font-weight: 500;
+      margin-right: 8px;
+    }
+
+    @media (min-width: $tablet) {
+      max-width: 260px;
+      margin: {
+        top: 32px;
+        left: auto;
+        right: auto;
+      }
+    }
+
+    @media (min-width: $desktop) {
+      max-width: 100%;
+      margin: {
+        top: 16px;
+      }
+    }
+
+    &:after {
+      content: " ";
+      display: inline-block;
+      background-image: url(../images/icons/arrow-right.svg);
+      margin: {
+        left: 12px;
+      }
+      height: 24px;
+      width: 24px;
+      background-position: 0 -2px;
+    }
+  }
+
+  .\--always-display {
+    display: block !important;
+  }
+
+  input.--request-btn-disabled {
+    background-color: #cccccc !important;
+  }
+
+  .columns__left & {
+    .form-item-tcpa-checkbox {
+      text-align: center;
+
+      span {
+        @media (min-width: $tablet) {
+          color: $azBlue;
+        }
+      }
+    }
+
+    .form-disclaimer {
+      max-width: 545px;
+      margin: {
+        left: auto;
+        right: auto;
+        top: 24px;
+      }
+      p {
+        @media (min-width: $tablet) {
+          color: $darkGray;
+        }
+      }
+    }
+  }
+
+  .columns__right & {
+    @media (min-width: $desktop) {
+      padding: 0;
+      position: sticky;
+      top: 80px;
+    }
+  }
+
+  .form-item label {
+    margin: {
+      top: 24px;
+    }
+  }
+
+  .js-webform-radios.webform-options-display-side-by-side {
+    display: flex;
+    justify-content: center;
+
+    @media (min-width: $desktop) {
+      justify-content: flex-start;
+    }
+
+    .js-form-type-radio {
+      padding: {
+        left: 10px;
+        right: 10px;
+      }
+    }
+
+    .form-item-registerednurse {
+      &:first-child {
+        padding-right: 8px;
+      }
+      &:last-child {
+        padding-left: 8px;
+      }
+    }
+  }
+
+  .js-form-item-state,
+  .js-form-item-firstname {
+    label {
+      margin: {
+        top: 0px;
+      }
+    }
+  }
+
+  &__wrapper {
+    background-color: white;
+    padding: 0;
+    border-radius: 16px;
+
+    @media (min-width: $desktop) {
+      background-color: $azBlue;
+      padding: 0;
+      max-width: 600px;
+      margin: 0 auto;
+      border-radius: unset;
+    }
+  }
+
+  &__header {
+    color: $azBlue;
+    @include rems(28px);
+    line-height: math.div(32, 28);
+    font-weight: 500;
+    text-align: center;
+    padding: {
+      top: 24px;
+      bottom: 0px; //+24px spacing on state label
+      left: 16px;
+      right: 16px;
+    }
+
+    @media (min-width: $tablet) {
+      @include rems(36px);
+      line-height: math.div(48.3, 36);
+      padding: {
+        top: 40px;
+        bottom: 8px; //+24px spacing on state label
+        left: 24px;
+        right: 24px;
+      }
+    }
+
+    @media (min-width: $desktop-small) {
+      padding: {
+        bottom: 32px;
+      }
+    }
+
+    @media (min-width: $desktop) {
+      color: white;
+      text-align: left;
+      padding: 0;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__status {
+    display: none;
+
+    @media (min-width: $desktop) {
+      width: 100%;
+      display: flex;
+      margin: {
+        bottom: 16px;
+      }
+    }
+  }
+
+  &__status-steps {
+    @include flexGrid(6, 6);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  &__status-label {
+    color: white;
+    @include flexGrid(3, 3);
+    text-align: left;
+    font-size: 0.875rem;
+    line-height: 1.29;
+    margin-bottom: 8px;
+    .\--gray-background & {
+      color: $azBlue;
+    }
+
+    .\--inactive & {
+      opacity: 0.5;
+    }
+  }
+
+  &__status-bar {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    height: 8px;
+    padding-top: 8px;
+    @include flexGrid(6, 6);
+    position: relative;
+    overflow: hidden;
+
+    &:after {
+      position: absolute;
+      left: 0;
+      height: 8px;
+      width: 138px;
+      content: " ";
+      display: block;
+      background-color: $orange;
+      top: 0;
+      border-radius: 10px;
+      transition: width 0.5s ease;
+    }
+
+    .\--step-2 &:after {
+      width: 100%;
+    }
+  }
+
+  .form-wrapper {
+    &[data-drupal-selector="edit-interest-information"] {
+      background-color: white;
+      border-radius: 20px;
+      display: flex;
+      flex-wrap: wrap;
+
+      @media (min-width: $desktop) {
+        padding: {
+          top: 24px;
+          left: 24px;
+          bottom: 24px;
+          right: 24px;
+        }
+      }
+
+      .form-item {
+        flex-basis: 100%;
+        @media (min-width: $desktop-small) {
+          flex-basis: 33.3333333333%;
+          margin: 0;
+          padding: {
+            left: 12px;
+            right: 12px;
+          }
+        }
+
+        @media (min-width: $desktop) {
+          flex-basis: 100%;
+          padding: 0;
+          &:nth-of-type(1),
+          &:nth-of-type(2) {
+            padding: {
+              bottom: 16px;
+            }
+          }
+
+          &:nth-of-type(odd) {
+            margin: {
+              right: 0px;
+            }
+          }
+
+          &:nth-of-type(even) {
+            margin: {
+              left: 0px;
+            }
+          }
+        }
+      }
+
+      .js-form-type-processed-text:nth-of-type(1) {
+        padding: {
+          bottom: 0;
+          top: 16px;
+        }
+      }
+      fieldset.form-item:nth-of-type(1) {
+        padding: {
+          bottom: 0;
+        }
+      }
+
+      fieldset[data-drupal-selector="edit-registerednurse"] {
+        flex-basis: 100%;
+      }
+    }
+
+    &[data-drupal-selector="edit-contact-information"] {
+      .form-item {
+        margin: 0;
+
+        &:nth-of-type(1),
+        &:nth-of-type(2) {
+          padding: {
+            bottom: 16px;
+          }
+        }
+
+        &:nth-of-type(odd) {
+          margin: {
+            right: 0px;
+          }
+        }
+
+        &:nth-of-type(even) {
+          margin: {
+            left: 0px;
+          }
+        }
+      }
+
+      @media (min-width: $tablet) {
+        max-width: 545px;
+        padding: {
+          left: 0;
+          right: 0;
+          bottom: 0;
+        }
+        flex-wrap: wrap;
+        .form-item {
+          flex-basis: 48%;
+          max-width: 260px;
+          label {
+            margin-top: 0;
+          }
+
+          &:nth-of-type(1),
+          &:nth-of-type(2) {
+            padding: {
+              bottom: 24px;
+            }
+          }
+
+          &:nth-of-type(3),
+          &:nth-of-type(4) {
+            padding: {
+              bottom: 0;
+            }
+          }
+
+          &:nth-of-type(odd) {
+            margin: {
+              right: 12px;
+            }
+          }
+
+          &:nth-of-type(even) {
+            margin: {
+              left: 12px;
+            }
+          }
+        }
+
+        .form-item-phone1,
+        .form-item-emailaddress {
+          label {
+            margin-top: 24px;
+          }
+        }
+      }
+      @media (min-width: $desktop-small) {
+        .js-form-item-firstname,
+        .js-form-item-lastname {
+          label {
+            margin-top: 24px;
+          }
+        }
+      }
+
+      @media (min-width: $desktop) {
+        .form-item {
+          margin: 0;
+
+          &:nth-of-type(1),
+          &:nth-of-type(2),
+          &:nth-of-type(3),
+          &:nth-of-type(4) {
+            padding: {
+              bottom: 16px;
+            }
+          }
+
+          &:nth-of-type(odd) {
+            margin: {
+              right: 0px;
+            }
+          }
+
+          &:nth-of-type(even) {
+            margin: {
+              left: 0px;
+            }
+          }
+        }
+      }
+
+      @media (min-width: $desktop) {
+        padding: {
+          top: 24px;
+          left: 24px;
+          bottom: 8px;
+          right: 24px;
+        }
+        max-width: 95%;
+        flex-wrap: nowrap;
+
+        .form-item {
+          margin: {
+            right: 0;
+          }
+        }
+      }
+
+      .columns__left & {
+        @media (min-width: $desktop) {
+          padding: {
+            left: 0;
+            right: 0;
+          }
+        }
+      }
+
+      .columns__right & {
+        @media (min-width: $desktop) {
+          max-width: 100%;
+
+          .form-item:nth-child(n + 2) {
+            label {
+              margin-top: 24px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .webform-type-radios {
+    legend {
+      color: $black;
+      font-size: 1rem;
+      line-height: math.div(20, 16);
+      padding: {
+        top: 24px;
+        bottom: 16px;
+      }
+
+      margin: {
+        left: auto;
+        right: auto;
+      }
+    }
+  }
+
+  .js-registerednurse-validation-message.js-registerednurse-validation-message {
+    padding: {
+      bottom: 0;
+    }
+  }
+
+  .form-item-registerednurse.form-item-registerednurse.form-item-registerednurse.form-item-registerednurse.form-item-registerednurse.form-item-registerednurse {
+    display: flex !important;
+    flex-basis: auto;
+    align-items: center;
+    padding: {
+      bottom: 0;
+    }
+
+    label {
+      font-size: 1rem;
+      margin: 0;
+      padding: {
+        left: 8px;
+        right: 0;
+        bottom: 0;
+        top: 0;
+      }
+    }
+
+    input {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  &__form {
+    color: white;
+    padding: {
+      top: 0;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+    }
+
+    @media (min-width: $tablet) {
+      padding: {
+        bottom: 40px;
+        left: 40px;
+        right: 40px;
+      }
+    }
+
+    @media (min-width: $desktop-small) {
+      padding: {
+        left: 28px; //+12px padding-left on first select element
+        right: 28px; //+12px padding-right on last select element
+      }
+    }
+
+    @media (min-width: $desktop) {
+      padding: 0;
+    }
+
+    .js-registerednurse-validation-message {
+      flex-basis: 100% !important;
+
+      .webform-options-display-side-by-side {
+        display: flex;
+        justify-content: center;
+      }
+
+      .js-form-type-processed-text {
+        display: none;
+      }
+    }
+
+    .js-registerednurse-validation-message p {
+      color: $black;
+      font-size: 1rem;
+      line-height: math.div(20, 16);
+      margin-bottom: 0;
+    }
+
+    .form-item-tcpa-checkbox {
+      display: none;
+      margin-bottom: 0px;
+      margin-top: 24px;
+      position: relative;
+
+      @media (min-width: $tablet) {
+        max-width: 545px;
+        margin: 0 auto;
+        margin-top: 24px;
+      }
+
+      @media (min-width: $desktop) {
+        margin-top: 24px;
+      }
+
+      &.\--step-two {
+        display: flex;
+        align-items: center;
+      }
+
+      label {
+        margin-top: 0;
+        top: 3px;
+        border-radius: 4px;
+      }
+
+      span {
+        color: white;
+        font-size: 0.75rem;
+        display: inline-flex;
+        align-items: center;
+        line-height: 1;
+        user-select: none;
+        pointer-events: none;
+
+        @media (min-width: $tablet) {
+          color: $azBlue;
+        }
+
+        @media (min-width: $desktop) {
+          color: white;
+        }
+      }
+
+      label {
+        display: none;
+      }
+    }
+
+    .form-disclaimer {
+      width: 100%;
+      max-width: 545px;
+      margin: {
+        top: 24px;
+        bottom: 0;
+        left: auto;
+        right: auto;
+      }
+      display: none;
+
+      & p {
+        color: white;
+        font-size: 0.5rem;
+
+        @media (min-width: $tablet) {
+          color: $azBlue;
+        }
+
+        @media (min-width: $desktop) {
+          color: white;
+        }
+      }
+    }
+
+    input,
+    select,
+    button {
+      max-width: 100%;
+      width: 100%;
+      margin-top: 16px;
+      color: $black;
+      font-family: "Fira Sans", Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.5;
+      font-weight: 500;
+
+      &::placeholder {
+        color: $darkGray;
+      }
+
+      &.\--grey-default {
+        color: $darkGray;
+      }
+    }
+
+    input[type="submit"] {
+      margin: {
+        top: 16px;
+      }
+    }
+
+    select,
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"] {
+      padding: {
+        left: 16px;
+      }
+      border: solid 1px $lightGray;
+      border-radius: 8px;
+
+      &.\--gray-text {
+        color: $darkGray;
+      }
+    }
+
+    .js-form-type-select {
+      &:after {
+        border-radius: 8px;
+        height: 36px;
+        right: 2px;
+        bottom: unset;
+        top: 58px;
+        transform: unset;
+        background-image: url(../images/icons/chevron-down-red.svg);
+        background-size: 18px 18px;
+        background-position: center;
+      }
+
+      @media (min-width: $desktop-small) {
+        &:after {
+          top: 34px;
+          right: 13px;
+        }
+      }
+
+      @media (min-width: $desktop) {
+        &:after {
+          right: 1px;
+        }
+      }
+
+      label {
+        @include rems(20px);
+        line-height: math.div(24, 20);
+        font-weight: 500;
+        margin: {
+          top: 24px;
+          bottom: 8px;
+          right: -12px;
+        }
+        @media (min-width: $desktop-small) {
+          margin: {
+            top: 0;
+          }
+        }
+      }
+    }
+
+    .js-form-type-textfield,
+    .js-form-type-tel,
+    .js-form-type-email {
+      label {
+        display: none;
+      }
+    }
+
+    .webform-actions {
+      @media (min-width: $tablet) {
+        margin: 0 auto;
+      }
+    }
+
+    input[type="radio"] {
+      width: auto;
+
+      & + label {
+        margin: 5px;
+      }
+    }
+
+    h2 {
+      display: none;
+    }
+  }
+
+  &__wascblock {
+    display: none;
+
+    hr {
+      margin-bottom: 25px;
+    }
+
+    p {
+      font-size: 0.625rem;
+      color: white;
+    }
+
+    img {
+      margin: {
+        top: 30px;
+        bottom: 30px;
+        left: auto;
+        right: auto;
+      }
+    }
+
+    h3 {
+      text-align: center;
+      font-size: 1.125rem;
+      font-weight: 500;
+      line-height: 1.22;
+      color: white;
+    }
+
+    @media (min-width: $desktop) {
+      display: block;
+    }
+  }
+}

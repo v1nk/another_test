@@ -1,0 +1,293 @@
+<div class="site-header__logo-container">
+  <a href="/" class="site-header__logo-link"><img src="/themes/uagc/src/images/icons/UAGC_logo.svg" alt="The University of Arizona Global Campus" width="180" height="32"/></a>
+</div>
+<div class="site-header__nav">
+  <nav class="main-nav" aria-label="Main Navigation">
+    <ul class="main-nav__items">
+
+      {% for topLevelItem in mainMenu %}
+        <li class="main-nav__item">
+          <a href="{{topLevelItem.url}}">{{topLevelItem.title}}</a>
+          <button type="button" class="main-nav__dropdown-toggle js-dropdown-toggle" aria-label="Mobile nav dropdown toggle for {{topLevelItem.title}}">
+            {{topLevelItem.title}}
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.75 19.5L16.25 13L9.75 6.5" stroke="#0C234B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              
+          </button>
+          {% if topLevelItem.children | length > 0 %}
+            <div class="main-nav__dropdown js-dropdown">
+              <div class="main-nav__dropdown-column-back">
+                <button type="button" class="main-nav__dropdown-column-back-button js-back">All</button>
+                <a href="{{topLevelItem.url}}" class="main-nav__dropdown-column-top-level">{{topLevelItem.title}}</a>
+              </div>
+              <div class="main-nav__dropdown-column">
+                {% for secondLevelItem in topLevelItem.children %}
+
+                  {% if secondLevelItem.linkObj.field_header_non_link.value == '1' %}
+                    {% if loop.first == false %}
+                    </ul>
+                  </div>
+                  <div class="main-nav__dropdown-column">
+                  {% endif %}
+                  <div class="main-nav__dropdown-column-header">{{secondLevelItem.title}}</div>
+                  {% if secondLevelItem.linkObj.field_hide_on_mobile.value != '1' %}
+                    {% if secondLevelItem.linkObj.field_remove_dropdown_mobile.value == '1' %}
+                      <button type="button" class="main-nav__dropdown-column-header-button --remove-dropdown">{{secondLevelItem.title}}</button>
+                    {% else %}
+                      <button type="button" class="main-nav__dropdown-column-header-button js-dd-head-button ">{{secondLevelItem.title}}</button>
+                    {% endif %}
+                  {% endif %}
+                  {% if secondLevelItem.linkObj.field_remove_dropdown_mobile.value == '1' %}
+                    <ul class="main-nav__dropdown-column-items js-sub-dropdown --display-dropdown">
+                  {% else %}
+                    <ul class="main-nav__dropdown-column-items js-sub-dropdown">
+                  {% endif %}
+                  {% elseif (loop.first == true) %}
+                    {% if secondLevelItem.linkObj.field_remove_dropdown_mobile.value == '1' %}
+                      <ul class="main-nav__dropdown-column-items js-sub-dropdown --display-dropdown">
+                    {% else %}
+                      <ul class="main-nav__dropdown-column-items js-sub-dropdown">
+                    {% endif %}
+                    {% endif %}
+
+                    {% if secondLevelItem.linkObj.field_header_non_link.value == '0' or secondLevelItem.linkObj.field_header_non_link.value is empty %}
+                      <li class="main-nav__dropdown-column-item">
+                        {% set buttonClasses = '' %}
+                        {% if secondLevelItem.linkObj.field_display_as_arrow_button.value == '1' %}
+                          {% set buttonClasses = 'button--blue --small' %}
+                        {% endif %}
+                        <a href="{{secondLevelItem.url}}" class="{{buttonClasses}}">{{secondLevelItem.title}}
+
+                          {% if secondLevelItem.linkObj.field_display_as_arrow_button.value == '1' %}
+                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M5 12H19" stroke="#0C234B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                              <path d="M12 5L19 12L12 19" stroke="#0C234B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          {% endif %}
+                        </a>
+
+
+                      </li>
+                    {% endif %}
+
+                    {% if secondLevelItem.children | length > 0 %}
+                      {% for thirdLevelItem in secondLevelItem.children %}
+
+                        {% if thirdLevelItem.linkObj.field_header_non_link.value == '1' %}
+                          {% if loop.first == false %}
+                          </ul>
+                        {% endif %}
+                        <div class="main-nav__dropdown-column-header">{{thirdLevelItem.title}}</div>
+
+                        {% if thirdLevelItem.linkObj.field_hide_on_mobile.value != '1' %}
+                          {% if thirdLevelItem.linkObj.field_remove_dropdown_mobile.value == '1' %}
+                            <button type="button" class="main-nav__dropdown-column-header-button --remove-dropdown">{{thirdLevelItem.title}}</button>
+                          {% else %}
+                            <button type="button" class="main-nav__dropdown-column-header-button js-dd-head-button ">{{thirdLevelItem.title}}</button>
+                          {% endif %}
+                        {% endif %}
+                        {% if thirdLevelItem.linkObj.field_remove_dropdown_mobile.value == '1' %}
+                          <ul class="main-nav__dropdown-column-items js-sub-dropdown --display-dropdown">
+                        {% else %}
+                          <ul class="main-nav__dropdown-column-items js-sub-dropdown">
+                        {% endif %}
+
+                          {% for fourthLevelItem in thirdLevelItem.children %}
+
+
+                            <li class="main-nav__dropdown-column-item">
+                              {% set buttonClasses = '' %}
+                              {% if fourthLevelItem.linkObj.field_display_as_arrow_button.value == '1' %}
+                                {% set buttonClasses = 'button--blue --small' %}
+                              {% endif %}
+                              <a href="{{fourthLevelItem.url}}" class="{{buttonClasses}}">{{fourthLevelItem.title}}
+
+                                {% if fourthLevelItem.linkObj.field_display_as_arrow_button.value == '1' %}
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 12H19" stroke="#0C234B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M12 5L19 12L12 19" stroke="#0C234B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  </svg>
+                                {% endif %}
+                              </a>
+
+                            </li>
+                          {% endfor %}
+
+                        {% else %}
+
+
+                          <li class="main-nav__dropdown-column-item">
+                            {% set buttonClasses = '' %}
+                            {% if thirdLevelItem.linkObj.field_display_as_arrow_button.value == '1' %}
+                              {% set buttonClasses = 'button--blue --small' %}
+                            {% endif %}
+                            <a href="{{thirdLevelItem.url}}" class="{{buttonClasses}}">{{thirdLevelItem.title}}
+
+                              {% if thirdLevelItem.linkObj.field_display_as_arrow_button.value == '1' %}
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M5 12H19" stroke="#0C234B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  <path d="M12 5L19 12L12 19" stroke="#0C234B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              {% endif %}
+                            </a>
+                          </li>
+                        {% endif %}
+                      {% endfor %}
+
+                    {% endif %}
+
+
+                  {% endfor %}
+                </ul>
+              </div>
+
+              {% if utilityMenu is not empty %}
+                <div class="site-header__secondary-menu --second-level">
+                  <ul class="site-header__secondary-menu-group">
+                    {% for menuItem in utilityMenu %}
+                      <li class="site-header__secondary-menu-group-item">
+          
+                        {% set phoneClass = '' %}
+                        {% set dynamicPhoneMobile = '' %}
+          
+                        {% if 'tel:' in menuItem.url %}
+                          {% set phoneClass = '--phoneNumber' %}
+                
+                          {% if node.getType == 'page' and node.field_dynamic_phone_numbers.value is not empty %}
+                            {% set dynamicPhoneMobile = ' --dynamic-phone-mobile' %}
+                          {% endif %}
+                        {% endif %}
+          
+          
+                        <img class="site-header__secondary-menu-icon-desktop" src="{{file_url(menuItem.linkObj.field_icon.entity.field_media_file_1.entity.uri.0.value)}}" alt="" width="20" height="20"/>
+                        <img class="site-header__secondary-menu-icon-mobile" src="{{file_url(menuItem.linkObj.field_mobile_icon.entity.field_media_file_1.entity.uri.0.value)}}" alt="" width="20" height="20"/>
+                        <a href="{{menuItem.url}}" class="{{phoneClass}}">{{menuItem.title}}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                  <ul class="site-header__secondary-menu-group --search">
+                    <li class="site-header__secondary-menu-group-item">
+                      <button type="button" class="site-header__search-button js-search-show">Search</button>
+                    </li>
+                  </ul>
+                </div>
+              {% endif %}
+              <div class="main-nav__cta --second-level">
+                <a href="/request-information" class="button">Request Info<svg width="20" height="20" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19" stroke="#0C234B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M12 5L19 12L12 19" stroke="#0C234B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </a>
+              </div>
+
+            </div>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+    <div class="main-nav__mobile-back js-back-button-container">
+      <button type="button" aria-label="Menu Back" class="main-nav__mobile-back-button js-back js-back-button">Go back</button>
+    </div>
+
+    {% if utilityMenu is not empty %}
+      <div class="site-header__secondary-menu">
+        <ul class="site-header__secondary-menu-group">
+          {% for menuItem in utilityMenu %}
+            <li class="site-header__secondary-menu-group-item">
+
+              {% set phoneClass = '' %}
+              {% set dynamicPhoneMobile = '' %}
+
+              {% if 'tel:' in menuItem.url %}
+                {% set phoneClass = '--phoneNumber' %}
+      
+                {% if node.getType == 'page' and node.field_dynamic_phone_numbers.value is not empty %}
+                  {% set dynamicPhoneMobile = ' --dynamic-phone-mobile' %}
+                {% endif %}
+              {% endif %}
+
+
+              <img class="site-header__secondary-menu-icon-desktop" src="{{file_url(menuItem.linkObj.field_icon.entity.field_media_file_1.entity.uri.0.value)}}" alt="" width="20" height="20"/>
+              <img class="site-header__secondary-menu-icon-mobile" src="{{file_url(menuItem.linkObj.field_mobile_icon.entity.field_media_file_1.entity.uri.0.value)}}" alt="" width="20" height="20"/>
+              <a href="{{menuItem.url}}" class="{{phoneClass}}">{{menuItem.title}}</a>
+            </li>
+          {% endfor %}
+        </ul>
+        <ul class="site-header__secondary-menu-group --search">
+          <li class="site-header__secondary-menu-group-item">
+            <button type="button" class="site-header__search-button js-search-show">Search</button>
+          </li>
+        </ul>
+      </div>
+    {% endif %}
+
+
+    <div class="main-nav__cta">
+      <a href="/request-information" class="button">Request Info<svg width="20" height="20" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 12H19" stroke="#0C234B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M12 5L19 12L12 19" stroke="#0C234B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="site-header__aux">
+  <div class="site-header__aux-cta">
+    {% if noUtilityMenu == true %}
+      <button type="button" class="auto-search__catalog-search-button js-search-show">Search</button>
+    {%  endif %}
+    <a href="/request-information" class="button">Request Info</a>
+  </div>
+</div>
+<div class="site-header__mobile-controls">
+  <div class="site-header__mobile-menu-toggle">
+    <button class="site-header__mobile-menu-toggle-button js-menu-toggle" type="button" aria-label="Toggle mobile menu open or close"></button>
+  </div>
+</div>
+{% if utilityMenu is not empty %}
+  <nav class="site-header__secondary-menu" aria-label="secondary menu bar">
+    <ul class="site-header__secondary-menu-group">
+      {% for menuItem in utilityMenu %}
+
+        {% set phoneClass = '' %}
+        {% set dynamicPhone = '' %}
+
+        {% if 'tel:' in menuItem.url %}
+          {% set phoneClass = '--phoneNumber' %}
+
+          {% if node.getType == 'page' and node.field_dynamic_phone_numbers.value is not empty %}
+            {% set dynamicPhone = ' --dynamic-phone' %}
+          {% endif %}
+        {% endif %}
+
+        <li class="site-header__secondary-menu-group-item">
+          <img src="{{file_url(menuItem.linkObj.field_icon.entity.field_media_file_1.entity.uri.0.value)}}" alt="" width="20" height="20"/>
+          <a href="{{menuItem.url}}" class="{{phoneClass}}{{dynamicPhone}}">{{menuItem.title}}</a>
+        </li>
+      {% endfor %}
+
+
+    </ul>
+    <ul class="site-header__secondary-menu-group --search">
+      <li class="site-header__secondary-menu-group-item">
+        <button type="button" class="site-header__search-button js-search-show">Search</button>
+      </li>
+    </ul>
+  </nav>
+{% endif %}
+<div class="site-header__mobile-overlay">
+  <div class="site-header__mobile-overlay-toggle">
+    <div class="site-header__mobile-menu-toggle">
+      <button class="site-header__mobile-menu-toggle-button js-menu-close" type="button" aria-label="Close mobile menu open or close"></button>
+    </div>
+  </div>
+  <div class="site-header__mobile-overlay-cta">
+    <a href="https://apply.uagc.edu/">
+      Apply Now
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16.6667 5L7.50004 14.1667L3.33337 10" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</div>

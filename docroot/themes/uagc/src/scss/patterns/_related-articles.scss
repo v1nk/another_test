@@ -1,0 +1,286 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.related-articles {
+  @include globalGutters;
+  width: 100%;
+  @media (min-width: $desktop-medium-large) {
+    &:not(.columns__left &) {
+      padding: {
+        left: 0;
+        right: 0;
+      }
+    }
+  }
+
+
+  &__red-line {
+    position: relative;
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        max-width: 1440px;
+        margin: {
+          left: auto;
+          right: auto;
+        }
+      }
+    }
+
+
+    &::after {
+      content: "";
+      border-top: 2px solid $azRed;
+      width: 80px;
+      position: absolute;
+    }
+  }
+
+  &__heading-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @media (min-width: $tablet) {
+      flex-direction: row;
+    }
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        width: 100%;
+        max-width: 1440px;
+        margin: {
+          left: auto;
+          right: auto;
+        }
+      }
+    }
+
+    .--three-column & {
+      @media (min-width: $desktop) {
+        width: 74.5%;
+      }
+
+      @media (min-width: $desktop-medium-large) {
+        &:not(.columns__left &) {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &__heading {
+    @include rems(28px);
+    line-height: 1.14;
+    font-weight: 500;
+    color: $azBlue;
+    padding: {
+      top: 24px;
+      bottom: 8px;
+    }
+
+    @media (min-width: $tablet) {
+      @include rems(36px);
+      line-height: 1.33333333;
+      padding: {
+        bottom: 32px;
+      }
+    }
+
+    &.\--add-spacing {
+      padding: {
+        bottom: 24px;
+      }
+      @media (min-width: $tablet) {
+        padding: {
+          bottom: 32px;
+        }
+      }
+    }
+  }
+
+  &__top-cta-container {
+    margin: {
+      bottom: 24px;
+    }
+    @media (min-width: $tablet) {
+      align-self: center;
+      margin: {
+        left: auto;
+        bottom: 0;
+      }
+    }
+  }
+
+  &__top-cta {
+    @include rems(14px);
+    line-height: 1.2857142857;
+    font-weight: 500;
+    color: $azRed;
+    display: flex;
+    align-items: center;
+
+    span {
+      padding: {
+        right: 10px;
+      }
+    }
+  }
+
+  &__card-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+
+    @media (min-width: $tablet) {
+      justify-content: flex-start;
+      gap: 32px;
+    }
+
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        width: 100%;
+        max-width: 1440px;
+        margin: {
+          left: auto;
+          right: auto;
+        }
+      }
+    }
+  }
+
+  &__card-container {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    max-width: 425px;
+
+    @media (min-width: $tablet) {
+      flex-basis: calc(33% - 20px);
+      max-width: calc(33% - 20px);
+    }
+
+    @media (min-width: $desktop) {
+      flex-basis: calc(25% - 24px);
+      max-width: calc(25% - 24px);
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  &__category {
+    @include rems(16px);
+    line-height: 1.5;
+    font-weight: 500;
+    color: $azRed;
+    text-transform: uppercase;
+    padding: {
+      top: 24px;
+      bottom: 8px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+
+  &__title {
+    @include rems(24px);
+    line-height: 1.33;
+    font-weight: 500;
+    color: $black;
+    padding: {
+      bottom: 32px;
+    }
+  }
+
+  &__info-container {
+    display: flex;
+    position: relative;
+
+    &::after {
+      content: "";
+      border-bottom: 1px solid $lightGray;
+      width: 100%;
+      position: absolute;
+      align-self: flex-end;
+      transition: border-bottom-color 0.25s ease-in-out;
+
+      .related-articles__card-container:hover & {
+        border-bottom: 1px solid $azRed;
+      }
+    }
+  }
+
+  &__info {
+    @include rems(14px);
+    line-height: 1.2857142857;
+    font-weight: 400;
+    color: $darkGray;
+    margin: {
+      right: 8px;
+      bottom: 24px;
+    }
+  }
+
+  &__ellipse {
+    display: inline-block;
+    background: $darkGray;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    margin: {
+      top: 4px;
+      bottom: 4px;
+      left: 8px;
+      right: 8px;
+    }
+  }
+
+  &__cta-container {
+    display: block;
+    @include rems(14px);
+    line-height: 1.2857142857;
+    font-weight: 500;
+    color: $azRed;
+    margin: {
+      left: auto;
+    }
+    opacity: 1;
+    transition: opacity 0.25s ease-in-out;
+
+    .related-articles__card-container:hover & {
+      opacity: 1;
+    }
+
+    @media (min-width: $desktop) {
+      opacity: 0;
+    }
+  }
+
+  &__cta {
+    display: flex;
+    align-items: center;
+  }
+
+  &__cta-text {
+    padding: {
+      right: 10px;
+    }
+    @media (min-width: 1280px) {
+      display: none;
+    }
+    @media (min-width: 1366px) {
+      display: block;
+    }
+  }
+}

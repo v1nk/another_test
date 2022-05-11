@@ -1,0 +1,25 @@
+<section class="commencement__live-feed__container">
+    <img src="/themes/uagc/src/images/commencement-heading.svg" alt="Congratulations, 2021 Graduates!" class="commencement__heading">
+    <img src="/themes/uagc/src/images/commencement-heading-mobile.svg" alt="Congratulations, 2021 Graduates!" class="commencement__heading-mobile">
+    
+
+        <div class="commencement__live-feed">
+            {% if paragraph.field_use_youtube_embed_instead.value == '1' %} 
+                <div class="commencement__live-feed-youtube">
+                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="{{ content.field_youtube_source_url['#items'].value}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe></div>
+                    
+                </div>    
+            {% else %}
+                <div class="commencement__live-feed__video">
+                    {% if content.field_video_src_url['#items'].value is not empty %}
+                        <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="{{ content.field_video_src_url['#items'].value }}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe></div>
+                    {% endif %}
+                </div>
+                <div class="commencement__live-feed__chat">
+                    {% if content.field_chat_src_url['#items'].value is not empty %}
+                        <iframe src="{{ content.field_chat_src_url['#items'].value }}" width="100%" height="100%" frameborder="0"></iframe>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+</section>

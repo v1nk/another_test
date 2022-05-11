@@ -1,0 +1,18 @@
+<section class="section section--feature-space-image{% if content.field_feature_space_gradient.0['#markup'] == "blue" %} is-blue{% endif %}">
+  <div class="section__image background-cover js-background-image">
+
+    <picture>
+      <source srcset="{{paragraph.field_img.0.entity.uri.0.value | image_style('featured_space_header_desktop_1920x680')}}" media="(min-width: 1024px)" type="image/jpeg">
+      <source srcset="{{paragraph.field_img.0.entity.uri.0.value | image_style('featured_space_header_tablet_1024x350')}}" media="(min-width: 760px)" type="image/jpeg">
+      <source srcset="{{paragraph.field_img.0.entity.uri.0.value | image_style('featured_space_header_mobile_1179x1086')}}" type="image/jpeg">
+      <img src="{{paragraph.field_img.0.entity.uri.0.value | image_style('featured_space_header_desktop_1920x680')}}" alt="{{paragraph.field_img.0.alt}}" typeof="foaf:Image">
+    </picture>
+    
+  </div>
+  <div class="section__wrapper">
+    <div class="section__wrapper-inner">
+      <h2 class="section__header">{{ content.field_headline }} <span>{{ content.field_sub_headline }}</span></h2>
+      {{ content.field_button }}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,627 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.paid-hero-space {
+  display: block;
+  position: relative;
+  background: $azBlue;
+  padding: {
+    bottom: 24px;
+  }
+
+  @media (min-width: $tablet) {
+    padding: {
+      bottom: 0;
+    }
+    display: flex;
+  }
+
+  @media (min-width: $desktop) {
+    height: 500px;
+
+    &::after {
+      content: "";
+      height: 100%;
+      width: calc(100vw - 1280px);
+      max-width: calc(
+        #{$desktop-large} - 1280px
+      ); // at 1280px, we want to start growing this element.
+      background-color: #0c234b;
+    }
+
+    .paid-hero-space {
+      &__image {
+        padding-top: 0;
+        max-width: 750px; // 1.5 * 500
+        flex-basis: 750px;
+      }
+    }
+  }
+
+  &.\--less-wide {
+    @media (min-width: $desktop) {
+      &::after {
+        width: 0;
+      }
+
+      .columns__full-width & {
+        &::after {
+          width: calc(100vw - 1280px);
+        }
+      }
+    }
+  }
+
+  &.\--cta-header {
+    .paid-hero-space {
+      &__image {
+        // the image should be slightly taller in the cta header variation for tablet
+        @media (min-width: $tablet) {
+          flex-basis: 75%;
+          max-width: 75%;
+          padding-top: 50%;
+        }
+
+        @media (min-width: $desktop-small) {
+          padding-top: 500px;
+          max-width: 750px; // 1.5 * 500px
+          flex-basis: 750px;
+        }
+      }
+    }
+  }
+
+  &.\--white-background {
+    background: white;
+  }
+
+  &.\--subheading-inside-content-box {
+    padding-bottom: 0;
+
+    .paid-hero-space__heading-wrapper {
+      background-color: $azRed;
+    }
+  }
+
+  &.\--quote-header {
+    padding-bottom: 0;
+  }
+
+  .paid-hero-space__content {
+    font-size: 4rem;
+  }
+
+  &__content {
+    position: relative;
+    margin: 0 auto;
+    background: $azRed;
+    width: 100%;
+    padding: {
+      top: 24px;
+      left: 24px;
+      right: 24px;
+      bottom: 16px;
+    }
+    p {
+      color: white;
+      font-size: 1.5rem;
+      margin-bottom: 0;
+    }
+
+    @media (min-width: $tablet) {
+      width: 100%;
+      max-width: 590px;
+      margin: 0;
+      padding: {
+        bottom: 24px;
+      }
+      p {
+        font-size: 1.75rem;
+        max-width: 100%;
+        font-weight: 500;
+      }
+
+      .\--long-text p {
+        font-size: 2.25rem;
+      }
+    }
+    @media (min-width: $desktop-small-1025) {
+      p {
+        font-size: 2rem;
+      }
+
+      .\--long-text p {
+        font-size: 2.25rem;
+      }
+    }
+
+    &.\--quote-content {
+      padding: {
+        top: 16px;
+        left: 24px;
+        right: 24px;
+        bottom: 75px;
+      }
+
+      @media (min-width: $tablet) {
+        @include flexGrid(5, 7);
+      }
+
+      @media (min-width: $desktop-small-1025) {
+        @include flexGrid(7, 7);
+        padding: {
+          top: 32px;
+          left: 32px;
+          right: 32px;
+          bottom: 75px;
+        }
+      }
+
+      @media (min-width: $desktop) {
+        @include flexGrid(5, 7);
+      }
+    }
+
+    &.\--cta-content {
+      padding: {
+        left: 8px;
+        right: 8px;
+      }
+      @media (min-width: $tablet) {
+        @include flexGrid(6, 7);
+      }
+
+      @media (min-width: $desktop-small-1025) {
+        padding: {
+          top: 32px;
+          bottom: 32px;
+          left: 16px;
+          right: 16px;
+        }
+      }
+    }
+
+    .\--subheading-inside-content-box & {
+      padding: {
+        top: 24px;
+      }
+    }
+  }
+
+  &__content-wrapper {
+    @media (min-width: $tablet) {
+      flex-basis: 46%;
+      max-width: 46%;
+      position: absolute;
+      bottom: 16px;
+      left: 36px;
+    }
+    @media (min-width: 810px) {
+      flex-basis: 35.548%;
+      max-width: 35.548%;
+      left: 72px;
+      bottom: 32px;
+    }
+    @media (min-width: $desktop-small-1025) {
+      flex-basis: 33.889%;
+      max-width: 33.889%;
+      left: 112px;
+    }
+    @media (min-width: $desktop) {
+      bottom: 80px;
+    }
+
+    .columns__left & {
+      @media (min-width: $desktop) {
+        bottom: 32px;
+      }
+    }
+
+    .\--cta-header & {
+      @media (min-width: $tablet) {
+        flex-basis: 65%;
+        max-width: 65%;
+      }
+
+      @media (min-width: $desktop-small-1025) {
+        flex-basis: 45%;
+        max-width: 45%;
+      }
+    }
+
+    .--hero-form & {
+      @media (min-width: $desktop) {
+        left: 40px;
+        flex-basis: 27.589%;
+        max-width: 27.589%;
+      }
+
+      @media (min-width: $desktop-medium) {
+        flex-basis: 33.889%;
+        max-width: 33.889%;
+      }
+      @media (min-width: $desktop-medium-large) {
+        left: 112px;
+      }
+    }
+  }
+
+  &__content-header {
+    .\--cta-content & {
+      margin: {
+        left: 16px;
+        right: 16px;
+      }
+    }
+  }
+
+  &__cta {
+    text-align: center;
+    padding: {
+      top: 7px;
+      bottom: 7px;
+      left: 24px;
+      right: 24px;
+    }
+
+    margin: {
+      top: 8px;
+      bottom: 8px;
+      left: 16px;
+      right: 16px;
+    }
+
+    font-size: 1rem;
+    font-weight: 500;
+    color: $azBlue;
+    line-height: 1.5;
+    border: solid 1px white;
+    border-radius: 20px;
+    background-color: white;
+    flex-basis: calc(45% - 10px);
+    min-width: 200px;
+    width: calc(100% - 10px);
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    &.\--outline-button {
+      background-color: transparent;
+      color: white;
+    }
+
+    &.\--alt-cta {
+      margin: 0;
+    }
+
+    //Adding sentence case to buttons as requested
+    &::first-letter {
+      text-transform: capitalize;
+    }
+  }
+
+  &__cta-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: {
+      top: 24px;
+    }
+  }
+
+  &__main-heading {
+    font-size: 1.5rem;
+    line-height: 1.333;
+    background: transparent;
+    color: #ffffff;
+    font-weight: 500;
+    padding: {
+      bottom: 8px;
+    }
+
+    @media (min-width: $tablet) {
+      font-size: 1.75rem;
+      line-height: 1.43;
+    }
+
+    @media (min-width: $desktop-small-1025) {
+      font-size: 2rem;
+    }
+  }
+
+  &__copy-container {
+    p.paid-hero-space__copy {
+      font-size: 1rem;
+      line-height: 24px;
+      color: $lighterGray;
+      font-weight: 400;
+
+      @media (min-width: $desktop-small-1025) {
+        font-size: 1.25rem;
+      }
+    }
+  }
+
+  //have to include this separately or it changes the css render order and breaks the pattern.
+  &__heading {
+    @include h5;
+    @include marginMedium;
+  }
+
+  &__heading {
+    background: transparent;
+    background: transparent;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+
+    @media (min-width: $tablet) {
+      padding-left: 0;
+    }
+
+    .\--white-background & {
+      color: $azBlue;
+    }
+
+    .\--subheading-inside-content-box & {
+      color: white;
+    }
+  }
+
+  &__heading-wrapper {
+    padding: {
+      left: 16px;
+    }
+
+    @media (min-width: $tablet) {
+      padding: {
+        left: 0;
+      }
+    }
+
+    .\--quote-header & {
+      @media (min-width: $tablet) {
+        @include flexGrid(5, 7);
+      }
+    }
+
+    .\--cta-header & {
+      @media (min-width: $tablet) {
+        @include flexGrid(6, 7);
+      }
+    }
+
+    .\--subheading-inside-content-box & {
+      padding: {
+        left: 24px;
+        top: 16px;
+      }
+
+      @media (min-width: $tablet) {
+        padding: {
+          top: 24px;
+        }
+      }
+    }
+  }
+
+  &__quote,
+  &__quote p {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.3333;
+    @media (min-width: $tablet) {
+      font-size: 1.75rem;
+      line-height: 1.25;
+    }
+
+    .\--long-text & {
+      font-size: 1.375rem;
+
+      @media (min-width: $tablet) {
+        font-size: 1.5rem;
+      }
+
+      @media (min-width: $desktop-small-1025) {
+        font-size: 1.75rem;
+      }
+    }
+  }
+
+  &__quote p {
+    display: inline;
+  }
+
+  &__quote-source {
+    margin: {
+      top: 16px;
+    }
+
+    font-size: 1.25rem;
+    line-height: 1.2;
+    font-weight: 400;
+    color: $lighterGray;
+
+    @media (min-width: $desktop-small-1025) {
+      font-size: 1.5rem;
+      line-height: 1.3333;
+    }
+  }
+
+  &__quote-link {
+    font-size: 0.875rem;
+    line-height: 1.286;
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.25s ease-in-out;
+    &:visited,
+    &:hover {
+      color: white;
+    }
+
+    svg {
+      margin-left: 10px;
+      transition: transform 0.25s ease-in-out;
+    }
+
+    &:hover {
+      svg {
+        transform: translateX(7px);
+      }
+    }
+  }
+
+  &__quote-header {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  &__mobile-subheading {
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 24px;
+    color: $lighterGray;
+    @include rems(20px);
+    line-height: 1.2;
+
+    @media (min-width: $tablet) {
+      display: none;
+    }
+  }
+
+  &__image {
+    // forcing background image that gets added through js in paragraph--paid-hero.html.twig to none when it hits the mobile design breakpoint
+    @media (max-width: 767px) {
+      background-image: none !important;
+    }
+
+    @media (min-width: $tablet) {
+      flex-basis: 66.7%;
+      max-width: 66.7%;
+      padding-top: 44.532%;
+      background-image: unset;
+      position: relative;
+      background-size: cover;
+      background-position: center center;
+      margin: {
+        left: auto;
+      }
+    }
+
+    @media (min-width: $desktop-small-1025) {
+      flex-basis: 62.431%;
+      max-width: 62.431%;
+      padding-top: 41.667%;
+    }
+
+    @media (min-width: $desktop-medium) {
+      @include flexGrid(6, 9);
+    }
+
+    &::before {
+      @media (min-width: 960px) {
+        content: "";
+        border-top: 5px solid $azRed;
+        width: 80px;
+        position: absolute;
+        top: 64px;
+        left: -6%;
+
+        @media (min-width: $desktop-small-1025) {
+          left: -5%;
+        }
+
+        @media (min-width: $desktop) {
+          left: -4%;
+        }
+      }
+
+      .columns__left & {
+        @media (max-width: 1400px) and (min-width: $desktop) {
+          display: none;
+        }
+        @media (min-width: $desktop) {
+          top: 32px;
+        }
+        @media (min-width: $desktop-medium) {
+          top: 64px;
+        }
+      }
+    }
+
+    .\--quote-header & {
+      &:before {
+        @media (min-width: $tablet) {
+          top: 8%;
+        }
+      }
+    }
+
+    .\--cta-header & {
+      &:before {
+        display: none;
+      }
+    }
+
+    .--hero-form & {
+      @media (min-width: $desktop) {
+        margin-left: 16.25%;
+      }
+      @media (min-width: 1335px) {
+        margin-left: 21.8%;
+      }
+
+      @media (min-width: $desktop-medium-large) {
+        margin: {
+          left: auto;
+        }
+      }
+    }
+  }
+
+  &__image-desktop {
+    display: none;
+  }
+
+  &__image-mobile {
+    display: block;
+    width: 100%;
+    height: auto;
+
+    @media (min-width: $tablet) {
+      display: none;
+    }
+  }
+
+  .node--type-paid-landing-page & {
+    .paid-hero-space__content-wrapper {
+      bottom: 56px;
+    }
+    .paid-hero-space__content {
+      padding: {
+        top: 32px;
+        bottom: 32px;
+        left: 32px;
+        right: 32px;
+      }
+    }
+  }
+}

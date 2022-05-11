@@ -1,0 +1,10 @@
+<div class="partner-display__no-results-container --js-partner-display-no-results"><div class="partner-display__no-results">No  results found for '<span class="partner-display__no-results-query"></span>'</div>
+<div class="partner-display__no-results-invite"><div class="partner-display__no-results-invite-content"><span class="partner-display__no-results-invite-text">Invite your employer to partner with UAGC.</span><a href="/partner" class="partner-display__no-results-link">Partner with UAGC</a></div></div>
+</div>
+<script>
+document.querySelectorAll('.--js-partner-display-no-results').forEach(function(noResultElement) {
+  let inputElement = noResultElement.closest('.partner-display').querySelector('input.form-text[name="title"]');
+  document.querySelector('.partner-display__no-results-query').innerText = inputElement.value;
+  
+});
+</script>

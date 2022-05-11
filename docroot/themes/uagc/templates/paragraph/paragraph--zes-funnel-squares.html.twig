@@ -1,0 +1,30 @@
+{% set greyBackgroundClass = '' %}
+
+{% if paragraph.field_swap_order.value == 1 %}
+  {% set orderClass = '--swap-sides' %}
+{% endif %}
+
+{% if paragraph.field_display_grey_background.value  == 1 %}
+  {% set greyBackgroundClass = '--grey-background' %}
+{% endif %}
+
+<div class="funnel-squares js-funnel-squares   {{ greyBackgroundClass }}">
+    <div class="funnel-squares__header">
+        <h3>{{content.field_funnel_sq_header_title}}</h3>
+        <p>{{content.field_funnel_sq_header_sub_text}}</p>
+    </div>
+    <div class="funnel-squares__wrapper">
+        <div  class="funnel-squares__container">
+            <ul class="funnel-squares__items">
+                {% for item in content.field_funnel_square_list['#items']|keys%}
+                    {{ content.field_funnel_square_list[item] }}
+                {% endfor %}
+            </ul>
+            {% if content.field_funnel_square_list['#items']|length > 6 %}
+            <div class="funnel-squares__readmore-container">
+                <button type="button" class="funnel-squares__readmore button--white js-funnel-readmore">See More</button>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

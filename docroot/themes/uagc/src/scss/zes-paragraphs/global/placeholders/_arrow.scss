@@ -1,0 +1,56 @@
+@mixin arrow--animated-white() {
+  padding-right: 15px;
+  &:after {
+    @include image-replace(7px,13px);
+    @include svg-background(arrow-right-white);
+    background-size: 7px 13px;
+    content: "";
+    display: inline-block;
+    margin-left: -7px;
+    transition: transform 0.3s linear;
+    transform: translate(14px,1px);
+  }
+  &:hover, &:focus {
+    &:after {
+      transform: translate(18px,1px);
+    }
+  }
+}
+
+@mixin arrow--animated-purple() {
+  padding-right: 15px;
+  &:after {
+    @include image-replace(7px,13px);
+    @include svg-background(arrow-right-purple);
+    background-size: 7px 13px;
+    content: "";
+    display: inline-block;
+    margin-left: -7px;
+    transition: transform 0.3s linear;
+    transform: translate(14px,1px);
+  }
+  &:hover, &:focus {
+    &:after {
+      transform: translate(18px,1px);
+    }
+  }
+}
+
+@mixin arrow--animated-red() {
+  padding-right: 15px;
+  &:after {
+    @include image-replace(7px,13px);
+    @include svg-background(arrow-right-red);
+    background-size: 7px 13px;
+    content: "";
+    display: inline-block;
+    margin-left: -7px;
+    transition: transform 0.3s linear;
+    transform: translate(14px,1px);
+  }
+  &:hover, &:focus {
+    &:after {
+      transform: translate(18px,1px);
+    }
+  }
+}

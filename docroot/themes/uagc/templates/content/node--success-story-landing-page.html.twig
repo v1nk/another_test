@@ -1,0 +1,31 @@
+{{ attach_library('uagc/main') }}
+{{ attach_library('uagc/success-story-landing-page') }}
+
+{# article element can be switch out for section element if its a listing page #}
+{%
+  set classes = [
+    'site-layout__article',
+    node.getType,
+  ]
+%}
+<article {{ attributes.addClass(classes) }}>
+    <header class="site-layout__article-header">
+      {# hero content #}
+      {{content.field_header_paragraphs}}
+    </header>
+    <div class="site-layout__article-content">
+        {# sections for  width restricted and full width  can have multiple of each type #}
+            {# section for content that is restricted to 1440px #}
+
+
+        {{content.field_paragraphs}}
+        
+    </div>
+</article>
+{% if bottom_content|keys is not empty %}
+    <div class="site-layout__footer">
+        {{ bottom_content }}
+    </div>
+{% endif %}
+
+

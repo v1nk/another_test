@@ -1,0 +1,63 @@
+{% set spacingCondition = '' %}
+{% set loopLength = '' %}
+
+{% if content.field_cta['#items'].value is empty %}
+  {% set spacingCondition = ' --add-spacing' %}
+{% endif %}
+
+{% for item in paragraph.field_related_articles %}
+  {% if loop.length == 3 %}
+    {% set loopLength = ' --three-column' %}
+  {% endif %}
+{% endfor %}
+
+<div class="related-articles{{loopLength}}">
+  <div class="related-articles__red-line"></div>
+  <div class="related-articles__heading-container">
+    <h2 class="related-articles__heading{{spacingCondition}}">{{ content.field_heading.0 }}</h2>
+
+    {% if content.field_cta['#items'].value %}
+      <div class="related-articles__top-cta-container">
+        <a href="{{paragraph.field_cta.0.url}}" class="related-articles__top-cta">
+          <span>{{paragraph.field_cta.0.title}}</span>
+          <svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.83398 14.1668L14.1673 5.8335" stroke="#AB0520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5.83398 5.8335H14.1673V14.1668" stroke="#AB0520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="related-articles__card-wrapper">
+    {% for item in paragraph.field_related_articles %}
+      <a class="related-articles__card-container" href="{{ path('entity.node.canonical', {'node': item.entity.id}) }}">
+        <img class="related-articles__image" src="{{item.entity.field_featured_image.entity.field_media_image.0.entity.uri.value|image_style('related_articles_324x208')}}" alt="{{item.entity.field_featured_image.entity.field_media_image.alt}}">
+        <div class="related-articles__category">{{item.entity.field_article_category.entity.name.0.value}}</div>
+        <div class="related-articles__content">
+          <h3 class="related-articles__title">{{item.entity.label}}</h3>
+          <div class="related-articles__info-container">
+            <div class="related-articles__info">
+              {{item.entity.created.value|date('F j, Y')}}
+              {% if item.entity.field_read_length.0.value %}
+                <span class="related-articles__ellipse"></span>
+                {{item.entity.field_read_length.0.value}}
+              {% endif %}
+            </div>
+            <div class="related-articles__cta-container">
+              <div class="related-articles__cta">
+                <span class="related-articles__cta-text">Read Article</span>
+                <svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.1665 10H15.8332" stroke="#AB0520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="#AB0520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+
+
+</div>

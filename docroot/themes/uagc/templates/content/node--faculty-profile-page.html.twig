@@ -1,0 +1,133 @@
+{{ attach_library('uagc/main') }}
+
+{# {{ attach_library('uagc/faculty-profile') }} #}
+
+
+<script type="text/javascript">
+    window.ashfordlfs = window.ashfordlfs || {};
+    window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }} = window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }} || {};
+  
+    {% if node.field_clientdocumentid.value != '' %}
+      window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }}.clientdocumentid = '{{ node.field_clientdocumentid.value }}';
+    {% endif %}
+  
+    {% if node.field_sourceid.value != '' %}
+      window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }}.sourceid = '{{ node.field_sourceid.value }}';
+    {% endif %}
+  
+    {% if node.field_revisionid.value != '' %}
+      window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }}.revisionid = '{{ node.field_revisionid.value }}';
+    {% endif %}
+  
+    {% if node.field_form_id_class	.value != '' %}
+      window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }}.formidclass = '{{ node.field_form_id_class	.value }}';
+    {% endif %}
+  
+
+    
+  window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }}.degrees = [
+  {% for key, item in node.field_degrees if key|first != '#' %}
+  '{{item.entity.title.value}}',
+  {% endfor %}
+  ];
+
+  window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }}.interests = [
+  {% for key, item in node.field_interest if key|first != '#' %}
+    '{{item.entity.name.value | raw}}',
+  {% endfor %}
+  ];
+
+  
+  </script>
+  
+
+
+
+<section class="faculty-profile">
+
+    <div class="faculty-profile__header">
+        {% set imageURL = file_url(node.field_featured_image.0.entity.field_media_image.0.entity.uri.0.value) %}
+        {% set imageAltValue = node.field_featured_image.entity.field_media_image.alt %}
+
+    
+        <div class="faculty-profile-header">
+            <div class="faculty-profile-header__image-wrapper">
+                <img src="{{ imageURL }}" class="faculty-profile-header__image" alt="{{ imageAltValue }}">
+            </div>
+            <div class="faculty-profile-header__content-wrapper">
+                <h1 class="faculty-profile-header__name">{{ content.field_faculty_member_name }}</h1>
+                {% if content.field_header_text['#items'].value %}
+                    <p class="faculty-profile-header__role">{{ content.field_header_text }}</p>
+                {% endif %}
+
+                <div class="faculty-profile-header__info-wrapper">
+                    <div class="faculty-profile-header__info">
+                        <div class="faculty-profile-header__info-heading">Position</div>
+                        <div class="faculty-profile-header__info-name">{{ content.field_profile_header_position }}</div>
+                    </div>
+                    <div class="faculty-profile-header__info">
+                        <div class="faculty-profile-header__info-heading">College</div>
+                        <div class="faculty-profile-header__info-name">{{ content.field_college.0['#title']  }}</div>
+                    </div>
+                    <div class="faculty-profile-header__info">
+                        <div class="faculty-profile-header__info-heading">Field</div>
+                        <div class="faculty-profile-header__info-name">{{ content.field_interest.0['#title']  }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# Setting icon color to change colored lines and icons for any corresponding spot in body #}
+    {% set iconColor = content.field_icon_color['#items'].value %}
+
+    <div class="faculty-profile__body {{ iconColor }}">
+        <div class="faculty-profile__sidebar">
+            {% if content.field_quote_text['#items'].value %}
+                <div class="faculty-profile__quote">
+                    "{{ content.field_quote_text.0 }}"
+                </div>
+                <div class="faculty-profile__quote-line"></div>
+            {% endif %}
+
+            {% if content.field_sidebar_background['#items'].value %}
+                <div class="faculty-profile__sidebar-background">
+                    {{ content.field_sidebar_background }}
+                </div>
+            {% endif %}
+
+            {% if content.field_contact_links['#items'].value %}
+                <h4 class="faculty-profile__contact-heading">Contact</h4>
+                <div class="faculty-profile__contact-links">
+                    {{ content.field_contact_links }}
+                </div>
+            {% endif %}
+
+        </div>
+        <div class="faculty-profile__content">
+            {% if content.field_body_paragraphs['#items'].value %}
+                {{ content.field_body_paragraphs }}
+            {% endif %}
+        </div>
+    </div>
+
+
+</section>
+
+{% if (node.field_hide_form.value != 1) %}
+    <div class="form-onestep js-form-onestep" data-containerid="{{ node.bundle ~ node.getCreatedTime() | clean_class }}">
+        <div class="form-onestep__wrapper">
+            {% if node.field_navy_red_heading is empty %}
+                <h2 class="form-onestep__header">Questions? Talk with an Advisor</h2>
+            {% else %}
+                <h2 class="form-onestep__header">{{ content.field_navy_red_heading }}</h2>
+            {% endif %}
+            <div class="form-onestep__form one-step-webform" data-containerid="{{ node.bundle ~ node.getCreatedTime() | clean_class}}">
+                {{drupal_entity('webform', 'lead_flow_cta', check_access=false)}}
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{{attach_library('uagc/lead-form-logic')}}
+{{attach_library('uagc/two-step-paid')}}

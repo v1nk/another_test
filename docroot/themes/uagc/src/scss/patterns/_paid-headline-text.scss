@@ -1,0 +1,342 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.paid-headline-text {
+  @include globalGutters;
+
+  @media (max-width: $desktop) and (min-width: $desktop) {
+    padding: {
+      left: 60px;
+      right: 60px;
+    }
+  }
+  @media (min-width: $desktop-medium-large) {
+    &:not(.columns__left &) {
+      padding: {
+        left: 0;
+        right: 0;
+      }
+      width: 100%;
+    }
+  }
+
+  &.\--grey-background {
+    background-color: $lighterGray;
+  }
+
+  &__red-line {
+    position: relative;
+    padding: {
+      bottom: 16px;
+    }
+
+    @media (min-width: $tablet) {
+      padding: {
+        bottom: 24px;
+      }
+    }
+
+    &::after {
+      content: "";
+      border-top: 2px solid $azRed;
+      width: 80px;
+      position: absolute;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: $tablet) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        max-width: 1440px;
+        justify-content: space-between;
+        margin: {
+          left: auto;
+          right: auto;
+        }
+      }
+    }
+
+    &.\--swap-sides {
+      @media (min-width: $tablet) {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+
+  &__heading-container {
+    @media (min-width: $tablet) {
+      flex-basis: 45%;
+      max-width: 45%;
+      padding: {
+        right: 32px;
+      }
+    }
+
+    @media (min-width: $desktop) {
+      flex-basis: calc(50% - 16px);
+      max-width: calc(50% - 16px);
+    }
+
+    .--swap-sides & {
+      @media (min-width: $tablet) {
+        padding: {
+          right: 0;
+          left: 32px;
+        }
+      }
+    }
+  }
+
+  &__top-heading {
+    color: $azBlue;
+    font-weight: 500;
+    margin: {
+      bottom: 40px;
+    }
+
+    @media (min-width: $tablet) {
+      text-align: center;
+    }
+
+    span {
+      padding: {
+        left: 6px;
+      }
+
+      &:first-child {
+        padding: {
+          left: 0;
+        }
+      }
+    }
+
+    .--navy-heading,
+    .--red-heading {
+      @include rems(28px);
+      line-height: 1.14;
+
+      @media (min-width: $tablet) {
+        @include rems(36px);
+        line-height: 1.33;
+      }
+    }
+
+    .--red-heading {
+      color: $azRed;
+    }
+  }
+
+  &__heading {
+    @include rems(26px);
+    line-height: 1.23;
+    color: $azBlue;
+    font-weight: 500;
+    margin: {
+      bottom: 24px;
+    }
+
+    span {
+      padding: {
+        left: 6px;
+      }
+
+      &:first-child {
+        padding: {
+          left: 0;
+        }
+      }
+    }
+
+    .--navy-heading,
+    .--red-heading {
+      @include rems(26px);
+      line-height: 1.23;
+
+      @media (min-width: $tablet) {
+        @include rems(32px);
+        line-height: 1.25;
+      }
+    }
+
+    .--red-heading {
+      color: $azRed;
+    }
+  }
+
+  &__subheading {
+    @include rems(20px);
+    line-height: 1.2;
+    color: $azBlue;
+    font-weight: 500;
+    margin: {
+      bottom: 24px;
+    }
+
+    @media (min-width: $tablet) {
+      @include rems(24px);
+      line-height: 1.33;
+      margin: {
+        bottom: 32px;
+      }
+    }
+  }
+
+  //Styling for wysiwyg
+  &__wysiwyg {
+    @media (min-width: $tablet) {
+      flex-basis: 55%;
+      max-width: 55%;
+    }
+    @media (min-width: $desktop) {
+      flex-basis: calc(50% - 16px);
+      max-width: calc(50% - 16px);
+    }
+
+    p,
+    li {
+      @include rems(20px);
+      line-height: 1.2;
+      color: $black;
+      margin: 0;
+      font-weight: 400;
+    }
+
+    strong,
+    b {
+      font-weight: 500;
+    }
+
+    a {
+      color: $azRed;
+    }
+
+    ul {
+      list-style: disc;
+      padding: {
+        top: 16px;
+        bottom: 16px;
+        left: 32px;
+      }
+
+      &.columns--2 {
+        display: flex;
+        flex-wrap: wrap;
+        padding: {
+          left: 22px;
+        }
+
+        li {
+          flex-basis: 50%;
+          max-width: 50%;
+
+          &:nth-child(odd) {
+            padding: {
+              right: 24px;
+            }
+          }
+        }
+      }
+    }
+
+    ol {
+      list-style: number;
+    }
+
+    li {
+      font-weight: 400;
+      margin: {
+        bottom: 16px;
+      }
+
+      &:last-child {
+        margin: {
+          bottom: 0;
+        }
+      }
+
+      &::marker {
+        color: $azRed;
+        font-size: 1.5625rem;
+      }
+    }
+
+    //custom class that was added to wysiwyg
+    .top-bottom-spacing {
+      padding: {
+        top: 24px;
+        bottom: 24px;
+      }
+    }
+  }
+
+  &__cta {
+    display: none;
+
+    @media (min-width: $tablet) {
+      display: inline-block;
+      text-decoration: none;
+      background: transparent;
+      height: unset;
+      padding: {
+        left: 24px;
+        right: 24px;
+      }
+    }
+
+    &.\--first-cta {
+      @media (min-width: $tablet) {
+        background-color: $azBlue;
+        color: white;
+        margin: {
+          bottom: 16px;
+          right: 16px;
+        }
+        transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+        &:hover {
+          background-color: transparent;
+          color: $azBlue;
+        }
+      }
+    }
+  }
+
+  &__mobile-cta-container {
+    display: flex;
+    flex-direction: column;
+    padding: {
+      top: 24px;
+    }
+
+    @media (min-width: $tablet) {
+      display: none;
+    }
+  }
+
+  &__mobile-cta {
+    text-decoration: none;
+    background: transparent;
+
+    &:first-child {
+      background-color: $azBlue;
+      color: white;
+      margin: {
+        bottom: 16px;
+      }
+      transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+      &:hover {
+        background-color: transparent;
+        color: $azBlue;
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.sidebar-background {
+  &__header {
+    @include rems(26px);
+    line-height: 1.23;
+    color: $azBlue;
+    font-weight: 500;
+    padding: {
+      top: 40px;
+      bottom: 24px;
+    }
+
+    @media (min-width: $tablet) {
+      @include rems(28px);
+      line-height: 1.42;
+    }
+  }
+  &__bullet {
+    float: left;
+    margin-left: -20px;
+  }
+
+  &__list-item {
+    @include rems(16px);
+    line-height: 1.5;
+    font-weight: 500;
+    color: $black;
+    position: relative;
+    margin: 0;
+    padding: {
+      bottom: 16px;
+      left: 20px;
+    }
+  }
+
+  &__list-text {
+    @include rems(14px);
+    line-height: 1.29;
+    font-weight: 400;
+    color: $black;
+    margin: {
+      bottom: 0;
+      top: 4px;
+    }
+
+    @media (min-width: $tablet) {
+      @include rems(16px);
+      line-height: 1.5;
+    }
+  }
+}

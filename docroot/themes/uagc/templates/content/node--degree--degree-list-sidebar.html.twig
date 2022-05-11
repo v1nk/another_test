@@ -1,0 +1,19 @@
+<div class="degree-list-sidebar__single-degree">
+    <a class="degree-list-sidebar__degree-link" href="{{node.path.0.alias}}" >
+        <div class="degree-list-sidebar__content-wrapper">
+            <div class="degree-list-sidebar__degree-header">
+                {{node.title.0.value}}
+            </div>
+            <div class="degree-list-sidebar__degree-college">
+                {{content.field_college.0['#title']}}
+            </div>
+            <div class="degree-list-sidebar__degree-description">
+                {{ node.body.0.summary }}
+            </div>
+        </div>
+        <div class="degree-list-sidebar__view-details">
+            View Details
+            {% include directory ~ '/templates/svg-icons/arrow-right.html.twig'%}
+        </div>
+    </a>
+</div>

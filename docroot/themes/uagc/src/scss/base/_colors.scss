@@ -1,0 +1,115 @@
+//Primary
+$azRedLight: #c10121;
+$azRed: #ab0520;
+$azRedDark: #990019;
+
+$azBlueLight: #092e6c;
+$azBlue: #0c234b;
+$azBlueDark: #05193c;
+
+$orangeDark: #dc8a00;
+$orange: #ef9600;
+$orangeLight: #ffac23;
+
+$sky: #81d3eb;
+$blue: #0076a8;
+$river: #007d8a;
+
+$lighterGray: #f1f1f0;
+$footerGray: #e5e5e5;
+$lightGray: #d0d0ce;
+$silver: #98a4ae;
+$darkGray: #53565a;
+
+$tan: #d6d2c4;
+$yellow: #f9e17d;
+$purple: #621244;
+
+$black: #111111;
+
+.colorswatch {
+  height: 120px;
+  width: 120px;
+  display: inline-block;
+  margin: 10px;
+  text-transform: capitalize;
+  padding: 10px;
+  border-radius: 4px;
+
+  &-azRedLight {
+    background-color: $azRedLight;
+    color: white;
+  }
+
+  &-azRed {
+    background-color: $azRed;
+    color: white;
+  }
+  &-azRedDark {
+    background-color: $azRedDark;
+    color: white;
+  }
+
+  &-azBlueLight {
+    background-color: $azBlueLight;
+    color: white;
+  }
+
+  &-azBlue {
+    background-color: $azBlue;
+    color: white;
+  }
+  &-azBlueDark {
+    background-color: $azBlueDark;
+    color: white;
+  }
+
+  &-orangeLight {
+    background-color: $orangeLight;
+  }
+
+  &-orange {
+    background-color: $orange;
+  }
+
+  &-orangeDark {
+    background-color: $orangeDark;
+  }
+
+  &-sky {
+    background-color: $sky;
+  }
+  &-blue {
+    background-color: $blue;
+  }
+  &-river {
+    background-color: $river;
+  }
+  &-lighterGray {
+    background-color: $lighterGray;
+  }
+  &-lightGray {
+    background-color: $lightGray;
+  }
+  &-silver {
+    background-color: $silver;
+  }
+  &-darkGray {
+    background-color: $darkGray;
+    color: white;
+  }
+  &-tan {
+    background-color: $tan;
+  }
+  &-yellow {
+    background-color: $yellow;
+  }
+  &-purple {
+    background-color: $purple;
+    color: white;
+  }
+  &-black {
+    color: white;
+    background-color: $black;
+  }
+}

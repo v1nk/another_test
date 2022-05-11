@@ -1,0 +1,54 @@
+{% set iconValue = paragraph.field_icon_selection.0.value %}
+
+{% set educationClass = '' %}
+{% if paragraph.field_heading.value  == 'Education' %}
+  {% set educationClass = ' --education' %}
+{% endif %}
+
+
+<div class="faculty-profile-background">
+    <div class="faculty-profile-background__header-container">
+
+        {% if iconValue == "grad-cap" %}
+            <span class="faculty-profile-background__icon">
+                <svg class="faculty-profile-background__icon-grad-cap"  width="34" height="48" viewBox="0 0 34 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.1709 25.3848V30.5819C12.2232 35.6888 20.414 35.6888 25.4659 30.5819V25.3848" stroke="none" stroke-width="2"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.1301 13.6344L1.22237 21.4188C0.925875 21.5734 0.925875 22.0017 1.22237 22.1563L16.1301 29.9407C16.2481 30.0025 16.389 30.0025 16.507 29.9407L31.4147 22.1563C31.7112 22.0017 31.7112 21.5734 31.4147 21.4188L16.507 13.6344C16.389 13.5726 16.2481 13.5726 16.1301 13.6344Z" stroke="none" stroke-width="2"/>
+                    <path d="M31.6372 21.7875V27.8573" stroke="none" stroke-width="2"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M33 29.51C33 28.7494 32.3896 28.1324 31.6371 28.1324C30.8843 28.1324 30.2739 28.7494 30.2739 29.51C30.2739 30.271 30.8843 30.8876 31.6371 30.8876C32.3896 30.8876 33 30.271 33 29.51Z" fill="none" stroke="none" stroke-width="2"/>
+                </svg>   
+            </span>
+        {% elseif iconValue == "check-mark" %}
+            <span class="faculty-profile-background__icon">
+                <svg width="34" height="48" viewBox="0 0 34 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.9968 8L20.4465 11.1193L24.9952 10.141L26.4247 14.569L30.8527 15.9984L29.8743 20.5472L33 23.9968L29.8743 27.4465L30.8527 31.9952L26.4247 33.4247L24.9952 37.8527L20.4465 36.8743L16.9968 40L13.5472 36.8743L8.99841 37.8527L7.56899 33.4247L3.14096 31.9952L4.11932 27.4465L1 23.9968L4.11932 20.5472L3.14096 15.9984L7.56899 14.569L8.99841 10.141L13.5472 11.1193L16.9968 8Z" stroke="none" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M11.8906 24.4733L14.0252 28.2343L22.1126 19.7594" stroke="none" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>    
+            </span>
+        {% elseif iconValue == "medal" %}
+            <span class="faculty-profile-background__icon">
+                <svg width="28" height="48" viewBox="0 0 28 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14 33.1687C21.1797 33.1687 27 27.3106 27 20.0844C27 12.8581 21.1797 7 14 7C6.8203 7 1 12.8581 1 20.0844C1 27.3106 6.8203 33.1687 14 33.1687Z" stroke="none" stroke-width="2" stroke-miterlimit="10"/>
+                    <path d="M22.3483 30.1151L25.8913 36.8575L20.5131 36.0994L18.1157 41.0001L13.9999 33.1687L9.8893 41.0001L7.48661 36.0994L2.1084 36.8575L5.65144 30.1151" stroke="none" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M14.0002 13.4167L16.1536 17.8049L20.9643 18.5096L17.4849 21.9261L18.307 26.752L14.0002 24.4725L9.69341 26.752L10.5155 21.9261L7.03613 18.5096L11.8468 17.8049L14.0002 13.4167Z" stroke="none" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>    
+            </span>
+        {% endif %}
+
+        <h3 class="faculty-profile-background__header">{{ content.field_heading.0 }}</h3>
+    </div>
+
+    <ul class="faculty-profile-background__list{{educationClass}}">
+        {% for item in paragraph.field_list_items %}
+            <li class="faculty-profile-background__list-item">
+                <div class="faculty-profile-background__bullet">
+                    <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="4" cy="4" r="4" fill="#0C234B"/>
+                    </svg>
+                </div>   
+                {{ item.entity.field_heading.0.value }}
+                <p class="faculty-profile-background__list-text">{{ item.entity.field_text.0.value }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

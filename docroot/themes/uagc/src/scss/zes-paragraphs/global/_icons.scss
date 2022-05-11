@@ -1,0 +1,55 @@
+.benefits-icons {
+  padding-left: 4px;
+
+  li {
+    display: block;
+
+    list-style: none;
+    min-height: 35px;
+    @include breakpoint(max-width $bp--mobile, $no-query: true) {
+      min-height: 65px;
+    }
+    padding-bottom: 5px;
+  }
+
+  li:before {
+    background-size: 30px;
+    background-repeat: no-repeat;
+    content: ' ';
+    display: block;
+    float: left;
+    height: 38px;
+    padding-right: 56px;
+    @include breakpoint(max-width $bp--mobile, $no-query: true) {
+      height: 65px;
+    }
+  }
+
+  li:nth-child(1):before {
+    background-image: url('../zes-icons/affordable-icon.png');
+  }
+
+  li:nth-child(2):before {
+    background-image: url('../zes-icons/convenient-icon.png');
+  }
+
+  li:nth-child(3):before {
+    background-image: url('../zes-icons/5week-icon.png');
+  }
+
+  li:nth-child(4):before {
+    background-image: url('../zes-icons/transfer-icon.png');
+  }
+
+  li:nth-child(5):before {
+    background-image: url('../zes-icons/247-icon.png');
+  }
+
+  li:nth-child(6):before {
+    background-image: url('../zes-icons/promise-icon.png');
+  }
+
+  li:nth-child(7):before {
+    background-image: url('../zes-icons/tuition-icon.png');
+  }
+}

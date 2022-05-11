@@ -1,0 +1,93 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.author-bio {
+  margin: {
+    bottom: 32px;
+  }
+  &__header {
+    display: flex;
+    flex-basis: 100%;
+  }
+  &__image-container {
+    position: relative;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: {
+      top: 8px;
+      right: 8px;
+    }
+  }
+  &__image {
+    position: absolute;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+  }
+  &__content {
+    flex-basis: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    @include textSmall;
+    align-content: flex-start;
+  }
+  &__label {
+    flex-basis: 100%;
+    color: $silver;
+    // margin: {
+    //   bottom: 4px;
+    // }
+  }
+  &__name {
+    flex-basis: 100%;
+    color: $azBlue;
+    font-weight: 500;
+    // margin: {
+    //   bottom: 4px;
+    // }
+  }
+  &__titles {
+    flex-basis: 100%;
+    color: $azBlue;
+    font-weight: 500;
+    margin: {
+      bottom: 8px;
+    }
+  }
+  &__excerpt {
+    flex-basis: 100%;
+    color: $black;
+    margin: {
+      top: 16px;
+    }
+    p {
+      @include textMedium;
+    }
+  }
+
+  &__links {
+  }
+  &__link {
+    font-size: 0.6875rem;
+    line-height: 1.45;
+    text-decoration-line: underline;
+    color: $azBlue;
+    margin: {
+      right: 16px;
+    }
+    transition: color 0.25s;
+    &:visited {
+      color: $azBlue;
+    }
+    &:hover,
+    &:focus,
+    &:active {
+      color: $azRed;
+    }
+  }
+}

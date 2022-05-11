@@ -1,0 +1,314 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+
+button,
+input[type="submit"],
+input[type="button"] {
+  -webkit-appearance: none;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+.textbox,
+input[type="password"] {
+  cursor: pointer;
+  background-color: white;
+  border: {
+    bottom: solid 1px $lightGray;
+    top: none;
+    left: none;
+    right: none;
+  }
+
+  height: 40px;
+  padding: {
+    top: 8px;
+    bottom: 8px;
+    left: 0;
+  }
+  color: $azBlue;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 500;
+  box-sizing: border-box;
+  margin-top: 10px;
+
+  &::placeholder {
+    color: $lightGray;
+  }
+
+  &:disabled {
+    border: {
+      bottom: solid 1px $silver;
+      top: none;
+      left: none;
+      right: none;
+    }
+    color: $silver;
+    pointer-events: none;
+  }
+
+  &:focus,
+  &:active {
+    border-bottom: solid 1px $azBlue;
+  }
+}
+
+.\--input-error {
+  border-bottom: solid 1px $azRed !important;
+}
+
+.\--input-error-message {
+  display: block;
+  color: $azRed;
+  margin: {
+    top: 8px;
+    bottom: 8px;
+  }
+  @include rems(14px);
+  line-height: 1.286;
+}
+
+select,
+.select {
+  background-color: white;
+  position: relative;
+  border: {
+    bottom: solid 1px $lightGray;
+    top: none;
+    left: none;
+    right: none;
+  }
+
+  height: 40px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: {
+    top: 8px;
+    bottom: 8px;
+    left: 0;
+  }
+  color: $azBlue;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 500;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  option {
+    cursor: pointer;
+  }
+
+  &:disabled {
+    border: {
+      bottom: solid 1px $silver;
+      top: none;
+      left: none;
+      right: none;
+    }
+    color: $silver;
+    pointer-events: none;
+  }
+
+  &:focus,
+  &:active {
+    border-bottom: solid 1px $azBlue;
+  }
+}
+
+.select__wrapper {
+  position: relative;
+  height: auto;
+  width: auto;
+  display: inline-block;
+  margin-top: 10px;
+
+  &:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 8px;
+    background-color: transparent;
+    background-image: url(../images/icons/chevron-down.svg);
+    background-size: cover;
+    background-position: center;
+    height: 8px;
+    width: 20px;
+    pointer-events: none;
+  }
+}
+.js-form-type-select {
+  position: relative;
+
+  &:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    bottom: 20px;
+    transform: translateY(50%);
+    right: 1px;
+    background-color: white;
+    background-image: url(../images/icons/chevron-down.svg);
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: left;
+    pointer-events: none;
+    height: 38px;
+    width: 28px;
+
+    .\--gray-background & {
+      background-color: $lighterGray;
+    }
+  }
+}
+
+.--input-error {
+  border-bottom: solid 1px $azRed !important;
+}
+
+label {
+  font-size: 0.6875rem;
+  line-height: 1.45;
+  color: $azBlue;
+  display: block;
+  font-weight: 500;
+  margin-top: 10px;
+
+  & + input,
+  & + select {
+    margin-top: 0 !important;
+  }
+}
+
+.password {
+  &__wrapper {
+    position: relative;
+    max-width: 400px;
+    label,
+    input[type="password"],
+    input[type="text"] {
+      width: 100%;
+    }
+
+    label {
+      color: $black;
+    }
+  }
+
+  &__visible-display.password__visible-display {
+    background: url(../images/icons/eye.svg);
+    height: 16px;
+    width: 16px;
+    background-size: cover;
+    position: absolute;
+    bottom: 20px;
+    transform: translateY(50%);
+    right: 8px;
+    &:before,
+    &:after {
+      display: none;
+      content: "";
+    }
+  }
+
+  &__visible-checkbox {
+    opacity: 0;
+    position: absolute;
+
+    &:checked + .password__visible-display {
+      background-image: url(../images/icons/eye-off.svg);
+    }
+  }
+}
+
+input[type="checkbox"],
+.checkbox {
+  opacity: 0;
+  position: absolute;
+  left: -99999px;
+
+  & + label {
+    height: 16px;
+    width: 16px;
+    position: relative;
+    display: block;
+    background-color: $lighterGray;
+
+    &:before {
+      border-radius: 4px;
+      content: " ";
+      height: 16px;
+      width: 16px;
+      border: solid 1px $black;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+
+  & + label {
+    cursor: pointer;
+  }
+
+  &:checked + label:after {
+    background-color: transparent;
+    position: absolute;
+    content: " ";
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url(../images/icons/check.svg);
+    background-size: cover;
+    background-position: 1px 1px;
+  }
+}
+
+//Overriding global checkbox for RFI only
+input[type="checkbox"],
+.form-item-tcpa-checkbox {
+  & + label {
+    &:before {
+      height: 18px;
+      width: 18px;
+      left: -1px;
+      top: -1px;
+    }
+  }
+
+  &:checked + label:after {
+    background-color: $orange;
+    border: 1px solid $orange;
+    border-radius: 4px;
+    height: 18px;
+    width: 18px;
+    left: -1px;
+    top: -1px;
+  }
+}
+
+.form-onestep,
+.form-twostep,
+.stickyrfi-desktop,
+.stickyrfi-mobile,
+.block--modal-rfi,
+.modalrfi,
+.block--academic-partnership-modal,
+.blog-sidebar-form,
+.paid-twostep {
+  select,
+  input {
+    transition: border 0.25s;
+    &:hover {
+      border: 1px solid $blue !important;
+    }
+    &:focus-visible {
+      border: 1px solid $blue !important;
+      outline: 1px solid $blue;
+    }
+  }
+}

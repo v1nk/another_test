@@ -1,0 +1,91 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+@use "../elements/buttons" as *;
+@use "sass:math";
+
+.listing-view {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  @media (min-width: $desktop-small) {
+    flex-wrap: nowrap;
+  }
+  .grid-filter {
+    flex-basis: 100%;
+    max-width: 100%;
+
+    @media (min-width: $desktop-small) {
+      flex-basis: 280px;
+    }
+    @media (min-width: $desktop) {
+      flex-basis: 280px;
+    }
+  }
+  &__wrapper {
+    flex-basis: 100%;
+    @media (min-width: $desktop-small) {
+      flex-basis: 69.09%;
+      margin: {
+        right: -16px;
+      }
+    }
+    @media (min-width: $desktop) {
+      flex-basis: 76.97%;
+    }
+  }
+  &__wrapper-content {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    @media (min-width: $desktop-small) {
+    }
+    @media (min-width: $desktop) {
+      margin-bottom: 24px;
+    }
+  }
+  &__single-wrapper {
+    width: 100%;
+    margin: {
+      bottom: 24px;
+    }
+    @media (min-width: $desktop-small) {
+      flex-basis: 50%;
+      max-width: 50%;
+      margin: {
+        bottom: 48px;
+      }
+    }
+    @media (min-width: $desktop) {
+      flex-basis: 33.33%;
+      max-width: 33.33%;
+    }
+  }
+  &__link-container {
+    width: 100%;
+    @media (min-width: $desktop-small) {
+      height: 100%;
+      padding: {
+        left: 16px;
+        right: 16px;
+      }
+    }
+  }
+  &__card-content {
+    margin: {
+      bottom: 72px;
+    }
+    @media (min-width: $desktop-small) {
+      margin: {
+        bottom: 63px;
+      }
+    }
+  }
+  .pager__item--ellipsis {
+    display: none;
+    @media (min-width: $desktop-small) {
+      display: flex;
+    }
+  }
+}

@@ -1,0 +1,75 @@
+.commencement-hero {
+  height: 475px;
+  &__right-side {
+    position: absolute;
+    top: 0px;
+    background-color: $azBlue;
+    width: 95%;
+    height: 95%;
+    margin: {
+      top: 62px;
+      left: auto;
+      bottom: 62px;
+      right: 62px;
+    }
+    padding: {
+      top: 0px;
+      left: 40px;
+      bottom: 40px;
+      right: 40px;
+    }
+    @include breakpoint(min-width $bp--desktop) {
+      right: 0px;
+      top: 62px;
+      width: 400px;
+      height: 350px;
+    }
+  }
+
+  &__cap-svg {
+    max-width: 93px;
+    max-height: 93px;
+  }
+
+  &__right-side-header {
+    color: white;
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+    margin: {
+      top: 10px;
+      bottom: 5px;
+    }
+  }
+
+  &__right-side-subheader {
+    color: white;
+    font-weight: 400;
+    font-size: 0.875rem;
+    text-transform: none;
+    display: inline-block;
+  }
+
+  &__cta-button {
+    @extend %button-primary;
+    display: block;
+    background-color: $orange;
+    color: $azBlue;
+    text-align: center;
+    text-transform: none;
+    margin: {
+      top: 30px;
+    }
+    &:hover {
+      text-decoration: underline;
+      background-color: lighten($orange, 10%);
+    }
+    a {
+      color: $azBlue;
+    }
+  }
+  &__background-image.commencement-hero__background-image.commencement-hero__background-image {
+    height: 100%;
+  }
+}

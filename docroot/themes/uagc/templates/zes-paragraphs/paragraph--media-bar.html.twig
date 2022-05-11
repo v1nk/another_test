@@ -1,0 +1,23 @@
+<section class="section section--media-bar{% if content.field_media_embed_gradient.0['#markup'] == "Purple" %} is-purple{% endif %}">
+    {% if content.field_video|render %}
+      <div class="section__media section__media-video">
+        <div typeof="schema:VideoObject">
+        <div class="video-embed-field-provider-youtube video-embed-field-responsive-video">
+          <iframe width="854" height="480" frameborder="0" allowfullscreen="allowfullscreen" src="{{ content.field_video }}?autoplay=0&amp;start=0&amp;rel=0"></iframe>
+        </div>
+        </div>
+      </div>
+    {% else %}
+      <div class="section__media section__media-image">
+        {{ content.field_image }}
+      </div>
+    {% endif %}
+  <div class="section__description">
+    <h3 class="section__title">{{ content.field_title }}</h3>
+    <h4 class="section__subtitle">{{ content.field_subtitle }}</h4>
+    <div class="section__intro">
+      {{ content.field_paragraph_body }}
+      {{ content.field_link }}
+    </div>
+  </div>
+</section>

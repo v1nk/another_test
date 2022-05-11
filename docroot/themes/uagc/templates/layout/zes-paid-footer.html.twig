@@ -1,0 +1,16 @@
+{{attach_library('uagc/zes-old-footer')}}
+
+<footer class="footer" role="contentinfo">
+      
+  <div class="footer--paid">
+    <span class="footer--paid-inner">
+      <a class="footer--paid-inner-link" href="https://www.uagc.edu" target="blank">The University of Arizona Global Campus</a>, 180 South Arizona Avenue, Suite #301 Chandler, AZ 85225
+      <br>
+      <a class="footer--paid-inner-link" href="/privacy-policy" target="blank">Privacy Policy</a> |  <a class="footer--paid-inner-link" href="/terms-and-conditions" target="blank">Terms and Conditions</a> | <a href="/do-not-sell/" target="blank" class="js-tracking-alert-disable footer--paid-inner-link">Do Not Sell My Information</a> | Forbes School of Business and Technology® is used under license.
+    </span>
+  </div>
+  {% if page.footer %}
+    {{ page.footer }}
+  {% endif %}
+
+    </footer>

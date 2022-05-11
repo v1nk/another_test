@@ -1,0 +1,38 @@
+
+
+
+
+  {% if content %}
+  
+    {% set orderClass = '' %}
+    {% set greyBackgroundClass = '' %}
+
+    {% if paragraph.field_swap_order.value == 1 %}
+      {% set orderClass = '--swap-sides' %}
+    {% endif %}
+
+    {% if paragraph.field_display_grey_background.value  == 1 %}
+      {% set greyBackgroundClass = '--grey-background' %}
+    {% endif %}
+
+    <section class="basiccontent__wrapper {{greyBackgroundClass}}">
+      <div class="basiccontent {{orderClass}}">
+        <div class="basiccontent__header-wrapper">
+          {% if content.field_headline_html.0|render|trim is not empty %}
+          <h3 class="basiccontent__header">{{ content.field_headline_html.0 }}</h3>
+        {% else %}
+          <h3 class="basiccontent__header">{{ content.field_headline.0 }}</h3>
+        {% endif %}
+        </div>
+        <div class="basiccontent__content-container">
+          {% if content.field_content.0|render|trim is not empty %}
+          <div class="basiccontent__content">{{ content.field_content.0 }}</div>
+          {% else %}
+            <p class="basiccontent__content">{{ content.field_text_content.0 }}</p>
+          {% endif %}
+          <a href="{{content.field_cta.0['#url']}}" class="basiccontent__cta">{{content.field_cta.0['#title']}}</a>
+        </div>  
+      </div>
+    </section>
+  {% endif %}
+  

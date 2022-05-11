@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Theme override for a breadcrumb trail.
+ *
+ * Available variables:
+ * - breadcrumb: Breadcrumb trail items.
+ */
+#}
+{% if breadcrumb %}
+  <nav class="site-breadcrumbs" aria-label="Site Breadcrumbs">
+    <ol class="site-breadcrumbs__items">
+    {% for item in breadcrumb %}
+      <li class="site-breadcrumbs__item">
+        {% if item.url %}
+          <a href="{{ item.url }}" class="site-breadcrumbs__link">{{ item.text }}</a>
+          <div class="site-breadcrumbs__link-arrow">{% include directory ~ '/templates/svg-icons/arrow-breadcrumbs.html.twig'%}</div>
+        {% else %}
+          <span href="{{ item.url }}" class="site-breadcrumbs__link --current">{{ item.text }}</span>
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ol>
+  </nav>
+{% endif %}

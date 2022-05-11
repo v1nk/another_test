@@ -1,0 +1,34 @@
+{# This is also used in from block--dual-colored-bottom-blocks.html.twig #}
+
+<div class="blog-tools">
+    {% for item in paragraph.field_tools_card %}
+        {% set iconClass = item.entity.field_tools_card_icon.0.value %}
+        {% set colorClass = item.entity.field_tools_card_color.0.value %}
+
+        <a class="blog-tools__container {{colorClass}}" href="{{item.entity.field_link.0.url}}">
+            <div class="blog-tools__content">
+                <span class="blog-tools__heading">{{ item.entity.field_heading.0.value }}</span>
+                <div class="blog-tools__wysiwyg wizzywig">{{ item.entity.field_content.0.value|striptags('<p>,<a>,<u>,<strong>,<b>,<em>,<i>,<s>,<sup>,<sub>,<ul>,<ol>,<li>,<h1>,<h2>,<h3>,<h4>,<h5>')|raw }}</div>
+                <p class="blog-tools__subheading">{{ item.entity.field_subheader_text.0.value }}</p>
+            </div>
+            
+            <div class="blog-tools__icon-container">
+                <div class="blog-tools__icon">
+                    {% if iconClass == 'find-degree' %}
+                        <span class="blog-tools__icon-find-degree">
+                            {% include directory ~ '/templates/svg-icons/find-degree.html.twig'%}
+                        </span>
+
+                    {% elseif iconClass == 'online-learning' %}
+                        <span class="blog-tools__icon-online-learning">
+                            {% include directory ~ '/templates/svg-icons/online-learning.html.twig'%}
+                        </span>
+                                                
+                    {% endif %}
+                    
+                </div>
+            </div>
+        </a>
+
+    {% endfor %}
+</div>

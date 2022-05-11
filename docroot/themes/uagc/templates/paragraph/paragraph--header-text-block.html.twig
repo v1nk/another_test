@@ -1,0 +1,12 @@
+{% set lengthSizeClass = '' %}
+  
+{% if paragraph.field_content.0.value | length  > 45 %}
+  {% set lengthSizeClass = '--long-text' %}
+{% endif %}
+
+<div class="paid-hero-space__content --text-content">
+  {% autoescape false %}
+    <h1 class="paid-hero-space__content-header {{lengthSizeClass}}">{{paragraph.field_content.0.value}}</h1>
+  {% endautoescape %}
+</div>
+

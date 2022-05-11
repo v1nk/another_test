@@ -1,0 +1,72 @@
+@use "vars" as *;
+@use "mixins" as *;
+@use "colors" as *;
+
+.columns {
+  display: flex;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+
+  &__left {
+    width: 100%;
+
+    @media (min-width: $desktop) {
+      @include flexGrid(9, 12);
+    }
+  }
+  &__right {
+    display: none;
+    position: relative;
+
+    @media (min-width: $desktop) {
+      padding: {
+        top: 32px;
+      }
+      background-color: $azBlue;
+      @include flexGrid(4, 12);
+      display: block;
+    }
+
+    @media (min-width: $desktop-large) {
+      @include flexGrid(3, 12);
+    }
+  }
+
+  .node--type-paid-landing-page & {
+    &__left {
+      @media (min-width: $desktop) {
+        flex-basis: calc(100% - 334px);
+        max-width: calc(100% - 334px);
+      }
+    }
+
+    &__full-width {
+      width: 100%;
+
+      @media (min-width: $desktop) {
+        flex-basis: 100%;
+        max-width: 100%;
+      }
+    }
+
+    &__right {
+      @media (min-width: $desktop) {
+        flex-basis: 334px;
+        max-width: 334px;
+        padding: {
+          top: 16px;
+        }
+      }
+
+      .paid-twostep
+        .form-wrapper[data-drupal-selector="edit-interest-information"],
+      .paid-twostep
+        .form-wrapper[data-drupal-selector="edit-contact-information"] {
+        padding: {
+          top: 24px;
+        }
+      }
+    }
+  }
+}

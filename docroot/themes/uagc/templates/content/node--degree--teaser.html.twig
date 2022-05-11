@@ -1,0 +1,144 @@
+{% set displayUrl = "" %}
+
+
+{% if node.field_display_page_url.value|trim != '' %}
+  {% set displayUrl = node.field_display_page_url.value %}
+{% endif %}
+
+
+
+<div class="node node--type-degree node--display-mode-teaser">
+  <button class="node__degree-toggle js-degree-toggle"></button>
+  <div class="node__title">
+    <h3 class="node__degree"><a href="{{ url }}"  data-displaypageurl="{{displayUrl}}" class="js-displaypage-url js-degree-toggle" >{{ content.field_degree_type }} {{ content.field_degree_field }}</a></h3>
+    <div class="node__college">{{ content.field_degree_college }}</div>
+  </div>
+  <div class="node__link"><a href="{{ url }}" data-displaypageurl="{{displayUrl}}" class="js-displaypage-url" rel="nofollow" aria-label="More information on {{ content.field_degree_type }} {{ content.field_degree_field }}">More</a></div>
+
+  <div class="node__courses-wrapper">
+    {% if content.field_credits_per_degree is not empty != '' or content.field_percent_online.0 is not empty !='' or content.field_weeks_per_course.0 is not empty !='' %}
+    <div class="node__stat-container">
+      {% if content.field_credits_per_degree.0 is not empty != '' %}
+      <div class="node__stat"><span class="node__stat-value">{{ content.field_credits_per_degree.0 }}*</span><span class="node__stat-subtitle">credits for degree</span><span class="node__stat-tiny">*total credits less with applicable transfers</span></div>
+      {% endif %}
+
+      {% if content.field_percent_online.0 is not empty != '' %}
+      <div class="node__stat"><span class="node__stat-value">{{ content.field_percent_online.0 }}%</span><span class="node__stat-subtitle">online</span><span class="node__stat-tiny"></span></div>
+      {% endif %}
+      
+      {% if content.field_weeks_per_course.0 is not empty != '' %}
+      <div class="node__stat"><span class="node__stat-value">{{ content.field_weeks_per_course.0 }} Weeks</span><span class="node__stat-subtitle">per course</span><span class="node__stat-tiny"></span></div>  
+      {% endif %}
+    </div>
+    {% endif %}
+    
+    <a href="{{url}}" class="node__courses-learncta">Learn More</a><a href="/request-information" class="node__courses-infocta">Get Started</a>
+
+    
+    {% if node.field_general_eduaction_courses|length > 0 or node.field_major_course_requirements|length > 0%}
+    <div class="node__courses-title"><label>Course Requirements:</label></div>
+      {% endif %}
+
+
+
+    {% if node.field_general_eduaction_courses|length > 0  %}
+      {% set creditCount = 0 %}
+
+      {% for i,course in node.field_general_eduaction_courses %}
+        {% set creditCount = creditCount + (node.field_general_eduaction_courses[i].entity.field_course_credits.value | number_format) %}
+      {% endfor %}
+
+
+      
+      <div class="node__courses-label js-mobile-accordion-trigger"><label>General Education Requirements:</label> {{creditCount}} credits</div>
+      
+      <div class="node__courses-accordion js-mobile-accordion-container">
+
+        <div class="node__courses-container">
+      
+          <div class="node__courses">
+          <div class="node__courses-titlebar">
+            <span>Courses</span>
+            <span>Credits</span>
+          </div>
+          <div class="node__courses-list">
+          
+
+            {% for i,course in node.field_general_eduaction_courses %}
+
+
+              <div class="node__courses-course">
+                <span>{{node.field_general_eduaction_courses[i].entity.title.value}}</span>
+                <span class="node__courses-course-credits">{{node.field_general_eduaction_courses[i].entity.field_course_credits.value}}</span>
+              </div>
+
+
+              {% if loop.index is divisible by(6) and loop.index != 0 and loop.index != loop.last %}
+            </div>
+        </div>
+      <div class="node__courses">
+        <div class="node__courses-titlebar">
+          <span>Courses</span>
+          <span>Credits</span>
+        </div>
+        <div class="node__courses-list">
+
+            {% endif %}
+
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if node.field_major_course_requirements|length > 0  %}
+      {% set creditCount = 0 %}
+
+      {% for i,course in node.field_major_course_requirements %}
+        {% set creditCount = creditCount + (node.field_major_course_requirements[i].entity.field_course_credits.value | number_format) %}
+      {% endfor %}
+
+        <div class="node__courses-label js-mobile-accordion-trigger"><label>Major Course Requirements:</label> {{creditCount}} credits</div>
+        <div class="node__courses-accordion  js-mobile-accordion-container">
+
+          <div class="node__courses-container">
+        
+           <div class="node__courses">
+            <div class="node__courses-titlebar">
+              <span>Courses</span>
+              <span>Credits</span>
+            </div>
+            <div class="node__courses-list">
+            
+
+              {% for i,course in node.field_major_course_requirements %}
+
+
+                <div class="node__courses-course">
+                  <span>{{node.field_major_course_requirements[i].entity.title.value}}</span>
+                  <span class="node__courses-course-credits">{{node.field_major_course_requirements[i].entity.field_course_credits.value}}</span>
+                </div>
+
+
+                {% if loop.index is divisible by(6) and loop.index != 0 and loop.index != loop.last %}
+              </div>
+          </div>
+          <div class="node__courses">
+            <div class="node__courses-titlebar">
+              <span>Courses</span>
+              <span>Credits</span>
+            </div>
+            <div class="node__courses-list">
+
+                {% endif %}
+
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+  {% endif %}
+  <div class="node__courses-help"><label>Need help choosing your courses?</label> <a href="/request-information">Request Information</a></div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+{#
+  /**
+   * @file
+   * Theme override to display a media item.
+   *
+   * Available variables:
+   * - name: Name of the media.
+   * - content: Media content.
+   *
+   * @see template_preprocess_media()
+   */
+  #}
+  {% if content %}
+  
+ 
+    <div class="grid__item --icon-grid-item js-mobile-pop">
+  
+      <div class="grid__item-image-wrapper">  
+        <div class="grid__item-image js-background-image">
+          {{ content.field_img}}
+        </div>
+      </div>
+  
+  
+      {% if content.field_header_content.0 | raw != '' %}
+      <div class="grid__item-content-wrapper">
+        <h3 class="grid__item-header">
+          {{ content.field_headline.0 }}
+        </h3>
+        <div class="grid__item-content js-mobile-pop-content">{{ content.field_header_content.0 | raw}}</div>    
+      </div>
+      {% endif %}
+    </div>
+  
+  {% endif %}
+  

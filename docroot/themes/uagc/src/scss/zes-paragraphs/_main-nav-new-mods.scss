@@ -1,0 +1,457 @@
+@use "../base/mixins" as *;
+@use "../base/vars" as *;
+@use "../base/colors" as *;
+$desktop-small: 1024px;
+
+@font-face {
+  font-family: "Fira Sans";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 100;
+  src: url(../../fonts/FiraSans-Thin.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-display: swap;
+  font-style: italic;
+  font-weight: 100;
+  src: url(../../fonts/FiraSans-ThinItalic.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 200;
+  src: url(../../fonts/FiraSans-ExtraLight.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-display: swap;
+  font-style: italic;
+  font-weight: 200;
+  src: url(../../fonts/FiraSans-ExtraLightItalic.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300;
+  src: url(../../fonts/FiraSans-Light.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-display: swap;
+  font-style: italic;
+  font-weight: 300;
+  src: url(../../fonts/FiraSans-LightItalic.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  src: url(../../fonts/FiraSans-Regular.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-display: swap;
+  font-style: italic;
+  font-weight: 400;
+  src: url(../../fonts/FiraSans-Italic.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 500;
+  src: url(../../fonts/FiraSans-Medium.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-display: swap;
+  font-style: italic;
+  font-weight: 500;
+  src: url(../../fonts/FiraSans-MediumItalic.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 600;
+  src: url(../../fonts/FiraSans-SemiBold.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-display: swap;
+  font-style: italic;
+  font-weight: 600;
+  src: url(../../fonts/FiraSans-SemiBoldItalic.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+  src: url(../../fonts/FiraSans-Bold.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-display: swap;
+  font-style: italic;
+  font-weight: 700;
+  src: url(../../fonts/FiraSans-BoldItalic.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 800;
+  src: url(../../fonts/FiraSans-ExtraBold.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-display: swap;
+  font-style: italic;
+  font-weight: 800;
+  src: url(../../fonts/FiraSans-ExtraBoldItalic.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 900;
+  src: url(../../fonts/FiraSans-Black.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-display: swap;
+  font-style: italic;
+  font-weight: 900;
+  src: url(../../fonts/FiraSans-BlackItalic.woff2) format("woff2");
+}
+
+.site-header {
+  ol,
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding: 0;
+    }
+  }
+
+  * {
+    font-family: "Fira Sans", Arial, sans-serif;
+  }
+
+  &__aux-cta {
+    a {
+      @include rems(9.8px);
+      @media (min-width: $desktop-small) {
+        @include rems(14.3px);
+      }
+    }
+  }
+
+  &__mobile-overlay-cta {
+    a {
+      @include rems(22px, 18px);
+    }
+  }
+
+  &__secondary-menu-group-item {
+    a,
+    button {
+      @include rems(15px, 18px);
+      @media (min-width: $desktop-small) {
+        @include rems(11px);
+      }
+    }
+  }
+}
+
+.main-nav {
+  button {
+    text-transform: unset;
+    &.site-header__search-button {
+      text-transform: uppercase;
+    }
+  }
+
+  &__cta {
+    a {
+      @include rems(16px, 18px);
+    }
+  }
+  &__dropdown-column-back-button.main-nav__dropdown-column-back-button {
+    letter-spacing: normal;
+    @include rems(24px, 18px);
+    &:hover {
+      color: #ffffff;
+    }
+  }
+  &__dropdown-column {
+    @media (min-width: $desktop-small) {
+      flex-basis: 25%;
+      max-width: 25%;
+      flex-grow: 0;
+      padding: {
+        left: 16px;
+      }
+      border: {
+        bottom: 0;
+        left: 1px solid rgb(239, 241, 241);
+      }
+    }
+    @media (min-width: $desktop) {
+      padding: {
+        left: 32px;
+      }
+    }
+    a.button--blue {
+      display: none;
+      position: relative;
+      padding: {
+        right: 38px;
+      }
+      border: {
+        bottom: solid 1px $azBlue;
+        left: solid 1px $azBlue;
+        right: solid 1px $azBlue;
+        top: solid 1px $azBlue;
+      }
+
+      svg {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        right: 8px;
+        top: calc(50% - 10px);
+        path {
+          stroke: $azBlue;
+          transition: stroke 0.25s;
+        }
+      }
+      &:hover,
+      &:focus {
+        color: #fff;
+        text-decoration: none;
+        svg {
+          path {
+            stroke: #ffffff;
+          }
+        }
+      }
+      @media (min-width: $desktop-small) {
+        display: inline-block;
+      }
+      &.\--small {
+        @include rems(12.5px);
+      }
+    }
+  }
+  &__dropdown-column-header-button {
+    position: relative;
+    @include rems(20px, 18px);
+  }
+  &__dropdown-column-header {
+    @include rems(16px, 18px);
+
+    &-button.main-nav__dropdown-column-header-button {
+      @include rems(20px, 18px);
+      letter-spacing: normal;
+      &:hover {
+        color: #ffffff;
+      }
+    }
+  }
+
+  &__dropdown-column-item {
+    line-height: 1.5;
+  }
+  &__dropdown-column-item.main-nav__dropdown-column-item {
+    padding: {
+      left: 56px;
+      right: 24px;
+    }
+    @media (min-width: $desktop-small) {
+      padding: 0;
+      margin: {
+        bottom: 8px;
+      }
+    }
+
+    a {
+      @include rems(16px, 18px);
+    }
+  }
+
+  &__item.main-nav__item {
+    & > a {
+      @include rems(24px, 18px);
+
+      @media (min-width: $desktop-small) {
+        @include rems(16px, 18px);
+      }
+    }
+  }
+
+  &__mobile-back-button {
+    background-color: $azBlue;
+    &:hover {
+      color: #ffffff;
+      background-color: $azBlue;
+    }
+  }
+
+  .main-nav__mobile-back {
+    button,
+    .button {
+      @include rems(16px, 18px);
+      display: block;
+      width: 100%;
+      letter-spacing: unset;
+    }
+  }
+}
+
+.stickyrfi-mobile {
+  display: none;
+}
+
+.site-footer {
+  ol,
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding: 0;
+    }
+  }
+
+  * {
+    font-family: "Fira Sans", Arial, sans-serif;
+  }
+
+  &__top-accred {
+    .wizzywig {
+      p {
+        @include rems(16px, 18px);
+      }
+    }
+  }
+  &__top-logo-content-text {
+    @include rems(24px, 18px);
+  }
+
+  &__top-logo-content-link {
+    @include rems(24px, 18px);
+  }
+
+  &__middle-connect-button {
+    @include rems(16px, 18px);
+  }
+
+  &__middle-connect-link-items {
+    @include rems(16px, 18px);
+
+    @media (min-width: $tablet) {
+      font-weight: 500;
+      @include rems(20px, 18px);
+    }
+  }
+
+  &__middle-social-text {
+    @include rems(16px, 18px);
+
+    @media (min-width: $tablet) {
+      @include rems(20px, 18px);
+    }
+  }
+
+  &__middle-menus-main-block-title {
+    @include rems(16px, 18px);
+  }
+
+  &__middle-menus-main-block-item {
+    a {
+      @media (min-width: $desktop) {
+        @include rems(16px, 18px);
+      }
+    }
+  }
+
+  &__middle-menus-side-block-title {
+    @include rems(20px, 18px);
+    @media (min-width: $tablet) {
+      @include rems(24px, 18px);
+    }
+  }
+
+  &__middle-menus-side-block-column-item {
+    @media (min-width: $tablet) {
+      @include rems(16px, 18px);
+    }
+  }
+
+  &__bottom-legal-item {
+    a {
+      @include rems(11px, 18px);
+    }
+    @media (min-width: $tablet) {
+      a {
+        @include rems(14px, 18px);
+      }
+    }
+  }
+
+  &__bottom-non-content {
+    @include rems(14px, 18px);
+    p {
+      @include rems(11px, 18px);
+
+      @media (min-width: $desktop) {
+        @include rems(14px, 18px);
+      }
+    }
+  }
+
+  &__bottom-copyright {
+    @include rems(11px, 18px);
+    @media (min-width: $tablet) {
+      @include rems(14px, 18px);
+    }
+  }
+
+  &__middle-menus-main-title {
+    @include rems(24px, 18px);
+  }
+
+  &__middle-social-links.site-footer__middle-social-links {
+    padding: {
+      bottom: 16px;
+    }
+    @media (min-width: $tablet) {
+      padding-bottom: 0;
+    }
+  }
+}

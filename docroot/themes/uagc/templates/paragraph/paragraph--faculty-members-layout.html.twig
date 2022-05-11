@@ -1,0 +1,56 @@
+{% set greyBackground = '' %}
+{% set hideImages = '' %}
+{% set spacingCondition = '' %}
+{% set flexWrap = '' %}
+
+{% if paragraph.field_display_grey_background.value  == 1 %}
+    {% set greyBackground = ' --grey-background' %}
+{% endif %}
+
+{% if paragraph.field_hide_images.value  == 1 %}
+    {% set hideImages = ' --hide-images' %}
+{% endif %}
+
+{% if content.field_content['#items'].value is empty %}
+    {% set spacingCondition = ' --add-spacing' %}
+{% endif %}
+
+{% for item in paragraph.field_faculty_member %}
+    {% if loop.length == 4 %}
+        {% set flexWrap = ' --wrap' %}     
+    {% endif %}
+{% endfor %}
+
+<div class="faculty-member{{greyBackground}}{{hideImages}}">
+    <div class="faculty-member__red-line"></div>
+    {% if content.field_navy_red_heading %}
+        <h2 class="faculty-member__heading{{spacingCondition}}">{{ content.field_navy_red_heading }}</h2>
+    {% endif %}
+    {% if content.field_content['#items'].value %}
+        <div class="faculty-member__content wizzywig">{{ content.field_content.0 }}</div>
+    {% endif %}
+
+    <div class="faculty-member__card-wrapper{{flexWrap}}">
+        {% for item in paragraph.field_faculty_member %}
+        {% set loopLength = loop.length %}
+            <a class="faculty-member__card-container --columns-{{loopLength}}" href="{{ path('entity.node.canonical', {'node': item.entity.id}) }}">
+                <img class="faculty-member__image" src="{{item.entity.field_featured_image.entity.field_media_image.0.entity.uri.value|image_style('faculty_members_layout_375x375')}}" alt="{{item.entity.field_featured_image.entity.field_media_image.alt}}">
+                <h4 class="faculty-member__college">{{item.entity.field_college.entity.name.0.value}}</h4>
+                <h3 class="faculty-member__name">{{item.entity.field_faculty_member_name.0.value}}</h3>
+                <p class="faculty-member__position">{{item.entity.field_header_text.0.value}} - {{item.entity.field_profile_header_position.0.value}}</p>
+            </a>
+        {% endfor %}
+    </div>
+
+    {% if content.field_cta['#items'].value %}
+        <div class="faculty-member__cta-container">
+            <a href="{{paragraph.field_cta.0.url}}" class="faculty-member__cta button--blue">
+                <span>{{paragraph.field_cta.0.title}}</span>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.16675 10H15.8334" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M10 4.16602L15.8333 9.99935L10 15.8327" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+    {% endif %}
+</div>

@@ -1,0 +1,463 @@
+$section--advisor-form-bp: 830px;
+@use "sass:math";
+
+.section.section--advisor-form-two-step {
+  background-color: $coolGray;
+
+  padding: {
+    top: 42px;
+    left: 0px;
+    bottom: 62px;
+    right: 0px;
+  }
+  margin: {
+    top: 0px;
+    bottom: 0px;
+  }
+  @include breakpoint($bp--desktop, $no-query: true) {
+    padding: {
+      top: 62px;
+      bottom: 66px;
+    }
+  }
+
+  select,
+  input,
+  .button,
+  button,
+  label {
+  }
+
+  form {
+    visibility: visible;
+    display: block;
+    max-width: 100%;
+    padding: 20px;
+
+    @include breakpoint($bp--desktop, $no-query: true) {
+      &.webform-submission-lead-flow-system-add-form.webform-submission-lead-flow-system-add-form {
+        padding: 0;
+      }
+      select {
+        font-size: 1rem;
+      }
+    }
+
+    @include breakpoint($tablet-header, $no-query: true) {
+      padding: 0 75px;
+      select {
+        font-size: 1.125rem;
+      }
+    }
+  }
+
+  .button.button.button.button {
+    @extend %button-primary;
+    padding: 12px 24px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    display: block;
+    text-align: center;
+    height: 42px;
+    width: 100%;
+
+    @include breakpoint($bp--desktop, $no-query: true) {
+      margin-top: 25px;
+      width: 32%;
+    }
+
+    span {
+      font-weight: 300;
+      border-left: solid 1px $azBlue;
+      padding-left: 10px;
+      margin-left: 10px;
+    }
+  }
+
+  div[data-drupal-selector="edit-interest-information"] {
+    width: 100%;
+    display: block;
+    flex-basis: 75%;
+    justify-content: space-between;
+
+    @include breakpoint($section--advisor-form-bp, $no-query: true) {
+      display: flex;
+      flex-wrap: wrap;
+
+      .js-registerednurse-validation-message {
+        text-align: center;
+        padding-top: 20px;
+        margin-bottom: 0;
+        p {
+          margin-bottom: 0;
+          text-align: center;
+        }
+      }
+
+      .webform-type-radios {
+        text-align: center;
+        margin-top: 20px;
+        float: none;
+        flex-basis: 100%;
+        width: 100%;
+      }
+
+      .radios--wrapper.fieldgroup.form-item {
+        float: none;
+        flex-basis: 100%;
+
+        .form-item {
+          text-align: center;
+          float: none;
+        }
+
+        input {
+          height: 24px;
+        }
+
+        legend {
+          margin: 0 auto;
+        }
+      }
+
+      .webform-options-display-side-by-side {
+        text-align: center;
+        padding-top: 20px;
+        flex-basis: 100%;
+      }
+    }
+
+    @include breakpoint($bp--desktop) {
+      justify-content: space-evenly;
+    }
+
+    .form-item {
+      flex-basis: 32%;
+      justify-content: space-between;
+    }
+  }
+
+  div[data-drupal-selector="edit-contact-information"] {
+    display: none;
+    flex-basis: 73%;
+    flex-wrap: wrap;
+
+    &.\--show-me {
+      display: block;
+      @include breakpoint($section--advisor-form-bp) {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    .form-item {
+      flex-basis: 48%;
+      margin-bottom: 25px;
+
+      &:nth-of-type(3),
+      &:nth-of-type(4) {
+        @include breakpoint($bp--desktop) {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &.\--blue-background.\--blue-background.\--blue-background.\--blue-background {
+    background-color: $azBlue;
+
+    label {
+      color: white;
+    }
+
+    select {
+      background-color: $azBlue;
+      color: white;
+      border: solid 2px white;
+      border-collapse: collapse;
+    }
+
+    .section--advisor-form-header {
+      color: white;
+    }
+
+    button.form-submit--substitute {
+      @extend %button-primary;
+
+      span {
+        font-weight: 400;
+        border: {
+          left: 1px solid $azBlue;
+        }
+        margin: {
+          left: 10px;
+        }
+        padding: {
+          left: 10px;
+        }
+      }
+    }
+  }
+
+  @include breakpoint($section--advisor-form-bp, $no-query: true) {
+    text-align: center;
+  }
+  &-wrapper {
+    max-width: 1440px;
+    margin: {
+      top: 0px;
+      left: auto;
+      bottom: 0px;
+      right: auto;
+    }
+    padding: {
+      top: 0px;
+      left: 0px;
+      bottom: 0px;
+      right: 0px;
+    }
+    @include breakpoint($section--advisor-form-bp, $no-query: true) {
+      margin: {
+        top: 0px;
+        left: auto;
+        bottom: 0px;
+        right: auto;
+      }
+    }
+  }
+  &-header {
+    @extend %h4;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.6;
+    margin: {
+      top: 0px;
+      left: 0px;
+      bottom: 31px;
+      right: 0px;
+    }
+
+    @include breakpoint($bp--desktop, $no-query: true) {
+      font-weight: 400;
+      line-height: 1.25;
+      font-size: 2rem;
+      line-height: 1.6;
+      margin: {
+        top: 0px;
+        left: 0px;
+        bottom: 28px;
+        right: 0px;
+      }
+    }
+  }
+  form {
+    margin: {
+      top: 16px;
+      left: 0;
+      bottom: 0px;
+      right: 0;
+    }
+
+    .form-disclaimer {
+      display: block;
+      width: 100%;
+      margin: 0 auto;
+      font-size: 0.625rem;
+      line-height: 1.1;
+      margin-top: 20px;
+      text-align: justify;
+
+      p {
+        font-size: 0.625rem;
+      }
+
+      @include breakpoint($bp--desktop, $no-query: true) {
+        width: 50%;
+      }
+
+      .form-item {
+        text-align: justify;
+      }
+
+      p {
+        margin-bottom: 20px;
+      }
+    }
+
+    @include breakpoint($bp--desktop, $no-query: true) {
+      margin: {
+        top: 0px;
+        left: auto;
+        bottom: 0px;
+        right: auto;
+      }
+      max-width: 95%;
+      flex-wrap: nowrap;
+      padding: {
+        left: 75px;
+        right: 75px;
+      }
+    }
+    .form-wrapper {
+    }
+    .form-item {
+      text-align: left;
+      label {
+        font-weight: bold;
+        color: $azBlue;
+        display: none !important;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"] {
+        height: 42px;
+        border: solid 2px #cccccc;
+
+        &:hover,
+        &:focus {
+          border: solid 2px #555555;
+        }
+      }
+
+      &-tcpa-checkbox {
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 25px;
+
+        input[type="checkbox"] {
+          position: relative;
+          opacity: 1;
+          left: unset;
+          height: 24px;
+          width: 24px;
+          appearance: none;
+          background-color: #ffffff !important;
+          border: 1px solid #000000;
+          vertical-align: middle;
+          padding: 0px;
+          cursor: pointer;
+
+          &:checked {
+            background-color: #e49829 !important;
+          }
+
+          &:checked:before {
+            content: url(../images/zes-images/rfi-checkmark.svg);
+            display: block;
+            text-align: center;
+          }
+
+          &:before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+          }
+        }
+
+        .field-suffix {
+          font-size: 0.75rem;
+          line-height: 1.333;
+          padding-left: 8px;
+        }
+      }
+
+      &.js-form-type-select {
+        margin: {
+          top: 0px;
+          left: 0px;
+          bottom: 25px;
+          right: 0;
+        }
+        width: 100%;
+        @include breakpoint($section--advisor-form-bp, $no-query: true) {
+          float: left;
+          width: math.div(1, 3);
+        }
+
+        @include breakpoint($bp--desktop) {
+          margin-bottom: 0;
+        }
+
+        label {
+          display: block;
+          margin: {
+            top: 0px;
+            left: 0px;
+            bottom: 18px;
+            right: 0;
+          }
+
+          &.form-required:after {
+            display: none;
+          }
+        }
+        .form-select {
+          height: 42px;
+          padding: 8px 30px 8px 18px;
+          width: 100%;
+          background-color: white;
+          border: 2px solid $silver;
+          @include breakpoint($section--advisor-form-bp, $no-query: true) {
+          }
+        }
+      }
+      &.fieldgroup {
+        // registered nurse question element
+        @include breakpoint($section--advisor-form-bp, $no-query: true) {
+          float: right;
+          width: 33%;
+        }
+      }
+    }
+    .form-actions {
+      flex-basis: 23%;
+      align-self: center;
+      width: 100%;
+
+      .webform-button--submit.button.button.button.button.button.button.button.button {
+        margin: {
+          left: auto;
+          right: auto;
+        }
+        border-radius: 0;
+      }
+
+      input.--request-btn-disabled {
+        background-color: #cccccc !important;
+        pointer-events: none;
+      }
+
+      @include breakpoint($section--advisor-form-bp, $no-query: true) {
+        padding-top: 0; // height of label. can't use flex-end b/c it looks bad w/ optional nursing radios
+      }
+      .form-submit--substitute.form-submit--substitute {
+        @extend %button-primary;
+        height: 42px;
+        min-width: 180px;
+        width: 100%;
+        span {
+          font-weight: 400;
+          border: {
+            left: 1px solid $azBlue;
+          }
+          margin: {
+            left: 10px;
+          }
+          padding: {
+            left: 10px;
+          }
+        }
+        @include breakpoint($section--advisor-form-bp, $no-query: true) {
+          width: 100%;
+          margin: {
+            left: 7px;
+            top: 9px;
+          }
+        }
+      }
+    }
+  }
+}

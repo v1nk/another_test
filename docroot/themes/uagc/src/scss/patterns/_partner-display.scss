@@ -1,0 +1,508 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+@use "../elements/buttons" as *;
+@use "sass:math";
+
+.partner-display {
+  @include globalGutters;
+  padding: {
+    top: 64px;
+  }
+  @media (min-width: $tablet) {
+    padding: {
+      top: 104px;
+    }
+  }
+  @media (min-width: $desktop) {
+  }
+  &__header {
+    @include eyebrow;
+    @include headline5;
+    color: $azBlue;
+    text-align: center;
+    margin: {
+      bottom: 32px;
+    }
+    &::before {
+      left: calc(50% - 40px);
+    }
+    @media (min-width: $desktop) {
+      margin: {
+        bottom: 32px;
+      }
+    }
+  }
+
+  &__content {
+    @include subHeader;
+    color: $black;
+    text-align: center;
+    max-width: 860px;
+    margin: {
+      left: auto;
+      right: auto;
+      bottom: 32px;
+    }
+    p {
+      @include subHeader;
+      color: $black;
+      letter-spacing: 0em;
+    }
+  }
+  &__form {
+    width: 100%;
+    max-width: 592px;
+    display: flex;
+    justify-content: center;
+    margin: {
+      left: auto;
+      right: auto;
+      bottom: 32px;
+    }
+
+    @media (min-width: $tablet) {
+      margin: {
+        bottom: 24px;
+      }
+    }
+
+    .form-item {
+      width: 100%;
+    }
+    .form-item-title {
+      position: relative;
+      &::after {
+        content: "";
+        background-image: url("../images/icons/search.svg");
+        background-size: contain;
+        background-position: center;
+        // filter: invert(10%) sepia(55%) saturate(2350%) hue-rotate(201deg)
+        //   brightness(93%) contrast(95%);
+        position: absolute;
+        top: calc(50% - 9px);
+        right: 18px;
+        height: 18px;
+        width: 18px;
+      }
+    }
+    input[type="text"] {
+      width: 100%;
+      @include rems(16px);
+      line-height: 1.5;
+      height: unset;
+      font-weight: 500;
+      letter-spacing: 0em;
+      color: $azBlue;
+      border: 1px solid $darkGray;
+      border-radius: 16px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.06);
+      padding: {
+        top: 15px;
+        bottom: 15px;
+        left: 24px;
+        right: 36px;
+      }
+      margin-top: 0;
+      outline-color: $darkGray;
+      &::placeholder {
+        color: $azBlue;
+      }
+    }
+  }
+  &__no-results-container {
+  }
+  &__no-results {
+    color: $azRed;
+    @include rems(16px);
+    line-height: 1.5;
+    font-weight: 500;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: {
+      bottom: 32px;
+    }
+    &::before {
+      content: "";
+      display: block;
+      background-image: url("../images/icons/searchEx.svg");
+      background-size: contain;
+      background-position: center;
+      position: relative;
+
+      height: 32px;
+      width: 32px;
+      margin: {
+        right: 8px;
+      }
+    }
+  }
+  &__no-results-invite {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__no-results-invite-content {
+    display: inline-block;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: {
+      top: 24px;
+    }
+    border-top: 1px solid $lightGray;
+    margin: {
+      left: 8px;
+      bottom: 16px;
+    }
+    @media (min-width: $tablet) {
+      display: inline-flex;
+      align-items: center;
+      padding-top: 32px;
+    }
+  }
+  &__no-results-invite-text {
+    @include headline2;
+    color: $azBlue;
+    font-weight: 500;
+    display: inline-block;
+    margin: {
+      bottom: 16px;
+    }
+    width: 100%;
+    // we don't normally do this, double checked with Chad. we're departing from best practice here
+    @media (min-width: 840px) {
+      width: unset;
+      padding: {
+        right: 16px;
+      }
+    }
+  }
+  &__no-results-link {
+    @include buttonsBlue;
+    display: inline-block;
+    padding: {
+      right: 46px;
+    }
+    margin: {
+      bottom: 16px;
+    }
+    &::before {
+      opacity: 1;
+      content: "";
+      position: absolute;
+      top: calc(50% - 10px);
+      right: 20px;
+      width: 20px;
+      height: 20px;
+      background-position: center;
+      background-size: contain;
+      background-image: url("../images/icons/arrow-right.svg");
+      transition: opacity 0.25s;
+    }
+    &::after {
+      opacity: 0;
+      content: "";
+      position: absolute;
+      top: calc(50% - 10px);
+      right: 20px;
+      width: 20px;
+      height: 20px;
+      background-position: center;
+      background-size: contain;
+      background-image: url("../images/icons/arrow-right-white.svg");
+      transition: opacity 0.25s;
+    }
+    &:hover {
+      &::before {
+        opacity: 0;
+      }
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+  &__listing {
+  }
+  &__listing-item {
+    position: relative;
+    display: flex;
+    border-bottom: 1px solid $silver;
+    transition: border-color 0.25s ease-in-out;
+    &:last-child {
+      margin: {
+        bottom: 0px;
+      }
+    }
+    &:hover,
+    &:focus {
+      .partner-display__listing-item-title {
+        color: $azRed;
+      }
+    }
+    margin: {
+      bottom: 24px;
+    }
+    padding: {
+      bottom: 48px;
+    }
+    @media (min-width: $desktop-small) {
+      padding: {
+        bottom: 24px;
+      }
+    }
+  }
+  &__listing-item-content-column {
+    margin: {
+      bottom: 24px;
+    }
+    @media (min-width: $desktop-small) {
+      margin: {
+        bottom: 0px;
+      }
+      flex-basis: calc(457 / 576 * 100%);
+      padding-right: 32px;
+    }
+    @media (min-width: $desktop) {
+      flex-basis: calc(785 / 904 * 100%);
+    }
+  }
+  &__listing-item-link-column {
+    @media (min-width: $desktop-small) {
+      flex-basis: calc(119 / 576 * 100%);
+    }
+    @media (min-width: $desktop) {
+      flex-basis: calc(119 / 904 * 100%);
+    }
+  }
+  &__listing-item-title {
+    @include headline7;
+    transition: color 0.25s;
+    color: $azBlue;
+  }
+
+  &__listing-item-excerpt {
+    @include textStyle1;
+    color: $black;
+  }
+  &__listing-item-readmore {
+    @include textMedium;
+    color: $azRed;
+    font-weight: 500;
+    right: 32px;
+    bottom: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    position: absolute;
+    @media (min-width: $desktop) {
+      right: 34px;
+    }
+  }
+  &__listing-item-readmore-text {
+    @include textMedium;
+    margin: {
+      right: 10px;
+    }
+    @media (min-width: $desktop) {
+      display: inline;
+    }
+  }
+  &__listing-item-readmore-arrow {
+    width: 20px;
+    height: 20px;
+    position: relative;
+
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      path {
+        stroke: $azRed;
+      }
+    }
+  }
+
+  &__logos {
+    .image-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      flex-basis: 100%;
+      margin: {
+        top: -24px;
+        right: -32px;
+        left: -32px;
+      }
+      &__item {
+        display: block;
+        flex-basis: 240px;
+        height: 120px;
+        flex-grow: 0;
+        position: relative;
+        //box-sizing: content-box;
+        border-radius: 16px;
+        padding: {
+          top: 32px;
+          bottom: 32px;
+          left: 20px;
+          right: 20px;
+        }
+        margin: {
+          top: 16px;
+          bottom: 16px;
+          left: 32px;
+          right: 32px;
+        }
+
+        @media (min-width: $tablet) {
+          margin: {
+            top: 32px;
+            bottom: 32px;
+          }
+        }
+        transition: box-shadow 0.25s ease-in-out;
+        &:hover,
+        &:focus,
+        &:active {
+          box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        img {
+          position: absolute;
+          object-fit: contain;
+          object-position: center;
+          width: calc(100% - 40px);
+          height: calc(100% - 64px);
+        }
+      }
+    }
+  }
+
+  &__pager-arrow {
+    svg {
+      margin: {
+        top: 5px;
+        left: 5px;
+      }
+      transition: width 0.25s ease-in-out, height 0.25s ease-in-out;
+    }
+    svg path {
+      color: $azBlue;
+    }
+  }
+
+  &__pager-link {
+    @include textMedium;
+    font-weight: 500;
+    color: $azBlueLight;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 7px;
+  }
+
+  nav.pager {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    padding: {
+      top: 48px;
+      bottom: 24px;
+      right: 40px;
+    }
+
+    @media (min-width: $desktop-small) {
+      padding: {
+        right: 0;
+      }
+    }
+    .pager__items {
+      display: flex;
+      position: relative;
+      justify-content: flex-end;
+    }
+    .pager__item {
+      @include textMedium;
+      border: 1px solid $lightGray;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      width: 40px;
+      height: 40px;
+      color: $azBlueLight;
+      margin: {
+        left: 4px;
+        right: 4px;
+      }
+      transition: background-color 0.25s ease-in-out;
+
+      &:hover {
+        background-color: $lightGray;
+      }
+
+      &.is-active {
+        border-color: $orange;
+      }
+      &--ellipsis {
+        display: none;
+        border: none;
+        cursor: default;
+        &:hover {
+          background-color: transparent;
+        }
+        @media (min-width: $desktop-small) {
+          display: flex;
+        }
+      }
+      &--next {
+        border: none;
+        position: absolute;
+        right: -48px;
+        transition: background-color 0.25s;
+        @media (min-width: $desktop-small) {
+          position: static;
+        }
+        &:hover {
+          background-color: #ffffff;
+          svg {
+            width: 28px;
+            height: 28px;
+          }
+        }
+      }
+      &--previous {
+        border: none;
+        position: absolute;
+        left: -48px;
+        transition: background-color 0.25s;
+        @media (min-width: $desktop-small) {
+          position: static;
+        }
+        &:hover {
+          background-color: #ffffff;
+          svg {
+            width: 28px;
+            height: 28px;
+          }
+        }
+      }
+      &--last {
+        display: none;
+      }
+      &--first {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+%button-primary {
+  @extend %button;
+  background-color: $orange;
+  color: $azBlue;
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: lighten($orange, 10%);
+    color: $azBlue;
+  }
+}
+
+.section--feature-space-image {
+  overflow: hidden; // hide skewed right side
+  position: relative;
+
+  .section__image {
+    overflow: hidden;
+    height: 225px;
+    background-position: top;
+    background-size: cover;
+    background-repeat: none;
+    background-repeat: no-repeat;
+
+    @include breakpoint(1024px, $no-query: true) {
+      height: 500px;
+    }
+
+    img,
+    picture {
+      display: none;
+    }
+  }
+
+  .section__wrapper {
+    padding: 32px;
+    background-color: $azBlue;
+    @include breakpoint(1024px, $no-query: true) {
+      bottom: 30px;
+      left: 0; // adjust for slant
+      width: 40%;
+      padding: {
+        top: 2%;
+        left: 2%;
+        bottom: 2%;
+        right: 2%;
+      }
+      position: absolute;
+    }
+  }
+
+  &.is-blue {
+    .section__wrapper {
+    }
+  }
+
+  .section__wrapper-inner {
+    .button--transparent {
+      @extend %button-primary;
+      display: inline;
+    }
+  }
+
+  .section__header {
+    @extend %h2;
+    color: white;
+    font-weight: 400;
+    @include breakpoint(1400px, $no-query: true) {
+    }
+
+    margin: 0 0 10px 0;
+    span {
+      display: block;
+      font-size: 1.5rem;
+      @include breakpoint(1400px, $no-query: true) {
+      }
+      margin: 15px 0;
+    }
+  }
+}

@@ -1,0 +1,373 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.paid-reasons {
+  @include globalGuttersPaid;
+
+  @media (min-width: $desktop) {
+    width: 100%;
+  }
+  @media (min-width: $desktop-medium-large) {
+    &:not(.columns__left &) {
+      padding: {
+        left: 0;
+        right: 0;
+      }
+    }
+  }
+
+  &.\--grey-background {
+    background-color: $lighterGray;
+  }
+
+  &__red-line {
+    position: relative;
+    margin: {
+      bottom: 16px;
+    }
+
+    @media (min-width: $tablet) {
+      margin: {
+        bottom: 24px;
+      }
+    }
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        max-width: 1440px;
+        margin: {
+          left: auto;
+          right: auto;
+        }
+      }
+    }
+
+    &::after {
+      content: "";
+      border-top: 2px solid $azRed;
+      width: 80px;
+      position: absolute;
+    }
+  }
+
+  &__heading {
+    color: $azBlue;
+    font-weight: 500;
+    margin: {
+      bottom: 16px;
+    }
+
+    @media (min-width: $tablet) {
+      margin: {
+        bottom: 24px;
+      }
+    }
+
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        max-width: 1440px;
+        margin: {
+          left: auto;
+          right: auto;
+        }
+      }
+    }
+
+    span {
+      padding: {
+        left: 6px;
+      }
+
+      &:first-child {
+        padding: {
+          left: 0;
+        }
+      }
+    }
+
+    .--navy-heading,
+    .--red-heading {
+      @include rems(28px);
+      line-height: 1.14;
+
+      @media (min-width: $tablet) {
+        @include rems(36px);
+        line-height: 1.33;
+      }
+    }
+
+    .--red-heading {
+      color: $azRed;
+    }
+  }
+
+  &__icon-container {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: $tablet) {
+      flex-direction: row;
+    }
+
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        max-width: 1440px;
+        margin: {
+          left: auto;
+          right: auto;
+        }
+      }
+    }
+  }
+
+  &__icon-wrapper {
+    display: flex;
+    margin: {
+      bottom: 24px;
+    }
+
+    &:last-child {
+      border-bottom: 1px solid $silver;
+      padding: {
+        bottom: 24px;
+      }
+      margin: {
+        bottom: 16px;
+      }
+    }
+
+    @media (min-width: $tablet) {
+      display: block;
+      @include flexGrid(3, 9);
+      border-right: 1px solid $silver;
+      padding: {
+        left: 32px;
+        right: 32px;
+      }
+
+      &:first-child {
+        padding: {
+          left: 0;
+        }
+      }
+
+      &:last-child {
+        border: none;
+        margin-bottom: 24px;
+        padding: {
+          right: 0;
+          bottom: 0;
+        }
+      }
+    }
+  }
+
+  &__icon {
+    width: 32px;
+    height: 32px;
+    flex-basis: 15%;
+    margin: {
+      bottom: 0;
+    }
+
+    @media (min-width: $tablet) {
+      width: 48px;
+      height: 48px;
+      margin: {
+        bottom: 16px;
+      }
+    }
+  }
+
+  &__icon-heading {
+    @include textXMedium;
+    color: $azBlue;
+    font-weight: 500;
+    padding: {
+      bottom: 8px;
+    }
+
+    @media (min-width: $tablet) {
+      @include textLarge;
+      padding: {
+        left: 0;
+      }
+    }
+
+    //styling for wysiwyg
+    p {
+      @include rems(20px);
+      line-height: 1.2;
+      color: $azBlue;
+      font-weight: 500;
+      margin: 0;
+
+      @media (min-width: $tablet) {
+        @include rems(24px);
+        line-height: 1.33333;
+      }
+    }
+
+    strong,
+    b {
+      font-weight: 500;
+    }
+
+    a {
+      color: $azRed;
+    }
+  }
+
+  &__icon-content-container {
+    @include rems(20px);
+    line-height: 1.2;
+    color: $black;
+    flex-basis: 85%;
+    padding: {
+      left: 16px;
+    }
+
+    @media (min-width: $tablet) {
+      padding: {
+        left: 0;
+      }
+    }
+  }
+
+  //Overiding three icons to apply these changes globably without content edits
+  .icon-support {
+    background-image: url(../images/icon-pictures/uagc-promise.svg);
+  }
+
+  .icon-zero-usd {
+    background-image: url(../images/icon-pictures/no-fee.svg);
+  }
+
+  .icon-credit {
+    background-image: url(../images/icon-pictures/work-life-credit.svg);
+  }
+
+  //Styling for wysiwyg - using elements instead of class names
+  &__wysiwyg {
+    margin: {
+      bottom: 0;
+    }
+
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        max-width: 1440px;
+        margin: {
+          left: auto;
+          right: auto;
+        }
+      }
+    }
+
+    ul {
+      margin: {
+        bottom: 0;
+      }
+    }
+  }
+
+  &__icon-content,
+  &__wysiwyg {
+    p,
+    li {
+      @include textMedium;
+      color: $black;
+      font-weight: 400;
+      margin: 0;
+
+      @media (min-width: $tablet) {
+        @include textXMedium;
+      }
+    }
+
+    li {
+      margin: {
+        bottom: 16px;
+      }
+
+      @media (min-width: $tablet) {
+        margin: {
+          bottom: 24px;
+        }
+      }
+
+      &:last-child {
+        margin: {
+          bottom: 0;
+        }
+      }
+
+      &::marker {
+        color: $azRed;
+        font-size: 1.5625rem;
+      }
+
+      strong,
+      b {
+        font-weight: 500;
+
+        @media (min-width: $tablet) {
+          color: $azBlue;
+          @include rems(24px);
+          line-height: 1.33;
+        }
+      }
+
+      em,
+      i {
+        font-style: italic;
+      }
+
+      sup {
+        vertical-align: super;
+        font-size: smaller;
+      }
+
+      sub {
+        vertical-align: sub;
+        font-size: smaller;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        color: $black;
+      }
+      h1 {
+        @include h1;
+        @include marginMedium;
+      }
+      h2 {
+        @include h2;
+        @include marginMedium;
+      }
+      h3 {
+        @include h3;
+        @include marginMedium;
+      }
+      h4 {
+        @include h4;
+        @include marginMedium;
+      }
+      h5 {
+        @include h5;
+        @include marginMedium;
+      }
+
+      //custom class that was added to wysiwyg
+      .top-bottom-spacing {
+        padding: {
+          top: 24px;
+          bottom: 24px;
+        }
+      }
+    }
+  }
+}

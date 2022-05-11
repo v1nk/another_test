@@ -1,0 +1,187 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+/* This is here because it's the machine name for 
+ the success grid and was the only class I could
+ inject into the global views template. Sorry about
+ the deep nesting of CSS, I couldn't override the
+ filter/pagination markup */
+.success-grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  &__pager-arrow {
+    svg {
+      margin: {
+        top: 5px;
+        left: 5px;
+      }
+      transition: width 0.25s ease-in-out, height 0.25s ease-in-out;
+    }
+    svg path {
+      color: $azBlue;
+    }
+  }
+
+  &__pager-link {
+    @include textMedium;
+    font-weight: 500;
+    color: $azBlueLight;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 7px;
+  }
+
+  form.views-exposed-form {
+    .js-form-item-title {
+      display: none;
+      width: 100%;
+      position: relative;
+
+      @media (min-width: $desktop-small) {
+        display: block;
+      }
+      label {
+        @include textMicro;
+        font-weight: 500;
+        color: $darkGray;
+      }
+      input.form-text {
+        width: 100%;
+        margin: {
+          top: 0px;
+        }
+        &::placeholder {
+          @include filterPlaceholder;
+        }
+        &:focus::placeholder {
+          color: transparent;
+        }
+      }
+    }
+    .form-item-field-degree-level-target-id::before {
+      @include textMicro;
+      font-weight: 500;
+      font-family: "Fira Sans", Arial, sans-serif;
+      content: "Filter By";
+      color: $darkGray;
+      margin: {
+        top: 32px;
+      }
+    }
+    .js-form-type-select select {
+      width: 100%;
+      &::placeholder {
+        @include filterPlaceholder;
+      }
+    }
+  }
+
+  .grid-filter__dropdown-summary {
+    @media (min-width: $desktop-small) {
+      display: none;
+    }
+  }
+
+  .grid-filter__summary-title {
+    left: 0px;
+  }
+
+  nav.pager {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: flex-end;
+    max-width: 100%;
+    padding: {
+      right: 32px;
+    }
+
+    @media (min-width: $tablet) {
+      padding: {
+        right: 0;
+      }
+    }
+
+    .pager__items {
+      display: flex;
+      position: relative;
+    }
+    .pager__item {
+      @include textMedium;
+      border: 1px solid $lightGray;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      width: 40px;
+      height: 40px;
+      color: $azBlueLight;
+      margin: {
+        left: 4px;
+        right: 4px;
+      }
+      transition: background-color 0.25s ease-in-out;
+
+      &:hover {
+        background-color: $lightGray;
+      }
+
+      &.is-active {
+        border-color: $orange;
+      }
+      &--ellipsis {
+        display: none;
+        border: none;
+        cursor: default;
+        &:hover {
+          background-color: transparent;
+        }
+        @media (min-width: $desktop-small) {
+          display: flex;
+        }
+      }
+      &--next {
+        border: none;
+        position: absolute;
+        right: -48px;
+        transition: background-color 0.25s;
+        @media (min-width: $desktop-small) {
+          position: static;
+        }
+        &:hover {
+          background-color: #ffffff;
+          svg {
+            width: 28px;
+            height: 28px;
+          }
+        }
+      }
+      &--previous {
+        border: none;
+        position: absolute;
+        left: -48px;
+        transition: background-color 0.25s;
+        @media (min-width: $desktop-small) {
+          position: static;
+        }
+        &:hover {
+          background-color: #ffffff;
+          svg {
+            width: 28px;
+            height: 28px;
+          }
+        }
+      }
+      &--last {
+        display: none;
+      }
+      &--first {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,145 @@
+{#
+/**
+ * @file
+ * Theme override to display a single page.
+ *
+ * The doctype, html, head and body tags are not in this template. Instead they
+ * can be found in the html.html.twig template in this directory.
+ *
+ * Available variables:
+ *
+ * General utility variables:
+ * - base_path: The base URL path of the Drupal installation. Will usually be
+ *   "/" unless you have installed Drupal in a sub-directory.
+ * - is_front: A flag indicating if the current page is the front page.
+ * - logged_in: A flag indicating if the user is registered and signed in.
+ * - is_admin: A flag indicating if the user has permission to access
+ *   administration pages.
+ *
+ * Site identity:
+ * - front_page: The URL of the front page. Use this instead of base_path when
+ *   linking to the front page. This includes the language domain or prefix.
+ *
+ * Page content (in order of occurrence in the default page.html.twig):
+ * - node: Fully loaded node, if there is an automatically-loaded node
+ *   associated with the page and the node ID is the second argument in the
+ *   page's path (e.g. node/12345 and node/12345/revisions, but not
+ *   comment/reply/12345).
+ *
+ * Regions:
+ * - page.header: Items for the header region.
+ * - page.highlighted: Items for the highlighted region.
+ * - page.primary_menu: Items for the primary menu region.
+ * - page.secondary_menu: Items for the secondary menu region.
+ * - page.highlighted: Items for the highlighted content region.
+ * - page.help: Dynamic help text, mostly for admin pages.
+ * - page.content: The main content of the current page.
+ * - page.footer: Items for the footer region.
+ * - page.breadcrumb: Items for the breadcrumb region.
+ *
+ * @see template_preprocess_page()
+ * @see html.html.twig
+ */
+#}
+{% set catch_cache = content|render %}
+
+
+
+
+{{ attach_library('uagc/remodal') }}
+<div class="layout-container remodal-bg">
+  {{ page.alert_bar}}
+
+<script>
+  window.rightLinks = [];
+  {% for item in node.field_navigation.entity.field_paid_nav_right_links%}
+    {% if item.entity.field_paid_nav_link.value[0]['uri'] %}
+    window.rightLinks.push({'href': '{{ item.entity.field_paid_nav_link.value[0]['uri'] }}', 'classes': ["{{ (item.entity.field_paid_nav_phone_link.value == '1') ? '--phone' : '' }}","{{ (item.entity.field_paid_nav_purple_link.value == '1') ? '--purple' : '' }}"], 'text': "{{ item.entity.field_paid_nav_link.value[0]['title'] }}"  });
+    {% endif %}
+  {% endfor %}
+</script>
+
+{% include directory ~ '/templates/commencement/html--commencement-menu-container.html.twig' %}
+  {{ page.header }}
+
+  {{ page.breadcrumb }}
+
+  {{ page.highlighted }}
+
+  {{ page.help }}
+
+  <main class="main" id="main-content" tabindex="-1">
+
+    {{ page.preface}}
+
+    {{ page.content }}
+
+    {{ page.postscript }}
+
+  </main>
+
+{% set invertClass = '' %}
+
+{% if node.field_invert_footer_colors.value == '1' %}
+  {% set invertClass = '--invert-colors' %}
+{% endif %}
+
+
+
+
+
+
+<footer class="commencement-footer {{ invertClass }}">
+  <div class="commencement-footer__legal">
+    <span class="footer--paid-inner">
+      <a class="footer--paid-inner-link" href="https://www.uagc.edu" target="blank">The University of Arizona Global Campus</a>, 180 South Arizona Avenue, Suite #301 Chandler, AZ 85225
+      <br>
+      <a class="footer--paid-inner-link" href="/privacy-policy" target="blank">Privacy Policy</a> |  <a class="footer--paid-inner-link" href="/terms-and-conditions" target="blank">Terms and Conditions</a> | <a href="/do-not-sell/" target="blank" class="js-tracking-alert-disable footer--paid-inner-link">Do Not Sell My Information</a> | Forbes School of Business &amp; Technology® is used under license.
+    </span>
+  </div>
+  <div class="commencement-footer__social-container">
+    <a class="commencement-footer__social-item" href="https://www.facebook.com/UniversityOfArizonaGlobalCampus/"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M31.9999 15.9999C31.9999 7.16341 24.8365 0 15.9999 0C7.16342 0 0 7.16341 0 15.9999C0 23.9859 5.85092 30.6052 13.5 31.8055V20.6249H9.43747V15.9999H13.5V12.475C13.5 8.46497 15.8887 6.24998 19.5434 6.24998C21.2934 6.24998 23.1249 6.56248 23.1249 6.56248V10.5H21.1074C19.1199 10.5 18.4999 11.7334 18.4999 13V15.9999H22.9374L22.2281 20.6249H18.4999V31.8055C26.149 30.6052 31.9999 23.9859 31.9999 15.9999Z"/>
+      </svg>
+      </a>
+    <a class="commencement-footer__social-item" href="https://twitter.com/UAZGlobalCampus"><svg width="33" height="26" viewBox="0 0 33 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10.6655 26C22.7379 26 29.3429 15.9956 29.3429 7.32252C29.3429 7.04127 29.3367 6.75377 29.3242 6.47252C30.609 5.54333 31.7179 4.39239 32.5985 3.07378C31.4019 3.60618 30.1314 3.95389 28.8304 4.10503C30.2002 3.28393 31.2259 1.99402 31.7173 0.474415C30.4286 1.23813 29.0193 1.77687 27.5498 2.06754C26.5597 1.01547 25.2505 0.318882 23.8248 0.0854621C22.3991 -0.147958 20.9362 0.0947946 19.6622 0.776187C18.3883 1.45758 17.3743 2.53966 16.777 3.85513C16.1798 5.1706 16.0325 6.64619 16.358 8.05377C13.7486 7.92282 11.1958 7.24498 8.86525 6.06417C6.53465 4.88337 4.47821 3.22597 2.82925 1.19941C1.99116 2.64438 1.7347 4.35424 2.112 5.9815C2.4893 7.60875 3.47204 9.0313 4.86049 9.96001C3.81813 9.92692 2.79859 9.64627 1.88613 9.14126V9.22251C1.88519 10.7389 2.40942 12.2088 3.3697 13.3824C4.32998 14.556 5.66705 15.3608 7.15361 15.66C6.18802 15.9242 5.17459 15.9627 4.19175 15.7725C4.61123 17.0766 5.42738 18.2172 6.52631 19.0351C7.62524 19.853 8.9521 20.3075 10.3217 20.335C7.99651 22.1615 5.12418 23.1522 2.16738 23.1475C1.64301 23.1467 1.11916 23.1145 0.598633 23.0512C3.60243 24.9783 7.09665 26.0018 10.6655 26Z"/>
+      </svg>
+      </a>
+    <a class="commencement-footer__social-item" href="https://www.instagram.com/uazglobalcampus/"><?xml version="1.0" encoding="utf-8"?>
+      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+      viewBox="0 0 33 32" style="enable-background:new 0 0 33 32;" xml:space="preserve">
+        <g>
+          <path class="st0" d="M16.5,2.9c4.3,0,4.8,0,6.5,0.1c1.6,0.1,2.4,0.3,3,0.6c0.7,0.3,1.3,0.6,1.8,1.2c0.6,0.6,0.9,1.1,1.2,1.8
+            c0.2,0.6,0.5,1.4,0.5,3c0.1,1.7,0.1,2.2,0.1,6.5c0,4.3,0,4.8-0.1,6.5c-0.1,1.6-0.3,2.4-0.5,3c-0.3,0.7-0.6,1.3-1.2,1.8
+            c-0.6,0.6-1.1,0.9-1.8,1.2c-0.6,0.2-1.4,0.5-3,0.6c-1.7,0.1-2.2,0.1-6.5,0.1c-4.3,0-4.8,0-6.5-0.1c-1.6-0.1-2.4-0.3-3-0.6
+            c-0.7-0.3-1.3-0.6-1.8-1.2c-0.6-0.6-0.9-1.1-1.2-1.8c-0.2-0.6-0.5-1.4-0.6-3c-0.1-1.7-0.1-2.2-0.1-6.5c0-4.3,0-4.8,0.1-6.5
+            C3.6,8,3.8,7.1,4,6.6c0.3-0.7,0.6-1.3,1.2-1.8c0.6-0.6,1.1-0.9,1.8-1.2C7.6,3.3,8.5,3,10,3C11.7,2.9,12.2,2.9,16.5,2.9z M16.5,0
+            c-4.3,0-4.9,0-6.6,0.1C8.2,0.2,7,0.4,6,0.8C5,1.3,4.1,1.8,3.2,2.7C2.3,3.6,1.8,4.5,1.3,5.5c-0.4,1-0.7,2.2-0.7,3.9
+            c-0.1,1.7-0.1,2.3-0.1,6.6c0,4.3,0,4.9,0.1,6.6c0.1,1.7,0.3,2.9,0.7,3.9c0.4,1.1,1,2,1.8,2.8C4.1,30.2,5,30.7,6,31.2
+            c1,0.4,2.2,0.7,3.9,0.7c1.7,0.1,2.2,0.1,6.6,0.1c4.3,0,4.9,0,6.6-0.1c1.7-0.1,2.9-0.4,3.9-0.7c1.1-0.4,1.9-1,2.8-1.8
+            c0.9-0.9,1.4-1.8,1.8-2.8c0.4-1,0.7-2.2,0.7-3.9c0.1-1.7,0.1-2.2,0.1-6.6s0-4.9-0.1-6.6c-0.1-1.7-0.4-2.9-0.7-3.9
+            c-0.4-1.1-0.9-2-1.8-2.8C28.9,1.8,28,1.3,27,0.8c-1-0.4-2.2-0.7-3.9-0.7C21.4,0,20.8,0,16.5,0z"/>
+          <path class="st0" d="M16.5,7.8c-4.5,0-8.2,3.7-8.2,8.2s3.7,8.2,8.2,8.2c4.5,0,8.2-3.7,8.2-8.2S21,7.8,16.5,7.8z M16.5,21.3
+            c-2.9,0-5.3-2.4-5.3-5.3c0-2.9,2.4-5.3,5.3-5.3c2.9,0,5.3,2.4,5.3,5.3C21.8,18.9,19.4,21.3,16.5,21.3z"/>
+          <path class="st0" d="M27,7.5c0,1.1-0.9,1.9-1.9,1.9c-1.1,0-1.9-0.9-1.9-1.9c0-1.1,0.9-1.9,1.9-1.9C26.1,5.5,27,6.4,27,7.5z"/>
+        </g>
+      </svg>
+
+      
+      </a>
+    <a class="commencement-footer__social-item" href="https://www.youtube.com/channel/UC5ut6byjibUP11LFI9EHY0Q"><svg width="33" height="24" viewBox="0 0 33 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M32.477 5.60004C32.477 5.60004 32.1645 3.3938 31.2021 2.42505C29.9833 1.15005 28.6208 1.1438 27.9958 1.0688C23.5208 0.743805 16.8021 0.743805 16.8021 0.743805H16.7896C16.7896 0.743805 10.0709 0.743805 5.59588 1.0688C4.97089 1.1438 3.60839 1.15005 2.38964 2.42505C1.42715 3.3938 1.1209 5.60004 1.1209 5.60004C1.1209 5.60004 0.795898 8.19378 0.795898 10.7813V13.2063C0.795898 15.7938 1.11465 18.3875 1.11465 18.3875C1.11465 18.3875 1.42715 20.5937 2.38339 21.5625C3.60214 22.8375 5.20213 22.7937 5.91463 22.9312C8.47712 23.175 16.7958 23.25 16.7958 23.25C16.7958 23.25 23.5208 23.2375 27.9958 22.9187C28.6208 22.8437 29.9833 22.8375 31.2021 21.5625C32.1645 20.5937 32.477 18.3875 32.477 18.3875C32.477 18.3875 32.7958 15.8 32.7958 13.2063V10.7813C32.7958 8.19378 32.477 5.60004 32.477 5.60004ZM13.4896 16.15V7.15628L22.1333 11.6688L13.4896 16.15Z"/>
+      </svg>
+      </a>
+    <a class="commencement-footer__social-item" href="https://www.linkedin.com/school/university-of-arizona-global-campus/"><svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M30.6238 0H3.35517C2.04892 0 0.992676 1.03125 0.992676 2.30624V29.6874C0.992676 30.9624 2.04892 31.9999 3.35517 31.9999H30.6238C31.9301 31.9999 32.9926 30.9624 32.9926 29.6937V2.30624C32.9926 1.03125 31.9301 0 30.6238 0ZM10.4864 27.2687H5.73641V11.9937H10.4864V27.2687ZM8.1114 9.91247C6.58641 9.91247 5.35516 8.68122 5.35516 7.16248C5.35516 5.64373 6.58641 4.41249 8.1114 4.41249C9.63015 4.41249 10.8614 5.64373 10.8614 7.16248C10.8614 8.67497 9.63015 9.91247 8.1114 9.91247ZM28.2613 27.2687H23.5176V19.8437C23.5176 18.0749 23.4864 15.7937 21.0489 15.7937C18.5801 15.7937 18.2051 17.7249 18.2051 19.7187V27.2687H13.4676V11.9937H18.0176V14.0812H18.0801C18.7114 12.8812 20.2614 11.6125 22.5676 11.6125C27.3738 11.6125 28.2613 14.775 28.2613 18.8874V27.2687Z"/>
+      </svg>
+      </a>
+  </div>
+
+
+</footer>
+
+
+</div>

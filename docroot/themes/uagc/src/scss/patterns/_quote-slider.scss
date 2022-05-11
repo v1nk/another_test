@@ -1,0 +1,250 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+@use "../elements/buttons" as *;
+@use "sass:math";
+
+.quote-slider {
+  @include globalGutters;
+  background-color: $lighterGray;
+  padding: {
+    top: 32px;
+    bottom: 32px;
+  }
+
+  @media (min-width: $tablet) {
+    @include globalGutters;
+  }
+
+  &.\--paid-testimonials {
+    @include globalGuttersPaid;
+    @media (min-width: $tablet) {
+      @include globalGuttersPaid;
+    }
+  }
+
+  &__container {
+    @media (min-width: $desktop-small) {
+      display: flex;
+      justify-content: space-between;
+    }
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        max-width: 1440px;
+        margin: {
+          left: auto;
+          right: auto;
+        }
+        padding: {
+          left: 0;
+          right: 0;
+        }
+      }
+    }
+    .quote-slider__slider-container {
+      margin-right: 0;
+    }
+  }
+  &__header-container {
+    @media (min-width: $desktop-small) {
+      flex-basis: 31%;
+      max-width: 488px;
+      flex-grow: 0;
+    }
+
+    @media (min-width: $desktop) {
+      flex-basis: 43%;
+    }
+  }
+  &__header {
+    display: flex;
+    margin: {
+      bottom: 32px;
+      top: 24px;
+    }
+    @media (min-width: $desktop-small) {
+      justify-content: flex-start;
+    }
+  }
+  &__header-text {
+    @include headline5;
+    @include eyebrow;
+    color: $azBlue;
+    text-align: left;
+    @media (min-width: $tablet) {
+      @include rems(36px);
+      padding-right: 32px;
+    }
+  }
+  &__slider-container {
+    position: relative;
+    @media (min-width: $tablet) {
+      background-color: #ffffff;
+      flex-basis: 69%;
+    }
+
+    @media (min-width: $desktop) {
+      flex-basis: 57%;
+    }
+  }
+  &__slider {
+  }
+  &__slide {
+    padding: {
+      top: $Medium;
+      bottom: $Medium;
+    }
+    @media (min-width: $tablet) {
+      padding: {
+        top: 40px;
+        left: 40px;
+        bottom: 40px;
+        right: 40px;
+      }
+    }
+
+    @media (min-width: $desktop) {
+      padding: {
+        top: $xLarge;
+        left: $xLarge;
+        bottom: $xLarge;
+        right: $xLarge;
+      }
+    }
+  }
+  &__slide-content {
+  }
+  &__slide-quote {
+    quotes: "“" "”" "‘" "’";
+    @include textMedium;
+    color: $azBlue;
+    @include marginXLarge;
+    @media (min-width: $tablet) {
+      @include textLarge;
+    }
+  }
+  &__slide-author {
+    display: flex;
+    padding: {
+      bottom: 40px;
+    }
+  }
+  &__author-image {
+    flex-basis: 48px;
+    width: 48px;
+    height: 48px;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: {
+      right: 24px;
+    }
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+  &__author-info {
+    flex-basis: calc(100% - 72px);
+  }
+  &__author-title {
+    @include boldLarge;
+    color: $azBlue;
+  }
+  &__author-link {
+    a {
+      @include textMedium;
+      color: $azRed;
+      text-decoration: underline;
+      transition: color 0.25s ease-in-out;
+      &:visited {
+        color: $azRed;
+      }
+      &:hover,
+      &:focus {
+        color: $azBlue;
+      }
+    }
+
+    .--paid-testimonials & {
+      color: $azBlue;
+    }
+  }
+  &__pagination {
+    position: absolute;
+    bottom: 29px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    @media (min-width: $tablet) {
+      bottom: 45px;
+      left: 40px;
+    }
+    @media (min-width: $desktop) {
+      bottom: 85px;
+      left: 80px;
+    }
+    .swiper-pagination {
+      top: 0;
+      left: 0;
+      text-align: left;
+    }
+    .swiper-pagination-bullet {
+      opacity: 0.3;
+    }
+    /* this is needed to override swiper's pagination style */
+    .swiper-pagination-bullet.swiper-pagination-bullet.swiper-pagination-bullet {
+      &:first-child {
+        margin: {
+          left: 0;
+        }
+      }
+      &:last-child {
+        margin: {
+          right: 0;
+        }
+      }
+      margin: {
+        left: 8px;
+        right: 8px;
+      }
+    }
+    .swiper-pagination-bullet-active {
+      background-color: $azRed;
+      opacity: 1;
+    }
+  }
+  &__buttons {
+    position: absolute;
+    bottom: 29px;
+    right: 0;
+    @media (min-width: $tablet) {
+      bottom: 45px;
+      right: 40px;
+    }
+    @media (min-width: $desktop) {
+      bottom: 85px;
+      right: 80px;
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+      width: 16px;
+      left: auto;
+      &::after {
+        font-size: 1rem;
+        color: $azRed;
+        font-weight: bold;
+      }
+    }
+    .swiper-button-next {
+      right: 0;
+    }
+    .swiper-button-prev {
+      right: 40px;
+    }
+  }
+}

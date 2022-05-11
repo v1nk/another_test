@@ -1,0 +1,63 @@
+<div class="featured-articles">
+    <div class="featured-articles__red-line"></div>
+
+    {% if content.field_heading['#items'].value %}
+        <h2 class="featured-articles__heading">{{ content.field_heading.0 }}</h2>
+    {% else %}
+        <h2 class="featured-articles__heading">{{ content.field_featured_posts_type.0 }}</h2>
+    {% endif %}
+    
+
+    {% if paragraph.field_featured_posts_type.0.value  == 'featured-articles' %}
+        {# markup can be found in views-view-unformatted--featured--block_featured_articles.html.twig #}
+        {{ drupal_view('featured', 'block_featured_articles') }}
+    {% elseif paragraph.field_featured_posts_type.0.value  == 'featured-stories' %}
+        {# markup can be found in views-view-unformatted--featured--block_featured_stories.html.twig #}
+        {{ drupal_view('featured', 'block_featured_stories') }}
+    {% elseif paragraph.field_featured_posts_type.0.value  == 'accounting-finance-1341' %}
+        {# markup can be found in views-view-unformatted--featured--block_featured_articles_filtered.html.twig #}
+        {{ drupal_view('featured', 'block_featured_articles_filtered', 1341) }}
+    {% elseif paragraph.field_featured_posts_type.0.value  == 'business-1351' %}
+        {# markup can be found in views-view-unformatted--featured--block_featured_articles_filtered.html.twig #}
+        {{ drupal_view('featured', 'block_featured_articles_filtered', 1351) }}
+    {% elseif paragraph.field_featured_posts_type.0.value  == 'communications-1356' %}
+        {# markup can be found in views-view-unformatted--featured--block_featured_articles_filtered.html.twig #}
+        {{ drupal_view('featured', 'block_featured_articles_filtered', 1356) }}
+    {% elseif paragraph.field_featured_posts_type.0.value  == 'criminal-justice-1366' %}
+        {# markup can be found in views-view-unformatted--featured--block_featured_articles_filtered.html.twig #}
+        {{ drupal_view('featured', 'block_featured_articles_filtered', 1366) }}
+    {% elseif paragraph.field_featured_posts_type.0.value  == 'degree-programs-1' %}
+        {# markup can be found in views-view-unformatted--featured--block_featured_articles_filtered.html.twig #}
+        {{ drupal_view('featured', 'block_featured_articles_filtered', 1) }}
+    {% elseif paragraph.field_featured_posts_type.0.value  == 'education-1376' %}
+        {# markup can be found in views-view-unformatted--featured--block_featured_articles_filtered.html.twig #}
+        {{ drupal_view('featured', 'block_featured_articles_filtered', 1376) }}
+    {% elseif paragraph.field_featured_posts_type.0.value  == 'healthcare-1386' %}
+        {# markup can be found in views-view-unformatted--featured--block_featured_articles_filtered.html.twig #}
+        {{ drupal_view('featured', 'block_featured_articles_filtered', 1386) }}
+    {% elseif paragraph.field_featured_posts_type.0.value  == 'industry Insights-1446' %}
+        {# markup can be found in views-view-unformatted--featured--block_featured_articles_filtered.html.twig #}
+        {{ drupal_view('featured', 'block_featured_articles_filtered', 1446) }}
+    {% elseif paragraph.field_featured_posts_type.0.value  == 'information-technology-1441' %}
+        {# markup can be found in views-view-unformatted--featured--block_featured_articles_filtered.html.twig #}
+        {{ drupal_view('featured', 'block_featured_articles_filtered', 1441) }}
+    {% elseif paragraph.field_featured_posts_type.0.value  == 'liberal-arts-1411' %}
+        {# markup can be found in views-view-unformatted--featured--block_featured_articles_filtered.html.twig #}
+        {{ drupal_view('featured', 'block_featured_articles_filtered', 1411) }}
+    {% elseif paragraph.field_featured_posts_type.0.value  == 'motivation-and-inspiration-1471' %}
+        {# markup can be found in views-view-unformatted--featured--block_featured_articles_filtered.html.twig #}
+        {{ drupal_view('featured', 'block_featured_articles_filtered', 1471) }}
+    {% elseif paragraph.field_featured_posts_type.0.value  == 'political-science-1406' %}
+        {# markup can be found in views-view-unformatted--featured--block_featured_articles_filtered.html.twig #}
+        {{ drupal_view('featured', 'block_featured_articles_filtered', 1406) }}
+    {% elseif paragraph.field_featured_posts_type.0.value  == 'social-behavioral-science-1416' %}
+        {# markup can be found in views-view-unformatted--featured--block_featured_articles_filtered.html.twig #}
+        {{ drupal_view('featured', 'block_featured_articles_filtered', 1416) }}
+    {% elseif paragraph.field_featured_posts_type.0.value  == 'student-lifestyle-success-1466' %}
+        {# markup can be found in views-view-unformatted--featured--block_featured_articles_filtered.html.twig #}
+        {{ drupal_view('featured', 'block_featured_articles_filtered', 1466) }}
+    {% elseif paragraph.field_featured_posts_type.0.value  == 'tips-and-advice-11' %}
+        {# markup can be found in views-view-unformatted--featured--block_featured_articles_filtered.html.twig #}
+        {{ drupal_view('featured', 'block_featured_articles_filtered', 11) }}
+    {% endif %}
+</div>

@@ -1,0 +1,51 @@
+{{ attach_library('uagc/main') }}
+<!--
+ add if check for header paragraph fields-->
+{# {{dump(content.field_header_paragraphs.0['#paragraph']|keys)}} #}
+{# {% for item in node.field_header_paragraphs %}
+{{item.entity.field_header_text.value}}
+
+{% endfor %} #}
+
+
+{% set imageURL = node.field_featured_image.0.entity.field_media_image.0.entity.uri.0.value | image_style('success_grid_image') %}
+{% set imageAlt = node.field_featured_image.0.entity.field_media_image.alt %}
+
+<div class="success-stories-grid__single-wrapper listing-view__single-wrapper">
+<div class="listing-view__link-container">
+    <a href="{{ path('entity.node.canonical', {'node': node.id}) }}" class="success-stories-grid__link">
+        <div class="success-stories-grid__img-container">
+            {% if imageURL is not empty %}
+                <img src="{{ imageURL  }}" class="success-stories-grid__img" alt="{{imageAlt}}">
+            {% else %}
+                <img src="/themes/uagc/src/images/spacer.png" class="success-stories-grid__img success-stories-grid__img-spacer" alt="Success Story Spacer">
+            {% endif %}
+        </div>
+        <div class="listing-view__card-content">
+        {% if node.field_header_text.0.value is not empty %}
+            <div class="success-stories-grid__header">{{node.field_header_text.0.value}}</div>
+        {% endif %}
+        
+            {% for item in node.field_success_stories_degrees %}
+                {% if loop.last %}
+                {% if item.entity.field_degree_achieved.0.entity.title.value is not empty %}
+                <div class="success-stories-grid__degree">
+                    {{item.entity.field_degree_achieved.0.entity.title.value}}{% if item.entity.field_degree_achieved.0.entity.title.value is not empty and item.entity.field_year.0.value is not empty %}, {% endif %} {{item.entity.field_year.0.value}}
+                </div>
+                {% endif %}
+                {% endif %}
+            {% endfor %}
+        
+
+        {% if node.field_quote_content.0.value is not empty %}
+            <div class="success-stories-grid__quote">{% autoescape false %}{{node.field_quote_content.0.value}}{% endautoescape %}</div>
+        {% endif %}
+        </div>
+        <div class="success-stories-grid__bottom-info"><span class="success-stories-grid__datetime">{{node.created.0.value|date("M d, Y")}} {% if node.field_read_length.0.value is not empty %} &bull; {{node.field_read_length.0.value}} min {% endif %}</span>  <span class="success-stories-grid__read-story">Read Story
+            {% include directory ~ '/templates/svg-icons/arrow-right.html.twig'%}
+        </span></div>
+        
+    </a>
+    </div>
+</div>
+

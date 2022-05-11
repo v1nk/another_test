@@ -1,0 +1,60 @@
+{{ attach_library('uagc/main') }}
+<!--
+ add if check for header paragraph fields-->
+{# {{dump(content.field_header_paragraphs.0['#paragraph']|keys)}} #}
+{# {% for item in node.field_header_paragraphs %}
+{{item.entity.field_header_text.value}}
+
+{% endfor %} #}
+{# {{dump(content.field_article_category.0.value|keys)}} #}
+
+{% set tid = node.field_article_category.0.target_id %}
+
+{% set imageURL = node.field_featured_image.0.entity.field_media_image.0.entity.uri.0.value | image_style('success_grid_image') %}
+  <div class="blog-listing__single-wrapper listing-view__single-wrapper"> <div class="listing-view__link-container">
+    <a href="{{ path('entity.node.canonical', {'node': node.id}) }}" class="blog-listing__link">
+      <div class="blog-listing__img-container">
+        {% if imageURL is not empty %}
+          <img src="{{ imageURL }}" alt="{{node.title.0.value}}" class="blog-listing__img">
+        {% else %}
+          <img src="/themes/uagc/src/images/spacer.png" alt="" class="blog-listing__img success-stories-grid__img-spacer">
+        {% endif %}
+      </div>
+
+      <div class="listing-view__card-content">
+        {% if node.field_article_category.entity.name.value is not empty %}
+          <div class="blog-listing__category">
+            {{node.field_article_category.entity.name.value}}
+          </div>
+        {% endif %}
+        <div class="blog-listing__header">{{node.title.0.value}}</div>
+        {% if node.field_success_stories_degrees['#items']|length > 0 %}
+          <div class="blog-listing__degree">
+            {% for item in node.field_success_stories_degrees %}
+              {% if loop.last %}
+                {{item.entity.field_degree_name.0.value}},
+                {{item.entity.field_year.0.value}}
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% if node.field_quote_text.0.value is not empty %}
+          <div class="blog-listing__quote">{{node.field_quote_text.0.value}}</div>
+        {% endif %}
+      </div>
+      <div class="blog-listing__bottom-info">
+        <span class="blog-listing__datetime">
+          {{node.created.0.value|date("M d, Y")}}
+          {% if node.field_read_length.0.value is not empty %}
+            &bull;
+            {{node.field_read_length.0.value}}
+          {% endif %}
+        </span>
+        <span class="blog-listing__read-story">Read Story
+          {% include directory ~ '/templates/svg-icons/arrow-right.html.twig'%}
+        </span>
+      </div>
+    </a>
+  </div>
+</div>

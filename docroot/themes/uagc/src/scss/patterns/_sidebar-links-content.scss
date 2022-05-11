@@ -1,0 +1,210 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+@use "../elements/buttons" as *;
+
+.sidebar-links-content {
+  display: block;
+  @include globalGutters;
+  @media (min-width: $desktop-small) {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__links {
+    margin: {
+      bottom: 40px;
+    }
+    @media (min-width: $desktop-small) {
+      flex-basis: 280px;
+      flex-shrink: 0;
+      background-color: $lighterGray;
+      padding: {
+        top: 32px;
+        bottom: 24px;
+        left: 24px;
+        right: 24px;
+      }
+    }
+  }
+  &__links-header-container {
+    @media (min-width: $desktop-small) {
+    }
+  }
+  &__links-header {
+    font-weight: 500;
+    @include rems(28px);
+    @include eyebrow;
+    line-height: 1.14;
+    color: $azBlue;
+    margin: {
+      top: 24px;
+      bottom: 24px;
+    }
+    @media (min-width: $desktop-small) {
+      font-weight: 500;
+      @include rems(32px);
+      line-height: 1.25;
+      margin: {
+        top: 32px;
+        bottom: 32px;
+      }
+    }
+    &::before {
+      top: -32px;
+    }
+  }
+
+  &__links-container {
+    border: 1px solid #0c234b;
+    border-radius: 24px;
+    overflow: hidden;
+    @media (min-width: $desktop-small) {
+      flex-basis: calc(100% - 312px);
+      border: 0;
+      border-radius: 0;
+    }
+    &.\--close-container {
+      .sidebar-links-content__link-items {
+        display: none;
+      }
+      .sidebar-links-content__dropdown-toggle::before {
+        content: "Show Filters";
+      }
+      .sidebar-links-content__dropdown-toggle::after {
+        background-image: url(../images/icons/chevron-down.svg);
+      }
+    }
+  }
+  &__links-content {
+    @media (min-width: $desktop-small) {
+    }
+  }
+  &__dropdown-container {
+    background-color: $azBlue;
+    @media (min-width: $desktop-small) {
+      display: none;
+    }
+  }
+  &__dropdown {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    width: 100%;
+    font-weight: unset;
+    position: relative;
+    &:hover {
+      background-color: $azBlue;
+    }
+  }
+  &__dropdown-text {
+    font-weight: 500;
+    @include rems(16px);
+    line-height: 1.5;
+    color: #ffffff;
+    padding: {
+      top: 12px;
+      bottom: 12px;
+      left: 16px;
+    }
+    @media (min-width: $desktop-small) {
+    }
+  }
+  &__dropdown-toggle {
+    &::before {
+      content: "Hide Filters";
+      @include rems(14px);
+      line-height: 1.29;
+      color: $silver;
+      position: absolute;
+      top: 16px;
+      right: 48px;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      right: 8px;
+      top: calc(50% - 16px);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: #ffffff;
+      background-image: url(../images/icons/chevron-up.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 16px;
+    }
+  }
+  &__link-items {
+    padding: {
+      top: 16px;
+      bottom: 8px;
+      left: 16px;
+      right: 16px;
+    }
+
+    @media (min-width: $desktop-small) {
+      padding: 0;
+    }
+
+    a,
+    span {
+      display: block;
+      font-weight: 500;
+      @include rems(16px);
+      line-height: 1.5;
+      color: $azBlue;
+      position: relative;
+      margin: {
+        bottom: 8px;
+      }
+
+      &.--indent {
+        padding: {
+          left: 16px;
+        }
+      }
+      &.--double-indent {
+        padding: {
+          left: 24px;
+        }
+      }
+      &.--current {
+        color: $azRed;
+        //background-color: $lightGray;
+      }
+    }
+    a {
+      &:hover {
+        color: $azRed;
+      }
+    }
+    div {
+      margin: {
+        bottom: 16px;
+      }
+      &.--indent {
+        padding: {
+          left: 16px;
+        }
+      }
+      &.--double-indent {
+        padding: {
+          left: 24px;
+        }
+      }
+    }
+  }
+
+  &__content {
+    @media (min-width: $desktop-small) {
+      margin: {
+        left: 32px;
+      }
+    }
+  }
+}

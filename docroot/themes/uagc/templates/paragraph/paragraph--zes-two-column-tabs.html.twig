@@ -1,0 +1,113 @@
+{{ attach_library('uagc/zes-two-column-tabs') }}
+{% if 'On' in content.field_background_grey.0 %}
+  {% set color = '--grey' %}
+  {% else %}
+    {% set color = '--white' %}
+{% endif %}
+
+{% set padding = '' %}
+{% if 'On' in content.field_remove_top_padding.0 %}
+  {% set padding = '--no-padding' %}
+{% endif %}
+
+{% set classes = ['zes-two-column-tabs__container', color, '--full-width', padding ] %}
+<div {{ attributes.addClass(classes) }}>
+    <div class="zes-two-column-tabs">
+        {% if paragraph.field_header_text.0.value != '' or paragraph.field_paragraph_body.0.value != ''%}
+            <div class="zes-two-column-tabs__main-header">
+                {% if paragraph.field_header_text.0.value != '' %}
+                    <div class="zes-two-column-tabs__red-bar"></div>
+                    <div class="zes-two-column-tabs__main-header-text"><h2>{{ paragraph.field_header_text.0.value }}</h2></div>
+                {% endif %}
+                {% if paragraph.field_paragraph_body.0.value != '' %}
+                    <div  class="zes-two-column-tabs__main-header-body">
+                        {{ content.field_paragraph_body }}
+                    </div>
+                {% endif %}
+                
+                <div  class="zes-two-column-tabs__main-header-links">
+                    {{ content.field_button_link }}
+                </div>
+            </div>
+        {% endif %}
+        <div class="zes-two-column-tabs__tabs-container js-zes-tabs">
+            <div class="zes-two-column-tabs__desktop-tabs js-zes-tabs-desktop">
+            </div>
+            <div class="zes-two-column-tabs__tabs-wrapper ">
+                {% for item in paragraph.field_zes_two_column_tab %}
+                    {% if loop.first %}
+                        <div class="zes-two-column-tabs__single-tab js-zes-tab --tab-open">
+                    {% else %}
+                        <div class="zes-two-column-tabs__single-tab js-zes-tab">
+                    {% endif %}
+                        <div class="zes-two-column-tabs__preview-header">
+                            <div class="zes-two-column-tabs__tab-text js-zes-tab-text">{{item.entity.field_heading.0.value}}</div>
+                            <div class="zes-two-column-tabs__arrow">
+                            </div>
+                        </div>
+                        <div class="zes-two-column-tabs__single-tab-wrapper js-zes-tab-wrapper">
+
+                            <div class="zes-two-column-tabs__tab-content js-zes-tab-content">
+                                {% if item.entity.field_credit_breakdown.entity.field_total.0.value != '' %}
+                                    <div class="zes-two-column-tabs__credit">
+                                        {% set last = ""%}
+                                        {% if item.entity.field_credit_breakdown.entity.field_electives.0.value != '' %}
+                                            {% set last = "--last" %}
+                                        {% endif %}
+                                
+                                        <div class="zes-two-column-tabs__credit-header">Credit Breakdowns</div>
+                                        <div class="zes-two-column-tabs__credit-content">
+                                            <div class="zes-two-column-tabs__credit-column --general">
+                                                <div class="zes-two-column-tabs__credit-label">General Education</div>
+                                                <div class="zes-two-column-tabs__credit-block">
+                                                    <div class="zes-two-column-tabs__credit-circle">{{ item.entity.field_credit_breakdown.entity.field_general_education_credits.0.value}}</div>
+                                                    <div class="zes-two-column-tabs__credit-bottom-label">Credits</div>
+                                                </div>
+                                            </div>
+                                            <div class="zes-two-column-tabs__credit-column --major {{ last }}">
+                                                <div class="zes-two-column-tabs__credit-label">Major Credit Requirements</div>
+                                                <div class="zes-two-column-tabs__credit-block">
+                                                    <div class="zes-two-column-tabs__credit-circle">{{ item.entity.field_credit_breakdown.entity.field_major_requirements.0.value}}</div>
+                                                    <div class="zes-two-column-tabs__credit-bottom-label">Credits</div>
+                                                </div>
+                                            </div>
+                                            {% if item.entity.field_credit_breakdown.entity.field_electives.0.value != 0 %}
+                                                <div class="zes-two-column-tabs__credit-column --elective">
+                                                    <div class="zes-two-column-tabs__credit-label">Electives from Your Emphasis</div>
+                                                    <div class="zes-two-column-tabs__credit-block">
+                                                        <div class="zes-two-column-tabs__credit-circle">{{ item.entity.field_credit_breakdown.entity.field_electives.0.value}}</div>
+                                                        <div class="zes-two-column-tabs__credit-bottom-label">Credits</div>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                            <div class="zes-two-column-tabs__credit-column --total">
+                                                <div class="zes-two-column-tabs__credit-label">Total Credits</div>
+                                                <div class="zes-two-column-tabs__credit-block">
+                                                    <div class="zes-two-column-tabs__credit-circle">{{ item.entity.field_credit_breakdown.entity.field_total.0.value }} </div>
+                                                    <div class="zes-two-column-tabs__credit-bottom-label">Credits</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% set has_a_cta = '' %}
+                                {% if item.entity.field_cta.0.value is not empty %}
+                                    {% set has_a_cta = '--has-a-cta' %}
+                                {% endif %}
+                                <div class="zes-two-column-tabs__wysiwyg wizzywig {{has_a_cta}}">
+                                    {{item.entity.field_wysiwyg.0.value | raw }}
+                                </div>
+
+                                {% if item.entity.field_cta.0.value is not empty %}
+                                    <a href="{{item.entity.field_cta.0.url}}" class="zes-two-column-tabs__cta-link button--blue">
+                                        {{item.entity.field_cta.0.title}}
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

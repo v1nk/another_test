@@ -1,0 +1,39 @@
+@use "../base/mixins" as *;
+@use "../base/vars" as *;
+@use "../base/colors" as *;
+
+.stickyrfi-desktop {
+  &__header {
+    @include rems(14.3px);
+    @media (min-width: $desktop) {
+      @include rems(17.5px);
+    }
+  }
+
+  &__form {
+
+    select {
+      @include rems(14.35px);
+      font-family: "Fira Sans", Arial, sans-serif;
+    }
+
+    .form-item {
+      margin: 0;
+    }
+
+  }
+  .\--next-button.\--next-button.\--next-button {
+    @include rems(14.25px);
+    text-transform: initial;
+  }
+}
+
+.stickyrfi-mobile {
+  &__header {
+    @include rems(18px);
+  }
+  select {
+    @include rems(14.35px);
+    font-family: "Fira Sans", Arial, sans-serif;
+  }
+}

@@ -1,0 +1,99 @@
+@use "sass:math";
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+@use "../base/icons" as *;
+@use "../elements/buttons" as *;
+
+.intro-block {
+  padding: {
+    top: 24px;
+  }
+  @media (min-width: $tablet) {
+    margin: {
+      bottom: 80px;
+    }
+  }
+  &__header-container {
+    @include eyebrow;
+    margin: {
+      bottom: 24px;
+    }
+  }
+  &__header {
+    font-weight: 500;
+    @include rems(28px);
+    line-height: 1.14;
+    color: $azBlue;
+    @media (min-width: $tablet) {
+      @include rems(36px);
+      line-height: 1.33;
+    }
+  }
+  &__content {
+    p {
+      @include rems(20px);
+      line-height: 1.2;
+      @media (min-width: $tablet) {
+        @include rems(24px);
+        line-height: 1.33;
+      }
+      &:last-child {
+        margin: {
+          bottom: 0;
+        }
+      }
+    }
+
+    margin: {
+      bottom: 24px;
+    }
+  }
+
+  &__link {
+    margin: {
+      bottom: 16px;
+    }
+    @media (min-width: $tablet) {
+      display: inline-block;
+      margin: {
+        right: 24px;
+        bottom: 0;
+      }
+    }
+    a {
+      display: inline-block;
+      @include buttonsBlue;
+      @include rems(14px);
+      line-height: 1.29;
+      background-color: transparent;
+      padding: {
+        left: 16px;
+        right: 38px;
+      }
+      &:hover {
+        &::after {
+          background-image: url("../images/icons/arrow-up-right-white.svg");
+        }
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        right: 8px;
+        top: calc(50% - 10px);
+        background-image: url("../images/icons/arrow-up-right.svg");
+        background-size: contain;
+        background-position: center;
+      }
+    }
+    &:last-child {
+      margin: {
+        bottom: 24px;
+      }
+    }
+  }
+}

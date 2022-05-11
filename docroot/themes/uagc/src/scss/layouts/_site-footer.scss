@@ -1,0 +1,680 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/vars" as *;
+@use "../elements/buttons" as *;
+@use "../base/typographyMixins" as *;
+
+@mixin redtitle {
+  font-weight: 500;
+  @include rems(24px);
+  line-height: 1.33;
+  color: $azRed;
+}
+
+.site-footer {
+  max-width: 1920px;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  &__container {
+    &.--grey {
+      background-color: $lighterGray;
+    }
+  }
+
+  &__top {
+    max-width: 1440px;
+    margin: {
+      left: auto;
+      right: auto;
+    }
+
+    @include globalSideGutters;
+    padding: {
+      top: 40px;
+      bottom: 40px;
+    }
+
+    @media (min-width: $tablet) {
+      max-width: 1600px;
+    }
+
+    @media (min-width: $desktop) {
+      max-width: 1664px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  &__top-group {
+    padding: {
+      bottom: 32px;
+    }
+    border-bottom: 1px solid #98a4ae;
+    margin: {
+      bottom: 32px;
+    }
+    @media (min-width: $tablet) {
+      display: flex;
+      flex-wrap: wrap;
+      // justify-content: space-between;
+    }
+    @media (min-width: $desktop) {
+      padding: {
+        top: 7.5px;
+        bottom: 7.5px;
+      }
+      border-bottom: 0;
+      margin: {
+        bottom: 0;
+      }
+    }
+  }
+  &__top-wasc {
+    flex-basis: 152px;
+    max-width: 152px;
+    margin: {
+      bottom: 12px;
+    }
+    @media (min-width: $tablet) {
+      flex-basis: 208px;
+      max-width: 208px;
+      margin: {
+        bottom: 0;
+      }
+    }
+    @media (min-width: $tablet) {
+      margin-right: 32px;
+    }
+    img {
+      width: 152px;
+      height: 88px;
+      @media (min-width: $tablet) {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+  &__top-accred {
+    @media (min-width: $tablet) {
+      flex-basis: calc(100% - 240px);
+      flex-shrink: 0;
+    }
+    @media (min-width: $desktop) {
+      flex-basis: calc(100% - 272px);
+      flex-shrink: 0;
+    }
+    .wizzywig {
+      p {
+        @include rems(16px);
+        line-height: 1.45;
+        &:last-child {
+          margin: {
+            bottom: 0;
+          }
+        }
+      }
+      margin: {
+        bottom: 0;
+      }
+    }
+  }
+  &__top-logo-content {
+    @media (min-width: $tablet) {
+      flex-basis: 100%;
+    }
+
+    @media (min-width: $desktop) {
+      flex-basis: 312px;
+      max-width: 312px;
+      flex-shrink: 0;
+      padding: {
+        left: 32px;
+      }
+      border-left: 1px solid silver;
+      margin: {
+        left: 32px;
+      }
+    }
+  }
+  &__top-logo-content-img {
+    margin: {
+      bottom: 24px;
+    }
+  }
+  &__top-logo-content-text {
+    @include rems(24px);
+    line-height: 1.33;
+    color: $azBlue;
+  }
+  &__top-logo-content-link {
+    @include rems(24px);
+    line-height: 1.33;
+    color: $azRed;
+    text-decoration: underline;
+    a {
+      color: $azRed;
+      &:hover,
+      &:focus {
+        color: $azBlue;
+      }
+    }
+  }
+
+  &__middle {
+    max-width: 1440px;
+    margin: {
+      left: auto;
+      right: auto;
+    }
+    @include globalSideGutters;
+    padding: {
+      top: 24px;
+    }
+    @media (min-width: $tablet) {
+      max-width: 1600px;
+
+      padding: {
+        top: 40px;
+
+        bottom: 40px;
+      }
+    }
+
+    @media (min-width: $desktop) {
+      max-width: 1664px;
+    }
+  }
+  &__middle-connect {
+    @media (min-width: $tablet) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: {
+        bottom: 32px;
+      }
+      border-bottom: 1px solid rgb(12 35 75 / 20%);
+      margin: {
+        bottom: 32px;
+      }
+    }
+  }
+  &__middle-connect-links {
+    @media (min-width: $tablet) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    a {
+      color: $black;
+      transition: color 0.25s;
+      &:hover,
+      &:focus {
+        color: $azRed;
+      }
+    }
+  }
+  &__middle-connect-button {
+    @include buttons;
+    font-weight: 500;
+    @include rems(16px);
+    line-height: 1.5;
+    display: inline-block;
+    padding: {
+      left: 24px;
+      right: 24px;
+      top: 7px;
+      bottom: 7px;
+    }
+    margin: {
+      bottom: 16px;
+    }
+    @media (min-width: $tablet) {
+      margin: {
+        right: 16px;
+        bottom: 0;
+      }
+    }
+    a {
+      &:hover {
+        color: inherit;
+      }
+      &:focus {
+        color: $azBlue;
+      }
+    }
+  }
+  &__middle-connect-link-items {
+    font-weight: 500;
+    @include rems(16px);
+    line-height: 1.5;
+    color: $azBlue;
+    margin: {
+      bottom: 16px;
+    }
+    @media (min-width: $tablet) {
+      font-weight: 500;
+      @include rems(20px);
+      line-height: 1.2;
+      margin: {
+        bottom: 0;
+      }
+    }
+  }
+  &__middle-connect-link {
+    display: inline-block;
+    padding-right: 16px;
+    position: relative;
+    &:first-child {
+      &::before {
+        content: "|";
+        position: absolute;
+        right: 3px;
+      }
+    }
+  }
+
+  &__middle-social {
+    @media (min-width: $tablet) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  &__middle-social-text {
+    font-weight: 500;
+    @include rems(16px);
+    line-height: 1.5;
+    margin: {
+      bottom: 16px;
+    }
+    @media (min-width: $tablet) {
+      @include rems(20px);
+      line-height: 1.2;
+      margin: {
+        bottom: 0;
+        right: 16px;
+      }
+    }
+  }
+  &__middle-social-links {
+    display: flex;
+    padding: {
+      bottom: 16px;
+    }
+    border-bottom: 1px solid #98a4ae;
+    margin: {
+      bottom: 16px;
+    }
+    @media (min-width: $tablet) {
+      padding: {
+        bottom: 0;
+      }
+      border-bottom: 0;
+
+      margin: {
+        bottom: 0;
+      }
+    }
+  }
+  &__middle-social-link-item {
+    margin: {
+      right: 16px;
+    }
+    &:last-of-type {
+      margin: {
+        right: 0;
+      }
+    }
+  }
+  &__middle-social-link {
+    display: block;
+    width: 32px;
+    height: 32px;
+    position: relative;
+    background-color: $azBlue;
+    border-radius: 50%;
+
+    &:hover,
+    &:focus {
+      &::after {
+        filter: brightness(1.5);
+        transform: scale(1.1);
+      }
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-position: center;
+      background-size: cover;
+      transition: filter 0.25s, transform 0.25s;
+      filter: brightness(1);
+      transform: scale(1);
+    }
+    &.--facebook {
+      &::after {
+        background-image: url("/images/icons/FB.svg");
+      }
+    }
+    &.--twitter {
+      &::after {
+        background-image: url("/images/icons/TW.svg");
+      }
+    }
+    &.--instagram {
+      &::after {
+        background-image: url("/images/icons/IG.svg");
+      }
+    }
+    &.--linkedin {
+      &::after {
+        background-image: url("/images/icons/IN.svg");
+      }
+    }
+    &.--youtube {
+      &::after {
+        background-image: url("/images/icons/YT.svg");
+      }
+    }
+  }
+  &__middle-menus {
+    @media (min-width: $desktop) {
+      display: flex;
+    }
+  }
+  &__middle-menus-main {
+    padding: {
+      bottom: 32px;
+    }
+    border-bottom: 1px solid $azBlue;
+    margin: {
+      bottom: 32px;
+    }
+    @media (min-width: $desktop) {
+      flex-basis: 768px;
+      max-width: 768px;
+      padding-bottom: 0;
+      border-bottom: 0;
+      margin: {
+        bottom: 0;
+      }
+    }
+  }
+  &__middle-menus-main-title {
+    @include redtitle();
+    margin: {
+      bottom: 16px;
+    }
+  }
+  &__middle-menus-main-block-container {
+    @media (min-width: $tablet) {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 32px;
+      row-gap: 16px;
+    }
+  }
+  &__middle-menus-main-blocks {
+    @media (min-width: $tablet) {
+      flex-basis: 196px;
+      margin: {
+        bottom: 16px;
+      }
+    }
+    @media (min-width: $desktop) {
+      flex-basis: 156px;
+    }
+  }
+  &__middle-menus-main-block-title {
+    font-weight: 500;
+    @include rems(16px);
+    line-height: 1.5;
+    margin: {
+      bottom: 8px;
+      top: 16px;
+    }
+    @media (min-width: $tablet) {
+      margin: {
+        top: 0;
+      }
+    }
+  }
+  &__middle-menus-main-block-items {
+    margin: {
+      bottom: 16px;
+    }
+    &:last-child {
+      margin: {
+        bottom: 0;
+      }
+    }
+  }
+  &__middle-menus-main-block-item {
+    margin: {
+      bottom: 4px;
+    }
+    a {
+      color: $darkGray;
+      @media (min-width: $desktop) {
+        @include rems(16px);
+        line-height: 1.5;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__middle-menus-side {
+    @media (min-width: $tablet) {
+      display: flex;
+      justify-content: space-between;
+    }
+    @media (min-width: $desktop) {
+      // flex-basis: 448px;
+      // max-width: 448px;
+      flex-shrink: 0;
+      flex-grow: 1;
+      display: block;
+      padding: {
+        left: 32px;
+      }
+      border-left: 1px solid rgb(12 35 75 / 20%);
+      margin: {
+        left: 32px;
+      }
+    }
+  }
+  &__middle-menus-side-block {
+    margin: {
+      bottom: 32px;
+    }
+    @media (min-width: $tablet) {
+      flex-basis: 424px;
+      max-width: 424px;
+      margin: {
+        bottom: 40px;
+      }
+    }
+    @media (min-width: $desktop) {
+      margin: {
+        bottom: 32px;
+      }
+    }
+    &:last-child {
+      @media (min-width: $desktop) {
+        margin: {
+          bottom: 0;
+        }
+      }
+    }
+  }
+  &__middle-menus-side-block-title {
+    @include redtitle();
+    margin-bottom: 16px;
+    @include rems(20px);
+    line-height: 1.2;
+    @media (min-width: $tablet) {
+      @include rems(24px);
+      line-height: 1.33;
+    }
+  }
+  &__middle-menus-side-block-column {
+    &.--2-column {
+      @media (min-width: $tablet) {
+        columns: 2;
+        column-gap: 32px;
+      }
+    }
+  }
+  &__middle-menus-side-block-column-item {
+    color: $darkGray;
+    margin: {
+      bottom: 4px;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+    @media (min-width: $tablet) {
+      @include rems(16px);
+      line-height: 1.5;
+    }
+    a {
+      color: $darkGray;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__bottom {
+    max-width: 1440px;
+    margin: {
+      left: auto;
+      right: auto;
+    }
+
+    @include globalSideGutters;
+    padding: {
+      top: 40px;
+      bottom: 24px;
+    }
+    @media (min-width: $tablet) {
+      max-width: 1600px;
+      padding: {
+        top: 32px;
+        bottom: 32px;
+      }
+    }
+
+    @media (min-width: $desktop) {
+      max-width: 1664px;
+    }
+  }
+  &__bottom-legal {
+    margin: {
+      bottom: 16px;
+    }
+  }
+  &__bottom-legal-items {
+    columns: 2;
+    column-gap: 16px;
+    @media (min-width: $tablet) {
+      columns: unset;
+      column-gap: unset;
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+  &__bottom-legal-item {
+    margin: {
+      bottom: 16px;
+    }
+    a {
+      @include rems(11px);
+      line-height: 1.45;
+      color: $azBlue;
+    }
+    @media (min-width: $tablet) {
+      margin: {
+        right: 24px;
+        bottom: 8px;
+      }
+      a {
+        @include rems(14px);
+        line-height: 1.29;
+      }
+    }
+    @media (min-width: $desktop) {
+      margin: {
+        right: 52px;
+      }
+    }
+  }
+
+  &__bottom-non {
+  }
+  &__bottom-non-title {
+    color: $darkGray;
+    font-weight: 500;
+    margin: {
+      bottom: 8px;
+    }
+    @media (min-width: $tablet) {
+      line-height: 1.5;
+    }
+  }
+  &__bottom-non-content {
+    @include rems(14px);
+    line-height: 1.29;
+    padding: {
+      bottom: 24px;
+    }
+    border-bottom: 1px solid rgb(83 86 90 / 20%);
+    margin: {
+      bottom: 24px;
+    }
+    p {
+      @include rems(11px);
+      line-height: 1.5;
+
+      @media (min-width: $desktop) {
+        @include rems(14px);
+        line-height: 1.29;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    .wizzywig {
+      margin-bottom: 0;
+      color: $darkGray;
+    }
+  }
+
+  &__bottom-copyright {
+    @include rems(11px);
+    line-height: 1.45;
+    color: $darkGray;
+    @media (min-width: $tablet) {
+      display: flex;
+      justify-content: space-between;
+      @include rems(14px);
+      line-height: 1.29;
+      /* identical to box height, or 129% */
+    }
+  }
+  &__bottom-copyright-one {
+    margin: {
+      // bottom: 16px;
+    }
+  }
+}

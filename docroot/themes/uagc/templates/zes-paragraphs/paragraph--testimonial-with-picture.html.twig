@@ -1,0 +1,49 @@
+{#
+  /**
+   * @file
+   * Theme override to display a media item.
+   *
+   * Available variables:
+   * - name: Name of the media.
+   * - content: Media content.
+   *
+   * @see template_preprocess_media()
+   */
+  #}
+  {% if content %}
+
+  {% set greyBackgroundClass = '' %}
+  
+  {% if paragraph.field_display_grey_background.value  == 1 %}
+    {% set greyBackgroundClass = '--grey-background' %}
+  {% endif %}
+
+
+     <section class="testimonial {{greyBackgroundClass}}">
+      {% if content.field_testimonial_header |render|trim is not empty %}
+        <h3 class="testimonial__header">{{content.field_testimonial_header.0}}</h3>
+      {% endif %}
+      <div class="testimonial__content-container">
+        {% if content.field_content_override.0 is not empty %}
+          <div class="testimonial__content">"{{content.field_content_override.0}}"</div>
+        {% else %}
+          <div class="testimonial__content">"{{content.field_testimonial_content.0}}"</div>
+        {% endif %}
+        <div class="testimonial__info">
+        {{content.field_testimonial_picture}}
+          <div class="testimonial__info-content">
+            <span class="testimonial__info-name">{{content.field_testimonial_name.0}}</span>
+            <span class="testimonial__info-location">{{content.field_testimonial_location.0}}</span>
+            {% if content.field_degree_override.0 is not empty %}
+              <span class="testimonial__info-degree">{{content.field_degree_override.0}}</span>
+            {% else %}
+              {% autoescape false %}
+                <span class="testimonial__info-degree">{{content.field_degree.0 | raw}}</span>
+              {% endautoescape %}
+            {% endif %}
+          </div>
+        </div>        
+      </div>
+    </section>
+  {% endif %}
+  

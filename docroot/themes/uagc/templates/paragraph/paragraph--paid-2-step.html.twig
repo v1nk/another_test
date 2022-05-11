@@ -1,0 +1,60 @@
+{% set greyBackgroundClass = '' %}
+
+
+{% if paragraph.field_display_grey_background.0.value == '1' %}
+
+  {% set greyBackgroundClass = '--gray-background' %}
+
+{% endif %}
+<div class="paid-twostep {{greyBackgroundClass}} js-paid-twostep --midpage-rfi" id="{{paragraph.field_anchor_id.0.value}}" data-containerid="{{ node.bundle ~ node.getCreatedTime() | clean_class }}">
+
+  <div class="paid-twostep__wrapper">
+    <h2 class="paid-twostep__header">{{ content.field_form_header.0 }}</h2>
+    <div class="paid-twostep__status">
+      <div class="paid-twostep__status-steps">
+        <span class="paid-twostep__status-label">Step 1 of 2</span>
+        <div class="paid-twostep__status-bar"></div>
+      </div>
+    </div>
+  
+
+    <div class="paid-twostep__form two-step-webform" data-containerid="{{ node.bundle ~ node.getCreatedTime() | clean_class}}">
+      {{drupal_entity('webform', 'lead_flow_system', check_access=false)}}
+    </div>
+  </div>
+</div>
+
+
+{{attach_library('uagc/two-step-paid')}}
+
+<script type="text/javascript">
+
+  if (!handlePaidTwoStepMove) {
+
+    //This gets called in node--paid-redesign-page.html.twig
+    //It makes it instantaneous.
+    function handlePaidTwoStepMove() {
+      var columns = document.querySelector('.columns');
+      //Not on a column page, leave it alone.
+
+      if (columns) {
+
+        //Grab the first form.
+        var form = document.querySelector('.columns__left .paid-twostep');
+
+        //If no form in the column, leave it alone.
+        if (form) {
+
+          //If we're on desktop, move it to the right column.
+          if (window.innerWidth > 1024) {
+            var colRight = document.querySelector('.columns__right');
+            colRight.appendChild(form);
+          }
+        }
+      }
+    };
+  }
+ 
+
+
+</script>

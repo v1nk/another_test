@@ -1,0 +1,39 @@
+{{ attach_library('uagc/main') }}
+{{ attach_library('uagc/paid') }}
+
+
+{# {{ content.field_body_paragraphs }} #}
+
+
+{# article element can be switch out for section element if its a listing page #}
+{%
+  set classes = [
+    'site-layout__article',
+    node.getType,
+  ]
+%}
+
+{{ page.preface}}
+{{ page.header }}
+
+  {{ page.breadcrumb }}
+
+  {{ page.highlighted }}
+
+  {{ page.help }}
+
+<article {{ attributes.addClass(classes) }}>
+    {{ title_suffix }}
+    <header class="site-layout__article-header">
+
+    </header>
+    <div class="site-layout__article-content" >
+      {{ content }}
+    </div>
+</article>
+
+
+<div style="display: none;">
+  {{drupal_entity('webform', 'lead_flow_system', check_access=false)}}
+
+</div>

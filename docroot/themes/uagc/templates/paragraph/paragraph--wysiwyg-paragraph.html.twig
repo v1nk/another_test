@@ -1,0 +1,35 @@
+{% set globalPaddingUpdate = paragraph.field_update_global_padding.0.value %}
+
+{% if content.field_use_large_text_on_summary.0['#markup'] == 1 %}
+    {% set useLargeP = "--use-large-paragraph" %}
+{% endif %}
+
+{% if paragraph.field_footnotes_used.value  == 1 %}
+    {% set footnotesClass = ' --footnotes' %}
+{% endif %}
+
+{% if globalPaddingUpdate == '--remove-top-bottom-padding' %}
+    {% set globalPaddingUpdate = "--remove-top-bottom-padding" %}
+{% elseif globalPaddingUpdate == '--remove-top-padding' %}
+    {% set globalPaddingUpdate = "--remove-top-padding" %}
+{% elseif globalPaddingUpdate == '--remove-bottom-padding' %}
+    {% set globalPaddingUpdate = "--remove-bottom-padding" %}
+{% endif %}
+
+<div class="site-layout__article-content-section">
+    <div class="site-layout__article-content-section-wizzywig {{globalPaddingUpdate}}">
+        <div class="wizzywig{{footnotesClass}}">
+        {% if content.field_summary_paragraph is not empty %}
+            {% if content.field_show_tldr_button.0['#markup'] == 1 %}
+                <div class="wizzywig__tldr">TL:DR</div>
+            {% endif %}
+            {% if paragraph.field_summary_paragraph is not empty %}
+                <div class="wizzywig__summary {{ useLargeP }}">
+                    {{ content.field_summary_paragraph.0['#text'] }}
+                </div>
+            {% endif %}
+        {% endif %}
+            {{ content.field_wysiwyg }}
+        </div>
+    </div>
+</div>

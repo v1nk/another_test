@@ -1,0 +1,18 @@
+<div class="sidebar-background">
+    <div class="sidebar-background__color-line"></div>
+    <h3 class="sidebar-background__header">{{ content.field_heading.0 }}</h3>
+
+    <ul class="sidebar-background__list">
+        {% for item in paragraph.field_list_items %}
+            <li class="sidebar-background__list-item"> 
+                <div class="faculty-profile-background__bullet">
+                    <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="4" cy="4" r="4" fill="none"/>
+                    </svg>
+                </div>   
+                {{ item.entity.field_heading.0.value }}
+                <p class="sidebar-background__list-text">{{ item.entity.field_text.0.value }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

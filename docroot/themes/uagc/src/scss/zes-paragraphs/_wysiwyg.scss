@@ -1,0 +1,146 @@
+.section--wysiwyg {
+  @extend %wysiwyg;
+
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  color: $gray4;
+  padding: {
+    top: 32px;
+    bottom: 32px;
+  }
+
+  &__wrapper {
+    max-width: 1180px;
+    margin: {
+      bottom: 30px;
+      left: auto;
+      right: auto;
+    }
+    @include breakpoint(1500px, $no-query: true) {
+      max-width: 1440px;
+    }
+  }
+
+  &.\--tall-body-copy {
+    p {
+      line-height: 1.8;
+    }
+  }
+
+  &.\--gray-background {
+    background-color: $gray5;
+    color: black;
+  }
+
+  table {
+    border-collapse: collapose;
+    border-spacing: 0;
+    font-size: 1rem;
+
+    th,
+    td {
+      border: none;
+      padding: {
+        top: 8px;
+        bottom: 8px;
+        left: 16px;
+        right: 16px;
+      }
+    }
+
+    th:nth-of-type(even),
+    td:nth-of-type(even) {
+      border-left: solid 1px $gray4;
+    }
+
+    tr:nth-of-type(odd) {
+      background-color: $gray2;
+
+      th,
+      td {
+        border: {
+          top: solid 1px $gray4;
+          bottom: solid 1px $gray4;
+        }
+      }
+    }
+
+    tr:first-of-type {
+      th,
+      td {
+        border-top: none;
+      }
+    }
+
+    tr:last-of-type {
+      th,
+      td {
+        border-bottom: none;
+      }
+    }
+  }
+
+  .button {
+    @extend %button-primary-alt;
+    text-decoration: none;
+    display: block;
+
+    @include breakpoint($bp--mobile) {
+      display: inline-block;
+    }
+    &:hover {
+      color: white;
+    }
+
+    &-primary {
+      @extend %button-primary;
+      text-decoration: none;
+      display: block;
+
+      @include breakpoint($bp--mobile) {
+        display: inline-block;
+      }
+    }
+  }
+
+  .layout-constrain--narrow {
+    max-width: 960px;
+    margin: {
+      left: auto;
+      right: auto;
+    }
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* For use to display a button properly in a WYSIWYG 
+I had to use the !important, I'm sorry, my back was against a wall
+*/
+.wysiwyg-button {
+  @extend %ctaBlue;
+  background-color: #0076ab;
+  right: 10px;
+  padding: {
+    top: 15px;
+    left: 25px;
+    bottom: 15px;
+    right: 30px;
+  }
+  display: inline;
+  text-decoration: none !important;
+  color: white !important;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+}

@@ -1,0 +1,291 @@
+paid:
+  version: 1.0
+  css:
+    layout:
+      dist/scss/paid.css: {}
+  js:
+    src/js/background-cover.js: {}
+    src/js/google-tag-manager.js: {}
+
+zes:
+  version: 1.0
+  css:
+    layout:
+      dist/scss/zes-pages.css: {}
+  js:
+    src/js/zes-two-column-tabs.js: {}
+    src/js/background-cover.js: {}
+    src/js/zes-two-step-paid.js: {}
+    src/js/lead-form-logic.js: {}
+    src/js/zes_two_step_midform.js: {}
+    src/js/zes-accordion.js: {}
+    src/js/zes-sticky-rfi.js: {}
+    src/js/google-tag-manager.js: {}
+    src/js/lfs_lightbox_handler.js: {}
+    src/js/lead-form-logic-modal.js: {}
+    src/js/zes-nav-controller.js: {}
+
+testimonial-slider:
+  version: 1.0
+  css:
+    slick:
+      src/scss/zes-paragraphs/slick.css: {}
+  js:
+    src/js/zes-testimonial-slider.js: {}
+    src/js/zes-slick.js: {}
+  dependencies:
+    - core/jquery
+
+zes-new-menu:
+  version: 1.0
+  css:
+    layout:
+      dist/scss/zes-new-header.css: {}
+  js:
+    src/js/main-nav.js: {}
+
+zes-old-menu:
+  version: 1.0
+  css:
+    layout:
+      dist/scss/zes-old-header.css: {}
+
+zes-old-footer:
+  version: 1.0
+  css:
+    layout:
+      dist/scss/zes-old-footer.css: {}
+
+main:
+  version: 1.0
+  css:
+    layout:
+      dist/scss/main.css: {}
+      dist/scss/success-story-landing-page.css: {}
+  js:
+    src/js/background-cover.js: {}
+    src/js/main-nav.js: {}
+    src/js/search-overlay.js: {}
+    src/js/animatron.js: {}
+    src/js/tuition-and-fees.js: {}
+    src/js/lead-form-logic.js: {}
+    src/js/lead-form-cta-logic.js: {}
+    src/js/two-step-paid.js: {}
+    src/js/lead-form-logic-modal.js: {}
+    src/js/lfs_lightbox_handler.js: {}
+    src/js/youtube-modal.js: {}
+    src/js/accordion.js: {}
+    src/js/partner-display-search.js: {}
+    src/js/tracking-alert.js: {}
+    src/js/paid-cards.js: {}
+    src/js/global-search.js: {}
+    src/js/success-stories-slider.js: {}
+    src/js/success-grid-filter.js: {}
+    src/js/catalog-sidebar.js: {}
+    src/js/google-tag-manager.js: {}
+
+event-form:
+  version: 1.0
+  js:
+    src/js/lead-form-event.js: {}
+    src/js/event-jquery-deparam.js: {}
+
+  dependencies:
+    - core/jquery
+    - core/jquery.cookie
+    - core/drupal
+    - gesso/modernizr
+    - core/drupalSettings
+    - core/drupal
+
+main-css:
+  version: 1.0
+  css:
+    layout:
+      dist/scss/main.css: {}
+
+# content type = Success Story Profile Page
+success-story-profile:
+  version: 1.0
+  css:
+    theme:
+      dist/scss/success-story-profile.css: {}
+
+# content type = Success Story Profile Page
+success-story-landing-page:
+  version: 1.0
+  css:
+    theme:
+      dist/scss/success-story-landing-page.css: {}
+  js:
+    src/js/success-stories-slider.js: {}
+    src/js/success-grid-filter.js: {}
+
+# content type = Blog Landing Page
+blog-landing-page:
+  version: 1.0
+  css:
+    theme:
+      dist/scss/blog-landing-page.css: {}
+  js:
+    src/js/blog-listing-filter.js: {}
+
+# content type = Faculty landing Page
+faculty-landing-page:
+  version: 1.0
+  css:
+    theme:
+      dist/scss/faculty-landing-page.css: {}
+  js:
+    src/js/faculty-grid-filter.js: {}
+# Events Two Column Cards
+events-two-column-cards:
+  version: 1.0
+  js:
+    src/js/events-two-column-cards.js: {}
+
+#paragraph = ZES Two Column Tabs
+zes-two-column-tabs:
+  version: 1.0
+  js:
+    src/js/zes-two-column-tabs.js: {}
+
+two-step-form:
+  version: 1.0
+  js:
+    src/js/two-step-form.js: {}
+
+stickyform-desktop:
+  version: 1.0
+  js:
+    src/js/stickyform-desktop.js: {}
+
+stickyform-mobile:
+  version: 1.0
+  js:
+    src/js/stickyform-mobile.js: {}
+
+swiper-slider:
+  version: 1.0
+  css:
+    theme:
+      https://unpkg.com/swiper/swiper-bundle.min.css:
+        { type: external, minified: true }
+  js:
+    https://unpkg.com/swiper/swiper-bundle.min.js:
+      { type: external, minified: true }
+
+two-step-paid:
+  version: 1.0
+  js:
+    src/js/two-step-paid.js: {}
+
+lead-form-logic:
+  version: 1.0
+  js:
+    src/js/lead-form-logic.js: {}
+
+lead-form-cta-logic:
+  version: 1.0
+  js:
+    src/js/lead-form-cta-logic.js: {}
+
+lead-form-logic-modal:
+  version: 1.0
+  js:
+    src/js/lead-form-logic-modal.js: {}
+
+slider:
+  version: 1.0
+  js:
+    src/js/slider.js: {}
+
+# two-step-form:
+#   version: VERSION
+#   js:
+#     scripts/two-step-form.js: {}
+#   dependencies:
+#     - core/jquery
+
+degree-comparison:
+  version: 1.0
+  js:
+    src/js/degree-comparison.js: {}
+
+degree-finder:
+  version: 1.0
+  js:
+    src/js/degree-finder.js: {}
+
+degree-list-sidebar:
+  version: 1.0
+  js:
+    src/js/degree-list-sidebar-filter.js: {}
+
+grid-filter:
+  version: 1.0
+  js:
+    src/js/grid-filter-hacks.js: {}
+
+story-rfi:
+  version: 1.0
+  js:
+    src/js/story-rfi.js: {}
+    src/js/google-tag-manager.js: {}
+  css:
+    theme:
+      dist/scss/storyrfi.css: {}
+
+  dependencies:
+    - core/jquery.cookie
+
+catalog:
+  version: 1.0
+  js:
+    src/js/sidebar-links-content.js: {}
+
+ccpa:
+  version: 1.0
+  css:
+    theme:
+      dist/scss/ccpa-webform.css: {}
+
+enrollment-tour:
+  version: 1.0
+  css:
+    theme:
+      dist/scss/enrollment.css: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.cookie
+    - core/jquery-once
+    - core/drupal
+    - core/drupalSettings
+
+background-cover:
+  version: 1.0
+  js:
+    src/js/background-cover.js: {}
+
+paid-smooth-scroll:
+  version: 1.0
+  js:
+    src/js/paid-smooth-scroll.js: {}
+
+remodal:
+  version: VERSION
+  css:
+    theme:
+      src/js/remodal/remodal.css: {}
+      src/js/remodal/remodal-default-theme.css: {}
+  js:
+    src/js/remodal/remodal.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+
+signature-generator:
+  version: 1.0
+  js:
+    src/js/signature-gen.js: {}

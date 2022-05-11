@@ -1,0 +1,132 @@
+.section {
+  &.section--benefits-grid {
+    &.\--evenly-spaced {
+      margin-bottom: 0;
+      padding: 32px 0;
+    }
+
+    &.\--grey-background {
+      background-color: #f4f4f4;
+    }
+
+    .grid {
+      &__header {
+        color: $azBlue;
+        font-size: 2.375rem;
+        font-weight: 400;
+        line-height: 1.2;
+
+        @include breakpoint($bp--desktop, $no-query: true) {
+          line-height: 1.84;
+        }
+      }
+      &__items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+
+        @include breakpoint($bp--tablet, $no-query: true) {
+          flex-wrap: wrap;
+        }
+      }
+
+      &__item {
+        flex-basis: 45%;
+
+        @include breakpoint($bp--tablet, $no-query: true) {
+          flex-basis: 50%;
+        }
+
+        @include breakpoint($bp--desktop, $no-query: true) {
+          flex-basis: 20%;
+        }
+
+        &-content {
+          text-align: center;
+          display: none;
+          color: $gray4;
+          font-weight: 400;
+          font-size: 1rem;
+          line-height: 1.41;
+
+          @include breakpoint($bp--mobile, $no-query: true) {
+            display: block;
+            text-align: center;
+          }
+          &.--active {
+            @media (max-width: $bp--mobile) {
+              position: fixed;
+              left: 0;
+              top: 0;
+              height: 100vh;
+              width: 100vw;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background-color: #ffffff;
+              border-radius: 6px;
+              padding: {
+                left: 20px;
+                right: 20px;
+                top: 20px;
+                bottom: 20px;
+              }
+              font-size: 1.25rem;
+              font-weight: 700;
+              border: 1px solid #cccccc;
+              box-shadow: 0 2px 4px #000000;
+              z-index: 99999999;
+
+              &::before {
+                content: "";
+                display: block;
+                width: 30px;
+                height: 2px;
+                position: absolute;
+                top: 40px;
+                right: 20px;
+                background-color: #000000;
+                transform-origin: center;
+                transform: rotateZ(45deg);
+              }
+              &::after {
+                content: "";
+                display: block;
+                width: 30px;
+                height: 2px;
+                position: absolute;
+                top: 40px;
+                right: 20px;
+                background-color: #000000;
+                transform-origin: center;
+                transform: rotateZ(-45deg);
+              }
+            }
+          }
+        }
+        &-header {
+          padding: {
+            left: 0;
+            right: 0;
+            top: 10px;
+          }
+          margin-bottom: 0;
+          color: $azBlue;
+          font-size: 1.5625rem;
+          font-weight: 500;
+          line-height: 1.28;
+          margin: {
+            top: 0px;
+          }
+          @include breakpoint($bp--desktop, $no-query: true) {
+            min-height: 86px;
+          }
+        }
+        &-image-wrapper {
+          width: 90px;
+          height: 90px;
+        }
+      }
+    }
+  }
+}

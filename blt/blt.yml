@@ -8,6 +8,9 @@ project:
     hostname: '${project.machine_name}.docksal'
   profile:
     name: standard
+  theme:
+    dir: '${docroot}/themes/uagc'
+    name: uagc
 git:
   default_branch: master
   remotes:
@@ -49,3 +52,10 @@ drupal:
     username: user
     password: user
     host: db
+command-hooks:
+  frontend-reqs:
+    dir: '${project.theme.dir}'
+    command: 'nvm install 12 && nvm use 12 && npm install'
+  frontend-assets:
+    dir: '${project.theme.dir}'
+    command: 'npm run build'

@@ -1,0 +1,237 @@
+
+
+<script type="text/javascript">
+    window.ashfordlfs = window.ashfordlfs || {};
+    window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }} = window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }} || {};
+  
+    {% if node.field_clientdocumentid.value != '' %}
+      window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }}.clientdocumentid = '{{ node.field_clientdocumentid.value }}';
+    {% endif %}
+  
+    {% if node.field_sourceid.value != '' %}
+      window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }}.sourceid = '{{ node.field_sourceid.value }}';
+    {% endif %}
+  
+    {% if node.field_revisionid.value != '' %}
+      window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }}.revisionid = '{{ node.field_revisionid.value }}';
+    {% endif %}
+  
+    {% if node.field_form_id_class	.value != '' %}
+      window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }}.formidclass = '{{ node.field_form_id_class	.value }}';
+    {% endif %}
+  
+  
+  
+    window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }}.degrees = [
+    {% for key, item in node.field_degrees if key|first != '#' %}
+    '{{item.entity.title.value}}',
+    {% endfor %}
+    ];
+    
+    window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }}.interests = [
+    {% for key, item in node.field_interests if key|first != '#' %}
+      '{{item.entity.name.value | raw}}',
+    {% endfor %}
+    ];
+  
+  
+  
+  
+  </script>
+
+{{ attach_library('uagc/main') }}
+
+
+{%
+  set classes = [
+    'site-layout__article',
+    node.getType,
+  ]
+%}
+{% set tid = node.field_article_category.0.target_id %}
+<article {{ attributes.addClass(classes) }}>
+    <header class="site-layout__article-header">
+        <div class="paid-hero-space --subheading-inside-content-box">
+            <div class="paid-hero-space__image background-cover js-background-image">
+                {% if node.field_featured_image.entity.field_media_image is not empty %}
+                    <img class="paid-hero-space__image-desktop" src="{{node.field_featured_image.entity.field_media_image.0.entity.uri.value|image_style('paid_hero_header_899x600')}}" alt="{{node.field_featured_image.entity.field_media_image.alt}}">
+                    <img class="paid-hero-space__image-mobile" src="{{node.field_featured_image.entity.field_media_image.0.entity.uri.value|image_style('paid_hero_mobile_image_768x512')}}" alt="{{node.field_featured_image.entity.field_media_image.alt}}">
+                {% endif %}
+            </div>
+            <div class="paid-hero-space__content-wrapper">
+                <div class="paid-hero-space__heading-wrapper">
+                    <p class="paid-hero-space__heading">{{node.field_article_category.entity.name.value}}</p>
+                </div>
+                <div class="paid-hero-space__content">
+                    <h1 class="paid-hero-space__main-heading">{{ node.title.0.value }}</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="site-layout__article-content-with-sidebar">
+        {% if sidebar_left|keys is not empty %}
+        <aside class="site-layout__article-sidebar --left">
+            {{ sidebar_left }}
+        </aside>
+        {% endif %}
+        <div class="site-layout__article-content-with-sidebar-section">
+            <footer class="content-meta">
+                <div class="content-meta__publish-info">
+                    <address class="content-meta__author visually-hidden">
+                        {{ author_name  }}
+                    </address>
+                    <div class="content-meta__publish-times">
+                        <div class="content-meta__publish">Published 
+                            <time datetime="{{ node.created.value|date("Y-m-d") }}" title="{{ node.created.value|date("l F Y") }}" class="content-meta__publish-time">{{ node.created.value|date("M j, Y") }}</time>
+                        </div>
+                        <div class="content-meta__publish">Last Updated 
+                            <time datetime="{{node.revision_timestamp.value|date("Y-m-d")}}" title="{{node.revision_timestamp.value|date("l F Y")}}" class="content-meta__publish-time">{{node.revision_timestamp.value|date("M j, Y")}}</time> 
+
+                        {% if content.field_read_length|render|trim|length > 0 %}
+                            <div class="content-meta__publish-read-time">{{ content.field_read_length}}</div>
+                        {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+                {% if node.field_blog_audio.0.entity.uri.value is not empty %}
+                <div class="content-meta__media-links">
+                    <a onclick="playAudio()" class="content-meta__media-link-listen">
+                        <div class="content-meta__media-link-play">{% include directory ~ '/templates/svg-icons/play.html.twig'%}</div>
+                        <div class="content-meta__media-link-text">Listen to this article</div>
+                        <time class="content-meta__media-link-time">{{ content.field_audio_file_length}}</time>
+                    </a>
+                    <audio controls src="{{ file_url(node.field_blog_audio.0.entity.uri.value) }}" class="content-meta__audio"></audio>
+                    <script type="text/javascript">
+                        function playAudio() {
+                            var playButton = document.querySelector('.content-meta__media-link-listen')
+                            var audio = document.querySelector('.content-meta__audio');
+                            playButton.style.display = "none";
+                            audio.style.display = "block";
+                            audio.play()
+                        }
+                    </script>
+                </div>
+                {% endif %}
+                <div class="content-meta__categories">
+                    {% if content.field_display_tl_dr['#items'].0.value == '1' %}
+                        <div class="content-meta__tldr">TL:DR</div>
+                        <div class="content-meta__summary">{{ content.body['#object'].body.summary }}</div>
+                    {% endif %}
+                </div>
+            </footer>
+            <section class="site-layout__article-content-section">
+            {{ content.body }}
+            </section>
+                <aside class="site-layout__article-share">
+        <div class="site-layout__article-share-header-container">
+        <div class="site-layout__article-share-header"><h4>Share this article</h4></div>
+        <div class="site-layout__article-share-links">
+        {% set site_url = url("<current>") %}
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ site_url|url_encode }}" aria-label="Facebook Share" class="site-layout__article-share-link">
+                {% include directory ~ '/templates/svg-icons/FB.svg.twig' %}
+            </a>
+            <a href="https://twitter.com/intent/tweet?url={{ site_url|url_encode }}&text= {{ node.label|url_encode }}" aria-label="Twitter Share" class="site-layout__article-share-link">
+                {% include directory ~ '/templates/svg-icons/TW.svg.twig' %}
+            </a>
+            <a href="http://www.linkedin.com/shareArticle?mini=true&url={{ site_url|url_encode }}&title= {{ node.label|url_encode }}" aria-label="Linkedin Share" class="site-layout__article-share-link">
+                {% include directory ~ '/templates/svg-icons/IN.svg.twig' %}
+            </a>
+        </div>
+        </div>
+        {% if node.field_article_category.entity.tid.value is not empty %}
+        <div class="site-layout__article-share-categories">
+            <h2>
+                <a href ="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': node.field_article_category.entity.tid.value})  }}">{{node.field_article_category.entity.name.value}}</a>
+            </h2>
+            {% for item in node.field_article_category_secondary %}
+                <h2>
+                    <a href ="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': item.entity.tid.value})  }}">{{item.entity.name.value}}</a>
+                </h2>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </aside>
+        </div>
+
+        {% if sidebar_right|keys is not empty %}
+        <aside class="site-layout__article-sidebar --right">
+            {% set alt = node.Owner.field_display_name.value %}
+            {% set width = node.Owner.user_picture[0].width %}
+            {% set height = node.Owner.user_picture[0].height %}
+            
+            <div class="author-bio">
+                <div class="author-bio__header">
+                    <div class="author-bio__image-container">
+                        {% if node.Owner.user_picture.value %}
+                            {% set imgSrc = file_url(node.Owner.user_picture[0].entity.uri.value) %}
+                            <img src="{{ imgSrc }}" alt="{{ alt }}" width="{{width}}" height="{{height}}" class="author-bio__image" />
+                        {% else %}
+                            <img src="/themes/uagc/src/images/uagc-logo-small.png" alt="University of Arizona Global Campus Logo" width="{{width}}" height="{{height}}" class="author-bio__image" />
+                        {% endif %}
+                    </div>
+                    <div class="author-bio__content">
+                        <div class="author-bio__label">Author</div>
+                        {% if node.Owner.field_display_name.value %}
+                            <div class="author-bio__name">{{node.Owner.field_display_name.value}}</div>
+                        {% else %}
+                            <div class="author-bio__name">UAGC Staff Member</div>
+                        {% endif %}
+                        {% if node.Owner.field_titles.value %}
+                            <div class="author-bio__titles">{{node.Owner.field_titles.value}}</div>
+                        {% endif %}
+                        {% if node.Owner.field_biography.value or node.Owner.field_linkedin.value %}
+                            <div class="author-bio__links">
+                                {% if node.Owner.field_biography.value %}
+                                    <a href="{{ node.Owner.field_biography.0.url}}" class="author-bio__link">
+                                        Biography
+                                    </a>
+                                {% endif %}
+                                {% if node.Owner.field_linkedin.value %}
+                                    <a href="{{ node.Owner.field_linkedin.0.url}}" class="author-bio__link">
+                                        LinkedIn
+                                    </a>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            
+                {% if node.Owner.field_short_bio.value %}
+                    <div class="author-bio__excerpt">
+                        <p>{{node.Owner.field_short_bio.value}}</p>
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="blog-sidebar-form js-blog-sidebar-form" id="{{paragraph.field_anchor_id.0.value}}" data-containerid="{{ node.bundle ~ node.getCreatedTime() | clean_class }}">
+
+                <div class="blog-sidebar-form__wrapper">
+                <h2 class="blog-sidebar-form__header">Questions? Request More Information</h2>
+                <div class="blog-sidebar-form__status">
+                    <div class="blog-sidebar-form__status-steps">
+                    <span class="blog-sidebar-form__status-label">Step 1 of 2</span>
+                    <div class="blog-sidebar-form__status-bar"></div>
+                    </div>
+                </div>
+                
+            
+                <div class="blog-sidebar-form__form " data-containerid="{{ node.bundle ~ node.getCreatedTime() | clean_class}}">
+                    {{drupal_entity('webform', 'lead_flow_cta', check_access=false)}}
+                </div>
+                </div>
+            </div>
+
+
+            {{ sidebar_right }}
+        </aside>
+        {% endif %}
+
+    </div>
+
+</article>
+{% if bottom_content|keys is not empty %}
+    <div class="site-layout__footer">
+        {{ bottom_content }}
+    </div>
+{% endif %}

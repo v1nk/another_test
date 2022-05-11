@@ -1,0 +1,1 @@
+export default window.drupalSettings.uagc_module.lead_flow_system;

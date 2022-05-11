@@ -1,0 +1,76 @@
+@import "breakpoint-sass/breakpoint";
+@import "global/variables";
+.section--ccpa-webform {
+  padding: 0px 15px;
+
+  .privacy-form {
+    &__preform-content {
+      max-width: 960px;
+      margin: 0 auto;
+
+      p {
+        padding: 0px 10px;
+      }
+    }
+
+    &.privacy-form.privacy-form.privacy-form {
+      max-width: 1024px;
+      margin: {
+        top: 86px;
+        bottom: 40px;
+        left: auto;
+        right: auto;
+      }
+
+      input,
+      select {
+        width: 100%;
+      }
+
+      input[type="submit"] {
+        -webkit-appearance: none;
+
+        @include breakpoint($bp--tablet, $no-query: true) {
+          width: auto;
+        }
+      }
+
+      input[name="email[mail_1]"],
+      input[name="authorized_agent_email[mail_1]"],
+      input[name="authorized_agent_email[mail_2]"] {
+        margin-bottom: 15px;
+      }
+
+      div.form-item-authorized-agent {
+        display: flex;
+        align-items: center;
+        margin: 25px 0;
+        input {
+          flex-basis: 15%;
+          max-width: 20px;
+        }
+        label {
+          background-color: white;
+          flex-basis: 85%;
+          padding: {
+            top: 0;
+            left: 24px;
+          }
+          height: 24px;
+          margin-bottom: 0;
+
+          &:before,
+          &:after {
+            top: 3px;
+          }
+        }
+      }
+
+      select,
+      input {
+        border: solid 1px get-color(purple, 5);
+        border-radius: 5px;
+      }
+    }
+  }
+}

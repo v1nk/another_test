@@ -1,0 +1,13 @@
+<a href="{{ content.field_commencement_tile_url.0['#url'] }}" class="commencement-tile-container__tiles">
+
+    {% if not (paragraph.field_commencement_tile_icon.0.entity.field_svg_file.isEmpty == true) and paragraph.field_commencement_tile_icon.0.entity.field_svg_file is defined  and paragraph.field_commencement_tile_icon.0.entity.field_svg_file != null and paragraph.field_commencement_tile_icon.0.entity.field_svg_file.0.entity.uri.value != '' %}
+        {% set svg = file_url(paragraph.field_commencement_tile_icon.0.entity.field_svg_file.0.entity.uri.value) | replace({'%20': ' '}) %}
+        {% set svg = '.' ~ svg %}
+        {% set svgContents %}
+        {% include(svg) ignore missing %}
+        {% endset %}
+        {{svgContents|stripsvgids|raw}}
+    {% endif %}
+    <p class="commencement-tile-container__text">{{ content.field_commencement_tile_label['#items'].value }}</p>
+</a>
+

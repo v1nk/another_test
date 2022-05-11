@@ -1,0 +1,867 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+@use "sass:math";
+
+.form-twostep,
+.paid-twostep {
+  width: 100%;
+  background-color: $azBlue;
+  @include globalGutters;
+
+  padding: {
+    top: 40px;
+    left: 16px;
+    right: 16px;
+    bottom: 40px;
+  }
+
+  &:not(.--hide-sidebar &) {
+    &.\--midpage-rfi {
+      .form-wrapper[data-drupal-selector="edit-interest-information"]
+        .form-item {
+        @media (min-width: $desktop) {
+          flex-basis: 33%;
+        }
+        @media (min-width: $desktop-medium-large) {
+          flex-basis: 25%;
+        }
+      }
+
+      .\--next-button.\--next-button.\--next-button {
+        @media (min-width: $desktop) {
+          flex-basis: 35%;
+          max-width: unset;
+          margin-left: 0;
+        }
+        @media (min-width: $desktop-medium-large) {
+          flex-basis: 22.888%;
+        }
+      }
+    }
+  }
+
+  .\--next-button.\--next-button.\--next-button {
+    font-weight: 400;
+    @include rems(16px);
+    line-height: 1.5;
+    color: $azBlue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 100%;
+    height: auto;
+    max-height: 40px;
+    justify-self: flex-end;
+    align-self: flex-end;
+    padding: {
+      left: 24px;
+      right: 24px;
+    }
+    margin: {
+      top: 24px;
+      left: auto;
+      right: auto;
+    }
+
+    span {
+      font-weight: 500;
+      margin-right: 8px;
+    }
+
+    @media (min-width: $tablet) {
+      max-width: 260px;
+      margin: {
+        top: 32px;
+      }
+    }
+
+    @media (min-width: $desktop) {
+      flex-basis: 22.888%;
+      padding: {
+        left: 16px;
+        right: 16px;
+      }
+      margin: {
+        left: 12px;
+        right: 0;
+      }
+    }
+
+    &:after {
+      content: " ";
+      display: inline-block;
+      background-image: url(../images/icons/arrow-right.svg);
+      margin: {
+        left: 10px;
+      }
+      height: 20px;
+      width: 20px;
+      background-position: 0 -2px;
+    }
+  }
+
+  .\--always-display {
+    display: block !important;
+  }
+
+  &.\--gray-background {
+    .paid-twostep__wrapper {
+      @media (min-width: $tablet) {
+        background-color: $lighterGray;
+      }
+    }
+
+    .form-wrapper {
+      &[data-drupal-selector="edit-interest-information"],
+      &[data-drupal-selector="edit-contact-information"] {
+        background-color: $lighterGray;
+      }
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    select {
+      background-color: $lighterGray;
+    }
+  }
+
+  input.--request-btn-disabled {
+    background-color: #cccccc !important;
+  }
+
+  @media (min-width: $tablet) {
+  }
+
+  .form-item label {
+    @include rems(20px);
+    line-height: math.div(24, 20);
+    font-weight: 500;
+    margin: {
+      top: 24px;
+      bottom: 8px;
+      right: -12px;
+    }
+  }
+
+  .js-form-item-state,
+  .js-form-item-firstname {
+    label {
+      margin: {
+        top: 0px;
+      }
+    }
+  }
+
+  &__wrapper {
+    background-color: white;
+    border-radius: 16px;
+    max-width: 1216px;
+    margin: 0 auto;
+
+    .\--gray-background & {
+      background-color: $lighterGray;
+
+      @media (min-width: $tablet) {
+        background-color: white;
+      }
+    }
+
+    @media (min-width: $tablet) {
+      background-color: white;
+      padding: 0;
+      border-radius: 16px;
+      margin: 0 auto;
+    }
+
+    .columns__right & {
+      @media (min-width: $desktop) {
+        background-color: $azBlue;
+        border-radius: 0px;
+        padding: {
+          left: 16px;
+          right: 16px;
+        }
+      }
+    }
+  }
+
+  &__header {
+    color: $azBlue;
+    @include rems(28px);
+    line-height: math.div(32.3, 28);
+    margin-bottom: 16px;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 0px;
+    padding: {
+      top: 24px;
+      left: 16px;
+      right: 16px;
+    }
+
+    .\--gray-background & {
+      color: $azBlue;
+    }
+
+    .\--blue-heading {
+      color: $azBlue;
+    }
+
+    .\--red-heading {
+      color: $azRed;
+    }
+
+    @media (min-width: $tablet) {
+      @include rems(36px);
+      line-height: math.div(48.3, 36);
+      padding: {
+        top: 40px;
+        left: 40px;
+        right: 40px;
+      }
+    }
+
+    .columns__right & {
+      @media (min-width: $desktop) {
+        color: white;
+        text-align: left;
+        font-weight: 400;
+        padding-top: 0;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  &__status {
+    width: 100%;
+    display: flex;
+    margin: {
+      bottom: 16px;
+    }
+
+    @media (min-width: $tablet) {
+      display: none;
+    }
+
+    .columns__right & {
+      @media (min-width: $desktop) {
+        display: flex;
+      }
+    }
+  }
+
+  &__status-step {
+    @include flexGrid(3, 6);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    &.\--step-1 {
+      padding-right: 8px;
+    }
+
+    &.\--step-2 {
+      padding-left: 8px;
+    }
+  }
+
+  &__status-label {
+    @include flexGrid(3, 3);
+    @include textSmall;
+    color: $azBlue;
+    font-weight: 500;
+    max-width: 100%;
+    text-align: left;
+    margin: {
+      bottom: 8px;
+    }
+    .\--gray-background & {
+      color: $azBlue;
+    }
+
+    .\--inactive & {
+      opacity: 0.5;
+    }
+
+    @media (min-width: $desktop) {
+      color: white;
+    }
+  }
+
+  &__status-bar {
+    background-color: $orange;
+    border-radius: 10px;
+    height: 8px;
+    padding-top: 8px;
+    @include flexGrid(6, 6);
+
+    .\--inactive & {
+      opacity: 0.5;
+    }
+
+    .\--inactive.\--step-2 & {
+      background-color: white;
+    }
+  }
+
+  .form-wrapper {
+    &[data-drupal-selector="edit-interest-information"],
+    &[data-drupal-selector="edit-contact-information"] {
+      background-color: white;
+      border-radius: 20px;
+      padding: {
+        top: 24px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+
+      @media (min-width: $tablet) {
+        margin: 0 auto;
+        display: flex;
+        justify-content: flex-start;
+        padding: {
+          top: 32px;
+        }
+
+        .form-item {
+          width: 100%;
+
+          @media (min-width: $desktop-small) {
+            max-width: 260px;
+          }
+        }
+      }
+
+      .columns__right & {
+        @media (min-width: $desktop) {
+          display: block;
+
+          .form-item {
+            max-width: 100%;
+          }
+        }
+      }
+    }
+
+    &[data-drupal-selector="edit-interest-information"] {
+      flex-wrap: wrap;
+
+      @media (min-width: $desktop-small) {
+        max-width: 100%;
+        padding: {
+          left: 0;
+          right: 0;
+        }
+        justify-content: center;
+        p {
+          max-width: 500px;
+          margin: {
+            top: 24px;
+            bottom: 0;
+            left: auto;
+            right: auto;
+          }
+        }
+
+        .form-item {
+          flex-basis: 25%;
+          margin: 0;
+          padding: {
+            left: 12px;
+            right: 12px;
+          }
+          max-width: unset;
+        }
+
+        label {
+          margin-top: 0;
+        }
+      }
+      @media (min-width: $desktop) {
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+      }
+    }
+
+    &[data-drupal-selector="edit-contact-information"] {
+      padding: {
+        top: 32px;
+      }
+      @media (min-width: $tablet) {
+        max-width: 545px;
+        padding: 0;
+        flex-wrap: wrap;
+        flex-basis: 100%;
+        max-width: 100%;
+        padding-left: calc(
+          50% - 541.67px / 2
+        ); //very specific for pixel perfect design
+        padding-right: calc(50% - 541.67px / 2);
+        justify-content: space-between;
+
+        .form-item {
+          flex-basis: 48%;
+          max-width: unset;
+
+          label {
+            margin-top: 0;
+          }
+        }
+
+        .form-item-phone1,
+        .form-item-emailaddress {
+          label {
+            margin-top: 24px;
+
+            @media (min-width: $desktop) {
+              margin-top: 32px;
+            }
+          }
+        }
+
+        @media (min-width: $desktop) {
+          .js-form-item-firstname,
+          .js-form-item-lastname {
+            label {
+              margin-top: 32px;
+            }
+          }
+        }
+      }
+
+      @media (min-width: $tablet) {
+        padding: {
+          top: 32px;
+        }
+      }
+
+      @media (min-width: $desktop) {
+        padding: {
+          left: 0;
+          right: 0;
+          bottom: 24px;
+          top: 0;
+        }
+        flex-wrap: nowrap;
+        justify-content: unset;
+
+        .form-item {
+          padding: {
+            left: 12px;
+            right: 12px;
+          }
+        }
+      }
+
+      .columns__left & {
+        @media (min-width: $desktop) {
+          padding: {
+            left: 0;
+            right: 0;
+          }
+        }
+      }
+
+      .columns__right & {
+        @media (min-width: $desktop) {
+          max-width: 100%;
+
+          .form-item:nth-child(n + 2) {
+            label {
+              margin-top: 24px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__form {
+    color: white;
+    padding: {
+      top: 0;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+    }
+
+    @media (min-width: $tablet) {
+      padding: {
+        bottom: 40px;
+        left: 40px;
+        right: 40px;
+      }
+    }
+
+    @media (min-width: $desktop-small) {
+      padding: {
+        left: 14px; //+12px padding-left on first select element
+        right: 26px;
+      }
+    }
+
+    @media (min-width: $desktop) {
+      padding: {
+        left: 40px; //+12px padding-left on select element
+        right: 52px;
+      }
+    }
+
+    form {
+      @media (min-width: $desktop) {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+    }
+
+    .columns__right & {
+      @media (min-width: $desktop) {
+        padding: {
+          top: 40px;
+        }
+      }
+    }
+
+    .columns__right & {
+      padding: 0;
+    }
+
+    fieldset[data-drupal-selector="edit-registerednurse"].webform-type-radios.webform-type-radios {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 24px;
+      flex-basis: 100%;
+
+      legend {
+        color: $azBlue;
+        margin-bottom: 15px;
+      }
+
+      .webform-options-display-side-by-side {
+        display: flex;
+        justify-content: center;
+
+        input[name="registerednurse"] {
+          margin: 0;
+        }
+
+        .form-item {
+          flex-basis: auto;
+          display: flex !important;
+          align-items: center;
+          width: unset;
+
+          .node--type-paid-landing-page & {
+            padding: {
+              left: 4px;
+              right: 4px;
+            }
+          }
+        }
+      }
+    }
+
+    div[data-drupal-selector="edit-registerednurse-validation-message-container"].validation-message.validation-message {
+      margin: 0 auto;
+      flex-basis: 100%;
+      max-width: 100%;
+      text-align: center;
+      margin-top: 12px;
+      width: 100%;
+      text-align: center;
+      .form-item {
+        max-width: 100%;
+      }
+    }
+
+    .js-registerednurse-validation-message {
+      display: none;
+      margin: 0 auto;
+
+      .webform-options-display-side-by-side {
+        display: flex;
+        justify-content: center;
+      }
+
+      .js-form-type-processed-text {
+        display: none;
+      }
+    }
+
+    .js-registerednurse-validation-message p {
+      color: $azBlue;
+      font-size: 1rem;
+    }
+
+    .form-item-tcpa-checkbox {
+      display: none;
+      margin-bottom: 0px;
+      position: relative;
+      margin: {
+        top: 24px;
+        bottom: 24px;
+      }
+
+      label {
+        margin: {
+          bottom: 0;
+        }
+      }
+
+      @media (min-width: $tablet) {
+        justify-content: center;
+        text-align: center;
+        max-width: 545px;
+        margin: {
+          top: 24px;
+          left: auto;
+          right: auto;
+          bottom: 0;
+        }
+      }
+
+      @media (min-width: $desktop) {
+        flex-basis: 100%;
+        width: 100%;
+        max-width: 100%;
+        margin: {
+          top: 0px;
+        }
+      }
+
+      &.\--step-two {
+        display: flex;
+        align-items: center;
+      }
+
+      label {
+        margin-top: 0;
+        border-radius: 4px;
+        height: 18px;
+        width: 18px;
+        margin-right: 16px !important;
+      }
+
+      span {
+        color: $black;
+        font-weight: 400;
+        @include rems(14px);
+        line-height: math.div(18, 14);
+        display: inline-flex;
+        align-items: center;
+        user-select: none;
+        pointer-events: none;
+      }
+
+      label {
+        display: none;
+      }
+    }
+
+    input,
+    select,
+    button {
+      max-width: 100%;
+      width: 100%;
+      margin-top: 16px;
+      color: $black;
+      font-family: "Fira Sans", Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.5;
+      font-weight: 500;
+
+      &::placeholder {
+        color: $darkGray !important;
+      }
+
+      &.\--grey-default {
+        color: $darkGray;
+      }
+    }
+
+    select,
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"] {
+      padding: {
+        left: 16px;
+      }
+      border: solid 1px $lightGray;
+      border-radius: 8px;
+
+      &.\--gray-text {
+        color: $darkGray;
+      }
+    }
+
+    #edit-contact-information {
+      select,
+      input[type="text"],
+      input[type="tel"],
+      input[type="email"] {
+        display: none;
+      }
+    }
+
+    .js-form-type-select {
+      &:after {
+        border-radius: 14px;
+        height: 36px;
+        right: 2px;
+        background-image: url(../images/icons/chevron-down-red.svg);
+      }
+
+      @media (min-width: $desktop-small) {
+        &:after {
+          right: 13.5px;
+        }
+      }
+    }
+
+    .webform-actions {
+      padding: {
+        left: 24px;
+        right: 24px;
+        top: 0;
+        bottom: 0;
+      }
+
+      @media (min-width: $tablet) {
+        max-width: 260px;
+        margin: 0 auto;
+        padding: 0;
+      }
+
+      @media (min-width: $desktop) {
+        flex-grow: 1;
+        align-self: flex-end;
+        margin-bottom: 32px;
+      }
+
+      input[type="submit"] {
+        margin: {
+          top: 0;
+        }
+        @media (min-width: $tablet) {
+          margin-top: 24px;
+        }
+      }
+
+      .columns__right & {
+        @media (min-width: $desktop) {
+          max-width: 100%;
+        }
+      }
+    }
+
+    input[type="radio"] {
+      width: auto;
+
+      & + label.option {
+        margin: {
+          left: 5px;
+          right: 5px;
+          bottom: 0;
+          top: 0;
+        }
+      }
+    }
+
+    h2 {
+      display: none;
+    }
+  }
+
+  &__wascblock {
+    display: none;
+
+    hr {
+      margin-bottom: 25px;
+    }
+
+    p {
+      font-size: 0.625rem;
+      color: white;
+    }
+
+    img {
+      margin: {
+        top: 30px;
+        bottom: 30px;
+        left: auto;
+        right: auto;
+      }
+    }
+
+    h3 {
+      text-align: center;
+      font-size: 1.125rem;
+      font-weight: 500;
+      line-height: 1.22;
+      color: white;
+    }
+
+    @media (min-width: $desktop) {
+      display: block;
+    }
+
+    .node--type-paid-landing-page & {
+      img {
+        max-width: 175px;
+        margin: {
+          top: 24px;
+          bottom: 24px;
+        }
+      }
+
+      p {
+        @include textSmall;
+        margin: {
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 24px;
+        }
+      }
+    }
+  }
+
+  .form-disclaimer {
+    display: none;
+    width: 100%;
+    max-width: 954px;
+    margin: {
+      top: 32px;
+      left: auto;
+      right: auto;
+    }
+
+    @media (min-width: $desktop) {
+      margin: {
+        top: 0;
+      }
+    }
+
+    p {
+      @include rems(14px);
+      line-height: math.div(18, 14);
+      font-weight: 400;
+      color: $darkGray;
+      text-align: center;
+      margin: {
+        top: 0;
+        bottom: 0;
+        left: auto;
+        right: auto;
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+// @file
+// Layout variables
+// http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#variables_
+
+@include breakpoint-set('to ems', false);
+$max-page-width: 1920px;  
+$max-page-width-narrow: 1180px; // 1140 + 40 for padding on layout-constrain--narrow
+
+$bp--big-desktop: 1500px;
+$bp--larger-desktop: 1280px;
+$bp--medium-desktop: 1250px;
+$bp--desktop: 1025px;
+$bp--tablet: 760px;
+$bp--mobile: 700px;
+
+$tablet-header: 1275px;
+
+// Mobile Menu
+$mobile-menu-bp: 1024px;
+
+// Polyfill for box-sizing in IE7 and below. The url must be root relative to
+// the location of the htc script.
+$box-sizing-polyfill-path: '/themes/gesso/polyfills/boxsizing.htc';
+
+
+ul {
+  margin: 0;
+}

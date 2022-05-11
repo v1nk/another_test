@@ -1,0 +1,65 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.press-release-page {
+  @include globalGutters;
+
+  &__red-line {
+    position: relative;
+    padding: {
+      bottom: 16px;
+    }
+
+    @media (min-width: $tablet) {
+      padding: {
+        bottom: 24px;
+      }
+    }
+
+    &::after {
+      content: "";
+      border-top: 2px solid $azRed;
+      width: 80px;
+      position: absolute;
+    }
+  }
+
+  &__heading {
+    @include headline5;
+    color: $azBlue;
+    padding: {
+      bottom: 16px;
+    }
+
+    @media (min-width: $tablet) {
+      padding: {
+        bottom: 24px;
+      }
+    }
+  }
+
+  &__date {
+    @include textXMedium;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+
+  &__content {
+    p:last-of-type {
+      margin-bottom: 0;
+    }
+    .wizzywig {
+      margin-bottom: 0;
+    }
+
+    #DivAssetPlaceHolder1 {
+      display: none;
+    }
+  }
+
+  div[contenteditable="false"] {
+    display: none;
+  }
+}

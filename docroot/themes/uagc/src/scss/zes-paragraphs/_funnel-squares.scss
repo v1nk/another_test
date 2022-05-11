@@ -1,0 +1,243 @@
+.funnel-squares {
+  background-color: white;
+  padding: {
+    top: 32px;
+  }
+
+  &.\--grey-background {
+    background-color: #f4f4f4;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 45px;
+    max-width: 1023px;
+    margin: 0 auto;
+    padding: 0 20px;
+    @include breakpoint(900px, $no-query: true) {
+      margin: {
+        bottom: 10px;
+      }
+    }
+
+    h3 {
+      font-size: 2.5rem;
+      color: $azBlue;
+      margin-bottom: 30px;
+    }
+
+    p {
+      color: $gray4;
+      margin-bottom: 0;
+    }
+  }
+  &__container {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+  }
+
+  &__wrapper {
+    padding: {
+      top: 45px;
+      bottom: 45px;
+    }
+    @include breakpoint(900px, $no-query: true) {
+      padding: {
+        top: 64px;
+        bottom: 64px;
+      }
+    }
+  }
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    justify-content: space-between;
+    padding: {
+      top: 0;
+      bottom: 0;
+      left: 10px;
+      right: 10px;
+    }
+    margin: {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    @include breakpoint(900px, $no-query: true) {
+      align-items: stretch;
+      padding: {
+        top: 0;
+        bottom: 0;
+        left: 20px;
+        right: 20px;
+      }
+      margin: {
+        left: 0;
+        right: 0;
+      }
+    }
+    &.expanded {
+      .funnel-squares__item {
+        &:nth-child(n + 7) {
+          display: block;
+        }
+      }
+    }
+  }
+  &__item {
+    flex-basis: 100%;
+    max-width: 100%;
+    padding: {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    margin: {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .funnel-squares {
+      &__link {
+        transition: background-color 0.3s ease, border 0.3s ease;
+      }
+
+      &__title {
+        transition: color 0.3s ease;
+      }
+      p {
+        transition: color 0.3s ease;
+      }
+    }
+
+    @include breakpoint(900px, $no-query: true) {
+      flex-basis: 32.333333%;
+      margin-bottom: 10px;
+    }
+    &:nth-child(n + 7) {
+      display: none;
+      @include breakpoint(900px, $no-query: true) {
+        display: block;
+      }
+    }
+
+    &:hover {
+      .funnel-squares {
+        &__link {
+          background-color: $azBlue;
+          p {
+            color: white;
+          }
+        }
+
+        &__title {
+          color: white;
+        }
+      }
+    }
+  }
+  &__link {
+    background-color: #ffffff;
+    transition: none;
+    border: solid 2px $azBlue;
+    display: block;
+    text-align: center;
+    padding: {
+      top: 20px;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+    }
+    margin: {
+      left: 10px;
+      right: 10px;
+      top: 0;
+      bottom: 15px;
+    }
+
+    h4 {
+      p {
+        display: block;
+      }
+    }
+
+    @include breakpoint(900px, $no-query: true) {
+      height: 100%;
+      padding: {
+        left: 10px;
+        right: 10px;
+      }
+      margin: {
+        left: 0;
+        right: 0;
+      }
+    }
+    @include breakpoint(1300px, $no-query: true) {
+      padding: {
+        left: 40px;
+        right: 40px;
+      }
+      margin: {
+        left: 10px;
+        right: 10px;
+      }
+    }
+    &:hover {
+      p {
+        color: $gray4;
+      }
+      .funnel-squares__title {
+      }
+    }
+    p {
+      transition: none;
+      display: none;
+      margin: 0 20px 20px;
+      @include breakpoint(900px, $no-query: true) {
+        display: block;
+        text-align: center;
+        margin: 0 10px 10px;
+      }
+    }
+  }
+  &__title {
+    transition: none;
+    margin-bottom: 5px;
+    color: $azBlue;
+    font-weight: 500;
+    font-size: 1.31rem;
+    margin-bottom: 15px;
+  }
+  &__readmore-container {
+    padding: {
+      left: 20px;
+      right: 20px;
+    }
+    @include breakpoint(900px, $no-query: true) {
+      margin: {
+        left: auto;
+        right: auto;
+      }
+    }
+  }
+  &__readmore {
+    @extend %button-primary-alt;
+    display: block;
+    border-color: #8c2e6d;
+    width: 100%;
+
+    @include breakpoint(900px, $no-query: true) {
+      display: none;
+    }
+    &::after {
+      content: none;
+    }
+  }
+}

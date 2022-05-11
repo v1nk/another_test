@@ -1,0 +1,146 @@
+// @file
+// Color variables
+// http://sass-lang.com/documentation/file.SASS_REFERENCE.html#variables_
+
+// Color Map - Styleguide
+//
+// Example:
+// $colors: (
+//  blue: (
+//    0: #0091B2, // $color-secondary-blue
+//    1: #005C8B,
+//    2: #002664, // $color-tertiary-blue
+//  ),
+// );
+//
+// Usage:
+// $footer-bg: get-color(grayscale, 0);
+
+$colors: (
+  black: (
+    0: #000,
+  ),
+  blue: (
+    0: #0091B2,
+    1: #005C8B,
+    2: #002664,
+  ),
+  gray: (
+    0: #f4f4f4,
+    1: #ccc,
+    2: #555,
+    3: #e3e3e3,
+    4: #e5e5e5,
+  ),
+  orange: (
+    0: #f36d00,
+    1: #f15d03,
+    2: #ec5800,
+  ),
+  purple: (
+    0: #e242ae,
+    1: #ce44a2,
+    2: #8c2e6d,
+    3: #621b4b,
+    4: #431333,
+  ),
+  red: (
+    0: #dc2430,
+  ),
+  white: (
+    0: #fff,
+  ),
+  yellow: (
+    0: #ffd100,
+    1: #ffb900,
+  ),
+);
+
+@function get-color($color, $value: 0) {
+  @return map-get(map-get($colors, $color), $value);
+}
+
+// Gradient: content bg or image overlay
+$gradient-purple-dark: get-color(purple, 3);
+$darkest-purple: get-color(purple, 4);
+$gradient-purple-light: get-color(purple, 0);
+$gradient-blue-dark: get-color(blue, 2);
+$gradient-blue-light: get-color(blue, 0);
+
+// Gradient: Gesso defaults
+$gradient-light: rgba(255, 255, 255, 0.2);
+$gradient-dark: rgba(0, 0, 0, 0.2);
+
+// Text
+$primary-text: get-color(gray, 2);
+$secondary-text: get-color(gray, 2);
+$heading-text: get-color(purple, 3);
+$link: get-color(purple, 2);
+$link-hover: get-color(black, 0);
+$text-background: get-color(gray, 0);
+
+// Misc.
+$body: get-color(gray, 0);
+$selection-background: get-color(yellow, 0);
+$selection-foreground: #333;
+$border: get-color(gray, 1);
+
+// Messages
+$status: #4d8e4d;
+$warning: get-color(yellow, 0);
+$error: get-color(red, 0);
+
+// Buttons
+$button-bg: get-color(purple, 2);
+$button-text: get-color(white, 0);
+
+// Forms
+$form-bg: get-color(white, 0); // Used for fieldsets and vertical-tabs.
+$form-border: $border;
+
+// Nav: Pillbox
+$pillbox-bg: #f9f9f9;
+$pillbox-text: #333;
+
+// Nav: Pipeline
+$pipeline-border: #ccc;
+
+// Nav: Mobile Menu
+$mobile-menu-border: #dedbdb;
+$mobile-menu-text: #8c2e6d;
+$mobile-menu-hover: #ce44a2;
+$mobile-submenu-bg: #f3f3f3;
+$mobile-submenu-text: #8c2e6d;
+$mobile-submenu-hover: #ce44a2;
+$mobile-menu-utility-bg: #9c2d79;
+
+
+
+//Primary
+$azRed: #AB0520 !default;
+$azBlue: #0c234B !default;
+
+//Highlights
+$orange: #ef9600;
+$commencement-orange: #E49829;
+$sky: #81D3EB;
+$blue: #0076AB;
+$purple: #621244;
+
+//Secondary
+$river: #007D8A;
+$silver: #98A4AE;
+$yellow: #F9E17D;
+
+//Neutral
+$lightGray: #D0D0CE;
+$darkGray: #53565A;
+$tan: #D6D2C4;
+
+//Grays
+$coolGray: #E2E9EB;
+$gray: #F1F5F6;
+$gray2: #EFF1F1;
+$gray3: #495A5E;
+$gray4: #3D494C;
+$gray5: #F4F4F4;

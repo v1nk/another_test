@@ -1,0 +1,354 @@
+$section--advisor-form-bp: 830px;
+@use "sass:math";
+.section--advisor-form {
+  padding: {
+    top: 32px;
+    left: 0px;
+    bottom: 32px;
+    right: 0px;
+  }
+
+  .section__spacer {
+    background-color: $coolGray;
+
+    padding: {
+      top: 64px;
+      left: 0px;
+      bottom: 64px;
+      right: 0px;
+    }
+  }
+
+  margin: {
+    top: 0px;
+    bottom: 0px;
+  }
+
+  select,
+  input,
+  .button,
+  button,
+  label {
+  }
+
+  &.\--blue-background.\--blue-background.\--blue-background.\--blue-background {
+    .section__spacer {
+      background-color: $azBlue;
+    }
+
+    label {
+      color: white;
+    }
+
+    select {
+      background-color: $azBlue;
+      color: white;
+      border: solid 2px white;
+      border-collapse: collapse;
+    }
+
+    .section--advisor-form-header {
+      color: white;
+      padding: {
+        left: 15px;
+        right: 15px;
+      }
+    }
+
+    button.form-submit--substitute {
+      @extend %button-primary;
+
+      span {
+        font-weight: 400;
+        border: {
+          left: 1px solid $azRed;
+        }
+        @include breakpoint($bp--desktop, $no-query: true) {
+          margin: {
+            left: 10px;
+          }
+          padding: {
+            left: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  @include breakpoint($section--advisor-form-bp, $no-query: true) {
+    text-align: center;
+  }
+  &-wrapper {
+    max-width: 1180px;
+    padding: {
+      top: 0px;
+      left: 20px;
+      bottom: 0px;
+      right: 20px;
+    }
+
+    @include breakpoint(1500px, $no-query: true) {
+      max-width: 1440px;
+    }
+    margin: {
+      top: 0px;
+      left: auto;
+      bottom: 0px;
+      right: auto;
+    }
+    padding: {
+      top: 0px;
+      left: 0px;
+      bottom: 0px;
+      right: 0px;
+    }
+    @include breakpoint($section--advisor-form-bp, $no-query: true) {
+      margin: {
+        top: 0px;
+        left: auto;
+        bottom: 0px;
+        right: auto;
+      }
+    }
+  }
+  &-header {
+    @extend %h4;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.6;
+    margin: {
+      top: 0px;
+      left: 0px;
+      bottom: 31px;
+      right: 0px;
+    }
+    padding: {
+      left: 25px;
+      right: 25px;
+    }
+
+    @include breakpoint($bp--desktop, $no-query: true) {
+      font-weight: 400;
+      line-height: 1.25;
+      font-size: 2rem;
+      line-height: 1.6;
+      margin: {
+        top: 0px;
+        left: 0px;
+        bottom: 28px;
+        right: 0px;
+      }
+      padding: {
+        left: 50px;
+        right: 50px;
+      }
+    }
+  }
+  form {
+    margin: {
+      top: 16px;
+      left: 16px;
+      bottom: 0px;
+      right: 16px;
+    }
+    padding: {
+      left: 0px;
+    }
+    @include breakpoint($bp--desktop, $no-query: true) {
+      display: flex;
+      margin: {
+        top: 0px;
+        left: 0px;
+        bottom: 0px;
+        right: 0px;
+      }
+      max-width: 1440px;
+      flex-wrap: nowrap;
+      padding: {
+        left: 50px;
+        right: 50px;
+      }
+    }
+    #edit-marketing,
+    #edit-marketing--2,
+    #edit-marketing--3,
+    #edit-marketing--4 {
+      // hide hidden element container
+      display: none;
+    }
+    .form-wrapper {
+      @extend %clearfix;
+      flex-basis: 75%;
+      flex-grow: 0;
+    }
+    .form-item {
+      text-align: left;
+      label {
+        font-weight: bold;
+        color: $azBlue;
+        font-size: 1.125rem;
+        line-height: math.div(24, 18);
+        font-weight: 700;
+        margin-top: 5px;
+      }
+      &.js-form-type-select {
+        margin: {
+          top: 0px;
+          left: 0px;
+          bottom: 25px;
+          right: 0;
+        }
+        width: 100%;
+        @include breakpoint($section--advisor-form-bp, $no-query: true) {
+          float: left;
+          width: 33.3333333333%;
+
+          &:first-of-type {
+            padding-right: 1%;
+          }
+
+          &:nth-of-type(3) {
+            padding-left: 1%;
+          }
+        }
+        @include breakpoint($bp--desktop, $no-query: true) {
+          &:first-of-type {
+            padding-right: 0;
+          }
+
+          &:nth-of-type(3) {
+            padding-left: 0;
+          }
+        }
+
+        label {
+          display: block;
+          font-size: 1.125rem;
+          line-height: math.div(24, 18);
+          font-weight: 700;
+          margin: {
+            top: 0px;
+            left: 0px;
+            bottom: 18px;
+            right: 0;
+          }
+
+          &.form-required:after {
+            display: none;
+          }
+        }
+        .form-select {
+          height: 42px;
+          width: 100%;
+          font-weight: 400;
+          color: $gray4;
+          background-color: white;
+          border: 2px solid $silver;
+
+          @include breakpoint($bp--desktop, $no-query: true) {
+            width: 95%;
+          }
+        }
+
+        &::after {
+          display: none;
+        }
+      }
+      &.fieldgroup {
+        // registered nurse question element
+        display: none;
+        @include breakpoint($section--advisor-form-bp, $no-query: true) {
+          float: none;
+          width: 40%;
+          text-align: center;
+          margin: 0 auto;
+        }
+
+        @include breakpoint($bp--desktop) {
+          margin-left: 47%;
+        }
+      }
+    }
+    .form-actions {
+      flex-basis: 25%;
+      @include breakpoint($section--advisor-form-bp, $no-query: true) {
+        padding-top: 42px; // height of label. can't use flex-end b/c it looks bad w/ optional nursing radios
+      }
+      .form-submit--substitute.form-submit--substitute {
+        @extend %button-primary;
+        height: 42px;
+        min-width: 180px;
+        width: 100%;
+        span {
+          font-weight: 400;
+          border: {
+            left: 1px solid $azBlue;
+          }
+          margin-left: 10px;
+          padding-left: 10px;
+        }
+        @include breakpoint($section--advisor-form-bp, $no-query: true) {
+          width: 100%;
+        }
+      }
+
+      button.webform-button--submit {
+        width: 100%;
+        border-radius: unset;
+        font-size: 0.875rem;
+        font-weight: 400;
+        height: 42px;
+        background-color: $orange;
+
+        span {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+
+  .webform-options-display-side-by-side {
+    display: flex;
+
+    .form-item {
+      display: flex;
+      align-items: center;
+    }
+    @include breakpoint($section--advisor-form-bp) {
+      margin: 0 auto;
+      justify-content: center;
+
+      .form-item {
+        float: none;
+      }
+    }
+
+    @include breakpoint($bp--desktop) {
+    }
+  }
+
+  .js-registerednurse-validation-message {
+    @include breakpoint($section--advisor-form-bp) {
+      width: 60%;
+      margin: 0 auto;
+      padding-top: 20px;
+      p {
+        margin-bottom: 0;
+        line-height: math.div(24, 18);
+      }
+    }
+
+    @include breakpoint($bp--desktop) {
+      margin-left: 40%;
+    }
+
+    #edit-registerednurse-validation-message {
+      display: none;
+    }
+  }
+}
+
+.alt-advisor-form {
+  padding-top: 0;
+}

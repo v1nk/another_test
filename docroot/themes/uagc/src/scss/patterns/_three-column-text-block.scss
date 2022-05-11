@@ -1,0 +1,269 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+@use "../elements/buttons" as *;
+
+.column-text-block {
+  @include globalGutters;
+  width: 100%;
+  max-width: 1920px;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+
+  &.\--grey-background {
+    background-color: $lighterGray;
+  }
+
+  &__red-line {
+    position: relative;
+
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        max-width: 1440px;
+        margin: {
+          left: auto;
+          right: auto;
+        }
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      border-top: 2px solid $azRed;
+      width: 80px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__main-heading {
+    color: $azBlue;
+    text-align: center;
+    margin: {
+      top: 24px;
+      bottom: 24px;
+    }
+
+    span {
+      padding: {
+        left: 6px;
+      }
+
+      &:first-child {
+        padding: {
+          left: 0;
+        }
+      }
+    }
+
+    .--navy-heading,
+    .--red-heading {
+      @include rems(28px);
+      line-height: 1.14;
+      font-weight: 500;
+
+      @media (min-width: $tablet) {
+        @include rems(36px);
+        line-height: 1.333333;
+      }
+    }
+
+    .--red-heading {
+      color: $azRed;
+    }
+  }
+
+  &__main-copy {
+    text-align: center;
+    max-width: 1008px;
+    margin: {
+      left: auto;
+      right: auto;
+      bottom: 24px;
+    }
+
+    p {
+      @include textXMedium;
+    }
+
+    p:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  &__main-cta-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  &__main-cta {
+    @include buttons;
+    display: flex;
+    align-self: center;
+    padding: {
+      left: 24px;
+      right: 24px;
+      top: 7px;
+      bottom: 7px;
+    }
+
+    &:after {
+      content: " ";
+      display: inline-block;
+      background-image: url(../images/icons/arrow-right.svg);
+      margin: {
+        left: 10px;
+      }
+      height: 20px;
+      width: 20px;
+      background-position: 0 -2px;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 32px;
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        max-width: 1440px;
+        margin: {
+          left: auto;
+          right: auto;
+        }
+      }
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    max-width: 425px;
+
+    @media (min-width: $tablet) {
+      padding: {
+        left: 32px;
+        right: 32px;
+      }
+    }
+
+    &.\--columns-4 {
+      @media (min-width: $tablet) {
+        flex-basis: calc(50% - 16px);
+        max-width: calc(50% - 16px);
+      }
+
+      @media (min-width: $desktop) {
+        flex-basis: calc(25% - 24px);
+        max-width: calc(25% - 24px);
+      }
+    }
+
+    &.\--columns-3 {
+      @media (min-width: $tablet) {
+        flex-basis: calc(50% - 16px);
+        max-width: calc(50% - 16px);
+      }
+
+      @media (min-width: $desktop) {
+        flex-basis: calc(33% - 18px);
+        max-width: calc(33% - 18px);
+      }
+    }
+
+    &.\--columns-2 {
+      @media (min-width: $tablet) {
+        flex-basis: calc(50% - 16px);
+        max-width: calc(50% - 16px);
+      }
+    }
+  }
+
+  &__icon {
+    text-align: center;
+    margin: {
+      bottom: 16px;
+    }
+
+    img,
+    svg {
+      width: 56px;
+      height: 56px;
+    }
+  }
+
+  &__heading {
+    @include rems(24px);
+    line-height: 1.333333;
+    font-weight: 500;
+    text-align: center;
+    color: $azBlue;
+    margin: {
+      bottom: 16px;
+    }
+
+    @media (min-width: $tablet) {
+      @include rems(28px);
+      line-height: 1.43;
+    }
+  }
+
+  &__copy {
+    @include rems(16px);
+    line-height: 1.5;
+    font-weight: 400;
+    text-align: center;
+    color: $black;
+    margin: {
+      bottom: 16px;
+    }
+
+    @media (min-width: $tablet) {
+      @include rems(20px);
+      line-height: 1.2;
+    }
+  }
+
+  &__cta-container {
+    text-align: center;
+    margin: {
+      top: auto;
+    }
+  }
+
+  &__cta {
+    display: inline-block;
+    text-decoration: none;
+    background: transparent;
+    padding: {
+      left: 24px;
+      right: 24px;
+      top: 8px;
+      bottom: 8px;
+    }
+  }
+
+  &__disclaimer-container {
+    text-align: center;
+    padding: {
+      top: 32px;
+    }
+  }
+
+  &__disclaimer {
+    @include rems(14px);
+    line-height: 1.28;
+    font-weight: 400;
+    text-align: center;
+    color: $darkGray;
+    margin: 0;
+  }
+}

@@ -1,0 +1,50 @@
+{{ attach_library('uagc/swiper-slider') }}
+{{ attach_library('uagc/slider') }}
+
+<section class="site-layout__article-content-section --full-width">
+  <div class="quote-slider ">
+    <div class="quote-slider__container">
+      <div class="quote-slider__header-container">
+        <div class="quote-slider__header">
+          <span class="quote-slider__header-text">
+            {{ content.field_header_text }}
+          </span>
+        </div>
+      </div>
+      <div class="quote-slider__slider-container js-quote-slider swiper">
+        <ul class="quote-slider__slider swiper-wrapper">
+        {# {{ dump(content.field_quote_slider['#items']|length) }} #}
+        {% for slide in content.field_quote_slider['#items'] %}
+          <li class="quote-slider__slide swiper-slide">
+            <figure class="quote-slider__slide-content">
+              <blockquote class="quote-slider__slide-quote">
+                {{ slide.entity.field_quote.0.value }}
+              </blockquote>
+              <figcaption class="quote-slider__slide-author">
+                {% if slide.entity.field_display_image.entity.uri.value %}
+                  <div class="quote-slider__author-image">
+                    <img src="{{ file_url(slide.entity.field_display_image.entity.uri.value) }}" alt="{{ slide.entity.field_display_image.0.alt }}" width="{{ slide.entity.field_display_image.0.width }}" height="{{ slide.entity.field_display_image.0.height }}" />
+                  </div>
+                {% endif %}
+                <div class="quote-slider__author-info">
+                  <div class="quote-slider__author-title">{{ slide.entity.field_author.0.value }}</div>
+                  <div class="quote-slider__author-link">{{ slide.entity.field_link.0.value }}
+                    <a href="{{ slide.entity.field_link.0.url }}">{{ slide.entity.field_link.0.title }}</a>
+                  </div>
+                </div>
+              </figcaption>
+            </figure>
+          </li>
+          {% endfor %}
+        </ul>
+        <div class="quote-slider__pagination">
+          <div class="swiper-pagination"></div>
+        </div>
+        <div class="quote-slider__buttons">
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

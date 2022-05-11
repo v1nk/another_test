@@ -1,0 +1,21 @@
+{% set greyBackgroundClass = '' %}
+{% if paragraph.field_display_grey_background.value  == 1 %}
+  {% set greyBackgroundClass = ' --grey-background' %}
+{% endif %}
+
+<div class="paid-reasons{{ greyBackgroundClass }}" id="{{paragraph.field_anchor_id.0.value}}">
+    <div class="paid-reasons__red-line"></div>
+    {% if content.field_navy_red_heading %}
+        <h2 class="paid-reasons__heading">{{ content.field_navy_red_heading }}</h2>
+    {% endif %}
+
+    <div class="paid-reasons__icon-container">
+        {{ content.field_reasons }}
+    </div>
+
+
+    {% if content.field_content['#items'].value %}
+        <div class="paid-reasons__wysiwyg wizzywig">{{ content.field_content.0 }}</div>
+    {% endif %}
+
+</div>

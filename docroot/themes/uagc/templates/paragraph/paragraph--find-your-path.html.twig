@@ -1,0 +1,154 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollToPlugin.min.js"></script>
+<script src="/themes/uagc/src/js/lib/DrawSVGPlugin.min.js"></script>
+<section class="site-layout__article-content-section --full-width">
+  <div class="vertical-path__wrapper">
+    <div class="vertical-path">
+      <div class="vertical-path__header-container">
+        <div class="vertical-path__header">
+          <h2>{{content.field_heading}}</h2>
+        </div>
+        <div class="vertical-path__header-content">
+          {{content.field_content}}
+        </div>
+        <div class="vertical-path__nav-controls">
+          <ul class="vertical-path__nav-control-items">
+            <li class="vertical-path__nav-control-item">
+              <a href="#online-degrees" class="js-scrolly" aria-label="Jump to Online Degrees section">Online Degrees</a>
+              {% include directory ~ '/templates/svg-icons/chevron-right.html.twig' %}
+            </li>
+            <li class="vertical-path__nav-control-item">
+              <a href="#admission-process" class="js-scrolly" aria-label="Jump to Admission Process section">Admission Process</a>
+              {% include directory ~ '/templates/svg-icons/chevron-right.html.twig' %}
+            </li>
+            <li class="vertical-path__nav-control-item">
+              <a href="#financial-aid" class="js-scrolly" aria-label="Jump to Financial Aid section">Financial Aid</a>
+              {% include directory ~ '/templates/svg-icons/chevron-right.html.twig' %}
+            </li>
+            <li class="vertical-path__nav-control-item">
+              <a href="https://apply.uagc.edu" class="js-scrolly" aria-label="Jump to Apply Now section">Apply Now</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="vertical-path__path">
+        <div class="vertical-path__container --red">
+          <section class="vertical-path__section">
+            <div class="vertical-path__section-icon">
+              <div class="vertical-path__section-icon-container --education"></div>
+            </div>
+            <div class="vertical-path__section-header">
+              <h3 id="online-degrees">Online Degrees</h3>
+            </div>
+            <div class="vertical-path__section-intro">
+              {{ content.field_red_top_content_ }}
+            </div>
+            <div class="vertical-path__path-container">
+              <div class="vertical-path__path-item">
+                {{ content.field_red_section_1 }}
+                <a class="vertical-path__path-image" href="/student-experience/success-stories/denise-soltero">
+                  {% include directory ~ '/templates/svg-icons/degree_find.svg.twig' %}
+                </a>
+              </div>
+              <div class="vertical-path__path-item">
+                {{ content.field_red_section_2 }}
+                <div class="vertical-path__path-image --larger ">
+                  {% include directory ~ '/templates/svg-icons/advisors.svg.twig' %}
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="vertical-path__container --blue --background-gradient">
+          <section class="vertical-path__section">
+            <div class="vertical-path__section-icon">
+              <div class="vertical-path__section-icon-container --proccess"></div>
+            </div>
+            <div class="vertical-path__section-header">
+              <h3 id="admission-process">Admission Process</h3>
+            </div>
+            <div class="vertical-path__section-intro">
+              {{ content.field_blue_top_content }}
+            </div>
+            <div class="vertical-path__path-container">
+              <div class="vertical-path__path-item">
+                {{ content.field_blue_section_1 }}
+                <a class="vertical-path__path-image --larger " href="/student-experience/success-stories/angel-brutus">
+                  {% include directory ~ '/templates/svg-icons/admission_process2.svg.twig' %}
+                </a>
+              </div>
+              <div class="vertical-path__path-item">
+                {{ content.field_blue_section_2 }}
+                <div class="vertical-path__path-image --larger ">
+                  {% include directory ~ '/templates/svg-icons/credit_transfer.svg.twig' %}
+                </div>
+              </div>
+              <div class="vertical-path__path-item">
+                {{ content.field_blue_section_3 }}
+                <a class="vertical-path__path-image --larger --extra-bottom-padding" href="/student-experience/success-stories/ty-smith">
+                  {% include directory ~ '/templates/svg-icons/non-traditional-credits.svg.twig' %}
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="vertical-path__container --yellow --background-gradient">
+          <section class="vertical-path__section">
+            <div class="vertical-path__section-icon">
+              <div class="vertical-path__section-icon-container --aid"></div>
+            </div>
+            <div class="vertical-path__section-header">
+              <h3 id="financial-aid">Financial Aid</h3>
+            </div>
+            <div class="vertical-path__section-intro">
+              {{ content.field_yellow_top_content }}
+            </div>
+            <div class="vertical-path__path-container">
+              <div class="vertical-path__path-item">
+                {{ content.field_yellow_section_1 }}
+                <div class="vertical-path__path-image --larger ">
+                  {% include directory ~ '/templates/svg-icons/tuition-resources.svg.twig' %}
+                </div>
+              </div>
+              <div class="vertical-path__path-item">
+                {{ content.field_yellow_section_2 }}
+                <div class="vertical-path__path-image --larger ">
+                  {% include directory ~ '/templates/svg-icons/military.svg.twig' %}
+                </div>
+              </div>
+              <div class="vertical-path__path-item">
+                {{ content.field_yellow_section_3 }}
+                <a class="vertical-path__path-image --larger " href="/student-experience/success-stories/jodi-raymond">
+                  {% include directory ~ '/templates/svg-icons/partners.svg.twig' %}
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="vertical-path__container --yellow">
+          <section class="vertical-path__section">
+            <div class="vertical-path__section-icon --small">
+              <div class="vertical-path__section-icon-container --check"></div>
+            </div>
+            <div class="vertical-path__footer">
+              <div class="vertical-path__footer-header">
+                <h2>{{content.field_footer_heading}}</h2>
+              </div>
+              <div class="vertical-path__footer-content">
+                {{content.field_text_content}}
+              </div>
+              <div class="vertical-path__footer-ctas">
+                {{content.field_footer_link}}
+                Or
+                {{content.field_footer_link_2}}
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+  </div>
+  <!-- hello -->
+</section>

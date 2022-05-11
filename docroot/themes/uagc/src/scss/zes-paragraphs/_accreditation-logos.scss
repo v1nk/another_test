@@ -1,0 +1,121 @@
+.section {
+  &.section--accreditation-logos {
+    padding: 30px 0;
+    margin-bottom: 0;
+
+    @include breakpoint($bp--desktop, $no-query: true) {
+      padding: 60px 0;
+    }
+    /* specific request from client */
+    @include breakpoint($max-page-width-narrow, $no-query: true) {
+      padding: {
+        top: 32px;
+        left: 0px;
+        bottom: 32px;
+        right: 0px;
+      }
+    }
+    &.--grey-background {
+      background-color: $gray;
+    }
+    .grid {
+      &__header {
+        margin-bottom: 20px;
+        text-align: center;
+        color: $azBlue;
+        font-size: 2.375rem;
+        font-weight: 400;
+        line-height: 1.15;
+
+        .page--node-type-microsite-pages.page--node-type-microsite-pages.page--node-type-microsite-pages
+          & {
+          line-height: 1.84;
+          margin-bottom: 0;
+        }
+      }
+
+      &__ctalink {
+        display: table;
+        text-align: center;
+        text-transform: uppercase;
+
+        width: auto;
+        position: relative;
+        margin: 0 auto 20px auto;
+
+        &:after {
+          content: " ";
+          display: block;
+          position: absolute;
+          height: 8px;
+          width: 8px;
+          background-color: transparent;
+          border-top: solid 1px #8c2e6d;
+          border-right: solid 1px #8c2e6d;
+          right: -16px;
+          top: 50%;
+          transform: translateY(-50%) rotate(45deg);
+          margin: 0 auto;
+          transition: right 0.25s ease-in-out;
+        }
+
+        &:hover {
+          &:after {
+            right: -20px;
+          }
+        }
+      }
+
+      &__items {
+        justify-content: space-around;
+
+        @include breakpoint($bp--tablet, $no-query: true) {
+          justify-content: center;
+        }
+
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      &__item {
+        flex-basis: 40%;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 20px;
+
+        img {
+          height: 100%;
+          max-width: 100%;
+          @include breakpoint($bp--tablet, $no-query: true) {
+            height: auto;
+          }
+        }
+
+        @include breakpoint($bp--tablet, $no-query: true) {
+          flex-basis: 16%;
+          margin: 0;
+        }
+
+        &-image {
+          background-size: auto;
+          border-radius: 0;
+          width: auto;
+          height: auto;
+          padding-top: 50%;
+          background-size: 100%;
+
+          &-wrapper {
+            width: 100%;
+            flex-basis: 100%;
+          }
+
+          @include breakpoint($bp--tablet, $no-query: true) {
+            width: 150px;
+            padding-top: 50%;
+            background-size: 125%;
+          }
+        }
+      }
+    }
+  }
+}

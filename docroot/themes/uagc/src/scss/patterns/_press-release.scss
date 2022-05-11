@@ -1,0 +1,66 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.press-release {
+  @include globalGutters;
+
+  &__results {
+    .views-row {
+      margin-bottom: 48px;
+    }
+
+    .views-row:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__item-header {
+    @include headline1;
+    margin-bottom: 16px;
+
+    a {
+      color: $azRed;
+    }
+  }
+
+  &__date {
+    @include textXMedium;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+
+  &__summary {
+    p {
+      @include textXMedium;
+      margin-bottom: 0;
+    }
+  }
+
+  select[data-drupal-selector="edit-field-pr-year-value"] {
+    border: 1px solid $lightGray;
+    border-radius: 8px;
+    padding: {
+      top: 8px;
+      bottom: 8px;
+      left: 16px;
+      right: 32px;
+    }
+  }
+
+  .js-form-item-field-pr-year-value {
+    max-width: 110px;
+    margin-bottom: 24px;
+
+    label {
+      @include textMedium;
+    }
+
+    &::after {
+      right: 14px;
+      height: 16px;
+      width: 20px;
+    }
+  }
+}

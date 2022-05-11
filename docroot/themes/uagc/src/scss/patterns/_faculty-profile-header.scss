@@ -1,0 +1,181 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.faculty-profile-header {
+  max-width: 1440px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+
+  @media (min-width: $tablet) {
+    flex-wrap: nowrap;
+    flex-direction: row;
+  }
+
+  &__image-wrapper {
+    flex-basis: 100%;
+    display: flex;
+    @media (min-width: $tablet) {
+      flex-basis: 280px;
+      flex-shrink: 0;
+      margin: {
+        right: 32px;
+      }
+    }
+  }
+
+  &__image {
+    border-radius: 50%;
+    max-height: 104px;
+    max-width: 104px;
+
+    width: 100%;
+    object-fit: cover;
+    margin: {
+      right: auto;
+      bottom: 16px;
+    }
+    display: block;
+    @media (min-width: $tablet) {
+      max-height: 175px;
+      max-width: 175px;
+      margin: {
+        left: auto;
+        right: 0px;
+        bottom: 0px;
+      }
+    }
+  }
+
+  &__content-wrapper {
+    display: inline-flex;
+    flex-direction: column;
+    @media (min-width: $tablet) {
+      flex-basis: 100%;
+    }
+  }
+
+  &__name {
+    @include rems(32px);
+    line-height: 1.25;
+    color: $azBlue;
+    font-weight: 500;
+
+    @media (min-width: $tablet) {
+      @include rems(48px);
+      line-height: 1.166667;
+    }
+  }
+
+  &__role {
+    @include rems(20px);
+    line-height: 1.2;
+    color: $azBlue;
+    font-weight: 500;
+    margin: {
+      top: 16px;
+      bottom: 0px;
+    }
+    @media (min-width: $tablet) {
+      @include rems(24px);
+      line-height: 1.33;
+      margin: {
+        top: 24px;
+      }
+    }
+  }
+
+  &__info-wrapper {
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: {
+      top: 16px;
+      left: -24px;
+      right: -24px;
+    }
+
+    @media (min-width: $tablet) {
+      flex-direction: row;
+      margin: {
+        top: 24px;
+      }
+    }
+  }
+
+  &__info {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: {
+      left: 24px;
+      right: 24px;
+    }
+    margin: {
+      bottom: 8px;
+    }
+
+    &:last-child {
+      margin: {
+        bottom: 0;
+      }
+    }
+
+    @media (min-width: $tablet) {
+      align-items: flex-start;
+      flex-direction: column;
+      border: {
+        right: solid 1px $lightGray;
+      }
+      margin: {
+        bottom: 0;
+      }
+    }
+
+    &:last-child {
+      border: {
+        right: none;
+      }
+    }
+  }
+
+  &__info-heading {
+    color: $silver;
+    font-weight: 500;
+    @include rems(11px);
+    line-height: 1.45;
+    margin: {
+      right: 8px;
+      top: 3px;
+    }
+
+    @media (min-width: $tablet) {
+      align-self: unset;
+      padding-bottom: 0;
+      @include rems(14px);
+      line-height: 1.29;
+      margin: {
+        bottom: 8px;
+        right: 0px;
+        top: 0px;
+      }
+    }
+  }
+
+  &__info-name {
+    color: $azBlue;
+    @include rems(16px);
+    line-height: 1.5;
+    font-weight: 500;
+    @media (min-width: $tablet) {
+      @include rems(20px);
+      line-height: 1.2;
+    }
+  }
+}

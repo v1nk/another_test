@@ -1,0 +1,31 @@
+{% set iconClass = content.field_icon_selection['#items'].value %}
+{% set colorClass = content.field_background_color['#items'].value %}
+
+<div class="success-stories-sidebar {{colorClass}}">
+  <a class="success-stories-sidebar__container" href="/success-stories">
+  <div class="success-stories-sidebar__content">
+    <div class="success-stories-sidebar__subhead">{{ content.field_block_pre_header.0 }}</div>
+    <span class="success-stories-sidebar__title">
+      {{ content.field_block_header.0 }}
+    </span>
+    <div class="success-stories-sidebar__slogan">{{ content.field_block_bottom_text.0 }}</div>
+    </div>
+    <div class="success-stories-sidebar__icon">
+      {% if iconClass == 'stories' %}
+        <span class="success-stories-sidebar__icon-stories">
+          {% include directory ~ '/templates/svg-icons/stories.html.twig' %}
+        </span>
+      {% elseif iconClass == 'online-learning' %}
+        <span class="success-stories-sidebar__icon-online-learning">
+          {% include directory ~ '/templates/svg-icons/online-learning.html.twig'%}
+        </span>
+          
+      {% elseif iconClass == 'find-degree' %}
+        <span class="success-stories-sidebar__icon-find-degree">
+          {% include directory ~ '/templates/svg-icons/find-degree.html.twig' %}
+        </span>
+
+      {% endif %}
+    </div>
+  </a>
+</div>

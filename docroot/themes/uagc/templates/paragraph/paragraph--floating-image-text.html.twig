@@ -1,0 +1,45 @@
+{% set alternateBackgroundColors = '' %}
+{% set hideImage = '' %}
+{% set removePaddingTop = '' %}
+{% set singleBackgroundColor = '' %}
+
+{% if paragraph.field_swap_order.value  == 1 %}
+    {% set alternateBackgroundColors = ' --alt-background' %}
+{% endif %}
+
+{% if paragraph.field_hide_image.value  == 1 %}
+    {% set hideImage = ' --hide-image' %}
+{% endif %}
+
+{% if paragraph.field_remove_top_padding.value  == 1 %}
+    {% set removePaddingTop = ' --remove-padding-top' %}
+{% endif %}
+
+{% if paragraph.field_single_color_background.0.value == '--white' %}
+    {% set singleBackgroundColor = ' --white' %}
+{% elseif paragraph.field_single_color_background.0.value == '--gray' %}
+    {% set singleBackgroundColor = ' --gray' %}
+{% endif %}
+
+
+<div class="floating-image-text{{alternateBackgroundColors}}{{hideImage}}{{removePaddingTop}}{{singleBackgroundColor}}" id="{{paragraph.field_anchor_id.0.value}}">
+    <div class="floating-image-text__container">
+        <div class="floating-image-text__text-container">
+            <div class="floating-image-text__red-line"></div>
+            <div class="floating-image-text__text-wrapper">
+                <h2 class="floating-image-text__heading">{{ content.field_navy_red_heading }}</h2>
+                <div class="floating-image-text__wysiwyg wizzywig">{{ content.field_content.0 }}</div>
+            </div>
+
+            {% if content.field_cta['#items'].value %}
+                <a href="{{paragraph.field_cta.0.url}}" class="floating-image-text__cta button--blue">{{paragraph.field_cta.0.title}}</a>
+            {% endif %}
+            {# <a href="javascript:void(0)" class="floating-image-text__learn-more-cta button--blue">Learn More</a> #}
+        </div>
+
+        <div class="floating-image-text__image-container">
+            <img class="floating-image-text__image" src="{{paragraph.field_image.entity.field_media_image.0.entity.uri.value|image_style('floating_image_520x440')}}" alt="{{paragraph.field_image.entity.field_media_image.alt}}">
+            <img class="floating-image-text__image-mobile" src="{{paragraph.field_mobile_image.entity.field_media_image.0.entity.uri.value|image_style('floating_image_mobile_768x500')}}" alt="{{paragraph.field_mobile_image.entity.field_media_image.alt}}">
+        </div>
+    </div>
+</div>

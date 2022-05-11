@@ -1,0 +1,13 @@
+<div class="site-layout__article-content-section">
+    <div class="blog-listing__main-wrapper">
+        <div class="blog-listing__main-header">
+            <div class="blog-listing__red-bar"></div>
+            {% if paragraph.field_display_blog_category.0.value == 1 %}
+                <div class="blog-listing__main-header-text"></div>
+            {% else %}
+                <div class="blog-listing__main-header-text">Read More From Our Forward Thinking Blog</div>
+            {% endif  %}
+        </div>
+        {{ drupal_view('blog_listing', 'block_1') }}
+    </div>
+</div>

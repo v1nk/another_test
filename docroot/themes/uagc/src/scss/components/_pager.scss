@@ -1,0 +1,140 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.pager {
+  max-width: 1440px;
+  @include globalGutters;
+  flex-basis: 100%;
+  display: flex;
+  justify-content: center;
+  @media (min-width: $desktop-small) {
+    justify-content: flex-end;
+  }
+
+  .success-grid & {
+    padding: {
+      top: 16px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    @media (min-width: $desktop-small) {
+      padding: {
+        top: 0;
+      }
+    }
+  }
+
+  //Styling for pager on search results page only
+  &.\--search-pager {
+    .pager__items {
+      width: 100%;
+      justify-content: center;
+      @media (min-width: $footerSpacing) {
+        width: unset;
+      }
+    }
+
+    .pager__item {
+      width: 30px;
+      height: 30px;
+      @media (min-width: $footerSpacing) {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    .pager__item--previous {
+      left: -24px;
+      @media (min-width: $footerSpacing) {
+        left: -48px;
+      }
+    }
+
+    .pager__item--next {
+      right: -24px;
+      @media (min-width: $footerSpacing) {
+        right: -48px;
+      }
+    }
+  }
+  .pager__items {
+    display: flex;
+    position: relative;
+  }
+  .pager__item {
+    @include textMedium;
+    border: 1px solid $lightGray;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    color: $azBlueLight;
+    margin: {
+      left: 4px;
+      right: 4px;
+    }
+    transition: background-color 0.25s ease-in-out;
+
+    &:hover {
+      background-color: $lightGray;
+    }
+
+    &.is-active {
+      border-color: $orange;
+    }
+    &--ellipsis {
+      display: none;
+      border: none;
+      cursor: default;
+      &:hover {
+        background-color: transparent;
+      }
+      @media (min-width: $desktop-small) {
+        display: flex;
+      }
+    }
+    &--next {
+      border: none;
+      position: absolute;
+      right: -48px;
+      transition: background-color 0.25s;
+      @media (min-width: $desktop-small) {
+        position: static;
+      }
+      &:hover {
+        background-color: #ffffff;
+        svg {
+          width: 28px;
+          height: 28px;
+        }
+      }
+    }
+    &--previous {
+      border: none;
+      position: absolute;
+      left: -48px;
+      transition: background-color 0.25s;
+      @media (min-width: $desktop-small) {
+        position: static;
+      }
+      &:hover {
+        background-color: #ffffff;
+        svg {
+          width: 28px;
+          height: 28px;
+        }
+      }
+    }
+    &--last {
+      display: none;
+    }
+    &--first {
+      display: none;
+    }
+  }
+}

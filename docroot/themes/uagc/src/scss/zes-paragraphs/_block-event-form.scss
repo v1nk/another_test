@@ -1,0 +1,231 @@
+body.modal-open {
+  overflow: hidden;
+}
+
+.block--event-form.block--event-form {
+  display: block;
+  position: relative;
+  z-index: 1;
+  background-color: white;
+
+  .site-header__logo img {
+    width: 200px;
+    margin-bottom: 20px;
+  }
+
+  .block__content.block__content {
+    padding-top: 25px;
+    margin-top: 0;
+
+    @include breakpoint(640px) {
+      margin-top: 0;
+    }
+  }
+
+  .ASHRET-737__title.ASHRET-737__title {
+    text-align: center;
+  }
+
+  .form-item-please-select-affiliation,
+  .form-item-please-select-military-branch- {
+    display: none;
+  }
+
+  .form-item-do-you-have-any-u-s-military-affiliation-.form-item-do-you-have-any-u-s-military-affiliation-.form-item-do-you-have-any-u-s-military-affiliation-:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.\--academic-partnership-page .block--event-form {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.block--event-form {
+  display: none;
+  position: fixed;
+  z-index: 2147483645;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  select {
+    font-size: 1rem;
+    font-family: "UAGC-Montserrat";
+    color: $gray4;
+    option {
+      font-family: "UAGC-Montserrat";
+      color: $gray4;
+    }
+  }
+
+  label {
+    font-family: "UAGC-Montserrat";
+    color: $gray4;
+    font-size: 1.125rem;
+  }
+
+  input {
+    font-family: "UAGC-Montserrat";
+    color: $gray4;
+    font-size: 1rem;
+  }
+
+  .block__content {
+    background-color: white;
+    max-width: 645px;
+    padding: 50px;
+    margin: 0 auto;
+    position: relative;
+    @include breakpoint(640px) {
+      margin-top: 10vh;
+    }
+
+    h2 {
+      margin-bottom: 0px;
+      font-family: "UAGC-Montserrat";
+      color: $azBlue;
+      font-weight: 500;
+      font-size: 2.5rem;
+    }
+
+    h4 {
+      font-family: "UAGC-Montserrat";
+      color: $azBlue;
+      font-weight: 400;
+    }
+
+    .modal-close {
+      position: absolute;
+      right: 25px;
+      top: 25px;
+      width: 15px;
+      cursor: pointer;
+    }
+
+    .form-wrapper {
+      display: flex;
+      flex-flow: wrap;
+      justify-content: space-between;
+      width: 100%;
+
+      .form-item {
+        margin-bottom: 15px;
+        flex: 0 0 100%;
+
+        .form-text,
+        .form-select,
+        .form-email,
+        .form-tel {
+          padding: 12px 14px;
+          width: 100%;
+          border: 1px solid #aaa;
+          background-color: white;
+        }
+
+        .form-select {
+        }
+
+        .registerednurse-validation-text p {
+          margin-bottom: 0px;
+        }
+
+        @include breakpoint(640px) {
+          &-phone1 {
+            flex: 0 0 38%;
+
+            .form-tel {
+              width: 100%;
+            }
+          }
+
+          &-emailaddress {
+            flex: 0 0 58%;
+          }
+
+          &-state,
+          &-college-of-interest,
+          &-clientdegreeid {
+            flex: 0 0 48%;
+          }
+        }
+      }
+
+      .registered-nurse {
+        margin: 8px 0 0 0;
+        @include breakpoint(640px) {
+          flex: 0 0 48%;
+        }
+      }
+    }
+
+    .form-disclaimer {
+      display: none;
+    }
+
+    .edit-consent-container {
+      display: flex;
+      flex-flow: wrap;
+      justify-content: space-between;
+      margin-top: 32px;
+      flex: 0 0 100%;
+
+      .form-actions {
+        display: inline-block;
+        @include breakpoint(640px) {
+          flex: 0 0 48%;
+        }
+
+        .form-submit {
+          @extend %ctaBlue;
+          background-color: #0076ab;
+          padding: {
+            top: 15px;
+            left: 25px;
+            bottom: 15px;
+            right: 30px;
+          }
+          display: inline;
+          text-decoration: none !important;
+          color: white !important;
+          font-size: 0.875rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          text-align: center;
+          border: none;
+          width: 100%;
+        }
+      }
+
+      .form-consent-text {
+        margin-top: 16px;
+        margin-bottom: 0;
+        line-height: 0.9;
+        vertical-align: top;
+        margin-top: 1px;
+
+        @include breakpoint(640px) {
+          flex: 0 0 48%;
+          margin-top: 0;
+        }
+
+        p {
+          margin-top: 20px;
+          margin-bottom: 0;
+          @include breakpoint(640px) {
+            margin-top: -3px;
+          }
+        }
+        #block-rfitermsmodal .block__content {
+          margin-top: 0px;
+          padding: 0px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{% if paragraph.field_color_picker.value == 0 %}
+    {% set blockColor = '--blue' %}
+{% elseif paragraph.field_color_picker.value == 1 %}
+    {% set blockColor = '--grey' %} 
+{% endif %}
+{% set classes = ['site-layout__article-content-section', '--full-width'] %}
+<section {{ attributes.addClass(classes) }} >
+    <div class="stats-banner {{ blockColor }}">
+        <div class="stats-banner__header">
+            {{ content.field_header }}
+        </div>
+        <div class="stats-banner__preheader">
+            {{ content.field_pre_header.0 }}</div>
+        <div class="stats-banner__items">
+        {% for i in content.field_stat_items['#items']|keys %}
+        {% set statBlock = content.field_stat_items[i]['#paragraph'] %}
+            <div class="stats-banner__item">
+            <div class="stats-banner__item-content">
+                {% if statBlock.field_header.0.value %}
+                    <div class="stats-banner__item-header"> {{statBlock.field_header.0.value}} </div>
+                {% endif %}
+                {% if statBlock.field_show_integer.0.value %}
+                    {% if statBlock.field_text_content.0.value %}
+                        <div class="stats-banner__number --no-bar">{{ statBlock.field_text_content.0.value }}</div>
+                    {% endif %}
+                {% else %}
+                <div class="stats-banner__number">{{ statBlock.field_percentage.0.value }}<span>%</span></div>
+                <div class="stats-banner__bar" style="width: {{ statBlock.field_percentage.0.value }}%;"></div>
+                {% endif %}
+                
+            </div>
+            </div>
+        {% endfor %}
+
+        </div>
+        {% if content.field_link['#items'].value %}
+            <div class="stats-banner__link-container">{{ content.field_link }}</div>
+        {% elseif content.field_short_title['#items'].value %}
+            <div class="stats-banner__source-text">{{ content.field_short_title.0 }}</div>
+        {% endif %}
+    </div>
+</section>

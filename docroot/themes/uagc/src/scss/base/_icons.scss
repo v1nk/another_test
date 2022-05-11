@@ -1,0 +1,264 @@
+%icon {
+  display: inline-block;
+  height: 56px;
+  width: 56px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+%icon-small {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+}
+
+.icon {
+  &-calendar {
+    @extend %icon;
+    background-image: url(../images/icon-pictures/calendar.svg);
+  }
+
+  &-credit {
+    @extend %icon;
+    background-image: url(../images/icon-pictures/credit.svg);
+  }
+
+  &-elearning {
+    @extend %icon;
+    background-image: url(../images/icon-pictures/elearning.svg);
+  }
+
+  &-happy_student {
+    @extend %icon;
+    background-image: url(../images/icon-pictures/happy_student.svg);
+  }
+
+  &-interactivity {
+    @extend %icon;
+    background-image: url(../images/icon-pictures/interactivity.svg);
+  }
+
+  &-online_certificate {
+    @extend %icon;
+    background-image: url(../images/icon-pictures/online_certificate.svg);
+  }
+
+  &-online_education {
+    @extend %icon;
+    background-image: url(../images/icon-pictures/online_education.svg);
+  }
+
+  &-puzzles {
+    @extend %icon;
+    background-image: url(../images/icon-pictures/puzzles.svg);
+  }
+
+  &-support {
+    @extend %icon;
+    background-image: url(../images/icon-pictures/support.svg);
+  }
+
+  &-transfer {
+    @extend %icon;
+    background-image: url(../images/icon-pictures/transfer.svg);
+  }
+
+  &-tuition {
+    @extend %icon;
+    background-image: url(../images/icon-pictures/tuition.svg);
+  }
+
+  &-work-life-credit {
+    @extend %icon;
+    background-image: url(../images/icon-pictures/work-life-credit.svg);
+  }
+
+  &-uagc-promise {
+    @extend %icon;
+    background-image: url(../images/icon-pictures/uagc-promise.svg);
+  }
+
+  &-no-fee {
+    @extend %icon;
+    background-image: url(../images/icon-pictures/no-fee.svg);
+  }
+
+  &-user {
+    @extend %icon;
+    background-image: url(../images/icon-pictures/user.svg);
+  }
+
+  &-window_check {
+    @extend %icon;
+    background-image: url(../images/icon-pictures/window_check.svg);
+  }
+
+  &-zero-usd {
+    @extend %icon;
+    background-image: url(../images/icon-pictures/zero-usd.svg);
+  }
+
+  &-alert-circle {
+    @extend %icon-small;
+    background-image: url(../images/icons/alert-circle.svg);
+  }
+
+  &-arrow-down {
+    @extend %icon-small;
+    background-image: url(../images/icons/arrow-down.svg);
+  }
+
+  &-arrow-left {
+    @extend %icon-small;
+    background-image: url(../images/icons/arrow-left.svg);
+  }
+
+  &-arrow-right {
+    @extend %icon-small;
+    background-image: url(../images/icons/arrow-right.svg);
+  }
+
+  &-arrow-up-right {
+    @extend %icon-small;
+    background-image: url(../images/icons/arrow-up-right.svg);
+  }
+
+  &-arrow-up {
+    @extend %icon-small;
+    background-image: url(../images/icons/arrow-up.svg);
+  }
+
+  &-book-open {
+    @extend %icon-small;
+    background-image: url(../images/icons/book-open.svg);
+  }
+
+  &-check {
+    @extend %icon-small;
+    background-image: url(../images/icons/check.svg);
+  }
+
+  &-chevron-down {
+    @extend %icon-small;
+    background-image: url(../images/icons/chevron-down.svg);
+  }
+
+  &-chevron-left {
+    @extend %icon-small;
+    background-image: url(../images/icons/chevron-left.svg);
+  }
+
+  &-chevron-right {
+    @extend %icon-small;
+    background-image: url(../images/icons/chevron-right.svg);
+  }
+
+  &-chevron-up {
+    @extend %icon-small;
+    background-image: url(../images/icons/chevron-up.svg);
+  }
+
+  &-eye-off {
+    @extend %icon-small;
+    background-image: url(../images/icons/eye-off.svg);
+  }
+
+  &-eye {
+    @extend %icon-small;
+    background-image: url(../images/icons/eye.svg);
+  }
+
+  &-heart {
+    @extend %icon-small;
+    background-image: url(../images/icons/heart.svg);
+  }
+
+  &-lock {
+    @extend %icon-small;
+    background-image: url(../images/icons/lock.svg);
+  }
+
+  &-menu {
+    @extend %icon-small;
+    background-image: url(../images/icons/menu.svg);
+  }
+
+  &-minimize {
+    @extend %icon-small;
+    background-image: url(../images/icons/minimize.svg);
+  }
+
+  &-phone {
+    @extend %icon-small;
+    background-image: url(../images/icons/phone.svg);
+  }
+
+  &-play {
+    @extend %icon-small;
+    background-image: url(../images/icons/play.svg);
+  }
+
+  &-printer {
+    @extend %icon-small;
+    background-image: url(../images/icons/printer.svg);
+  }
+
+  &-search {
+    @extend %icon-small;
+    background-image: url(../images/icons/search.svg);
+  }
+
+  &-slash {
+    @extend %icon-small;
+    background-image: url(../images/icons/slash.svg);
+  }
+
+  &-star {
+    @extend %icon-small;
+    background-image: url(../images/icons/star.svg);
+  }
+
+  &-thumbs-up {
+    @extend %icon-small;
+    background-image: url(../images/icons/thumbs-up.svg);
+  }
+
+  &-trash {
+    @extend %icon-small;
+    background-image: url(../images/icons/trash.svg);
+  }
+
+  &-trending-up {
+    @extend %icon-small;
+    background-image: url(../images/icons/trending-up.svg);
+  }
+
+  &-user {
+    @extend %icon-small;
+    background-image: url(../images/icons/user.svg);
+  }
+
+  &-x {
+    @extend %icon-small;
+    background-image: url(../images/icons/x.svg);
+  }
+}
+
+.\--small-icon {
+  height: 16px;
+  width: 16px;
+}
+
+.\--medium-icon {
+  height: 24px;
+  width: 24px;
+}
+
+.\--large-icon {
+  height: 129px;
+  width: 129px;
+}

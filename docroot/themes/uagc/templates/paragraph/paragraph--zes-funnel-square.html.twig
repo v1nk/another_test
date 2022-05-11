@@ -1,0 +1,25 @@
+<li class="funnel-squares__item">
+    <a href="{{ content.field_funnel_squares_link[0]['#url']}} " class="funnel-squares__link">
+
+      {% if content.field_funnel_squares_title_html.0|render|trim is not empty %}
+        <h4 class="funnel-squares__title">{{ content.field_funnel_squares_title_html }}</h4>
+      {% else %}
+        {% if content.field_funnel_squares_title.0 | raw != '' %}
+            <h4 class="funnel-squares__title">{{ content.field_funnel_squares_title }}</h4>
+        {% endif %}
+      {% endif %}
+
+
+
+      {% if content.field_funnel_description_html.0|render|trim is not empty %}
+          <p>{{content.field_funnel_description_html}}</p>
+      {% else %}
+        {% if content.field_funnel_squares_description.0 | raw != '' %}
+            <p>{{content.field_funnel_squares_description}}</p>
+        {% endif %}
+      {% endif %}
+
+
+
+    </a>
+</li>

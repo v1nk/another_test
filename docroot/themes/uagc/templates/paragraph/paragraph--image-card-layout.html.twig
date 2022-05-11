@@ -1,0 +1,161 @@
+{% set greyBackground = '' %}
+{% set leftAlignCards = '' %}
+
+{% if paragraph.field_display_grey_background.value  == 1 %}
+    {% set greyBackground = ' --grey-background' %}
+{% endif %}
+
+{% if paragraph.field_left_align_content.value  == 1 %}
+    {% set leftAlignCards = ' --left-align-cards' %}
+{% endif %}
+
+<div class="image-cards{{greyBackground}}{{leftAlignCards}}">
+    <div class="image-cards__red-line"></div>
+    {% if content.field_navy_red_heading['#items'].value %}
+        <h2 class="image-cards__heading">{{ content.field_navy_red_heading }}</h2>
+    {% else %}
+        <div style="height:32px;"></div>
+    {% endif %}
+    {% if content.field_content['#items'].value %}
+        <div class="image-cards__content">{{ content.field_content.0 }}</div>
+    {% endif %}
+
+    {% if content.field_paragraphs['#items'].value %}
+    <div class="image-cards__card-layout">
+        {% for item in paragraph.field_paragraphs %}
+
+            <a class="image-cards__card-container" href="{{ item.entity.field_cta.0.url }}">
+                <div class="image-cards__image-container">
+                    <img class="image-cards__image" src="{{item.entity.field_media_library.entity.field_media_image.0.entity.uri.value|image_style('image_card_424x239')}}" alt="{{item.entity.field_media_library.entity.field_media_image.alt}}">
+                </div>
+                <div class="image-cards__content-wrapper">
+                    <div class="image-cards__card-heading">
+                        {{ item.entity.field_heading.0.value }}
+                    </div>
+    
+                    <div class="image-cards__card-content">
+                        {% if item.entity.field_text.0.value %}
+                            <div class="image-cards__card-text">{{ item.entity.field_text.0.value|striptags('<p>,<u>,<strong>,<b>,<em>,<i>,<s>,<sup>,<sub>,<ul>,<ol>,<li>,<h1>,<h2>,<h3>,<h4>,<h5>')|raw }}</div>
+                        {% endif %}
+                        <div class="image-cards__card-cta-container">
+                            {% if item.entity.field_subheader_text.0.value %}
+                                <div class="image-cards__degree-text">{{ item.entity.field_subheader_text.0.value }}</div>
+                            {% endif %}
+                            <div class="image-cards__card-cta">
+                                <span class="image-cards__card-cta-text">{{ item.entity.field_cta.0.title }}</span>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4.1665 10H15.8332" stroke="#AB0520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="#AB0520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a> 
+
+        {% endfor %}
+    {% elseif content.field_paid_card_list %}
+    <div class="paid-cards__card--banner">
+        {% for item in paragraph.field_paid_card_list %}
+
+            <a class="paid-cards__card-container" href="{{ item.entity.field_cta.0.url }}">
+                <div class="paid-cards__card-heading">
+                    {% if item.entity.field_logo_upload.entity.field_media_file is not empty %}
+                        <div class="paid-cards__card-icon">
+                            <span class="logo-upload">
+                                {% set svg = file_url(item.entity.field_logo_upload.entity.field_media_file.entity.uri.0.value) |  replace({'%20': ' '}) %}
+
+                                {% set svgContents %}
+                                    {%  include( '.' ~ svg) ignore missing %}
+                                {% endset %}
+                                {{svgContents|stripsvgids|raw}}
+                            </span>
+                        </div>
+                    {% elseif item.entity.field_logo_upload.entity.field_media_image is not empty %}
+                        <div class="paid-cards__card-icon">
+                            {% set src = file_url(item.entity.field_logo_upload.entity.field_media_image.entity.uri.0.value) |  replace({'%20': ' '}) %}
+                            <img src="{{src}}" alt="{{item.entity.field_logo_upload.entity.field_media_image.alt}}" />
+                        </div>
+                    {% elseif item.entity.field_paid_card_icon.0.value %}
+                        <div class="paid-cards__card-icon">
+                            {% if item.entity.field_paid_card_icon.0.value == 'right-arrow' %}
+                                <span class="right-arrow">
+                                    {% include directory ~ '/templates/svg-icons/arrow-right.html.twig'%}
+                                </span>
+                            {% elseif item.entity.field_paid_card_icon.0.value == 'credit-icon' %}
+                                <span class="credit-icon">
+                                    {% include directory ~ '/templates/svg-icons/credit-icon.html.twig'%}
+                                </span>
+                            {% elseif item.entity.field_paid_card_icon.0.value == 'happy-student' %}
+                                <span class="happy-student">
+                                    {% include directory ~ '/templates/svg-icons/happy-student.html.twig'%}
+                                </span>
+                            {% elseif item.entity.field_paid_card_icon.0.value == 'funding' %}
+                                <span class="funding">
+                                    {% include directory ~ '/templates/svg-icons/funding.html.twig'%}
+                                </span>
+                            {% endif %} 
+                        </div>
+                    {% endif %}
+                    {{ item.entity.field_heading_html.0.value|striptags('<p>,<u>,<strong>,<b>,<em>,<i>,<s>,<sup>,<sub>,<h1>,<h2>,<h3>,<h4>,<h5>')|raw }}
+                </div>
+
+                <div class="paid-cards__card-content">
+                    {% if item.entity.field_content.0.value %}
+                        <div class="paid-cards__card-text">{{ item.entity.field_content.0.value|striptags('<p>,<u>,<strong>,<b>,<em>,<i>,<s>,<sup>,<sub>,<ul>,<ol>,<li>,<h1>,<h2>,<h3>,<h4>,<h5>')|raw }}</div>
+                    {% endif %}
+                    <div class="paid-cards__card-cta-container">
+                        {% if item.entity.field_subheader_text.0.value %}
+                            <div class="paid-cards__degree-text">{{ item.entity.field_subheader_text.0.value }}</div>
+                        {% endif %}
+                        <div class="paid-cards__card-cta">
+                            <span class="paid-cards__card-cta-text">Learn More</span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.1665 10H15.8332" stroke="#AB0520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="#AB0520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </a> 
+
+        {% endfor %}
+    {% endif %}
+        {% if content.field_interest_card %}
+            {% for item in paragraph.field_interest_card %}
+                {% set iconClass = item.entity.field_tools_card_icon.0.value %}
+                {% set colorClass = item.entity.field_tools_card_color.0.value %}
+                <a class="interest-card {{colorClass}}" href="{{ item.entity.field_cta.0.url }}">
+
+                    <div class="interest-card__container">
+                        <div class="interest-card__content">
+                            {% if item.entity.field_subheading.0.value %}
+                                <h4 class="interest-card__subheading">{{ item.entity.field_subheading.0.value }}</h4>
+                            {% endif %}
+                            <h3 class="interest-card__heading">{{ item.entity.field_heading.0.value }}</h3>
+                            {% if item.entity.field_text.0.value %}
+                                <p class="interest-card__copy">{{ item.entity.field_text.0.value }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="interest-card__icon-container">
+                            <div class="interest-card__icon">
+                                {% if iconClass == 'find-degree' %}
+                                    <span class="interest-card__icon-find-degree">
+                                        {% include directory ~ '/templates/svg-icons/find-degree.html.twig'%}
+                                    </span>
+            
+                                {% elseif iconClass == 'online-learning' %}
+                                    <span class="interest-card__icon-online-learning">
+                                        {% include directory ~ '/templates/svg-icons/online-learning.html.twig'%}
+                                    </span>
+                                                            
+                                {% endif %}
+                                
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>

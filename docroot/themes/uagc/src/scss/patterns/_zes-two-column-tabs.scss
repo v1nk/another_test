@@ -1,0 +1,707 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+@use "../elements/buttons" as *;
+
+.zes-two-column-tabs {
+  @include globalGutters;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: {
+    left: 0;
+    right: 0;
+  }
+
+  @media (min-width: $desktop-medium-large) {
+    &:not(.columns__left &) {
+      max-width: 1440px;
+      padding: {
+        left: 0;
+        right: 0;
+      }
+      margin: {
+        left: auto;
+        right: auto;
+      }
+    }
+  }
+
+  &__container {
+    width: 100%;
+    display: block;
+    flex-basis: 100%;
+    background-color: $lighterGray;
+
+    &.--white {
+      background-color: #ffffff;
+    }
+
+    &.--grey {
+      background-color: $lighterGray;
+    }
+    &.--no-padding {
+      .zes-two-column-tabs {
+        padding: {
+          top: 0;
+        }
+      }
+    }
+  }
+
+  &__red-bar {
+    width: 80px;
+    height: 2px;
+    background-color: $azRedLight;
+  }
+  &__main-header {
+    flex-basis: 100%;
+
+    margin: {
+      bottom: 24px;
+    }
+
+    @media (min-width: $tablet) {
+      margin: {
+        bottom: 32px;
+      }
+    }
+  }
+  &__main-header-text {
+    @include headline5;
+    color: $azBlue;
+    margin: {
+      top: 24px;
+      bottom: 24px;
+    }
+
+    h2 {
+      font-weight: 500;
+    }
+
+    @media (min-width: $desktop) {
+      margin: {
+        bottom: 24px;
+      }
+    }
+  }
+  &__main-header-body {
+    margin: {
+      bottom: 24px;
+    }
+    p {
+      font-size: 1.25rem;
+      line-height: calc(24 / 20 * 100%);
+      margin-bottom: 0;
+
+      @media (min-width: $tablet) {
+        font-size: 1.5rem;
+        line-height: calc(32 / 24 * 100%);
+      }
+    }
+  }
+  &__main-header-links {
+    margin: {
+      bottom: 0;
+    }
+
+    a {
+      @include buttonsBlue;
+      display: table;
+      background-color: transparent;
+      position: relative;
+      @include rems(14px);
+      line-height: 1.29;
+      padding: {
+        left: 16px;
+        right: 36px;
+        top: 8px;
+        bottom: 8px;
+      }
+      margin: {
+        right: 24px;
+      }
+      &::after {
+        content: "";
+        display: block;
+        width: auto;
+        position: absolute;
+        top: calc(50% - 2px);
+        right: 11px;
+        width: 20px;
+        height: 20px;
+        background-image: url("../images/icons/arrow-up-right.svg");
+        filter: contrast(1) brightness(1);
+        transition: filter 0.25s;
+        transform: translateY(-50%);
+      }
+      &:hover {
+        &::after {
+          filter: contrast(0) brightness(2);
+        }
+      }
+
+      &:nth-of-type(2) {
+        margin: {
+          top: 16px;
+        }
+      }
+
+      @media (min-width: $tablet) {
+        display: inline-block;
+        margin: {
+          bottom: 0;
+        }
+      }
+    }
+  }
+  &__tabs-container {
+    flex-basis: 100%;
+    @media (min-width: $tablet) {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  &__desktop-tabs {
+    display: none;
+    @media (min-width: $tablet) {
+      display: inline;
+      flex-basis: 272px;
+      max-width: 272px;
+      flex-shrink: 0;
+    }
+    @media (min-width: $desktop-small) {
+      display: inline;
+      flex-basis: 384px;
+      max-width: 384px;
+    }
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        flex-basis: calc(30% - 16px);
+        max-width: calc(30% - 16px);
+      }
+    }
+  }
+  &__desktop-single-tab {
+    font-weight: 500;
+    @include rems(24px);
+    line-height: 1.33;
+    border-bottom: 1px solid $silver;
+    color: $azBlue;
+    flex-basis: 100%;
+    cursor: pointer;
+    display: flex;
+    position: relative;
+    transition: color 0.25s ease-in-out, border-bottom-color 0.25s ease-in-out;
+    padding: {
+      top: 16px;
+      bottom: 16px;
+      right: 32px;
+    }
+    margin: {
+      right: 0px;
+      bottom: 0px;
+    }
+    &:hover {
+      color: $azRed;
+      border-bottom: 1px solid $azRed;
+      svg path {
+        stroke: $azRed;
+      }
+    }
+    &.\--tab-open {
+      color: $azRed;
+      border-bottom: 1px solid $azRed;
+      .zes-two-column-tabs__arrow {
+        &::after {
+          background-image: url("../images/icons/arrow-right-red.svg");
+        }
+      }
+    }
+  }
+  &__tabs-wrapper {
+    @media (min-width: $tablet) {
+      min-height: unset;
+      display: block;
+      flex-wrap: wrap;
+      flex-basis: 832px;
+      padding: {
+        left: 32px;
+      }
+    }
+    @media (min-width: $desktop) {
+      flex-basis: auto;
+      flex-grow: 1;
+    }
+    @media (min-width: $desktop-medium-large) {
+      &:not(.columns__left &) {
+        flex-basis: calc(70% - 16px);
+        max-width: calc(70% - 16px);
+      }
+    }
+  }
+
+  &__single-tab {
+    display: block;
+
+    &.\--tab-open {
+      .zes-two-column-tabs__tab-content {
+        opacity: 1;
+      }
+      .zes-two-column-tabs__preview-header {
+        color: $azRed;
+        border-bottom: 1px solid $azRed;
+      }
+      .zes-two-column-tabs__arrow {
+        &::after {
+          background-image: url("../images/icons/arrow-right-red.svg");
+        }
+      }
+    }
+  }
+  &__single-tab-wrapper {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease-in-out;
+  }
+  &__preview-header {
+    position: relative;
+    border-bottom: 1px solid $silver;
+    &:hover {
+      color: $azRed;
+      border-bottom: 1px solid $azRed;
+    }
+    @media (min-width: $tablet) {
+      display: none;
+    }
+  }
+  &__tab-text {
+    @include headline2;
+
+    color: $azBlue;
+    flex-basis: 100%;
+    line-height: 1.2;
+    cursor: pointer;
+    display: flex;
+    position: relative;
+    align-items: center;
+    //margin-bottom: 24px;
+    transition: color 0.25s ease-in-out, border-bottom 0.25s ease-in-out;
+    &:hover {
+      color: $azRed;
+    }
+    padding: {
+      top: 16px;
+      bottom: 16px;
+      right: 24px;
+    }
+    @media (min-width: $tablet) {
+      display: none;
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    top: calc(50% - 12px);
+    right: 0;
+    width: 24px;
+    height: 24px;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("../images/icons/arrow-right.svg");
+      transition: transform 0.25s;
+    }
+  }
+
+  &__tab-content {
+    flex-basis: 100%;
+    flex-wrap: wrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    > *:last-child {
+      padding-bottom: 24px;
+    }
+    a:last-child {
+      padding-bottom: 7px;
+    }
+    &::before {
+      content: "";
+      display: block;
+      height: 1px;
+      width: 100%;
+      margin-top: -1px;
+    }
+    &::after {
+      content: "";
+      display: block;
+      height: 1px;
+      width: 100%;
+      margin-top: -1px;
+    }
+  }
+
+  &__tab-header {
+    @include textLarge;
+    font-weight: 500;
+    color: $azBlue;
+    flex-basis: 100%;
+    margin: {
+      bottom: 24px;
+      top: 24px;
+    }
+
+    @media (min-width: $tablet) {
+      margin: {
+        bottom: 32px;
+        top: 0;
+      }
+      font-size: 1.75rem;
+      line-height: calc(40.3 / 28 * 100%);
+    }
+  }
+  &__wysiwyg {
+    flex-basis: 100%;
+    margin: {
+      top: 24px;
+      bottom: 24px;
+    }
+
+    @media (min-width: $tablet) {
+      margin: {
+        top: 16px;
+        bottom: 32px;
+      }
+    }
+
+    p {
+      font-size: 1.25rem;
+      line-height: 1.2;
+    }
+
+    ul {
+      list-style: disc;
+      padding: {
+        left: 32px;
+        bottom: 16px;
+        top: 20px;
+      }
+      margin: {
+        bottom: 0;
+      }
+    }
+    p + ul {
+      padding: {
+        top: 8px;
+      }
+    }
+    li {
+      margin: 0;
+      margin-bottom: 16px;
+      color: #111111;
+      font-size: 1.25rem;
+      line-height: 1.2;
+
+      &::marker {
+        color: #ab0520;
+        font-size: 1.25rem;
+      }
+    }
+
+    a {
+      @include defaultLinks;
+    }
+
+    img {
+      margin: {
+        bottom: 0;
+      }
+      border-radius: 0;
+    }
+    *:last-child {
+      margin-bottom: 0;
+    }
+    &.--has-a-cta {
+      margin: {
+        bottom: 24px;
+      }
+    }
+  }
+  &__cta-link {
+    background-color: transparent;
+    display: inline-block;
+  }
+
+  &__credit {
+    display: flex;
+    flex-wrap: wrap;
+    background: #ffffff;
+    /* light_gray */
+
+    border: 1px solid #d0d0ce;
+    box-sizing: border-box;
+    /* Primary Shadow */
+
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.06);
+    border-radius: 16px;
+    margin: {
+      top: 24px;
+      bottom: 32px;
+    }
+    @media (min-width: $desktop) {
+      margin: {
+        left: auto;
+        right: auto;
+      }
+    }
+  }
+  &__credit-header {
+    font-weight: 500;
+    @include rems(20px);
+    line-height: 1.2;
+    flex-basis: 100%;
+    justify-content: center;
+    text-align: center;
+    color: $azBlue;
+    padding: {
+      top: 24px;
+      bottom: 16px;
+    }
+    border-bottom: 1px solid #f1f1f0;
+    @media (min-width: $tablet) {
+      @include rems(24px);
+      line-height: 1.33;
+    }
+  }
+  &__credit-content {
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: {
+      top: 16px;
+      bottom: 24px;
+      left: 16px;
+      right: 16px;
+    }
+    @media (min-width: $tablet) {
+      flex-wrap: nowrap;
+      padding: {
+        left: 0;
+        right: 0;
+      }
+    }
+  }
+  &__credit-column {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: {
+      left: 16px;
+      right: 16px;
+    }
+    margin: {
+      bottom: 48px;
+    }
+    @media (min-width: $tablet) {
+      padding: {
+        left: 0px;
+        right: 16px;
+      }
+    }
+    @media (min-width: $desktop) {
+      padding: {
+        left: 24px;
+        right: 32px;
+      }
+    }
+    &:last-child {
+      .zes-two-column-tabs__credit-label {
+        margin: {
+          bottom: 0px;
+        }
+        @media (min-width: $tablet) {
+          margin: {
+            bottom: 8px;
+          }
+        }
+      }
+      .zes-two-column-tabs__credit-block {
+        padding: {
+          bottom: 0px;
+        }
+        @media (min-width: $tablet) {
+          padding: {
+            bottom: 24px;
+          }
+        }
+      }
+      .zes-two-column-tabs__credit-bottom-label {
+        padding: {
+          bottom: 5px;
+        }
+        @media (min-width: $tablet) {
+          padding: {
+            bottom: 24px;
+          }
+        }
+      }
+    }
+    &:nth-last-child(2) {
+      .zes-two-column-tabs__credit-block {
+        &:after {
+          content: "=";
+        }
+      }
+    }
+    &:last-child {
+      .zes-two-column-tabs__credit-block {
+        &:after {
+          display: none;
+        }
+      }
+    }
+    &.--total {
+      .zes-two-column-tabs__credit-label {
+        color: $azRed;
+        @include rems(24px);
+        @media (min-width: $tablet) {
+          @include rems(12px);
+        }
+        @media (min-width: $desktop) {
+          @include rems(24px);
+        }
+      }
+      .zes-two-column-tabs__credit-circle {
+        background-color: transparent;
+        color: $azRed;
+      }
+    }
+    @media (min-width: $tablet) {
+      position: relative;
+      flex-basis: 23%;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: {
+        left: 16px;
+        right: 0px;
+      }
+      margin: {
+        bottom: 0;
+      }
+    }
+    @media (min-width: $desktop) {
+      max-width: 240px;
+      padding: {
+        left: 32px;
+        right: 32px;
+      }
+    }
+  }
+  &__credit-block {
+    position: relative;
+    text-align: center;
+    &::after {
+      content: "+";
+      @include rems(32px);
+      line-height: 1.25;
+      color: #d0d0ce;
+      position: absolute;
+      top: calc(100% + 4px);
+      left: calc(50% - 6px);
+      @media (min-width: $tablet) {
+        bottom: 70px;
+        top: unset;
+        left: 100%;
+      }
+      @media (min-width: $desktop) {
+        bottom: 75px;
+      }
+    }
+    @media (min-width: $tablet) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      position: static;
+      margin: {
+        top: auto;
+        bottom: 0;
+      }
+    }
+    @media (min-width: $tablet) {
+      margin: {
+        bottom: auto;
+        top: 0;
+      }
+    }
+  }
+  &__credit-label {
+    flex-basis: 118px;
+    font-weight: 500;
+    @include rems(20px);
+    line-height: 1.5;
+    color: $azBlue;
+    margin: {
+      bottom: 45px;
+    }
+    @media (min-width: $tablet) {
+      @include rems(12px);
+      flex-basis: 50px;
+      line-height: 1.2;
+      text-align: center;
+      min-height: 45px;
+      margin: {
+        bottom: 8px;
+      }
+    }
+    @media (min-width: $desktop) {
+      @include rems(24px);
+      flex-basis: 118px;
+    }
+  }
+  &__credit-circle {
+    font-weight: 500;
+    @include rems(26px);
+    line-height: 1.23;
+    color: $azBlue;
+    background: #f1f1f0;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin: {
+      bottom: 8px;
+    }
+    @media (min-width: $tablet) {
+      @include rems(20px);
+      line-height: 0.125;
+      width: 56px;
+      height: 56px;
+    }
+    @media (min-width: $desktop) {
+      @include rems(32px);
+      width: 72px;
+      height: 72px;
+    }
+  }
+  &__credit-bottom-label {
+    @include rems(14px);
+    line-height: 1.29;
+    @media (min-width: $tablet) {
+      @include rems(16px);
+      line-height: 1.5;
+    }
+  }
+}

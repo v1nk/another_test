@@ -1,0 +1,86 @@
+@use "base/fonts";
+
+.section--banner-with-text {
+  background-color: $azBlue;
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: 700;
+
+  &__wrapper {
+    color: white;
+    padding: 40px 40px;
+    text-align: center;
+
+    @media (max-width: $bp--mobile) {
+      padding: 20px 20px;
+    }
+  }
+}
+
+.section__content {
+  align-items: center;
+  background-color: $azBlue;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  line-height: initial;
+  text-align: center;
+  width: 100%;
+
+  @media (max-width: $bp--mobile) {
+    flex-flow: column;
+  }
+
+  &__title {
+    color: white;
+    font-size: 2em;
+    margin: 30px;
+    position: relative;
+    max-width: 60%;
+
+    @media (max-width: $bp--mobile) {
+      font-size: 1.25em;
+      margin: 30px 0 40px 0;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: -25px;
+      height: 1px;
+      border-bottom: solid 1px $azRed;
+      border-top: solid 1px $azRed;
+      transform: translateX(-50%);
+      width: 30%;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -25px;
+      height: 1px;
+      border-bottom: solid 1px $azRed;
+      border-top: solid 1px $azRed;
+      transform: translateX(-50%);
+      width: 30%;
+    }
+  }
+
+  &__featured-text {
+    color: $orange;
+    font-size: 5em;
+    margin: 0;
+    max-width: calc(40% - 60px);
+
+    @media (max-width: $bp--mobile) {
+      font-size: 3.25em;
+    }
+  }
+
+  p {
+    width: 100%;
+  }
+}

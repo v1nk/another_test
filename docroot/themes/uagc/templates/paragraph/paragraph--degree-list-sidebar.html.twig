@@ -1,0 +1,68 @@
+{{ attach_library('uagc/degree-list-sidebar') }}
+
+{% set interest = paragraph.field_area_of_interest.value.0.target_id  %}
+{% set level = paragraph.field_degree_level.value.0.target_id  %}
+{% set college = paragraph.field_college.value.0.target_id  %}
+{% set filter_classes = '' %}
+
+
+{% if (interest is not empty) or (college is not empty) %}
+    {% set filter_classes = filter_classes ~ ' --hide-college ' %}
+{% endif %}
+
+{% if level is not empty %}
+    {% set filter_classes = filter_classes ~ ' --hide-level ' %}
+{% endif %}
+
+{% if interest is not empty %}
+    {% set filter_classes = filter_classes ~ ' --hide-interest ' %}
+{% endif %}
+
+{% if (interest is not empty) and (level is not empty) and (college is not empty) %}
+    {% set filter_classes = '--disable-all' %}
+{% elseif  (interest is not empty) and (level is not empty) %}
+    {% set filter_classes = '--disable-all' %}
+{% endif %}
+
+
+<div class="degree-list-sidebar__main-wrapper {{filter_classes}}">
+    <div class="degree-list-sidebar__red-bar"></div>
+    <div class="degree-list-sidebar__heading">
+        {{ paragraph.field_heading.0.value }}
+    </div>
+    <div class="degree-list-sidebar__header-content">
+        {{ paragraph.field_content.0.value | raw }}
+    </div>
+
+
+    {# <div class="doodoo">{{dump(paragraph.field_area_of_interest.value.0.target_id)}}
+    {{dump(paragraph.field_degree_level.value.0.target_id)}}</div> #}
+    <div class="degree-list-sidebar__view-wrapper-{{filter_classes}}">
+        {% set degree_filter = null %}
+        {% set interest_filter = null %}
+        {% set college_filter = null %}
+
+        {% set values = [] %}
+        {% if paragraph.field_degree_level.value is not empty %}
+            {% set degree_filter = paragraph.field_degree_level.value.0.target_id %}
+            {% set values = values|merge([degree_filter]) %}
+        {% endif %}
+
+        {% if paragraph.field_area_of_interest.value is not empty %}
+            {% set interest_filter = paragraph.field_area_of_interest.value.0.target_id %}
+            {% set values = values|merge([interest_filter]) %}
+        {% endif %}
+
+        {% if paragraph.field_college.value is not empty %}
+            {% set college_filter = paragraph.field_college.value.0.target_id %}
+            {% set values = values|merge([college_filter]) %}
+        {% endif %}
+        {% set degreeFilter = values|join(',') %}
+
+        {% if degreeFilter is not empty %}
+            {{ drupal_view('degree_list_sidebar', 'block_1', degreeFilter ) }}
+        {% else %}
+            {{ drupal_view('degree_list_sidebar', 'block_1' ) }}
+        {% endif %}
+    </div>
+</div>

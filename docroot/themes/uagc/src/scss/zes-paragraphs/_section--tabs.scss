@@ -1,0 +1,341 @@
+$block-tabs-bp: 870px;
+
+.section--tabs {
+  max-width: 1180px;
+
+  &.\--degree-listing.\--degree-listing.\--degree-listing {
+    padding: {
+      top: 20px;
+      bottom: 20px;
+    }
+
+    .pager__item--next,
+    .pager__item--previous {
+      display: none;
+      @include breakpoint(600px, $no-query: true) {
+        display: inline-block;
+      }
+    }
+
+    .section__header {
+      color: $azRed;
+      font-size: 1.75rem;
+      @include breakpoint(870px, $no-query: true) {
+        font-size: 2rem;
+      }
+
+      @include breakpoint(1200px, $no-query: true) {
+        font-size: 2.25rem;
+      }
+    }
+
+    .section__content {
+      color: $gray4;
+      margin-bottom: 32px;
+
+      @include breakpoint(870px, $no-query: true) {
+        margin-bottom: 44px;
+      }
+    }
+
+    .section__link {
+      background-color: $blue;
+
+      @include breakpoint(min-width 870px, $no-query: true) {
+        background-color: $coolGray;
+        color: $azBlue;
+      }
+
+      &:after {
+        content: "+";
+        border: none;
+        transform: translateY(-50%);
+        font-size: 1.5625rem;
+        font-weight: bold;
+        height: 24px;
+        width: 24px;
+        transition: none;
+      }
+
+      &.\--is-active {
+        background-color: $blue;
+        &:after {
+          transform: translateY(-60%);
+          content: "‒";
+        }
+      }
+    }
+    .section__tab-content {
+      .pager__link {
+        color: $blue;
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+          color: white;
+        }
+      }
+      .is-active {
+        .pager__link {
+          color: white;
+        }
+      }
+    }
+  }
+
+  @include breakpoint(1500px, $no-query: true) {
+    max-width: 1440px;
+  }
+
+  margin: {
+    left: auto;
+    right: auto;
+  }
+
+  color: $gray4;
+  font-weight: 500;
+
+  table {
+    color: $gray4;
+    border-spacing: 0;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+    @include breakpoint(max-width $block-tabs-bp, $no-query: true) {
+      tr {
+        display: block;
+        width: 100%;
+      }
+
+      td,
+      th {
+        display: block;
+        width: 100%;
+      }
+
+      td {
+        font-weight: 500;
+      }
+    }
+
+    tr:nth-of-type(2n) {
+      background-color: $gray2;
+    }
+    td {
+      padding: 20px;
+    }
+  }
+
+  strong {
+    background-color: $azBlue;
+    color: white;
+    padding: 20px;
+    display: block;
+  }
+
+  .section__header-wrapper {
+    background: #fff;
+    width: 100%;
+    @include breakpoint($block-tabs-bp, $no-query: true) {
+      flex-basis: 25%;
+      padding-right: 16px;
+    }
+
+    .section__header {
+      @include breakpoint($block-tabs-bp, $no-query: true) {
+        padding-top: 70px;
+      }
+      span {
+        display: block;
+
+        @include breakpoint($block-tabs-bp, $no-query: true) {
+        }
+      }
+    }
+  }
+
+  .section__content-wrapper {
+    @include breakpoint($block-tabs-bp, $no-query: true) {
+      background-image: none;
+    }
+    @include breakpoint($block-tabs-bp, $no-query: true) {
+      flex-basis: 75%;
+      padding: 0;
+    }
+  }
+
+  .section__link-wrapper {
+    @include breakpoint($block-tabs-bp, $no-query: true) {
+      display: flex;
+      align-items: stretch;
+      width: 100%;
+      border-bottom: solid 1px $azBlue;
+    }
+
+    .section__item {
+      font-size: 0.875rem;
+      font-weight: 700;
+      padding-bottom: 4px;
+
+      .section__link {
+        background-color: $azBlue;
+        color: white;
+        display: block;
+        text-align: left;
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        &:after {
+          position: absolute;
+          display: flex;
+          align-items: middle;
+          content: " ";
+          display: block;
+          border-bottom: solid 2px white;
+          border-right: solid 2px white;
+          right: 25px;
+          height: 14px;
+          width: 14px;
+          top: 50%;
+          transition-duration: 0.3s;
+          transform: translateY(-75%) rotate(45deg);
+        }
+
+        &.\--is-active:after {
+          transform: translateY(-25%) rotate(-135deg);
+        }
+
+        @include breakpoint($block-tabs-bp, $no-query: true) {
+          background-color: $coolGray;
+          color: $azBlue;
+          text-align: center;
+
+          &:after {
+            display: none;
+          }
+        }
+      }
+
+      //background-color: get-color(purple,3);
+      @include breakpoint($block-tabs-bp, $no-query: true) {
+        padding: {
+          left: 2px;
+          right: 2px;
+          bottom: 0;
+        }
+        flex-grow: 1;
+        cursor: pointer;
+
+        &:first-of-type {
+          padding-left: 0;
+        }
+
+        &:last-of-type {
+          padding-right: 0;
+        }
+
+        .section__link.\--is-active {
+          color: white;
+          background-color: $azBlue;
+          height: 100%;
+        }
+      }
+    }
+
+    .section__link {
+      background-size: 100%;
+      display: inline-block;
+      position: relative;
+      text-decoration: none;
+      text-transform: uppercase;
+      width: 100%;
+      z-index: 1;
+      padding: 20px;
+      color: $blue;
+
+      @include breakpoint($block-tabs-bp, $no-query: true) {
+        &:hover,
+        &.\--is-active {
+          &:before {
+            opacity: 1;
+          }
+        }
+
+        &:hover,
+        &.\--is-active {
+          h3 {
+          }
+        }
+      }
+
+      h3 {
+        margin: 0 20px 0 0;
+        padding: 20px 30px;
+        position: relative;
+        transition-duration: 0s;
+        @include breakpoint($block-tabs-bp, $no-query: true) {
+          margin: 0;
+          padding: 7px 30px;
+        }
+        span {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &.has-tabs {
+    .section__link {
+      h3:after {
+        @include image-replace(21px, 12px);
+        @include svg-background(arrow-down-white);
+        background-size: 21px 12px;
+        content: "";
+        display: block;
+        margin-top: -5px;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        @include breakpoint($block-tabs-bp, $no-query: true) {
+          display: none;
+        }
+      }
+      &:hover {
+        h3:after {
+          @include svg-background(arrow-down-white);
+        }
+      }
+      &.\--is-active {
+        h3:after {
+          @include svg-background(arrow-up-white);
+        }
+      }
+    }
+  }
+
+  .section__tab-content {
+    background-color: white;
+    display: none;
+    padding: 15px 0;
+
+    a {
+      color: $azRed;
+      text-decoration: underline;
+    }
+
+    @include breakpoint($block-tabs-bp, $no-query: true) {
+      padding: 30px 0;
+    }
+
+    td {
+      font-weight: 400;
+      line-height: 1.8;
+    }
+
+    p {
+      display: inline-block;
+      font-weight: 400;
+      line-height: 1.8;
+    }
+  }
+}

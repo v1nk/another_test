@@ -1,0 +1,57 @@
+{% set backgroundClass = '' %}
+{% set reduceFontSize = '' %}
+
+{% if paragraph.field_display_grey_background.value  == 1 %}
+    {% set backgroundClass = ' --grey-background' %}
+{% endif %}
+
+{% if paragraph.field_reduce_font_size.value  == 1 %}
+    {% set reduceFontSize = ' --reduce-font' %}
+{% endif %}
+
+{% if paragraph.field_dark_blue_background.value  == 1 %}
+    {% set backgroundClass = ' --dark-blue-background' %}
+{% endif %}
+
+<div class="center-text-block{{backgroundClass}}">
+    <div class="center-text-block__wrapper">
+        <div class="center-text-block__red-line"></div>
+
+
+        {% if paragraph.field_logo_upload is not empty %}
+            <div class="center-text-block__logo-container">
+                {{ content.field_logo_upload }}
+            </div>
+        {% endif %}
+        {% if content.field_navy_red_heading['#items'].value %}
+            <h2 class="center-text-block__heading">{{ content.field_navy_red_heading }}</h2>
+        {% endif %}
+
+        {% if content.field_content['#items'].value %}
+            <div class="center-text-block__content{{reduceFontSize}}">
+                {{ content.field_content.0 }}
+            </div>
+        {% endif %}
+
+        {% if content.field_cta['#items'].value or content.field_cta_link['#items'].value %}
+            <div class="center-text-block__cta-container">
+
+                {% if content.field_cta['#items'].value %}
+                    {% if content.field_cta['#items'].uri == 'internal:#' %}
+                        <a href="javascript:void(0)" class="center-text-block__cta button--blue">{{paragraph.field_cta.0.title}}</a>
+                    {% else %}
+                        <a href="{{paragraph.field_cta.0.url}}" class="center-text-block__cta button--blue">{{paragraph.field_cta.0.title}}</a>
+                    {% endif %}
+                {% endif %}
+
+                {% if content.field_cta_link['#items'].value %}
+                    {% if content.field_cta['#items'].value %}
+                        <span class="center-text-block__cta-divider"></span>
+                    {% endif %}
+                    <a href="{{paragraph.field_cta_link.0.url}}" class="center-text-block__secondary-cta button--blue">{{paragraph.field_cta_link.0.title}}</a>
+                {% endif %}
+                
+            </div>
+        {% endif %}
+    </div>
+</div>

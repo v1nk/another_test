@@ -1,0 +1,11 @@
+<div class="form-twostep js-form-twostep --midpage-rfi" id="{{paragraph.field_anchor_id.0.value}}" data-containerid="{{ node.bundle ~ node.getCreatedTime() | clean_class }}">
+  <div class="form-twostep__wrapper">
+    <h2 class="form-twostep__header">{% if paragraph.field_navy_red_heading is empty %} Questions? Request More Information {% else %} {{ content.field_navy_red_heading }} {% endif %}</h2>
+    <div class="form-twostep__form one-step-webform" data-containerid="{{ node.bundle ~ node.getCreatedTime() | clean_class}}">
+      {{drupal_entity('webform', 'lead_flow_system', check_access=false)}}
+    </div>
+  </div>
+</div>
+
+{{attach_library('uagc/lead-form-logic')}}
+{{attach_library('uagc/two-step-form')}}

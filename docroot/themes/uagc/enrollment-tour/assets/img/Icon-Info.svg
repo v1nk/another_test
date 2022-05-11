@@ -1,0 +1,9 @@
+<svg id="info_icon" data-name="info icon" xmlns="http://www.w3.org/2000/svg" width="60" height="60.069" viewBox="0 0 60 60.069">
+  <g id="Group_2052" data-name="Group 2052" transform="translate(-140 -805.931)">
+    <g id="Rectangle_759" data-name="Rectangle 759" transform="translate(140 805.931)" fill="none" stroke="#707070" stroke-linejoin="round" stroke-width="1.5">
+      <rect width="60" height="60" stroke="none"/>
+      <rect x="0.75" y="0.75" width="58.5" height="58.5" fill="none"/>
+    </g>
+  </g>
+  <text id="i" transform="translate(2 3.069)" fill="#707070" font-size="48" font-family="WilliamsCaslonText-Italic, WilliamsCaslonText" font-style="italic" letter-spacing="0.01em"><tspan x="22" y="43">i</tspan></text>
+</svg>

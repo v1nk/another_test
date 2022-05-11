@@ -1,0 +1,76 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/vars" as *;
+
+.paid-footer {
+  background-color: $lightGray;
+  color: $azBlue;
+  width: 100%;
+  padding: {
+    left: $gutterSideMobile;
+    right: $gutterSideMobile;
+    top: 24px;
+    bottom: 100px;
+  }
+  min-height: 308px;
+  max-width: 1920px;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+
+  @media (min-width: $footerSpacing) {
+    min-height: 176px;
+    padding: {
+      left: $gutterSideTablet;
+      right: $gutterSideTablet;
+      top: 40px;
+      bottom: 40px;
+    }
+  }
+
+  @media (min-width: $desktop) {
+    min-height: 0;
+    padding: {
+      left: $gutterSide;
+      right: $gutterSide;
+    }
+  }
+
+  &:not(&.\--sidebar) {
+    @media (min-width: $desktop-medium-large) {
+      padding: {
+        left: 0;
+        right: 0;
+      }
+
+      p {
+        max-width: 1440px;
+        margin: {
+          left: auto;
+          right: auto;
+        }
+      }
+    }
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  a,
+  a:hover,
+  a:visited {
+    color: $azBlue;
+  }
+
+  &.\--mobile-height {
+    min-height: 275px;
+    @media (min-width: $tablet) {
+      min-height: 250px;
+    }
+    @media (min-width: $desktop-small) {
+      min-height: 0;
+    }
+  }
+}

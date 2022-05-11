@@ -1,0 +1,21 @@
+{% set headerCopy = paragraph.field_header.0.value %}
+
+{% if paragraph.field_red_additional_header_text.0.value is not empty %}
+  {% set headerCopy = headerCopy ~ ' <span class="tuitionandfees__header-red">' ~ paragraph.field_red_additional_header_text.0.value ~'</span>' %}
+{% endif %}
+
+<section class="tuitionandfees">
+  <div class="tuitionandfees__redbar">
+    <div class="tuitionandfees__redbar-bar"></div>
+  </div>
+  <h3 class="tuitionandfees__header">{% autoescape false %}{{headerCopy}}{% endautoescape %}</h3>
+  <div class="tuitionandfees__content">{% autoescape false %}{{paragraph.field_content.0.value}}{% endautoescape %}</div>
+  <div class="tuitionandfees__buttons">
+    <div class="tuitionandfees__buttons-scroll">
+
+    </div>
+  </div>
+  {{drupal_entity('block', 'tuitionandfeestable', check_access=false) }}
+</section>
+
+

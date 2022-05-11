@@ -1,0 +1,140 @@
+{% set lengthSizeClass = '' %}
+  
+{% if paragraph.field_content.0.value | length  > 45 %}
+  {% set lengthSizeClass = '--long-text' %}
+{% endif %}
+
+<div class="paid-hero-space__content --cta-content">
+  {% autoescape false %}
+    <h1 class="paid-hero-space__content-header {{lengthSizeClass}}">{{paragraph.field_content.0.value}}</h1>
+  {% endautoescape %}
+
+  {% if paragraph.field_header_ctas is not empty %}
+    <div class="paid-hero-space__cta-container">
+      {% for item in paragraph.field_header_ctas %}
+        {% if item.entity.field_cta_link.value.0.title is not empty %}
+          {% set anchorClass = '' %}
+          {% set outlineClass = '' %}
+
+          {% if item.entity.field_in_page_anchor.0.value == '1' %}
+            {% set anchorClass = 'js-in-page-anchor' %}
+          {% endif %}
+
+          {% if item.entity.field_outline_button.value == '1' %}
+            {% set outlineClass = '--outline-button' %}
+          {% endif %}
+
+          <a href="{{item.entity.field_cta_link.0.url}}" class="paid-hero-space__cta {{anchorClass}} {{outlineClass}}">{{item.entity.field_cta_link.value.0.title}}</a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <script type="text/javascript">
+    
+    if (typeof ctaHeroSpaces === 'undefined') {
+      let ctaHeroSpaces;
+    }
+
+    ctaHeroSpaces = document.querySelectorAll('.paid-hero-space__content.--cta-content');
+  
+    ctaHeroSpaces.forEach(function(e, i, arr) {
+      let container = e.closest('.paid-hero-space');
+      if(container.classList.contains('--cta-header') === false) {
+        container.classList.add('--cta-header')
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      let jsAnchors = document.querySelectorAll('.js-in-page-anchor');
+
+      let scrollTo = function(target, isScrolling) {
+        let targetPos = target.offsetTop - window.scrollY;
+
+
+
+        let start, previousTimeStamp;
+
+        let passScroll = function(timestamp) {
+          if (start === undefined) {
+            start = timestamp;
+          }
+
+          if (previousTimeStamp === undefined) {
+            previousTimeStamp = timestamp;
+          }
+
+          var scrollJump = 200;
+
+          if(Math.abs(targetPos) > 1000) {
+            scrollJump = 400;
+          }
+
+          if(Math.abs(targetPos) <400 ) {
+            scrollJump = 50;
+          }
+
+
+
+          if (timestamp - previousTimeStamp > 3) {
+            let scrolling = false;
+
+            if (targetPos < -100) {
+              window.scrollTo(0, window.scrollY - scrollJump);
+              scrolling = true;
+              
+            }
+
+            if (targetPos > 100) {
+              window.scrollTo(0, window.scrollY + scrollJump);
+              scrolling = true;
+            }
+
+            previousTimeStamp = timestamp;
+
+            if (scrolling == false) {
+              return;
+            }
+
+          }
+          targetPos = target.offsetTop - window.scrollY;
+        
+          window.requestAnimationFrame(passScroll);
+        }
+  
+      window.requestAnimationFrame(passScroll);
+
+      }
+
+
+      jsAnchors.forEach(function(e,i, arr) {
+        e.addEventListener('click', function(event) {
+          event.stopPropagation();
+          event.preventDefault();
+
+          var target = document.querySelector(e.getAttribute('href'));
+
+          if(target === null) {
+            return;
+          }
+
+          scrollTo(target);
+          
+
+
+
+        });
+      });
+    });
+
+
+
+
+
+
+  </script>
+  
+
+
+</div>
+

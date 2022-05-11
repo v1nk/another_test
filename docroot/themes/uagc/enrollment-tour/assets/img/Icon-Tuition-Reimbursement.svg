@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="57" height="57" viewBox="0 0 57 57">
+  <g id="Icon-Tuition-Reimbursement" transform="translate(-943 -551)">
+    <circle id="Ellipse_293" data-name="Ellipse 293" cx="28.5" cy="28.5" r="28.5" transform="translate(943 551)" fill="#AB0520"/>
+    <g id="Group_2143" data-name="Group 2143" transform="translate(952.33 564.46)">
+      <g id="Group_2142" data-name="Group 2142" transform="translate(15.359 7.779)">
+        <path id="Path_5573" data-name="Path 5573" d="M279.135,300.253v1.792H277.8v-1.792a5.876,5.876,0,0,1-3.514-1.686l.923-1.029a4.719,4.719,0,0,0,3.3,1.491c1.651,0,2.68-.727,2.68-2.041,0-1.154-.693-1.722-2.964-2.538-2.68-.959-3.585-1.739-3.585-3.532,0-1.776,1.242-2.84,3.159-3.053V286.07h1.332v1.775a5.527,5.527,0,0,1,3.177,1.313l-.887,1.083a4.324,4.324,0,0,0-2.982-1.154c-1.7,0-2.415.763-2.415,1.739,0,1.03.462,1.527,2.947,2.415,2.751.994,3.6,1.828,3.6,3.674C282.578,298.691,281.318,300.022,279.135,300.253Z" transform="translate(-274.289 -286.07)" fill="#fff"/>
+      </g>
+      <path id="Path_5574" data-name="Path 5574" d="M255.148,290.926a15.767,15.767,0,1,1,6.1,10.413" transform="translate(-251.118 -272.997)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path id="Path_5575" data-name="Path 5575" d="M248.477,298l3.935,3.692L256.348,298" transform="translate(-248.477 -283.122)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

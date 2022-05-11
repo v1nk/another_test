@@ -1,0 +1,183 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * Available variables:
+ * - paragraph: Full paragraph entity.
+ *   - id: The paragraph ID.
+ *   - bundle: The type of the paragraph, for example, "image" or "text".
+ *   - authorid: The user ID of the paragraph author.
+ *   - createdtime: Formatted creation date. Preprocess functions can
+ *     reformat it by calling format_date() with the desired parameters on
+ *     $variables['paragraph']->getCreatedTime().
+ * - content: All paragraph items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - paragraphs: The current template type (also known as a "theming hook").
+ *   - paragraphs--type-[type]: The current paragraphs type. For example, if the paragraph is an
+ *     "Image" it would result in "paragraphs--type--image". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - paragraphs--view-mode--[view_mode]: The View Mode of the paragraph; for example, a
+ *     preview would result in: "paragraphs--view-mode--preview", and
+ *     default: "paragraphs--view-mode--default".
+ * - view_mode: View mode; for example, "preview" or "full".
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+set classes = [
+'section',
+'section--type-' ~ paragraph.bundle|clean_class,
+view_mode ? 'section--display-mode-' ~ view_mode|clean_class,
+]
+%}
+
+
+
+
+
+{% set bgImage = '' %}
+
+{% if  content.field_background_image|render|trim is not empty  %} 
+
+  {% set bgImage = paragraph.field_background_image[0].entity.uri.value | image_style('header_desktop_1500x450')  %}
+
+{% endif %}
+
+
+{% set bgImageDesktopSmall = '' %}
+
+{% if  content.field_background_image|render|trim is not empty  %} 
+
+  {% set bgImageDesktopSmall = paragraph.field_background_image[0].entity.uri.value | image_style('header_desktop_small_1000x450')  %}
+
+{% endif %}
+
+
+{% set bgImageTabletLarge = '' %}
+
+{% if  content.field_background_image|render|trim is not empty  %} 
+
+  {% set bgImageTabletLarge = paragraph.field_background_image[0].entity.uri.value | image_style('header_image_large_tablet_1025x250')  %}
+
+{% endif %}
+
+{% if bgImageTabletLarge == '' and content.field_background_image|render|trim is not empty %}
+  {% set bgImageTabletLarge = paragraph.field_background_image[0].entity.uri.value | image_style('header_image_large_tablet_1025x250')  %}
+{% endif %}
+
+
+
+{% set bgImageTablet = '' %}
+
+{% if  content.field_background_image_tablet|render|trim is not empty  %} 
+
+  {% set bgImageTablet = paragraph.field_background_image_tablet[0].entity.uri.value | image_style('header_tablet_768x250')  %}
+
+  {% endif %}
+
+{% if bgImageTablet == '' and content.field_background_image|render|trim is not empty %}
+  {% set bgImageTablet = paragraph.field_background_image[0].entity.uri.value | image_style('header_tablet_768x250')  %}
+{% endif %}
+
+
+{% set bgImageMobile = '' %}
+
+{% if  content.field_background_image_mobile|render|trim is not empty  %} 
+
+  {% set bgImageMobile = paragraph.field_background_image_mobile[0].entity.uri.value | image_style('header_mobile_400x250')  %}
+
+{% endif %}
+
+{% if bgImageMobile == '' and content.field_background_image|render|trim is not empty %}
+  {% set bgImageMobile = paragraph.field_background_image[0].entity.uri.value | image_style('header_mobile_400x250')  %}
+{% endif %}
+
+
+{% set bgPos = '' %}
+{% if paragraph.field_background_position[0].value is not empty %}
+
+  {% set bgPos = 'background-position: ' ~ paragraph.field_background_position.0.value ~ ';' %}
+
+{% endif %}
+
+
+
+
+<div class="stickyformheader">
+  <div class="stickyformheader__content-container js-background-image" style="{{bgPos}}" >
+
+    
+    {% if paragraph.field_background_image[0].entity.uri.value != "" %}
+    <picture>
+      <source srcset="{{bgImage}}" media="(min-width: 1500px)">
+      <source srcset="{{bgImageDesktopSmall}}" media="(min-width: 1025px)">
+      <source srcset="{{bgImageTabletLarge}}" media="(min-width: 850px)">
+      <source srcset="{{bgImageTablet}}" media="(min-width: 500px)">
+      <img src="{{bgImageMobile}}">
+
+    </picture>
+    {% endif %}
+    
+    <div class="stickyformheader__content ">
+      <h1 class="stickyformheader__header">{{content.field_heading}}</h1>
+      <p class="stickyformheader__text">{{content.field_subheading}}</p>
+    </div>
+  </div>
+
+
+  <div class="stickyformheader__form two-step-webform" id="stickyform"  data-containerid="{{ node.bundle ~ node.getCreatedTime() | clean_class}}">
+
+    <script type="text/javascript">
+      if (window.innerWidth > 1024) {
+        window.onload = function() {
+          if (jQuery('a[href="#stickyform"]').length > 0) {
+            jQuery('a[href="#stickyform"]').hide();
+          }
+        }
+      }
+    
+    </script>
+
+
+    <h2 class="stickyformheader__form-header">{{ content.field_form_header.0 }}</h2>
+
+    {{drupal_entity('webform', 'lead_flow_system', check_access=false)}}
+    
+    <div class="stickyformheader__wascblock">
+      <hr>
+      <h3 style="text-align: center;">UAGC Accreditation</h3>
+      <img alt="wasc logo" data-entity-type="file" data-entity-uuid="0d5daa70-4ce0-46ad-935a-9757ecf68924" src="/themes/uagc/src/images/WASCLogoWhite.png" class="align-center">
+      <p><small>Disclaimer: The University of Arizona Global Campus is accredited by WASC Senior College and University Commission (WSCUC), 1001 Marina Village Parkway, Suite 402, Alameda, CA 94501, 510.748.9001, www.wscuc.org. WSCUC is an institutional accrediting body recognized by the U.S. Department of Education (ED) and the Council on Higher Education Accreditation (CHEA).</small></p>
+    </div>
+
+
+    <script type="text/javascript">
+
+      //Move the form over if it's on desktop.
+      //This is here because it needs to be fast, as the page loads.
+      if (window.innerWidth >= 1025) {
+        var form = document.querySelector('.two-step-webform');
+        var col = document.querySelector('.twocolumn__small');
+        col.appendChild(form);
+      }
+    </script>
+    {{ attach_library('ashford_lfs/two_step_header') }}
+
+
+  </div>
+
+
+</div>

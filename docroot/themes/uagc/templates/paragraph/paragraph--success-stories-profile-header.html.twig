@@ -1,0 +1,19 @@
+
+  {% set imageURL = file_url(paragraph.field_image.entity.field_media_image.0.entity.uri.value) %}
+  
+  <div class="success-profile-header">
+      <div class="success-profile-header__image-wrapper">
+        <img src="{{ imageURL }}" class="success-profile-header__image" alt="">
+      </div>
+      <div class="success-profile-header__content-wrapper">
+        <h1 class="success-profile-header__header">{{ content.field_header_text }}</h1>
+        <div class="success-profile-header__degrees-wrapper">
+          {% for item in node.field_success_stories_degrees['#items'] %}  
+            <div class="success-profile-header__degree">
+              <div class="success-profile-header__degree-year">{{ item.entity.field_year.value }}</div>
+              <div class="success-profile-header__degree-name">{{ item.entity.field_degree_name.value }}</div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>

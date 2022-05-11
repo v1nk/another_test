@@ -1,0 +1,79 @@
+{#
+/**
+ * @file
+ * Theme override for the basic structure of a single Drupal page.
+ *
+ * Variables:
+ * - logged_in: A flag indicating if user is logged in.
+ * - root_path: The root path of the current page (e.g., node, admin, user).
+ * - node_type: The content type for the current node, if the page is a node.
+ * - head_title: List of text elements that make up the head_title variable.
+ *   May contain or more of the following:
+ *   - title: The title of the page.
+ *   - name: The name of the site.
+ *   - slogan: The slogan of the site.
+ * - page_top: Initial rendered markup. This should be printed before 'page'.
+ * - page: The rendered page markup.
+ * - page_bottom: Closing rendered markup. This variable should be printed after
+ *   'page'.
+ * - db_offline: A flag indicating if the database is offline.
+ * - placeholder_token: The token for generating head, css, js and js-bottom
+ *   placeholders.
+ *
+ * @see template_preprocess_html()
+ */
+#}
+{%
+  set body_classes = [
+    logged_in ? 'user-logged-in',
+    not root_path ? 'path-frontpage' : 'path-' ~ root_path|clean_class,
+    not root_path ? 'front' : 'not-front',
+    node_type ? 'page--node-type-' ~ node_type|clean_class,
+  ]
+%}
+
+<!DOCTYPE html>
+<html{{ html_attributes }} class="no-js">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//cdn.optimizely.com/public/1790135602/s/master_snippet.js"></script>
+    <head-placeholder token="{{ placeholder_token|raw }}">
+    <title>{{ head_title|safe_join(' | ') }}</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+    <css-placeholder token="{{ placeholder_token|raw }}">
+    <js-placeholder token="{{ placeholder_token|raw }}">
+  </head>
+  <body{{ attributes.addClass(body_classes) }}>
+    {{ attach_library('gesso/global') }}
+
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PBPJPNX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager -->
+    <link property="schema:sameAs" href="https://en.wikipedia.org/wiki/The_University_of_Arizona_Global_Campus">
+    <link property="schema:sameAs" href="https://www.facebook.com/UniversityOfArizonaGlobalCampus/">
+    <link property="schema:sameAs" href="https://twitter.com/UAZGlobalCampus">
+    <link property="schema:sameAs" href="https://www.youtube.com/channel/UC5ut6byjibUP11LFI9EHY0Q">
+    <link property="schema:sameAs" href="https://www.instagram.com/uazglobalcampus/">
+    <link property="schema:sameAs" href="https://www.linkedin.com/school/university-of-arizona-global-campus/">
+    <link property="schema:url" href="https://www.uagc.edu">
+    <link property="schema:logo" href="https://www.uagc.edu/themes/uagc/images/uagc.svg">
+    <link property="schema:name" value="University of Arizona of Global Campus">
+    <div class="skiplinks">
+      <a href="#main-content" class="skiplinks__link focusable" tabindex="0">{{ 'Skip to main content'|t }}</a>
+    </div>
+    {{ page_top }}
+    {{ page }}
+    {{ page_bottom }}
+    <js-bottom-placeholder token="{{ placeholder_token|raw }}">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js?ver=1.6.0"></script>
+    <script src="/themes/uagc/enrollment-tour/assets/js/main.js"></script>
+    <script type="text/javascript" src="/themes/uagc/enrollment-tour/assets/js/slider.js"></script>
+
+  </body>
+</html>

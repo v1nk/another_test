@@ -1,0 +1,53 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+
+.success-sidebar-quote {
+  &__quote {
+    @include headline2;
+    color: $azBlue;
+    font-weight: 400;
+    padding: {
+      bottom: 16px;
+    }
+    margin: {
+      bottom: 0px;
+    }
+
+    @media (min-width: $tablet) {
+      padding: {
+        bottom: 32px;
+      }
+    }
+    @media (min-width: $desktop) {
+      line-height: 1.33333;
+      margin: {
+        bottom: 0px;
+      }
+    }
+
+    p {
+      @include headline2;
+      font-size: 1.25rem;
+      line-height: 1.2;
+      color: $azBlue;
+      font-weight: 400;
+      padding: {
+        bottom: 0;
+      }
+      display: inline;
+
+      @media (min-width: $tablet) {
+        font-size: 1.5rem;
+        line-height: 134%;
+      }
+    }
+  }
+
+  &__red-bar {
+    width: 70px;
+    height: 2px;
+    background-color: $azRedLight;
+  }
+}

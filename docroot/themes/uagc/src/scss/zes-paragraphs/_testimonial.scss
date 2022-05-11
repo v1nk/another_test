@@ -1,0 +1,144 @@
+.testimonial {
+  background-color: white;
+  width: 100%;
+  max-width: 1440px;
+  padding: {
+    top: 32px;
+    bottom: 32px;
+  }
+  margin: 0 auto;
+
+  @include breakpoint(min-width $bp--desktop, $no-query: true) {
+    padding: {
+      top: 32px;
+      bottom: 32px;
+    }
+  }
+
+  &.\--grey-background {
+    background-color: #f4f4f4;
+  }
+
+  &__header {
+    color: $azBlue;
+    font-weight: 600;
+    font-size: 1.875rem;
+    text-align: center;
+    max-width: 80%;
+    position: relative;
+    top: 0px;
+    margin: {
+      top: 0;
+      right: auto;
+      bottom: 15px;
+      left: auto;
+    }
+
+    @include breakpoint($bp--desktop) {
+      font-size: 2.25rem;
+      margin-bottom: 32px;
+    }
+  }
+
+  &__content {
+    font-size: 1.375rem;
+    font-weight: 400;
+    width: 100%;
+    color: $azBlue;
+
+    margin: {
+      top: 0;
+      right: auto;
+      bottom: 30px;
+      left: 0;
+    }
+
+    @include breakpoint(min-width $bp--mobile) {
+      font-size: 2rem;
+      line-height: 1.36;
+      width: 100%;
+      margin: {
+        top: 0;
+        right: auto;
+        bottom: 0;
+        left: auto;
+      }
+    }
+
+    @include breakpoint(min-width $bp--desktop) {
+      width: 85%;
+    }
+
+    &-container {
+      width: 100%;
+      max-width: 1450px;
+      padding: 0 20px;
+
+      margin: {
+        top: 0;
+        right: auto;
+        bottom: 0;
+        left: auto;
+      }
+
+      @include breakpoint(min-width $bp--mobile) {
+        margin: 0 auto;
+      }
+    }
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 400px;
+    margin: 0 auto 0 0;
+
+    @include breakpoint(min-width $bp--mobile) {
+      margin: 30px 80px 0 auto;
+    }
+
+    &-content {
+      @include breakpoint(min-width $bp--mobile) {
+        margin-bottom: 15px;
+      }
+
+      @include breakpoint(min-width $bp--desktop) {
+        margin-left: 25px;
+      }
+    }
+
+    img {
+      border-radius: 50%;
+      height: 100px;
+      width: 100px;
+      margin-right: 20px;
+    }
+
+    &-name {
+      display: block;
+      color: $azBlue;
+      font-weight: 500;
+      font-size: 1.375rem;
+      line-height: 1.27;
+
+      @include breakpoint(min-width 1500px) {
+      }
+    }
+
+    &-location {
+      display: block;
+      margin-bottom: 10px;
+      color: $azBlue;
+      font-weight: 500;
+
+      @include breakpoint(min-width 1500px) {
+      }
+    }
+
+    &-degree {
+      @extend %small-body-copy;
+      display: block;
+    }
+  }
+}

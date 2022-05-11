@@ -1,0 +1,18 @@
+<div class="testimonialcolumns__column">
+  
+  <div class="testimonialcolumns__column-topinfo">
+    {{content.field_testimonial_picture}}
+    <div class="testimonialcolumns__column-details">
+      <span class="testimonialcolumns__column-name">{{content.field_testimonial_name.0}}</span>
+      <span class="testimonialcolumns__column-location">{{content.field_testimonial_location.0}}</span>
+    </div>
+  </div>
+  <div class="testimonialcolumns__column-contentcontainer">
+    <p class="testimonialcolumns__column-content">"{{content.field_testimonial_content.0}}"</p>
+    {% autoescape false %}
+      <div class="testimonialcolumns__column-degree">{{content.field_degree.0 | raw}}</div>
+    {% endautoescape %}
+  </div>
+
+
+</div>

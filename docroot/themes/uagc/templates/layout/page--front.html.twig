@@ -1,0 +1,223 @@
+{#
+/**
+ * @file
+ * Theme override to display a single page.
+ *
+ * The doctype, html, head and body tags are not in this template. Instead they
+ * can be found in the html.html.twig template in this directory.
+ *
+ * Available variables:
+ *
+ * General utility variables:
+ * - base_path: The base URL path of the Drupal installation. Will usually be
+ *   "/" unless you have installed Drupal in a sub-directory.
+ * - is_front: A flag indicating if the current page is the front page.
+ * - logged_in: A flag indicating if the user is registered and signed in.
+ * - is_admin: A flag indicating if the user has permission to access
+ *   administration pages.
+ *
+ * Site identity:
+ * - front_page: The URL of the front page. Use this instead of base_path when
+ *   linking to the front page. This includes the language domain or prefix.
+ *
+ * Page content (in order of occurrence in the default page.html.twig):
+ * - messages: Status and error messages. Should be displayed prominently.
+ * - node: Fully loaded node, if there is an automatically-loaded node
+ *   associated with the page and the node ID is the second argument in the
+ *   page's path (e.g. node/12345 and node/12345/revisions, but not
+ *   comment/reply/12345).
+ *
+ * Regions:
+ * - page.header: Items for the header region.
+ * - page.primary_menu: Items for the primary menu region.
+ * - page.secondary_menu: Items for the secondary menu region.
+ * - page.highlighted: Items for the highlighted content region.
+ * - page.help: Dynamic help text, mostly for admin pages.
+ * - page.content: The main content of the current page.
+ * - page.sidebar_first: Items for the first sidebar.
+ * - page.sidebar_second: Items for the second sidebar.
+ * - page.footer: Items for the footer region.
+ * - page.breadcrumb: Items for the breadcrumb region.
+ *
+ * @see template_preprocess_page()
+ * @see html.html.twig
+ */
+#}
+{%
+  set classes = [
+    'site-layout__main',
+    'contextual-region',
+  ]
+%}
+
+{% set noUtilityMenu = '' %}
+
+{% if utilityMenu is empty %}
+  {% set noUtilityMenu = '--no-utility-menu' %}
+{% endif %}
+
+  <div class="site-layout__header">
+    <div class="stickyrfi-desktop">
+      <p class="stickyrfi-desktop__header">Request Information About Our Degrees</p>
+      <div class="stickyrfi-desktop__form">{{drupal_entity('webform', 'lead_flow_cta', check_access=false)}}</div>
+    </div>
+    {{attach_library('uagc/stickyform-desktop')}}
+    <div class="site-header {{ noUtilityMenu }}">
+      {% include directory ~ '/templates/block/main-nav.html.twig'%}
+    </div>
+
+    {% if node.getType == 'page' and node.field_jump_links is not empty %}
+      <nav class="site-header__subnav js-subnav-selector">
+        <ul class="site-header__subnav-items">
+        </ul>
+      </nav>
+    {% endif %}
+  </div>
+
+  <main {{ attributes.addClass(classes) }}>
+    {{ page.header }}
+  
+    {{ page.highlighted }}
+  
+    {{ page.help }}
+    {{ page.preface}}
+    <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+      {{ page.content }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__container --grey">
+      <div class="site-footer__top">
+        <div class="site-footer__top-group">
+          <div class="site-footer__top-wasc">
+            <img src="/themes/uagc/src/images/wasc.svg" width="208" height="121" alt="WASC Logo" />
+          </div>
+          <div class="site-footer__top-accred">
+            {{ drupal_entity('block_content', '61') }}
+          </div>
+        </div>
+        <div class="site-footer__top-logo-content">
+          <div class="site-footer__top-logo-content-img">
+            <img src="/themes/uagc/src/images/ua_horiz_rgb_4.svg" width="201" height="48" alt="University of Arizona Logo"/>
+          </div>
+          <div class="site-footer__top-logo-content-text">We are affiliated with the</div>
+          <div class="site-footer__top-logo-content-link"><a href="https://www.arizona.edu/">University of Arizona</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="site-footer__container">
+      <div class="site-footer__middle">
+        <div class="site-footer__middle-connect">
+          <div class="site-footer__middle-connect-links">
+            <div class="site-footer__middle-connect-button">
+              <a href="/request-information/">Get Started</a>
+            </div>
+            <div class="site-footer__middle-connect-link-items">
+              <div class="site-footer__middle-connect-link"><a href="tel:8667111700">+1 866 711 1700</a></div>
+              <div class="site-footer__middle-connect-link"><a href="/?chat=default">LIVE CHAT</a></div>
+            </div>
+          </div>
+          <div class="site-footer__middle-social">
+            <div class="site-footer__middle-social-text">Contact Us</div>
+            <ul class="site-footer__middle-social-links">
+              <li class="site-footer__middle-social-link-item">
+                <a href="https://www.facebook.com/UniversityOfArizonaGlobalCampus/" target="_blank" rel="noopener noreferrer" class="site-footer__middle-social-link --facebook" aria-label="facebook"></a></li>
+              <li class="site-footer__middle-social-link-item">
+                <a href="https://twitter.com/UAZGlobalCampus" target="_blank" rel="noopener noreferrer" class="site-footer__middle-social-link --twitter" aria-label="twitter"></a>
+              </li>
+              <li class="site-footer__middle-social-link-item">
+                <a href="https://www.instagram.com/uazglobalcampus/" target="_blank" rel="noopener noreferrer" class="site-footer__middle-social-link --instagram" aria-label="instagram"></a>
+              </li>
+              <li class="site-footer__middle-social-link-item">
+                <a href="https://www.linkedin.com/school/university-of-arizona-global-campus/" target="_blank" rel="noopener noreferrer" class="site-footer__middle-social-link --linkedin" aria-label="linkedin"></a>
+              </li>
+              <li class="site-footer__middle-social-link-item">
+                <a href="https://www.youtube.com/c/UniversityofArizonaGlobalCampus" target="_blank" rel="noopener noreferrer" class="site-footer__middle-social-link --youtube" aria-label="youtube"></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="site-footer__middle-menus">
+          <div class="site-footer__middle-menus-main">
+          {% if footerMain is not empty %}
+            <div class="site-footer__middle-menus-main-title">Degree Programs</div>
+            <div class="site-footer__middle-menus-main-block-container">
+            {% for menuItem in footerMain %}
+              <div class="site-footer__middle-menus-main-blocks">
+                <div class="site-footer__middle-menus-main-block-title">{{menuItem.title}}</div>
+                <ul class="site-footer__middle-menus-main-block-items">
+                {% for secondLevelItem in menuItem.children %}
+                  <li class="site-footer__middle-menus-main-block-item">
+                    <a href="{{secondLevelItem.url}}" aria-label="{{secondLevelItem.title}} of {{menuItem.title}}">{{secondLevelItem.title}}</a>
+                  </li>
+                {% endfor %}
+                </ul>
+              </div>
+            {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+          <div class="site-footer__middle-menus-side">
+            <div class="site-footer__middle-menus-side-block">
+              <div class="site-footer__middle-menus-side-block-title">Information For</div>
+              {% if footerStackedTop is not empty %}
+              <ul class="site-footer__middle-menus-side-block-column --2-column">
+                {% for menuItem in footerStackedTop %}
+                <li class="site-footer__middle-menus-side-block-column-item">
+                  <a href="{{menuItem.url}}">{{menuItem.title}}</a>
+                </li>
+                {% endfor %}
+
+              </ul>
+              {% endif %}
+            </div>
+            <div class="site-footer__middle-menus-side-block">
+              <div class="site-footer__middle-menus-side-block-title">Institutional Data and Research</div>
+              {% if footerStackedBottom is not empty %}
+              <ul class="site-footer__middle-menus-side-block-column">
+                {% for menuItem in footerStackedBottom %}
+                <li class="site-footer__middle-menus-side-block-column-item">
+                  <a href="{{menuItem.url}}">{{menuItem.title}}</a>
+                </li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="site-footer__container --grey">
+      <div class="site-footer__bottom">
+        <div class="site-footer__bottom-legal">
+        {% if footerLegal is not empty %}
+          <ul class="site-footer__bottom-legal-items">
+          {% for menuItem in footerLegal %}
+            <li class="site-footer__bottom-legal-item">
+              <a href="{{menuItem.url}}">{{menuItem.title}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+        <div class="site-footer__bottom-non">
+          <div class="site-footer__bottom-non-title">
+            Nondiscrimination
+          </div>
+          <div class="site-footer__bottom-non-content">
+            {{ drupal_entity('block_content', '66') }}
+          </div>
+        </div>
+        <div class="site-footer__bottom-copyright">
+          <div class="site-footer__bottom-copyright-one">©{{ "now"|date("Y") }} The University of Arizona Global Campus.</div>
+          <div class="site-footer__bottom-copyright-two">Forbes School of Business and Technology® is used under license.
+          </div>
+        </div>
+      </div>
+    </div>
+    {% if page.footer %}
+      {{ page.footer }}
+    {% endif %}
+    {{ page.alert_bar}}
+  </footer>
+

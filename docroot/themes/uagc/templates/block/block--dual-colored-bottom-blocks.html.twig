@@ -1,0 +1,60 @@
+{# This matches the HTML/class names from paragraph--blog-tools.html.twig #}
+
+{% set iconClass = content.field_tools_card_icon['#items'].value %}
+{% set colorClass = content.field_tools_card_color['#items'].value %}
+
+{% set iconClass2 = content.field_tools_card_icon_2['#items'].value %}
+{% set colorClass2 = content.field_tools_card_color_2['#items'].value %}
+
+<div class="blog-tools">
+      <a class="blog-tools__container {{colorClass}}" href="{{content.field_block_link[0]['#url'] }}">
+          <div class="blog-tools__content">
+              <span class="blog-tools__heading">{{content.field_block_pre_header}}</span>
+              <div class="blog-tools__wysiwyg wizzywig">
+                <p>{{content.field_block_header}}</p>
+              </div>
+              <p class="blog-tools__subheading">{{content.field_block_bottom_text}}</p>
+          </div>
+          
+          <div class="blog-tools__icon-container">
+              <div class="blog-tools__icon">
+                  {% if iconClass == 'find-degree' %}
+                      <span class="blog-tools__icon-find-degree">
+                          {% include directory ~ '/templates/svg-icons/find-degree.html.twig'%}
+                      </span>
+
+                  {% elseif iconClass == 'online-learning' %}
+                      <span class="blog-tools__icon-online-learning">
+                          {% include directory ~ '/templates/svg-icons/online-learning.html.twig'%}
+                      </span>                     
+                  {% endif %}
+              </div>
+          </div>
+      </a>
+      <a class="blog-tools__container {{colorClass2}}" href="{{content.field_block_2_link[0]['#url'] }}">
+        <div class="blog-tools__content">
+            <span class="blog-tools__heading">{{content.field_block_2_pre_header}}</span>
+            <div class="blog-tools__wysiwyg wizzywig">
+              <p>{{content.field_block_2_header}}</p>
+            </div>
+            <p class="blog-tools__subheading">{{content.field_block_2_bottom_text}}</p>
+        </div>
+        
+        <div class="blog-tools__icon-container">
+            <div class="blog-tools__icon">
+                {% if iconClass2 == 'find-degree' %}
+                    <span class="blog-tools__icon-find-degree">
+                        {% include directory ~ '/templates/svg-icons/find-degree.html.twig'%}
+                    </span>
+
+                {% elseif iconClass2 == 'online-learning' %}
+                    <span class="blog-tools__icon-online-learning">
+                        {% include directory ~ '/templates/svg-icons/online-learning.html.twig'%}
+                    </span>
+                                            
+                {% endif %}
+                
+            </div>
+        </div>
+      </a>
+</div>

@@ -1,0 +1,136 @@
+{{ attach_library('uagc/main') }}
+{{ attach_library('uagc/paid') }}
+
+
+{# {{ content.field_paragraphs }} #}
+
+
+{# article element can be switch out for section element if its a listing page #}
+{%
+  set classes = [
+    'site-layout__article',
+    node.getType,
+  ]
+%}
+
+{{ page.preface}}
+{{ page.header }}
+
+  {{ page.breadcrumb }}
+
+  {{ page.highlighted }}
+
+  {{ page.help }}
+
+
+
+  <script type="text/javascript">
+    window.ashfordlfs = window.ashfordlfs || {};
+    window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }} = window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }} || {};
+  
+    {% if node.field_clientdocumentid.value != '' %}
+      window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }}.clientdocumentid = '{{ node.field_clientdocumentid.value }}';
+    {% endif %}
+  
+    {% if node.field_sourceid.value != '' %}
+      window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }}.sourceid = '{{ node.field_sourceid.value }}';
+    {% endif %}
+  
+    {% if node.field_revisionid.value != '' %}
+      window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }}.revisionid = '{{ node.field_revisionid.value }}';
+    {% endif %}
+  
+    {% if node.field_form_id_class	.value != '' %}
+      window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }}.formidclass = '{{ node.field_form_id_class	.value }}';
+    {% endif %}
+  
+  
+  
+    window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }}.degrees = [
+    {% for key, item in node.field_degrees if key|first != '#' %}
+    '{{item.entity.title.value}}',
+    {% endfor %}
+    ];
+    
+    window.ashfordlfs.{{ node.bundle ~ node.getCreatedTime() | clean_class }}.interests = [
+    {% for key, item in node.field_interests if key|first != '#' %}
+      '{{item.entity.name.value | raw}}',
+    {% endfor %}
+    ];
+  
+  
+  
+  
+  </script>
+
+
+<article {{ attributes.addClass(classes) }}>
+    {{ title_suffix }}
+    <header class="site-layout__article-header">
+      {{ content.field_header_paragraphs }}
+    </header>
+    <div class="site-layout__article-content">
+        {% for i in content.field_paragraphs['#items']|keys %}
+            {{ content.field_paragraphs[i] }}
+        {% endfor %}
+    </div>
+</article>
+{% if bottom_content|keys is not empty %}
+    <div class="site-layout__footer">
+        {{ bottom_content }}
+    </div>
+{% endif %}
+
+{% set jumpLinks = [] %}
+{% for thing in node.field_jump_links %}
+  {% set text = thing.entity.field_link_text.value %}
+  {% set selector = thing.entity.field_jump_selector.value %}
+  {% set itemData = {'text': text, 'selector': selector} %}
+
+{% set jumpLinks = jumpLinks|merge([itemData]) %}
+{% endfor %}
+
+
+<script>
+  if (typeof jumplinks === 'undefined') {
+    var jumplinks = {
+      jumpData: JSON.parse('{{ jumpLinks|json_encode|e('js') }}'),
+      init: function(){
+        this.getElements();
+      },
+      getElements: function(){
+        this.container = document.querySelector('.js-subnav-selector');
+        if(this.container) {
+          this.listElement = this.container.querySelector('ul');
+        }
+        this.addLinks();
+        if(this.jumpData.length >0){
+          this.container.classList.add("--visible");
+        }
+      },
+      addLinks: function(){
+        for(let i =0; i< this.jumpData.length; i++){
+          let element = document.createElement('li');
+          element.classList.add('site-header__subnav-item');
+          let linkElement = document.createElement('a');
+          linkElement.innerHTML = this.jumpData[i].text;
+          linkElement.href = "";
+          linkElement.dataset.selector = this.jumpData[i].selector;
+          linkElement.addEventListener('click', (event)=>{
+            event.preventDefault();
+            let selector = event.target.dataset.selector;
+            let target = document.querySelector(selector);
+            if(target) {
+              target.scrollIntoView({behavior: "smooth", block: "start"});
+            }
+          });
+          element.appendChild(linkElement);
+          this.listElement.appendChild(element);
+        }
+      }
+    }
+    jumplinks.init();
+  }
+  
+
+</script>

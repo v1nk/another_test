@@ -1,0 +1,199 @@
+@use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/typographyMixins" as *;
+@use "../base/vars" as *;
+@use "sass:math";
+
+.related-articles-block {
+  max-width: 100%;
+  width: 100%;
+  &__header {
+    @include marginMedium;
+  }
+  &__header-title {
+    color: $azBlue;
+    font-weight: 500;
+    @include rems(26px);
+    line-height: 1.2308;
+    @include marginMedium;
+    @include eyebrow;
+
+    &::before {
+      display: none;
+    }
+    @media (min-width: $desktop) {
+      @include rems(28px);
+      line-height: 1.1429;
+      padding: {
+        top: 24px;
+      }
+      &::before {
+        display: block;
+        top: 0;
+      }
+    }
+  }
+  &__items {
+    margin: {
+      bottom: 32px;
+    }
+
+    @media (min-width: $tablet) {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    @media (min-width: $desktop) {
+      display: block;
+    }
+  }
+  &__item {
+    border: {
+      bottom: 1px solid $lightGray;
+    }
+    margin: {
+      bottom: 24px;
+    }
+
+    @media (min-width: $tablet) {
+      flex-basis: 48%;
+    }
+
+    &:last-child {
+      display: none;
+      @media (min-width: $desktop) {
+        display: list-item;
+      }
+    }
+  }
+  &__article {
+  }
+  &__image {
+    position: relative;
+    height: 0;
+    padding: {
+      top: 180px;
+    }
+    margin: {
+      bottom: 24px;
+    }
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+  }
+  &__categories {
+    padding: {
+      bottom: 8px;
+    }
+
+    a {
+      text-transform: uppercase;
+      color: $azRed;
+      @include headline3;
+      &:hover {
+        text-decoration: underline;
+      }
+      &:visited {
+        color: $azRed;
+      }
+    }
+  }
+  &__title {
+    color: $black;
+    @include textLarge;
+    margin: {
+      bottom: 32px;
+    }
+    @media (min-width: $desktop) {
+      line-height: math.div(32, 24);
+    }
+    a {
+      color: $black;
+      transition: color 0.25s;
+      font-weight: 500;
+
+      &:visited {
+        color: $black;
+      }
+      &:hover {
+        color: $azRed;
+      }
+
+      @media (min-width: $desktop) {
+        line-height: math.div(32, 24);
+      }
+    }
+  }
+  &__info {
+    @include textSmall;
+
+    color: $darkGray;
+    display: flex;
+    justify-content: flex-start;
+    margin: {
+      bottom: 24px;
+    }
+  }
+  &__pub {
+    padding: {
+      right: 4px;
+    }
+  }
+  &__read {
+    padding-left: 8px;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: calc(50% - 2px);
+      left: 0;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: $darkGray;
+    }
+  }
+  &__link {
+    position: relative;
+    margin: {
+      left: auto;
+      right: 0;
+    }
+    a {
+      color: $azRed;
+      @include boldSmall;
+      position: relative;
+      padding: {
+        right: 28px;
+      }
+      transition: color 0.25s;
+      &:hover {
+        text-decoration: underline;
+        color: $azBlue;
+        & + svg {
+          transform: translateX(4px);
+        }
+      }
+      &:visited {
+        color: $azRed;
+      }
+    }
+    svg {
+      position: absolute;
+      right: 0;
+      top: calc(50% - 10px);
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s;
+      path {
+        stroke: $azRed;
+      }
+    }
+  }
+}

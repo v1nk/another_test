@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="57" height="57" viewBox="0 0 57 57">
+  <g id="Icon-Financial-Aid" transform="translate(-519 -522)">
+    <g id="Group_2150" data-name="Group 2150" transform="translate(2 -14)">
+      <circle id="Ellipse_290" data-name="Ellipse 290" cx="28.5" cy="28.5" r="28.5" transform="translate(517 536)" fill="#AB0520"/>
+      <g id="Group_2148" data-name="Group 2148" transform="translate(528.322 547.03)">
+        <g id="Group_2147" data-name="Group 2147" transform="translate(26.57 24.108)">
+          <path id="Path_5582" data-name="Path 5582" d="M299.747,922.2v.978H298.74V922.2a3.012,3.012,0,0,1-1.968-1.065l.768-.653a2.253,2.253,0,0,0,1.7.777c.96,0,1.382-.317,1.382-.912,0-.528-.374-.759-1.5-1.094-1.429-.422-2.1-.777-2.1-1.938a1.827,1.827,0,0,1,1.718-1.785v-.988h1.007v.988a2.985,2.985,0,0,1,1.689.883l-.7.71a2.171,2.171,0,0,0-1.574-.662c-.777,0-1.113.316-1.113.768s.268.672,1.449,1.027c1.353.412,2.15.768,2.15,1.986A1.877,1.877,0,0,1,299.747,922.2Z" transform="translate(-296.772 -914.541)" fill="#fff"/>
+        </g>
+        <path id="Path_5585" data-name="Path 5585" d="M272.935,874.083l-12.968-7.877L247,874.083" transform="translate(-245.254 -866.206)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <path id="Path_5586" data-name="Path 5586" d="M252.994,888v13.217H250.5V888" transform="translate(-247.009 -877.13)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <path id="Path_5587" data-name="Path 5587" d="M265.994,888v13.217H263.5V888" transform="translate(-253.525 -877.13)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <path id="Path_5588" data-name="Path 5588" d="M278.994,888v13.217H276.5V888" transform="translate(-260.041 -877.13)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <line id="Line_87" data-name="Line 87" y1="10.474" transform="translate(22.943 10.87)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <line id="Line_88" data-name="Line 88" y1="9.227" transform="translate(25.437 10.621)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <rect id="Rectangle_779" data-name="Rectangle 779" width="26.434" height="2.494" transform="translate(1.496 8.127)" stroke-width="1" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <ellipse id="Ellipse_286" data-name="Ellipse 286" cx="6.858" cy="6.858" rx="6.858" ry="6.858" transform="translate(22.15 21.593)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+    </g>
+    <path id="Path_5590" data-name="Path 5590" d="M550.914,557.207H531.707v2.567h18.207" transform="translate(0 -0.091)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+  </g>
+</svg>

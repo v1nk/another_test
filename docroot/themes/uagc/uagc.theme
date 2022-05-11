@@ -1,0 +1,588 @@
+<?php
+
+use Drupal\Core\Menu\MenuTreeParameters;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\node\Entity\Node;
+use phpDocumentor\Reflection\PseudoTypes\False_;
+
+/**
+ * Implements hook_uagc_suggestions_page_alter().
+ *
+ * I dislike doing this, but you leave me no choice.
+ *
+ * Also, still a thief: https://befused.com/drupal/page-template-content-type
+ *
+ */
+function uagc_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $suggestions[] = 'page__' . $node->bundle();
+  }
+}
+
+function uagc_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
+
+  if ( $hook == 'page' && $node = \Drupal::routeMatch()->getParameter('node')) {
+    
+    if (is_object($node) == false) {
+      $node = \Drupal::entityManager()->getStorage('node')->load($node);
+    }
+
+    $type = $node->bundle();
+
+    if ($type == 'enrollment_tour') {
+      $suggestions[] = 'page__enrollment_tour';
+    }
+  }
+
+  if ( $hook == 'html' && $node = \Drupal::routeMatch()->getParameter('node')) {
+
+
+    if (is_object($node) == false) {
+      $node = \Drupal::entityManager()->getStorage('node')->load($node);
+    }
+
+    $type = $node->bundle();
+
+    if ($type == 'enrollment_tour') {
+      $suggestions[] = 'html__enrollment_tour';
+    }
+    if ($type == 'commencement_page') {
+      $suggestions[] = 'html__commencement_page';
+    }
+  }
+
+
+}
+
+function uagc_preprocess_paragraph(&$variables){
+  $node = \Drupal::request()->attributes->get('node');
+  $variables['node'] = $node;
+}
+
+function uagc_preprocess_node(&$variables) {
+  // Allowed view modes
+  $view_mode = $variables['view_mode']; // Retrieve view mode
+  $allowed_view_modes = ['full']; // Array of allowed view modes (for performance so as to not execute on unneeded nodes)
+
+  // If view mode is in allowed view modes list, pass to uagc_add_regions_to_node()
+  if(in_array($view_mode, $allowed_view_modes)) {
+    // Allowed regions (for performance so as to not execute for unneeded region)
+    $allowed_regions = ['sidebar_left', 'sidebar_right', 'bottom_content'];
+    uagc_add_regions_to_node($allowed_regions, $variables);
+  }
+
+
+
+  $nid = $variables['node']->id();
+  if ($variables['node'] != null && $variables['node']->getType() === 'catalog') {
+    $alias = $variables['node']->toUrl()->toString();;
+    $urlParts = explode('/',$alias);
+    $catParent = null;
+    $catMenu = 'introduction';
+    if($urlParts > 1) {
+      $catParent = $urlParts[2];
+    }
+    if($nid === "16426" || $catParent === 'introduction') {
+      $catMenu = 'catalog-sidebar-introduction';
+    } else if( $nid === "16431" || $catParent === 'student-rights-responsibilities' ) {
+      $catMenu = 'catalog-sidebar-student-rights-a';
+    } else if( $nid === "16436" || $catParent === 'student-services-health-safety' ) {
+      $catMenu = 'catalog-sidebar-student-services';
+    } else if( $nid === "13261" || $catParent === 'financial-information' ) {
+      $catMenu = 'catalog-sidebar-financial-inform';
+    } else if( $nid === "16441" || $catParent === 'general-academic-info-policies' ) {
+      $catMenu = 'catalog-sidebar-general-academic';
+    } else if( $nid === "16446" || $catParent === 'undergraduate-programs' ) {
+      $catMenu = 'catalog-sidebar-undergraduate-pr';
+    } else if( $nid === "16451" || $catParent === 'masters-program' ) {
+      $catMenu = 'catalog-sidebar-master-s-progams';
+    } else if( $nid === "16456" || $catParent === 'doctoral-program' ) {
+      $catMenu = 'catalog-sidebar-doctoral-program';
+    } else if( $nid === "16461" || $catParent === 'certificates' ) {
+      $catMenu = 'catalog-sidebar-certificates';
+    } else if( $nid === "16466" || $catParent === 'course-description' ) {
+      $catMenu = 'catalog-sidebar-course-descripti';
+    } else if( $nid === "16466" || $catParent === 'university-personnel' ) {
+      $catMenu = 'catalog-sidebar-university-perso';
+    }
+
+    $menu = get_menu_items($catMenu);
+    $filteredMenu = buildMenu($menu);
+    $variables['catalogSidebar'] = $filteredMenu;
+  }
+//16426 1
+//16431 2
+//16436 3
+//16441 5
+//16446 6
+//16451 7
+//16456 8
+//16461 9
+//16466 10
+}
+
+function uagc_preprocess_item_list(&$variables) {
+
+  if (empty($_GET['keys']) === false) {
+    $variables['keys'] = $_GET['keys'];
+  }
+}
+
+function uagc_preprocess_block(&$variables) {
+
+  $node = \Drupal::request()->attributes->get('node');
+  $variables['node'] = $node;
+}
+function uagc_theme_suggestions_block_alter(&$suggestions, $variables) {
+  $content = $variables['elements']['content'];
+  if (isset($content['#block_content']) && $content['#block_content'] instanceof \Drupal\block_content\BlockContentInterface) {
+    $suggestions[] = 'block__' . $content['#block_content']->bundle();
+  }
+}
+
+function uagc_preprocess_views_view_fields(&$variables) {
+  $node = \Drupal::request()->attributes->get('node');
+  $variables['node'] = $node;
+
+}
+function uagc_preprocess_views_view_unformatted(&$variables) {
+  $node = \Drupal::request()->attributes->get('node');
+  $variables['node'] = $node;
+
+}
+
+function uagc_theme_suggestions_views_view_alter(array &$suggestions, array $variables) {
+  // If you want you can add a template suggestion for all views
+  // based on their ID:
+  $suggestions[] = sprintf('views_view__%s', $variables['view']->id());
+
+  // Or you can check the ID, add suggestions, do whatever you want
+  // ...
+}
+
+function uagc_theme_suggestions_views_view_field_alter(array &$suggestions, array $variables) {
+  // Check here the id, add suggestions, do whatever you want
+  // ...
+}
+
+function uagc_theme_suggestions_form_alter(array &$suggestions, array $variables){
+  $formId = $variables['element']['#id'] ?? null;
+  if ($formId) {
+      $suggestions[] = 'form__' . str_replace('-', '_', $formId);
+  }
+}
+
+
+function uagc_theme_suggestions_fieldset_alter(array &$suggestions, array $variables, $hook) {
+  // var_dump($variables['element']);
+    if (isset($variables['element']['#context']['#view_id'])) {
+        $id = str_replace("-", "_", $variables['element']['#context']['#view_id']);
+        $suggestions[] = $hook . '__' . $id;
+    }
+}
+
+
+function uagc_theme_suggestions_pager_alter(array &$suggestions, array $variables, $hook) {
+  if (isset($variables['pager']['#theme'])) {
+    foreach ($variables['pager']['#theme'] as $option) {
+      $suggestions[] = $hook . '__' . $option;
+    }
+  }
+
+}
+
+
+
+
+function uagc_theme_suggestions_details_alter(array &$suggestions, array $variables) {
+  // $formId = $variables['element']['#id'] ?? null;
+  // // var_dump($variables['element']['#groups']['secondary'][0]['#context']['#view_id']);die();
+  // if ($formId) {
+  // }
+  if(isset($variables['element']['#groups']['secondary'])) {
+    $suggestions[] = 'details__'.$variables['element']['#groups']['secondary'][0]['#context']['#view_id'];
+  }
+  if(isset($variables['element']['#groups']['field_article_category_target_id_collapsible'])) {
+    $suggestions[] = 'details__'.$variables['element']['#groups']['field_article_category_target_id_collapsible'][0]['#context']['#view_id'];
+  }
+
+}
+
+
+function uagc_theme_suggestions_form_element_alter(array &$suggestions, array $variables) {
+  $formId = $variables['element']['#id'] ?? null;
+  
+  if ($formId) {
+    $suggestions[] = 'form__' . str_replace('-', '_', $formId);
+  }
+}
+
+function uagc_form_alter(&$form, &$form_state, $form_id) {
+  // var_dump($form);die();
+  if ($form['#id'] == 'views-exposed-form-search-results') {  
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/**
+* uagc_add_regions_to_node
+*/
+
+function uagc_add_regions_to_node($allowed_regions, &$variables) {
+  // Retrieve active theme
+  $theme = \Drupal::theme()->getActiveTheme()->getName();
+
+  // Retrieve theme regions
+  $available_regions = system_region_list($theme, 'REGIONS_ALL');
+  // Validate allowed regions with available regions
+  $regions = array_intersect(array_keys($available_regions), $allowed_regions);
+  // For each region
+  foreach ($regions as $key => $region) {
+
+    // Load region blocks
+    //$blocks = Drupal->Core->Entity->entity_load_multiple_by_properties('block', array('theme' => $theme, 'region' => $region));
+    $blocks = \Drupal::entityTypeManager()->getStorage('block')->loadByProperties(['region'=>$region]);
+
+    // Sort ‘em
+    uasort($blocks, 'Drupal\block\Entity\Block::sort');
+
+    // Capture viewable blocks and their settings to $build
+    $build = array();
+    foreach ($blocks as $key => $block) {
+      if ($block->access('view')) {
+        $view_builder = \Drupal::entityTypeManager()->getViewBuilder($block->getEntityTypeId());
+        
+        $build[$key] = $view_builder->view($block, 'block');
+      }
+    }
+
+    // Add build to region
+    $variables[$region] = $build;
+  }
+}
+
+function uagc_preprocess_html(&$variables) {
+  if ($nodeData = \Drupal::routeMatch()->getParameter('node')) {
+    $variables['node'] = $nodeData;
+
+    if ($nodeData != null && $nodeData->getType() === 'catalog') {
+      $variables['noUtilityMenu'] = true;
+    }
+    
+    if ($nodeData !=null) {
+      if ( $nodeData->field_brand_portal_page !== null) {
+        $brandPortal = $nodeData->field_brand_portal_page->getValue();
+        if ($brandPortal[0]['value'] ==='1') {
+          $variables['brandClass'] = '--brand-page';
+        }
+      }
+    }
+    try{
+      $hztlData = '';
+      $hztlDisable = '0';
+      if($nodeData->hasField('field_hztl_metadata_content') && $nodeData->hasField('field_disable_hztl_metatag') ) {
+        $hztlData = $nodeData->get('field_hztl_metadata_content')->getString();
+        $hztlDisable = $nodeData->get('field_disable_hztl_metatag')->getString();
+      }
+ 
+    if($hztlDisable !== '1') {
+    $hztlSearchArray = array(
+    '/success',
+    '/success/programs',
+    '/success/degree',
+    '/request-information',
+    '/tuition-financial-aid',
+    '/admissions');
+
+    $patternContent = array(
+      'GenericSwimlane',
+      'DegreeSwimlane',
+      'ProgramSwimlane',
+      'RequestForInfo',
+      'FinancialAid',
+      'Admissions'
+    );
+    $currentURL = $nodeData->toUrl()->toString();
+
+    $bestMatch = -1;
+    foreach($hztlSearchArray as $key => $path) {
+      $result = strncmp($path, $currentURL, strlen($path));
+      if($result === 0 ) {
+        $bestMatch = $key;
+      }
+    }
+
+    $hztlTag = array();
+    if($bestMatch !== -1) {
+      $hztlTag = array(
+        '#tag' => 'meta',
+        '#attributes' => array(
+            'property' => 'PageType',
+            'content' => $patternContent[$bestMatch],
+        ),
+      );
+      
+    }
+    if(!empty($hztlData)) {
+      $hztlTag = array(
+        '#tag' => 'meta',
+        '#attributes' => array(
+            'property' => 'PageType',
+            'content' => $hztlData,
+        ),
+      );
+    }
+    if($bestMatch !== -1 || !empty($hztlData)) {
+      $variables['page']['#attached']['html_head'][] = [$hztlTag, 'hztl'];
+    }
+  }
+  } catch (Exception $e) {
+    error_log( $e->getMessage());
+  }
+
+  }
+
+  $json = \Drupal::config('uagc.settings')->get('js_page_mapping');
+
+  if ($json !== null) {
+    $json = html_entity_decode($json);
+  }
+
+  $variables['jsList'] = $json;
+
+
+  if ($nodeData = \Drupal::routeMatch()->getParameter('node')) {
+
+    if ($nodeData->getType() === 'commencement_page') {
+      $variables['node'] = $nodeData;
+    }
+  }
+
+  $variables['my_environment'] = getenv('AH_SITE_ENVIRONMENT');
+}
+
+function uagc_preprocess_page(&$variables) {
+
+  if ($nodeData = \Drupal::routeMatch()->getParameter('node')) {
+    
+    if ($nodeData->getType() === 'commencement_page') {
+      $menu = get_menu_items('commencement-menu');
+      $subMenu = get_menu_items('commencement-submenu');
+
+      $filteredMenu = buildMenu($menu);
+      $filteredSubMenu = buildMenu($subMenu);
+
+      $variables['commencementMenu'] = $filteredMenu;
+      $variables['commencementSubmenu'] = $filteredSubMenu;
+
+    }
+    
+    $variables['node'] = $nodeData;
+  }
+
+
+  if ($nodeData !=null) {
+    if ( $nodeData->field_brand_portal_page !== null) {
+      $brandPortal = $nodeData->field_brand_portal_page->getValue();
+      if ($brandPortal[0]['value'] ==='1') {
+        $variables['brandPortalNav'] = true;
+      }
+    }
+  }
+
+
+  if ($nodeData != null && $nodeData->getType() === 'catalog') {
+    $menu = get_menu_items('catalog-navigation');
+    $filteredMenu = buildMenu($menu);
+    $variables['mainMenu'] = $filteredMenu;
+  
+    $menu = get_menu_items('catalog-utility');
+    $filteredMenu = buildMenu($menu);
+    $variables['utilityMenu'] = $filteredMenu;
+
+  } elseif ($variables['brandPortalNav']) { 
+    //Use the paid format.
+    $menu = get_menu_items('brand-menu');
+    $filteredMenu =  buildMenu($menu);
+    $variables['mainMenu'] = $filteredMenu;
+    $variables['navDisplay'] = false;
+  } else {
+    $menu = get_menu_items('top-utility-menu');
+    $filteredMenu = buildMenu($menu);
+    $variables['utilityMenu'] = $filteredMenu;
+
+    
+    $menu = get_menu_items('main');
+    $filteredMenu = buildMenu($menu);
+    $variables['mainMenu'] = $filteredMenu;
+  
+  }
+
+
+  $menu = get_menu_items('footer-main-nav');
+  $filteredMenu = buildMenu($menu);
+  $variables['footerMain'] = $filteredMenu;
+
+  $menu = get_menu_items('footer-stacked-nav-top');
+  $filteredMenu = buildMenu($menu);
+  $variables['footerStackedTop'] = $filteredMenu;
+
+  $menu = get_menu_items('footer-stacked-nav-bottom');
+  $filteredMenu = buildMenu($menu);
+  $variables['footerStackedBottom'] = $filteredMenu;
+
+  $menu = get_menu_items('footer-legal-links');
+  $filteredMenu = buildMenu($menu);
+  $variables['footerLegal'] = $filteredMenu;
+
+
+
+
+
+}
+
+function uagc_preprocess_breadcrumb(&$variables) {
+  if ($variables['breadcrumb']) {
+    $request = \Drupal::request();
+    $route_match = \Drupal::routeMatch();
+    $page_title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
+    
+
+    if (!empty($page_title)) {
+      $variables['breadcrumb'][] = [
+        'text' => $page_title
+      ];
+    }
+    $variables['#cache']['contexts'][] = 'url';
+  }
+}
+
+function get_menu_items($menu_name) {
+  //use Drupal\Core\Menu\MenuTreeParameters;
+
+  $parameters = new MenuTreeParameters();
+  
+  // Optionally limit to enabled items.
+  $parameters->onlyEnabledLinks();
+  
+  // Optionally set active trail.
+  $menu_active_trail = \Drupal::service('menu.active_trail')->getActiveTrailIds($menu_name);
+  $parameters->setActiveTrail($menu_active_trail);
+  
+  // Load the tree.
+  $tree = \Drupal::menuTree()->load($menu_name, $parameters);
+  $menu_tree_service = \Drupal::service('menu.link_tree');
+  $manipulators = array(
+    array('callable' => 'menu.default_tree_manipulators:generateIndexAndSort'),
+  );
+
+  $tree = $menu_tree_service->transform($tree, $manipulators);
+  return $tree;
+}
+
+
+
+function buildMenu($menuTree) {
+  $filteredMenu = array();
+  foreach ($menuTree as $menuItem) {
+    $tempItem = array();
+    $linkObj = $menuItem->link;
+    $uuid = $linkObj->getDerivativeId();
+    $linkEntity = \Drupal::service('entity.repository')->loadEntityByUuid('menu_link_content', $uuid);
+
+
+    $tempItem['title'] = $linkObj->getTitle();
+    $tempItem['url'] = $linkObj->getUrlObject()->toString();
+    $tempItem['depth'] = $menuItem->depth;
+    $tempItem['class'] = implode(' ', ($linkObj->getOptions())['attributes']['class']);
+    $tempItem['linkObj'] = $linkEntity;
+    if($menuItem->hasChildren ){
+      $children = $menuItem->subtree;
+      $tempItem['children'] = buildMenu($children);
+    } else {
+      $tempItem['children'] = array();
+    }
+    
+    $filteredMenu[] = $tempItem;
+   }
+   return $filteredMenu;
+}
+
+function uagc_form_system_theme_settings_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id = NULL) {
+  // Work-around for a core bug affecting admin themes. See issue #943212.
+  if (isset($form_id)) {
+    return;
+  }
+
+  $form['googlespeechcreds'] = array(
+    '#type'          => 'textarea',
+    '#title'         => t('Google Credentials JSON'),
+    '#default_value' => theme_get_setting('googlespeechcreds'),
+    '#description'   => t("Paste your Google Cloud Services JSON credentials here."),
+  );
+
+  $form['js_page_mapping'] = array(
+    '#type'          => 'textarea',
+    '#title'         => t('JS Import Config'),
+    '#default_value' => theme_get_setting('js_page_mapping'),
+    '#description'   => t("Use this collection to map external js files to destination pages."),
+  );
+
+  $form['js_page_mapping_import'] = array(
+    '#type'          => 'button',
+    '#value'         => t('Import JS Files From Mapping'),
+    '#ajax' => [
+      'callback' => 'uagc_import_js',
+      'event' => 'click',
+    ]
+  );
+
+}
+
+function uagc_import_js () {
+
+  $host = $_SERVER['HTTP_HOST'];
+  $jsHost = 'https://customjs.zoviocfworkers.com/';
+
+  //If we're not on prod, we should get this from the staging site.
+  if (strpos($host,'uagc.edu') === false && strpos($host, 'uagc.prod.acquia-sites.com') === false) {
+    $jsHost = 'https://customjsstg.zoviocfworkers.com/';
+  }
+
+  $themeSettings = \Drupal::config('uagc.settings')->get('js_page_mapping');
+  error_log($themeSettings);
+  $themeSettings = json_decode($themeSettings);
+  foreach ($themeSettings as $key => $fileNames) {
+    foreach ($fileNames as $fileName) {
+      try {
+        $jsFile = file_get_contents($jsHost . $fileName);        
+        $localFile = DRUPAL_ROOT . '/sites/default/files/'.$fileName;
+        file_put_contents($localFile, $jsFile);
+      } 
+      catch(Exception $e) {
+        echo 'Error: ' . $e->getMessage();
+      }
+    
+    }
+  }
+
+  die();
+}
+
+
+
+
+
+
+
+?>

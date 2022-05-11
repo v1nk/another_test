@@ -1,0 +1,25 @@
+{% set paidAltStyling = '' %}
+
+{% if paragraph.field_display_grey_background.value  == 1 %}
+    {% set paidAltStyling = ' --grey' %}
+{% endif %}
+
+<div class="site-footer__container{{paidAltStyling}}">
+  <div class="site-footer__top">
+    <div class="site-footer__top-group">
+      <div class="site-footer__top-wasc">
+        <img src="/themes/uagc/src/images/wasc.svg" width="208" height="121" alt="WASC Logo"/>
+      </div>
+      <div class="site-footer__top-accred">
+        {{ drupal_entity('block_content', '61')  }}
+      </div>
+    </div>
+    <div class="site-footer__top-logo-content">
+      <div class="site-footer__top-logo-content-img">
+        <img src="/themes/uagc/src/images/ua_horiz_rgb_4.svg" width="201" height="48" alt="University of Arizona Logo"/>
+      </div>
+      <div class="site-footer__top-logo-content-text">We are affiliated with the</div>
+      <div class="site-footer__top-logo-content-link"><a href="https://www.arizona.edu/">University of Arizona</a></div>
+    </div>
+  </div>
+</div>

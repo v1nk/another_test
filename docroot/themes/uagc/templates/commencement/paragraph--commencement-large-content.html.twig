@@ -1,0 +1,47 @@
+
+
+
+
+  {% if content %}
+
+
+  {% set greyBackgroundClass = '' %}
+  {% set sideClass = '' %}
+
+
+  {% if paragraph.field_content_on_left.value == 1 %}
+    {% set sideClass = '--swap-sides' %}
+  {% endif %}
+
+  {% if paragraph.field_display_grey_background.value  == 1 %}
+    {% set greyBackgroundClass = '--grey-background' %}
+  {% endif %}
+
+
+
+
+
+  <section class="commencement-largecontent__wrapper largecontent__wrapper  {{greyBackgroundClass}}">
+    <div class="largecontent commencement-largecontent {{sideClass}} --{{paragraph.field_color.value}}">
+      <div class="largecontent__header-wrapper">
+
+        {% if content.field_headline_html.0|render|trim is not empty %}
+          <h3 class="largecontent__header">{{ content.field_headline_html.0 }}</h3>
+        {% else %}
+          <h3 class="largecontent__header">{{ content.field_headline.0 }}</h3>
+        {% endif %}
+      </div>
+      <div class="largecontent__content-container">
+
+        {% if content.field_content.0|render|trim is not empty %}
+        <div class="largecontent__content">{{ content.field_content.0 }}</div>
+        {% else %}
+          <p class="largecontent__content">{{ content.field_text_content.0 }}</p>
+        {% endif %}
+        {% if content.field_cta.0['#title'] != "" %}
+          <a href="{{content.field_cta.0['#url']}}" class="largecontent__cta">{{content.field_cta.0['#title']}}</a>
+        {% endif %}
+      </div>  
+    </div>
+  </section>
+{% endif %}

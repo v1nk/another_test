@@ -1,0 +1,154 @@
+.testimonialcolumns {
+  width: 100%;
+  display: block;
+  padding: {
+    top: 32px;
+    left: 20px;
+    bottom: 32px;
+    right: 20px;
+  }
+  min-height: 530px;
+  margin-bottom: 0;
+
+  @include breakpoint(min-width $bp--desktop) {
+    padding: 60px 20px;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.375rem;
+    font-weight: 500;
+    line-height: 1.84;
+    color: $azBlue;
+  }
+
+  .slick-track {
+    height: 100%;
+
+    @include breakpoint($bp--desktop, $no-query: true) {
+      height: initial;
+    }
+  }
+
+  .slick-slide {
+    margin-right: 25px;
+    min-height: 100%;
+
+    & > div {
+      height: 100%;
+    }
+
+    &.slick-current + .slick-slide {
+      opacity: 0.7;
+
+      @include breakpoint(min-width $bp--mobile) {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__container {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__column {
+    background-color: $azBlue;
+    max-width: 280px;
+    margin: 0;
+    padding: 35px;
+    min-height: 100%;
+
+    @include breakpoint(min-width $bp--mobile) {
+      margin: 0px 20px;
+      max-width: 400px;
+      width: 31%;
+      min-height: 100%;
+    }
+
+    .twocolumn__large & {
+      @include breakpoint(min-width $bp--mobile) {
+        margin: 0px 10px;
+        max-width: 280px;
+      }
+    }
+
+    &-details {
+      align-self: center;
+    }
+
+    &-topinfo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+      img {
+        border-radius: 50%;
+        margin-right: 30px;
+        width: 90px;
+        height: 90px;
+        color: white;
+
+        @include breakpoint(min-width $bp--desktop) {
+          width: 100px;
+          height: 100px;
+        }
+      }
+    }
+
+    &-name,
+    &-location,
+    &-degree,
+    &-content {
+      display: block;
+      color: white;
+    }
+
+    &-name,
+    &-location {
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.375;
+
+      @include breakpoint(min-width $bp--desktop) {
+      }
+    }
+
+    &-content {
+      position: relative;
+      margin-bottom: 30px;
+      padding-bottom: 30px;
+      text-align: center;
+      font-weight: 400;
+      font-size: 1.125rem;
+      line-height: 1.42;
+      @include breakpoint(min-width $bp--desktop) {
+      }
+
+      &:after {
+        position: absolute;
+        bottom: 0px;
+        content: " ";
+        display: block;
+        border-bottom: solid 2px $blue;
+        left: 50%;
+        transform: translate(-50%, 0);
+        width: 55px;
+        height: 0px;
+
+        @include breakpoint(min-width $bp--desktop) {
+          width: 65px;
+        }
+      }
+    }
+
+    &-degree {
+      text-align: center;
+      font-size: 1.125rem;
+      line-height: 1.44;
+      font-weight: 500;
+      @include breakpoint(min-width $bp--desktop) {
+      }
+    }
+  }
+}

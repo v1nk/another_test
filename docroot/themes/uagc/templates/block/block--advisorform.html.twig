@@ -1,0 +1,20 @@
+
+
+
+<div class="blog-sidebar-form js-blog-sidebar-form" id="{{paragraph.field_anchor_id.0.value}}" data-containerid="{{ node.bundle ~ node.getCreatedTime() | clean_class }}">
+
+    <div class="blog-sidebar-form__wrapper">
+      <h2 class="blog-sidebar-form__header">Questions? Request More Information</h2>
+      <div class="blog-sidebar-form__status">
+        <div class="blog-sidebar-form__status-steps">
+          <span class="blog-sidebar-form__status-label">Step 1 of 2</span>
+          <div class="blog-sidebar-form__status-bar"></div>
+        </div>
+      </div>
+    
+  
+      <div class="blog-sidebar-form__form " data-containerid="{{ node.bundle ~ node.getCreatedTime() | clean_class}}">
+        {{drupal_entity('webform', 'lead_flow_cta', check_access=false)}}
+      </div>
+    </div>
+  </div>
