@@ -22,8 +22,12 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Show Branch Name
+        shell: bash
+        run: echo "${{ steps.extract_branch.outputs.branch }}"
+
       - name: Deploy branch to remote
         shell: bash
         run: |
           composer self-update --no-interaction && composer install --no-interaction --optimize-autoloader
-          vendor/bin/blt -vvv artifact:deploy --commit-msg "Bitbucket build - $BITBUCKET_BUILD_NUMBER, Commit $BITBUCKET_COMMIT" --branch "$BITBUCKET_BRANCH" --no-interaction
+          vendor/bin/blt -vvv artifact:deploy --commit-msg "GitHub build - $BITBUCKET_BUILD_NUMBER, Commit $BITBUCKET_COMMIT" --branch "$BITBUCKET_BRANCH" --no-interaction
